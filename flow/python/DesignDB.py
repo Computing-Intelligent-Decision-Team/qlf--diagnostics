@@ -9,8 +9,8 @@ import magicalFlow
 import pyparsing as _p
 
 
-nmos_set = {"nmos", "nch", "nch_na", "nch_mac", "nch_lvt", "nch_lvt_mac", "nch_25_mac", "nch_na25_mac", "nch_hvt_mac", "nch_25ud18_mac"}
-pmos_set = {"pmos", "pch", "pch_mac", "pch_lvt", "pch_lvt_mac", "pch_25_mac", "pch_na25_mac", "pch_hvt_mac", "pch_25ud18_mac", "pch_hvt"}
+nmos_set = {"nmos", "nch", "nch_na", "nch_mac", "nch_lvt", "nch_lvt_mac", "nch_25_mac", "nch_na25_mac", "nch_hvt_mac", "nch_25ud18_mac", "sky130_fd_pr__nfet_01v8"}
+pmos_set = {"pmos", "pch", "pch_mac", "pch_lvt", "pch_lvt_mac", "pch_25_mac", "pch_na25_mac", "pch_hvt_mac", "pch_25ud18_mac", "pch_hvt", "sky130_fd_pr__pfet_01v8"}
 capacitor_set = {"cfmom", "cfmom_2t"}
 resistor_set = {"rppoly", "rppoly_m", "rppolywo_m", "rppolywo"}
 unsupported_set = {"rppolyl", "crtmom", "crtmom_2t"}
@@ -204,6 +204,14 @@ class nch_lvt_mac(mosfet):
 class pch_lvt_mac(mosfet):
     def __init__(self,instance):
         netlist_element.__init__(self,'pch_lvt_mac')
+        mosfet.__init__(self, instance)
+class sky130_fd_pr__nfet_01v8(mosfet):
+    def __init__(self,instance):
+        netlist_element.__init__(self,'sky130_fd_pr__nfet_01v8')
+        mosfet.__init__(self, instance)
+class sky130_fd_pr__pfet_01v8(mosfet):
+    def __init__(self,instance):
+        netlist_element.__init__(self,'sky130_fd_pr__pfet_01v8')
         mosfet.__init__(self, instance)
 class nch_25_mac(mosfet):
     def __init__(self,instance):
