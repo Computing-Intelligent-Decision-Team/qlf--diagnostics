@@ -18,3 +18,15 @@ thirdparty
 *pin
 *sym
 *symnet
+
+# Codex / generated caches
+.oci-pull-cache/
+
+# Runtime logs
+*.log
+
+# Generated adapter outputs
+generated/
+
+# Temporary trial config
+examples/inverter_sky130_try/inverter_trial.json

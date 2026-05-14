@@ -1,0 +1,746 @@
+# 当前 YAML 是工程映射草案。
+# 不代表已经完成 Sky130 DRC-clean 适配。
+# 后续需要用 Magic/KLayout DRC 验证。
+
+schema_version: 0.1
+source_analysis: docs/sky130_adapter/sky130_layer_mapping_analysis.md
+status: draft
+routing_stack_proposal: magical_M1_maps_to_sky130_li1
+notes:
+  - "examples/sky130PDK 当前仍是 mockPDK 副本；本文件用于后续生成真实 Sky130 版本的 techfile、simple techfile 和 LEF。"
+  - "MAGICAL 当前 simple techfile 只有 layer number；Sky130 需要同时保留 GDS layer 和 datatype。"
+  - "若 MAGICAL 保留 M1..M6 六层 routing 语义，建议第一阶段评估 li1/met1/met2/met3/met4/met5 栈。"
+
+layers:
+  NW:
+    magical_layer: NW
+    magical_number: 3
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: nwell.drawing
+    gds_layer: 64
+    datatype: 20
+    purpose: nwell for PMOS devices
+    first_stage_required: true
+    sky130_candidates:
+      - name: nwell.drawing
+        gds_layer: 64
+        datatype: 20
+        source: sky130A.lyp
+      - name: NWELL
+        gds_layer: 64
+        datatype: 20
+        source: sky130A-GDS.tech
+    risk: "Need real nwell enclosure and tap rules for DRC-clean layout."
+
+  OD:
+    magical_layer: OD
+    magical_number: 6
+    appears_in:
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: diff.drawing
+    gds_layer: 65
+    datatype: 20
+    purpose: active diffusion
+    first_stage_required: true
+    sky130_candidates:
+      - name: diff.drawing
+        gds_layer: 65
+        datatype: 20
+        source: sky130A.lyp
+      - name: DIFF
+        gds_layer: 65
+        datatype: 20
+        source: sky130A-GDS.tech
+      - name: tap.drawing
+        gds_layer: 65
+        datatype: 44
+        source: sky130A.lyp
+    risk: "MAGICAL OD may cover both device diffusion and tap semantics; Sky130 distinguishes diff and tap by datatype."
+
+  VTL_N:
+    magical_layer: VTL_N
+    magical_number: 12
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock low-threshold NMOS marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: LVTN
+        gds_layer: 125
+        datatype: 44
+        source: sky130A-GDS.tech
+    risk: "Base sky130_fd_pr__nfet_01v8 flow should not assume this marker; device variants need separate confirmation."
+
+  VTL_P:
+    magical_layer: VTL_P
+    magical_number: 13
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock low-threshold PMOS marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 layer was confirmed for MAGICAL VTL_P in the current analysis."
+
+  PO:
+    magical_layer: PO
+    magical_number: 17
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: poly.drawing
+    gds_layer: 66
+    datatype: 20
+    purpose: gate poly
+    first_stage_required: true
+    sky130_candidates:
+      - name: poly.drawing
+        gds_layer: 66
+        datatype: 20
+        source: sky130A.lyp
+      - name: POLY
+        gds_layer: 66
+        datatype: 20
+        source: sky130A-GDS.tech
+    risk: "Poly contact DRC may require licon and npc handling beyond simple PO mapping."
+
+  OD_25:
+    magical_layer: OD_25
+    magical_number: 18
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock 2.5V or thick-oxide active option marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Only needed when MAGICAL enables non-base-voltage devices; Sky130 thick-oxide mapping must be confirmed separately."
+
+  PP:
+    magical_layer: PP
+    magical_number: 25
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: psdm.drawing
+    gds_layer: 94
+    datatype: 20
+    purpose: p-plus source/drain implant
+    first_stage_required: true
+    sky130_candidates:
+      - name: psdm.drawing
+        gds_layer: 94
+        datatype: 20
+        source: sky130A.lyp
+      - name: PSDM
+        gds_layer: 94
+        datatype: 20
+        source: sky130A-GDS.tech
+    risk: "Implant enclosure around diffusion and tap still needs Sky130 DRC rule support."
+
+  NP:
+    magical_layer: NP
+    magical_number: 26
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: nsdm.drawing
+    gds_layer: 93
+    datatype: 44
+    purpose: n-plus source/drain implant
+    first_stage_required: true
+    sky130_candidates:
+      - name: nsdm.drawing
+        gds_layer: 93
+        datatype: 44
+        source: sky130A.lyp
+      - name: NSDM
+        gds_layer: 93
+        datatype: 44
+        source: sky130A-GDS.tech
+    risk: "Implant enclosure around diffusion and tap still needs Sky130 DRC rule support."
+
+  RPO:
+    magical_layer: RPO
+    magical_number: 29
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: RPM
+    gds_layer: 86
+    datatype: 20
+    purpose: poly resistor marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: RPM
+        gds_layer: 86
+        datatype: 20
+        source: sky130A-GDS.tech
+    risk: "Resistor support likely needs more layers and device-specific rule mapping."
+
+  CO:
+    magical_layer: CO
+    magical_number: 30
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: licon1.drawing
+    gds_layer: 66
+    datatype: 44
+    purpose: contact between device layers and first interconnect
+    first_stage_required: true
+    sky130_candidates:
+      - name: licon1.drawing
+        gds_layer: 66
+        datatype: 44
+        source: sky130A.lyp
+      - name: LICON1
+        gds_layer: 66
+        datatype: 44
+        source: sky130A-GDS.tech
+      - name: mcon.drawing
+        gds_layer: 67
+        datatype: 44
+        source: sky130A.lyp
+    risk: "Mapped to licon1 because MAGICAL CO is the device contact to first interconnect; mcon remains mapped from VIA1 for li1-met1."
+
+  M1:
+    magical_layer: M1
+    magical_number: 31
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: li1
+    gds_layer: 67
+    datatype: 20
+    purpose: first routing layer used by MAGICAL
+    first_stage_required: true
+    sky130_candidates:
+      - name: li1
+        gds_layer: 67
+        datatype: 20
+        source: sky130_fd_sc_hd__nom.tlef
+      - name: met1
+        gds_layer: 68
+        datatype: 20
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Need decide li1 vs met1; current proposal uses li1 to preserve the complete Sky130 local interconnect stack."
+
+  VIA1:
+    magical_layer: VIA1
+    magical_number: 51
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: mcon
+    gds_layer: 67
+    datatype: 44
+    purpose: cut between MAGICAL M1 and M2 under the li1-based proposal
+    first_stage_required: true
+    sky130_candidates:
+      - name: mcon
+        gds_layer: 67
+        datatype: 44
+        source: sky130_fd_sc_hd__nom.tlef
+      - name: via
+        gds_layer: 68
+        datatype: 44
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "If M1 is later mapped to met1, VIA1 must change from mcon to via."
+
+  M2:
+    magical_layer: M2
+    magical_number: 32
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: met1
+    gds_layer: 68
+    datatype: 20
+    purpose: second MAGICAL routing layer, first true Sky130 metal in li1-based proposal
+    first_stage_required: true
+    sky130_candidates:
+      - name: met1
+        gds_layer: 68
+        datatype: 20
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "MAGICAL code and LEF generation must consistently treat M2 as met1 if M1 is li1."
+
+  VIA2:
+    magical_layer: VIA2
+    magical_number: 52
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: via
+    gds_layer: 68
+    datatype: 44
+    purpose: cut between MAGICAL M2 and M3
+    first_stage_required: true
+    sky130_candidates:
+      - name: via
+        gds_layer: 68
+        datatype: 44
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Depends on M2=met1 and M3=met2."
+
+  M3:
+    magical_layer: M3
+    magical_number: 33
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: met2
+    gds_layer: 69
+    datatype: 20
+    purpose: third MAGICAL routing layer
+    first_stage_required: true
+    sky130_candidates:
+      - name: met2
+        gds_layer: 69
+        datatype: 20
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Routing direction, pitch, and spacing must come from Sky130 tech LEF rather than mock LEF."
+
+  VIA3:
+    magical_layer: VIA3
+    magical_number: 53
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: via2
+    gds_layer: 69
+    datatype: 44
+    purpose: cut between MAGICAL M3 and M4
+    first_stage_required: true
+    sky130_candidates:
+      - name: via2
+        gds_layer: 69
+        datatype: 44
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Depends on M3=met2 and M4=met3."
+
+  M4:
+    magical_layer: M4
+    magical_number: 34
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: met3
+    gds_layer: 70
+    datatype: 20
+    purpose: fourth MAGICAL routing layer
+    first_stage_required: true
+    sky130_candidates:
+      - name: met3
+        gds_layer: 70
+        datatype: 20
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Routing direction, pitch, and spacing must be regenerated from Sky130 tech LEF."
+
+  VIA4:
+    magical_layer: VIA4
+    magical_number: 54
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: via3
+    gds_layer: 70
+    datatype: 44
+    purpose: cut between MAGICAL M4 and M5
+    first_stage_required: true
+    sky130_candidates:
+      - name: via3
+        gds_layer: 70
+        datatype: 44
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Depends on M4=met3 and M5=met4."
+
+  M5:
+    magical_layer: M5
+    magical_number: 35
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: met4
+    gds_layer: 71
+    datatype: 20
+    purpose: fifth MAGICAL routing layer
+    first_stage_required: true
+    sky130_candidates:
+      - name: met4
+        gds_layer: 71
+        datatype: 20
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Routing direction, pitch, and spacing must be regenerated from Sky130 tech LEF."
+
+  VIA5:
+    magical_layer: VIA5
+    magical_number: 55
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: via4
+    gds_layer: 71
+    datatype: 44
+    purpose: cut between MAGICAL M5 and M6
+    first_stage_required: true
+    sky130_candidates:
+      - name: via4
+        gds_layer: 71
+        datatype: 44
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "Depends on M5=met4 and M6=met5."
+
+  M6:
+    magical_layer: M6
+    magical_number: 36
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: met5
+    gds_layer: 72
+    datatype: 20
+    purpose: sixth MAGICAL routing layer, proposed top Sky130 metal
+    first_stage_required: true
+    sky130_candidates:
+      - name: met5
+        gds_layer: 72
+        datatype: 20
+        source: sky130_fd_sc_hd__nom.tlef
+    risk: "MAGICAL default powerLayer=6 can map to met5 only if the LEF/router stack is regenerated consistently."
+
+  VIA6:
+    magical_layer: VIA6
+    magical_number: 56
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock cut between M6 and M7
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Sky130 stack has no met6/met7 equivalent in the referenced open PDK tech LEF."
+
+  M7:
+    magical_layer: M7
+    magical_number: 37
+    appears_in:
+      - sky130.lef
+      - sky130.techfile
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock seventh routing layer
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 routing metal above met5 was confirmed."
+
+  M8:
+    magical_layer: M8
+    magical_number: 38
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock extra routing layer
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 routing metal above met5 was confirmed."
+
+  M9:
+    magical_layer: M9
+    magical_number: 39
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock extra routing layer
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 routing metal above met5 was confirmed."
+
+  M10:
+    magical_layer: M10
+    magical_number: 40
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock extra routing layer
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 routing metal above met5 was confirmed."
+
+  VIA7:
+    magical_layer: VIA7
+    magical_number: 57
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock extra via
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 via above via4 was confirmed."
+
+  VIA8:
+    magical_layer: VIA8
+    magical_number: 58
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock extra via
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 via above via4 was confirmed."
+
+  VIA9:
+    magical_layer: VIA9
+    magical_number: 59
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock extra via
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "No direct Sky130 via above via4 was confirmed."
+
+  TECHDB:
+    magical_layer: TECHDB
+    magical_number: 63
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock technology database marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Not required for first-stage inverter routing."
+
+  VTH_N:
+    magical_layer: VTH_N
+    magical_number: 67
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock high-threshold NMOS marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Sky130 threshold marker mapping must be tied to actual device variants."
+
+  VTH_P:
+    magical_layer: VTH_P
+    magical_number: 68
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock high-threshold PMOS marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: HVTP
+        gds_layer: 78
+        datatype: 44
+        source: sky130A-GDS.tech
+    risk: "HVTP may be relevant for high-Vt PMOS devices, but not for base sky130_fd_pr__pfet_01v8."
+
+  RPDMY:
+    magical_layer: RPDMY
+    magical_number: 115
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: resistor dummy marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Only needed for resistor support."
+
+  RH:
+    magical_layer: RH
+    magical_number: 117
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: high-resistor marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Only needed for resistor support."
+
+  MRDMY:
+    magical_layer: MRDMY
+    magical_number: 150
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: metal resistor dummy or exclusion marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Only needed for resistor or dummy-exclusion support."
+
+  TSV_PPI:
+    magical_layer: TSV_PPI
+    magical_number: 155
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock MOM dummy or PPI marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Not required for first-stage inverter routing."
+
+  STDPIN:
+    magical_layer: STDPIN
+    magical_number: 171
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: mock standard-cell pin marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: nwell.pin
+        gds_layer: 64
+        datatype: 16
+        source: sky130A.map
+      - name: pwell.pin
+        gds_layer: 122
+        datatype: 16
+        source: sky130A.map
+    risk: "Sky130 pin purposes are layer-specific; a single STDPIN mapping is not enough."
+
+  LVS_DUMMY:
+    magical_layer: LVS_DUMMY
+    magical_number: 208
+    appears_in:
+      - sky130.techfile.simple
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: LVS dummy marker
+    first_stage_required: false
+    sky130_candidates:
+      - name: TBD
+        gds_layer: TBD
+        datatype: TBD
+        source: TBD
+    risk: "Not required for first-stage inverter routing; LVS marker semantics need separate confirmation."
+
+not_in_current_sky130PDK_files:
+  STOPIN:
+    magical_layer: STOPIN
+    magical_number: TBD
+    appears_in: []
+    selected_sky130_layer: TBD
+    gds_layer: TBD
+    datatype: TBD
+    purpose: "Mentioned in adapter requirements, but not present in current sky130.techfile, sky130.techfile.simple, or sky130.lef."
+    first_stage_required: false
+    risk: "Need confirm whether this is an alternate spelling of STDPIN or belongs to another flow."

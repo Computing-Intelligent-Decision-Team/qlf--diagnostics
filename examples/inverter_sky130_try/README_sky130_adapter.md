@@ -53,6 +53,54 @@ test -f inverter_core.route.gds
 test -f inverter_core.ioPin
 ```
 
+## Trial generated/sky130PDK_trial Regression
+
+After generating the trial PDK from the repository root:
+
+```bash
+python3 tools/sky130_adapter/generate_magical_sky130_pdk.py
+```
+
+run the trial-PDK inverter regression in Docker. Replace the image name if your
+local MAGICAL image uses a different tag:
+
+```bash
+docker run --rm -it \
+  -v "$PWD":/MAGICAL \
+  -w /MAGICAL/examples/inverter_sky130_try \
+  magical-eda/magical:latest \
+  bash -lc './run_with_trial_sky130PDK.sh'
+```
+
+The script creates a temporary `inverter_trial.json` that points to:
+
+```text
+../../generated/sky130PDK_trial/sky130.techfile
+../../generated/sky130PDK_trial/sky130.techfile.simple
+../../generated/sky130PDK_trial/sky130.lef
+```
+
+It writes the run log to:
+
+```bash
+run_trial_sky130PDK.log
+```
+
+Inspect the end of the trial run log:
+
+```bash
+tail -n 100 run_trial_sky130PDK.log
+```
+
+The trial regression succeeds when the log reaches placement/routing completion
+and these files exist:
+
+```bash
+grep -E 'placement finished|routing finished' run_trial_sky130PDK.log
+test -f inverter_core.route.gds
+test -f inverter_core.ioPin
+```
+
 ## Current Limitations
 
 - `examples/sky130PDK` is still a renamed copy of `examples/mockPDK`.
