@@ -22,12 +22,15 @@ DRC_TCL="$OUT_DIR/magic_drc_pinned_shapes.tcl"
 DRC_LOG="$OUT_DIR/magic_drc_pinned_shapes.log"
 MAGIC_TCL="$OUT_DIR/magic_extract_pinned_shapes.tcl"
 MAGIC_LOG="$OUT_DIR/magic_extract_pinned_shapes.log"
-SOURCE_LVS="$OUT_DIR/source_for_lvs.spice"
 EXTRACTED_LVS="$OUT_DIR/inverter_core_extracted.spice"
-NORMALIZED_LVS="$OUT_DIR/inverter_core_extracted_normalized.spice"
-NORMALIZE_REPORT="$OUT_DIR/normalize_lvs_report.md"
+RAW_EXTRACTED_COPY="$OUT_DIR/inverter_core_extracted.raw.spice"
+CONNECTIVITY_SOURCE="$OUT_DIR/inverter_source.connectivity.spice"
+CONNECTIVITY_EXTRACTED="$OUT_DIR/inverter_core_extracted.connectivity.spice"
+LVS_PREP_REPORT="$OUT_DIR/lvs_preparation_report.md"
 NETGEN_LOG="$OUT_DIR/netgen_lvs.log"
 NETGEN_REPORT="$OUT_DIR/netgen_lvs_report.out"
+LVS_RESULT_SUMMARY="$OUT_DIR/lvs_result_summary.md"
+PEX_SUMMARY="$OUT_DIR/pex_summary.md"
 POWERNET_CONFIG_REPORT="$OUT_DIR/powernet_config_check.md"
 
 mkdir -p "$OUT_DIR"
@@ -144,65 +147,31 @@ if [[ -f "$REPO_ROOT/inverter_core_flat.ext" ]]; then
     mv "$REPO_ROOT/inverter_core_flat.ext" "$OUT_DIR/inverter_core_flat.ext"
 fi
 
-awk '
-    BEGIN { saw_subckt = 0; saw_ends = 0 }
-    function norm_len(value) {
-        sub(/^l=/, "", value)
-        if (value ~ /n$/) {
-            sub(/n$/, "", value)
-            return value / 1000.0
-        }
-        return value
-    }
-    function norm_width(value) {
-        sub(/^w=/, "", value)
-        sub(/u$/, "", value)
-        return value
-    }
-    /^[[:space:]]*subckt[[:space:]]+/ {
-        sub(/^[[:space:]]*subckt/, ".subckt")
-        saw_subckt = 1
-        print
-        next
-    }
-    /^[[:space:]]*ends([[:space:]]+|$)/ {
-        sub(/^[[:space:]]*ends/, ".ends")
-        saw_ends = 1
-        print
-        next
-    }
-    /^[[:space:]]*[Mm][^[:space:]]+[[:space:]]/ {
-        gsub(/[()]/, "")
-        width = ""
-        mos_length = ""
-        for (i = 7; i <= NF; ++i) {
-            token = tolower($i)
-            if (token ~ /^w=/) width = norm_width(token)
-            else if (token ~ /^l=/) mos_length = norm_len(token)
-        }
-        inst = $1
-        sub(/^[Mm]/, "X", inst)
-        print inst " " $2 " " $3 " " $4 " " $5 " " $6 " w=" width " l=" mos_length
-        next
-    }
-    { print }
-    END {
-        if (!saw_subckt || !saw_ends) exit 3
-    }
-' "$EXAMPLE_DIR/inverter_sky130_name_test.sp" > "$SOURCE_LVS"
+echo "RUN: prepare raw/connectivity LVS netlists"
+python3 "$SCRIPT_DIR/prepare_lvs_netlists.py" \
+    --source "$EXAMPLE_DIR/inverter_sky130_name_test.sp" \
+    --extracted "$EXTRACTED_LVS" \
+    --out-dir "$OUT_DIR" \
+    --report "$LVS_PREP_REPORT" >/dev/null
 
-python3 "$SCRIPT_DIR/normalize_lvs_netlists_inverter.py" \
-    --input "$EXTRACTED_LVS" \
-    --output "$NORMALIZED_LVS" \
-    --report "$NORMALIZE_REPORT" >/dev/null
-
-echo "RUN: Netgen LVS"
+echo "RUN: Netgen connectivity LVS"
 "$NETGEN_CMD" -batch lvs \
-    "$SOURCE_LVS inverter_core" \
-    "$NORMALIZED_LVS inverter_core_flat" \
+    "$CONNECTIVITY_SOURCE inverter_core" \
+    "$CONNECTIVITY_EXTRACTED inverter_core_flat" \
     "$NETGEN_SETUP" \
     "$NETGEN_REPORT" \
     > "$NETGEN_LOG" 2>&1
+
+echo "RUN: analyze LVS result"
+python3 "$SCRIPT_DIR/analyze_lvs_result.py" \
+    --report "$NETGEN_REPORT" \
+    --log "$NETGEN_LOG" \
+    --output "$LVS_RESULT_SUMMARY" >/dev/null
+
+echo "RUN: summarize Magic PEX"
+python3 "$SCRIPT_DIR/summarize_magic_pex.py" \
+    --input "$RAW_EXTRACTED_COPY" \
+    --output "$PEX_SUMMARY" >/dev/null
 
 subckt_line="$(grep -E '^[[:space:]]*\.subckt[[:space:]]+inverter_core_flat' "$EXTRACTED_LVS" | head -n 1 || true)"
 nmos_line="$(grep -E '^[[:space:]]*[Xx][^[:space:]]+[[:space:]].*sky130_fd_pr__nfet_01v8' "$EXTRACTED_LVS" | head -n 1 || true)"
@@ -215,6 +184,10 @@ lvs_match="no"
 if grep -q "Circuits match uniquely" "$NETGEN_REPORT" && grep -q "Netlists match uniquely" "$NETGEN_REPORT"; then
     lvs_match="yes"
 fi
+net_renames_used="no"
+grep -q 'Net rename enabled: no' "$LVS_PREP_REPORT" || net_renames_used="yes"
+pex_caps="$(awk -F': ' '/Parasitic capacitor count:/ {print $2}' "$PEX_SUMMARY" | tail -n 1)"
+[[ -n "$pex_caps" ]] || pex_caps="unknown"
 vpwr_recognized="no"
 vgnd_recognized="no"
 grep -q 'add vdd' "$TRIAL_LOG" && vpwr_recognized="yes"
@@ -232,7 +205,11 @@ cat > "$SUMMARY" <<EOF
 | Raw PMOS | \`$pmos_line\` |
 | Anonymous extracted nodes | $anon_nodes |
 | Magic DRC error count | $drc_count |
-| Netgen LVS match after normalization | $lvs_match |
+| Raw extracted netlist preserved | yes |
+| Connectivity LVS status | $lvs_match |
+| Net renaming used | $net_renames_used |
+| PEX summary status | generated |
+| Parasitic capacitor count | $pex_caps |
 
 ## Key Outputs
 
@@ -242,15 +219,22 @@ cat > "$SUMMARY" <<EOF
 - Pinned-shapes GDS: \`$EXAMPLE_DIR/inverter_core.sky130.pinned_shapes.gds\`
 - DRC log: \`$DRC_LOG\`
 - Raw extracted netlist: \`$EXTRACTED_LVS\`
-- Normalized extracted netlist: \`$NORMALIZED_LVS\`
-- Netgen report: \`$NETGEN_REPORT\`
+- Raw extracted netlist copy: \`$RAW_EXTRACTED_COPY\`
+- LVS preparation report: \`$LVS_PREP_REPORT\`
+- Connectivity source netlist: \`$CONNECTIVITY_SOURCE\`
+- Connectivity extracted netlist: \`$CONNECTIVITY_EXTRACTED\`
+- Netgen connectivity LVS report: \`$NETGEN_REPORT\`
+- LVS result summary: \`$LVS_RESULT_SUMMARY\`
+- PEX summary: \`$PEX_SUMMARY\`
 EOF
 
 echo "Summary written: $SUMMARY"
 echo "RAW_NMOS=$nmos_line"
 echo "ANON_NODES=$anon_nodes"
 echo "DRC_COUNT=$drc_count"
-echo "LVS_MATCH=$lvs_match"
+echo "CONNECTIVITY_LVS_MATCH=$lvs_match"
+echo "NET_RENAMES_USED=$net_renames_used"
+echo "PEX_CAPS=$pex_caps"
 
 [[ "$anon_nodes" == "none" ]] || fail "anonymous extracted nodes remain: $anon_nodes"
 [[ "$lvs_match" == "yes" ]] || fail "LVS did not match"
