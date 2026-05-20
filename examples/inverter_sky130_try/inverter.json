@@ -3,5 +3,7 @@
     "resultDir" : "./",
     "techfile" : "../sky130PDK/sky130.techfile",
     "simple_tech_file" : "../sky130PDK/sky130.techfile.simple",
-    "lef" : "../sky130PDK/sky130.lef"
+    "lef" : "../sky130PDK/sky130.lef",
+    "vddNetNames" : ["VPWR"],
+    "vssNetNames" : ["VGND"]
 }

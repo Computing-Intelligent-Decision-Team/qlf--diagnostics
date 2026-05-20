@@ -20,7 +20,9 @@ cat > inverter_trial.json <<'JSON'
     "resultDir" : "./",
     "techfile" : "../../generated/sky130PDK_trial/sky130.techfile",
     "simple_tech_file" : "../../generated/sky130PDK_trial/sky130.techfile.simple",
-    "lef" : "../../generated/sky130PDK_trial/sky130.lef"
+    "lef" : "../../generated/sky130PDK_trial/sky130.lef",
+    "vddNetNames" : ["VPWR"],
+    "vssNetNames" : ["VGND"]
 }
 JSON
 
