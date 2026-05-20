@@ -28,6 +28,7 @@ NORMALIZED_LVS="$OUT_DIR/inverter_core_extracted_normalized.spice"
 NORMALIZE_REPORT="$OUT_DIR/normalize_lvs_report.md"
 NETGEN_LOG="$OUT_DIR/netgen_lvs.log"
 NETGEN_REPORT="$OUT_DIR/netgen_lvs_report.out"
+POWERNET_CONFIG_REPORT="$OUT_DIR/powernet_config_check.md"
 
 mkdir -p "$OUT_DIR"
 
@@ -53,9 +54,15 @@ else
 fi
 
 require_file "$EXAMPLE_DIR/inverter_sky130_name_test.sp"
+require_file "$EXAMPLE_DIR/inverter.json"
 require_file "$EXAMPLE_DIR/run_with_trial_sky130PDK.sh"
 require_file "$MAGICRC"
 require_file "$NETGEN_SETUP"
+
+echo "RUN: ensure Sky130 VPWR/VGND power-net config"
+python3 "$SCRIPT_DIR/ensure_sky130_inverter_powernets.py" \
+    --config "$EXAMPLE_DIR/inverter.json" \
+    --report "$POWERNET_CONFIG_REPORT" >/dev/null
 
 echo "RUN: MAGICAL placement/routing in Docker"
 docker run --rm \
@@ -231,6 +238,7 @@ cat > "$SUMMARY" <<EOF
 
 - MAGICAL log: \`$MAGICAL_LOG\`
 - MAGICAL trial log: \`$TRIAL_LOG\`
+- Power-net config check: \`$POWERNET_CONFIG_REPORT\`
 - Pinned-shapes GDS: \`$EXAMPLE_DIR/inverter_core.sky130.pinned_shapes.gds\`
 - DRC log: \`$DRC_LOG\`
 - Raw extracted netlist: \`$EXTRACTED_LVS\`
