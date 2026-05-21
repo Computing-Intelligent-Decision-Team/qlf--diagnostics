@@ -88,14 +88,20 @@ python3 "$SCRIPT_DIR/add_sky130_pin_labels_from_iopin.py" \
     --input-gds "$EXAMPLE_DIR/inverter_core.sky130.gds" \
     --iopin "$EXAMPLE_DIR/inverter_core.ioPin" \
     --output-gds "$EXAMPLE_DIR/inverter_core.sky130.pinned.gds" \
-    --report "$LABEL_REPORT" >/dev/null
+    --report "$LABEL_REPORT" \
+    --netlist "$EXAMPLE_DIR/inverter_sky130_name_test.sp" \
+    --top-cell "inverter_core" \
+    --only-top-ports >/dev/null
 
 echo "RUN: add Sky130 pin shapes"
 python3 "$SCRIPT_DIR/add_sky130_pin_shapes_from_iopin.py" \
     --input-gds "$EXAMPLE_DIR/inverter_core.sky130.pinned.gds" \
     --iopin "$EXAMPLE_DIR/inverter_core.ioPin" \
     --output-gds "$EXAMPLE_DIR/inverter_core.sky130.pinned_shapes.gds" \
-    --report "$SHAPE_REPORT" >/dev/null
+    --report "$SHAPE_REPORT" \
+    --netlist "$EXAMPLE_DIR/inverter_sky130_name_test.sp" \
+    --top-cell "inverter_core" \
+    --only-top-ports >/dev/null
 
 cat > "$DRC_TCL" <<'EOF'
 puts "POWER_FIX_DRC: reading pinned-shapes GDS"

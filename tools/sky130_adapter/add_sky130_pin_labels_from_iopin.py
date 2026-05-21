@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Add experimental Sky130 pin-purpose shapes from MAGICAL ioPin boxes.
+"""Add experimental Sky130 pin labels from MAGICAL ioPin boxes.
 
-Input is the label-pinned GDS. Output is a separate GDS with additional
-Sky130 pin-purpose BOUNDARY elements. Existing drawing geometry and TEXT are
-preserved exactly; this is only an experimental postprocess for Magic
-extraction.
+The original GDS is left untouched. The script inserts additional TEXT elements
+before the top cell ENDSTR and writes a new pinned GDS for Magic extraction
+experiments. Existing TEXT records, including MAGICAL's 131/0 and 136/0 labels,
+are preserved.
 """
 
 from __future__ import annotations
@@ -19,23 +19,16 @@ from pin_top_port_filter import PinFilterResult, filter_pin_objects, parse_top_p
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT_GDS = REPO_ROOT / "examples/inverter_sky130_try/inverter_core.sky130.pinned.gds"
+DEFAULT_INPUT_GDS = REPO_ROOT / "examples/inverter_sky130_try/inverter_core.sky130.gds"
 DEFAULT_IOPIN = REPO_ROOT / "examples/inverter_sky130_try/inverter_core.ioPin"
-DEFAULT_OUTPUT_GDS = REPO_ROOT / "examples/inverter_sky130_try/inverter_core.sky130.pinned_shapes.gds"
-DEFAULT_REPORT = REPO_ROOT / "docs/sky130_adapter/sky130_pin_shape_postprocess.md"
+DEFAULT_OUTPUT_GDS = REPO_ROOT / "examples/inverter_sky130_try/inverter_core.sky130.pinned.gds"
+DEFAULT_REPORT = REPO_ROOT / "docs/sky130_adapter/sky130_pin_label_postprocess.md"
 DEFAULT_CELL = "inverter_core_flat"
 
-PDK_QUERY_SOURCES = [
-    "libs.tech/klayout/tech/sky130A.lyp",
-    "libs.tech/klayout/tech/sky130A.map",
-    "libs.tech/magic/sky130A.tech",
-    "libs.tech/magic/sky130A-GDS.tech",
-]
-
-PIN_SHAPE_MAP = {
-    1: ("li1.pin", 67, 16, "li1.label", 67, 5, "li1.drawing", 67, 20),
-    2: ("met1.pin", 68, 16, "met1.label", 68, 5, "met1.drawing", 68, 20),
-    6: ("met5.pin", 72, 16, "met5.label", 72, 5, "met5.drawing", 72, 20),
+PIN_LABEL_MAP = {
+    1: ("li1.label", 67, 5),
+    2: ("met1.label", 68, 5),
+    6: ("met5.label", 72, 5),
 }
 
 
@@ -49,22 +42,18 @@ class GdsRecord:
 
 
 @dataclass(frozen=True)
-class PinShape:
+class PinLabel:
     name: str
     iopin_layer: int
     x1: int
     y1: int
     x2: int
     y2: int
-    pin_name: str
-    pin_layer: int
-    pin_datatype: int
-    label_name: str
-    label_layer: int
-    label_datatype: int
-    drawing_name: str
-    drawing_layer: int
-    drawing_datatype: int
+    center_x: int
+    center_y: int
+    sky130_name: str
+    gds_layer: int
+    texttype: int
 
 
 def rel(path: Path) -> str:
@@ -89,27 +78,25 @@ def int2_record(record_type: int, value: int) -> bytes:
     return gds_record(record_type, 0x02, struct.pack(">h", value))
 
 
-def xy_record(points: list[tuple[int, int]]) -> bytes:
-    flat: list[int] = []
-    for x, y in points:
-        flat.extend([x, y])
-    return gds_record(0x10, 0x03, struct.pack(f">{len(flat)}l", *flat))
+def xy_record(x: int, y: int) -> bytes:
+    return gds_record(0x10, 0x03, struct.pack(">ll", x, y))
 
 
-def boundary_element(shape: PinShape) -> bytes:
-    points = [
-        (shape.x1, shape.y1),
-        (shape.x1, shape.y2),
-        (shape.x2, shape.y2),
-        (shape.x2, shape.y1),
-        (shape.x1, shape.y1),
-    ]
+def string_record(value: str) -> bytes:
+    payload = value.encode("ascii")
+    if len(payload) % 2:
+        payload += b"\0"
+    return gds_record(0x19, 0x06, payload)
+
+
+def text_element(label: PinLabel) -> bytes:
     return b"".join(
         [
-            gds_record(0x08, 0x00),  # BOUNDARY
-            int2_record(0x0D, shape.pin_layer),  # LAYER
-            int2_record(0x0E, shape.pin_datatype),  # DATATYPE
-            xy_record(points),
+            gds_record(0x0C, 0x00),  # TEXT
+            int2_record(0x0D, label.gds_layer),  # LAYER
+            int2_record(0x16, label.texttype),  # TEXTTYPE
+            xy_record(label.center_x, label.center_y),
+            string_record(label.name),
             gds_record(0x11, 0x00),  # ENDEL
         ]
     )
@@ -127,16 +114,26 @@ def parse_records(data: bytes) -> list[GdsRecord]:
         end = offset + length
         if end > len(data):
             raise ValueError(f"Truncated GDS record payload at byte {offset}")
-        records.append(GdsRecord(record_type, data_type, offset, length, data[offset + 4 : end]))
+        records.append(
+            GdsRecord(
+                record_type=record_type,
+                data_type=data_type,
+                offset=offset,
+                length=length,
+                payload=data[offset + 4 : end],
+            )
+        )
         offset = end
     return records
 
 
 def find_cell_endstr_offset(data: bytes, cell_name: str) -> int:
+    records = parse_records(data)
     current_cell = ""
     in_target = False
     last_endstr: int | None = None
-    for record in parse_records(data):
+
+    for record in records:
         if record.record_type == 0x06:  # STRNAME
             current_cell = read_string(record.payload)
             in_target = current_cell == cell_name
@@ -146,13 +143,14 @@ def find_cell_endstr_offset(data: bytes, cell_name: str) -> int:
                 return record.offset
             current_cell = ""
             in_target = False
+
     if last_endstr is not None:
         return last_endstr
     raise ValueError("No ENDSTR record found in input GDS")
 
 
-def read_iopin(path: Path) -> list[PinShape]:
-    shapes: list[PinShape] = []
+def read_iopin(path: Path) -> list[PinLabel]:
+    labels: list[PinLabel] = []
     for line_no, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
         line = raw_line.strip()
         if not line or line.startswith("#"):
@@ -160,6 +158,7 @@ def read_iopin(path: Path) -> list[PinShape]:
         parts = line.split()
         if len(parts) != 6:
             continue
+
         name, layer_text, x1_text, y1_text, x2_text, y2_text = parts
         try:
             iopin_layer = int(layer_text)
@@ -169,38 +168,35 @@ def read_iopin(path: Path) -> list[PinShape]:
             y2 = int(y2_text)
         except ValueError as exc:
             raise ValueError(f"Invalid ioPin numeric field on line {line_no}: {raw_line}") from exc
-        if iopin_layer not in PIN_SHAPE_MAP:
-            raise ValueError(f"No Sky130 pin-shape mapping for ioPin layer {iopin_layer} on line {line_no}")
 
-        pin_name, pin_layer, pin_datatype, label_name, label_layer, label_datatype, drawing_name, drawing_layer, drawing_datatype = PIN_SHAPE_MAP[iopin_layer]
+        if iopin_layer not in PIN_LABEL_MAP:
+            raise ValueError(f"No Sky130 label mapping for ioPin layer {iopin_layer} on line {line_no}")
+
+        sky130_name, gds_layer, texttype = PIN_LABEL_MAP[iopin_layer]
         xlo, xhi = sorted((x1, x2))
         ylo, yhi = sorted((y1, y2))
-        shapes.append(
-            PinShape(
+        labels.append(
+            PinLabel(
                 name=name,
                 iopin_layer=iopin_layer,
                 x1=xlo,
                 y1=ylo,
                 x2=xhi,
                 y2=yhi,
-                pin_name=pin_name,
-                pin_layer=pin_layer,
-                pin_datatype=pin_datatype,
-                label_name=label_name,
-                label_layer=label_layer,
-                label_datatype=label_datatype,
-                drawing_name=drawing_name,
-                drawing_layer=drawing_layer,
-                drawing_datatype=drawing_datatype,
+                center_x=int(round((xlo + xhi) / 2.0)),
+                center_y=int(round((ylo + yhi) / 2.0)),
+                sky130_name=sky130_name,
+                gds_layer=gds_layer,
+                texttype=texttype,
             )
         )
-    return shapes
+    return labels
 
 
-def write_pinned_shapes_gds(input_gds: Path, output_gds: Path, shapes: list[PinShape], cell_name: str) -> None:
+def write_pinned_gds(input_gds: Path, output_gds: Path, labels: list[PinLabel], cell_name: str) -> None:
     data = input_gds.read_bytes()
     insert_offset = find_cell_endstr_offset(data, cell_name)
-    inserted = b"".join(boundary_element(shape) for shape in shapes)
+    inserted = b"".join(text_element(label) for label in labels)
     output_gds.parent.mkdir(parents=True, exist_ok=True)
     output_gds.write_bytes(data[:insert_offset] + inserted + data[insert_offset:])
 
@@ -209,7 +205,7 @@ def generate_report(
     input_gds: Path,
     output_gds: Path,
     iopin: Path,
-    shapes: list[PinShape],
+    labels: list[PinLabel],
     cell_name: str,
     netlist: Path | None = None,
     top_cell: str | None = None,
@@ -218,7 +214,7 @@ def generate_report(
     only_top_ports: bool = False,
 ) -> str:
     lines = [
-        "# Sky130 Pin Shape Postprocess",
+        "# Sky130 Pin Label Postprocess",
         "",
         "## Summary",
         "",
@@ -227,9 +223,9 @@ def generate_report(
         f"- ioPin file: `{rel(iopin)}`",
         f"- Target cell: `{cell_name}`",
         f"- Top-port filtering: {'enabled' if only_top_ports else 'disabled'}",
-        f"- Added pin-purpose BOUNDARY elements: {len(shapes)}",
-        "- Existing drawing geometry, old TEXT, and new label TEXT are preserved.",
-        "- This is an experimental postprocess, not final native Sky130 export.",
+        f"- Added TEXT labels: {len(labels)}",
+        "- Existing geometry and existing TEXT records are preserved.",
+        "- This is a non-destructive experimental postprocess, not final native Sky130 export.",
         "",
         "## Top-Port Filter",
         "",
@@ -267,38 +263,18 @@ def generate_report(
     lines.extend(
         [
             "",
-        "## Local PDK Datatype Confirmation",
+        "## Added Labels",
         "",
-        "| purpose | GDS layer/datatype | source |",
-        "| --- | --- | --- |",
-        "| li1.label | 67/5 | KLayout `sky130A.lyp`, `sky130A.map`; Magic `sky130A.tech` |",
-        "| li1.pin | 67/16 | KLayout `sky130A.lyp`, `sky130A.map`; Magic `sky130A.tech` |",
-        "| met1.label | 68/5 | KLayout `sky130A.lyp`, `sky130A.map`; Magic `sky130A.tech` |",
-        "| met1.pin | 68/16 | KLayout `sky130A.lyp`, `sky130A.map`; Magic `sky130A.tech` |",
-        "| met5.label | 72/5 | KLayout `sky130A.lyp`, `sky130A.map`; Magic `sky130A.tech` |",
-        "| met5.pin | 72/16 | KLayout `sky130A.lyp`, `sky130A.map`; Magic `sky130A.tech` |",
-        "",
-        "Checked PDK files:",
+        "| pin | ioPin layer | ioPin box | label center | Sky130 label purpose | GDS layer | texttype |",
+        "| --- | ---: | --- | --- | --- | ---: | ---: |",
         ]
     )
-    for source in PDK_QUERY_SOURCES:
-        lines.append(f"- `{source}`")
-
-    lines.extend(
-        [
-            "",
-            "## Added Pin Shapes",
-            "",
-            "| pin | ioPin layer | box | Sky130 pin purpose | GDS layer | datatype | expected drawing layer | expected label layer |",
-            "| --- | ---: | --- | --- | ---: | ---: | --- | --- |",
-        ]
-    )
-    for shape in shapes:
+    for label in labels:
         lines.append(
-            f"| {shape.name} | {shape.iopin_layer} | ({shape.x1}, {shape.y1}) - ({shape.x2}, {shape.y2}) | "
-            f"{shape.pin_name} | {shape.pin_layer} | {shape.pin_datatype} | "
-            f"{shape.drawing_name} {shape.drawing_layer}/{shape.drawing_datatype} | "
-            f"{shape.label_name} {shape.label_layer}/{shape.label_datatype} |"
+            f"| {label.name} | {label.iopin_layer} | "
+            f"({label.x1}, {label.y1}) - ({label.x2}, {label.y2}) | "
+            f"({label.center_x}, {label.center_y}) | {label.sky130_name} | "
+            f"{label.gds_layer} | {label.texttype} |"
         )
 
     lines.extend(
@@ -306,9 +282,11 @@ def generate_report(
             "",
             "## Notes",
             "",
-            "- Pin shape boxes are copied directly from `inverter_core.ioPin`.",
-            "- The output GDS keeps the existing `131/0` and `136/0` TEXT labels and the Sky130 label-purpose TEXT labels from the previous postprocess.",
-            "- This experiment tests whether Magic extraction needs both label TEXT and pin-purpose geometry to preserve top-level port names.",
+            "- ioPin layer 1 is mapped to `li1.label` `67/5`.",
+            "- ioPin layer 2 is mapped to `met1.label` `68/5`.",
+            "- ioPin layer 6 is mapped to `met5.label` `72/5`.",
+            "- The older MAGICAL TEXT records on `131/0` and `136/0` are intentionally retained for comparison.",
+            "- If Magic still extracts anonymous internal node names, the next check is whether Magic expects pin shapes in addition to labels.",
             "",
         ]
     )
@@ -316,7 +294,7 @@ def generate_report(
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Add Sky130 pin-purpose BOUNDARY shapes from ioPin boxes.")
+    parser = argparse.ArgumentParser(description="Add Sky130 pin TEXT labels from MAGICAL ioPin boxes.")
     parser.add_argument("--input-gds", type=Path, default=DEFAULT_INPUT_GDS)
     parser.add_argument("--iopin", type=Path, default=DEFAULT_IOPIN)
     parser.add_argument("--output-gds", type=Path, default=DEFAULT_OUTPUT_GDS)
@@ -324,7 +302,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--cell", default=DEFAULT_CELL)
     parser.add_argument("--netlist", type=Path, help="Source netlist containing the top subckt declaration.")
     parser.add_argument("--top-cell", help="Top subckt name to read from --netlist.")
-    parser.add_argument("--only-top-ports", action="store_true", help="Only add pin shapes for ioPin names that are top subckt ports.")
+    parser.add_argument("--only-top-ports", action="store_true", help="Only add labels for ioPin names that are top subckt ports.")
     return parser.parse_args(argv)
 
 
@@ -340,9 +318,9 @@ def main(argv: list[str]) -> int:
             raise FileNotFoundError(input_gds)
         if not iopin.is_file():
             raise FileNotFoundError(iopin)
-        shapes = read_iopin(iopin)
-        if not shapes:
-            raise RuntimeError(f"No pin shapes found in {iopin}")
+        labels = read_iopin(iopin)
+        if not labels:
+            raise RuntimeError(f"No pin labels found in {iopin}")
 
         netlist: Path | None = None
         top_ports: list[str] | None = None
@@ -356,20 +334,20 @@ def main(argv: list[str]) -> int:
             if not netlist.is_file():
                 raise FileNotFoundError(netlist)
             top_ports = parse_top_ports(netlist, args.top_cell)
-            shapes, filter_result = filter_pin_objects(shapes, top_ports)
-            if not shapes:
-                raise RuntimeError(f"No top-port pin shapes found in {iopin}")
+            labels, filter_result = filter_pin_objects(labels, top_ports)
+            if not labels:
+                raise RuntimeError(f"No top-port pin labels found in {iopin}")
         else:
-            print("warning: --only-top-ports not set; all ioPin entries will receive pin shapes", file=sys.stderr)
+            print("warning: --only-top-ports not set; all ioPin entries will be labeled", file=sys.stderr)
 
-        write_pinned_shapes_gds(input_gds, output_gds, shapes, args.cell)
+        write_pinned_gds(input_gds, output_gds, labels, args.cell)
         report.parent.mkdir(parents=True, exist_ok=True)
         report.write_text(
             generate_report(
                 input_gds,
                 output_gds,
                 iopin,
-                shapes,
+                labels,
                 args.cell,
                 netlist=netlist,
                 top_cell=args.top_cell,
@@ -390,11 +368,11 @@ def main(argv: list[str]) -> int:
             print(f"Skipped internal nets: {', '.join(filter_result.skipped) if filter_result.skipped else '(none)'}")
             for name in filter_result.skipped:
                 print(f"Skipped {name}: {filter_result.skipped_reasons[name]}")
-        for shape in shapes:
+        for label in labels:
             print(
-                f"Added {shape.name}: ioPin layer {shape.iopin_layer}, "
-                f"box ({shape.x1}, {shape.y1}) - ({shape.x2}, {shape.y2}), "
-                f"{shape.pin_name} {shape.pin_layer}/{shape.pin_datatype}"
+                f"Added {label.name}: ioPin layer {label.iopin_layer}, "
+                f"center ({label.center_x}, {label.center_y}), "
+                f"{label.sky130_name} {label.gds_layer}/{label.texttype}"
             )
         print(f"Report written: {report}")
         return 0
