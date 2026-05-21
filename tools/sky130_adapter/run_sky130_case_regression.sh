@@ -31,12 +31,12 @@ for case in load_registry(Path(sys.argv[1])):
         "out_dir",
         "output_node",
     ]
-    print("\t".join(case.get(field, "") for field in fields))
+    print("|".join(case.get(field, "") for field in fields))
 PY
 )"
 
 failed=0
-while IFS=$'\t' read -r name case_dir top_cell vdd vss convert_xschem raw_netlist magical_netlist config out_dir output_node; do
+while IFS='|' read -r name case_dir top_cell vdd vss convert_xschem raw_netlist magical_netlist config out_dir output_node; do
     [[ -n "$name" ]] || continue
     echo "RUN CASE: $name"
     log="$RUN_LOG_DIR/${name}.log"

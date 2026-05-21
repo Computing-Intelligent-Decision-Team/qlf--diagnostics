@@ -1,0 +1,9 @@
+{
+    "spectre_netlist" : "current_mirror_magical.sp",
+    "resultDir" : "./",
+    "techfile" : "../../generated/sky130PDK_trial/sky130.techfile",
+    "simple_tech_file" : "../../generated/sky130PDK_trial/sky130.techfile.simple",
+    "lef" : "../../generated/sky130PDK_trial/sky130.lef",
+    "vddNetNames" : ["VDD"],
+    "vssNetNames" : ["GND"]
+}

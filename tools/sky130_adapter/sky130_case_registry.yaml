@@ -22,3 +22,14 @@ cases:
     config: ota_core.json
     output_node: VOUT
     out_dir: generated/sky130_cases/ota_core
+
+  current_mirror_core:
+    case_dir: examples/current_mirror_sky130_try
+    top_cell: current_mirror_core
+    vdd: VDD
+    vss: GND
+    convert_xschem: no
+    magical_netlist: current_mirror_magical.sp
+    config: current_mirror.json
+    output_node: IOUT
+    out_dir: generated/sky130_cases/current_mirror_core
