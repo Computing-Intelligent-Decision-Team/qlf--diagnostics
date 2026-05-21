@@ -23,7 +23,8 @@ Usage:
     --out-dir <dir> \
     [--raw-netlist <file>] \
     [--convert-xschem yes|no] \
-    [--case-name <name>]
+    [--case-name <name>] \
+    [--output-node <net>]
 
 Paths may be absolute or relative to the repository root. File paths under
 --case-dir may be passed as basenames.
@@ -40,6 +41,7 @@ VDD_NET=""
 VSS_NET=""
 OUT_DIR_ARG=""
 CONVERT_XSCHEM="no"
+OUTPUT_NODE=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -53,6 +55,7 @@ while [[ $# -gt 0 ]]; do
         --vss) VSS_NET="$2"; shift 2 ;;
         --out-dir) OUT_DIR_ARG="$2"; shift 2 ;;
         --convert-xschem) CONVERT_XSCHEM="$2"; shift 2 ;;
+        --output-node) OUTPUT_NODE="$2"; shift 2 ;;
         -h|--help) usage; exit 0 ;;
         *) echo "error: unknown argument: $1" >&2; usage >&2; exit 2 ;;
     esac
@@ -330,9 +333,14 @@ analyze_status=$?
 set -e
 
 echo "RUN: summarize Magic PEX"
-python3 "$SCRIPT_DIR/summarize_magic_pex.py" \
-    --input "$RAW_EXTRACTED_COPY" \
-    --output "$PEX_SUMMARY" >/dev/null || summary_fail "pex_summary" "PEX summary failed"
+pex_args=(
+    --input "$RAW_EXTRACTED_COPY"
+    --output "$PEX_SUMMARY"
+)
+if [[ -n "$OUTPUT_NODE" ]]; then
+    pex_args+=(--output-node "$OUTPUT_NODE")
+fi
+python3 "$SCRIPT_DIR/summarize_magic_pex.py" "${pex_args[@]}" >/dev/null || summary_fail "pex_summary" "PEX summary failed"
 
 subckt_line="$(grep -E "^[[:space:]]*\\.subckt[[:space:]]+${MAGIC_CELL}" "$EXTRACTED_LVS" | head -n 1 || true)"
 raw_subckt_ports="$(python3 "$SCRIPT_DIR/sky130_case_pipeline_helpers.py" subckt-ports --line "$subckt_line")"
@@ -374,6 +382,7 @@ cat > "$SUMMARY" <<EOF
 | NET_RENAMES_USED | $net_renames_used |
 | PEX_CAPS | $pex_caps |
 | PEX_TOTAL_CAP_FF | $pex_total |
+| PEX_OUTPUT_NODE | ${OUTPUT_NODE:-none} |
 
 ## KEY_OUTPUTS
 

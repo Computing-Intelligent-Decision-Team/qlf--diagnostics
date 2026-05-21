@@ -1,0 +1,24 @@
+cases:
+  inverter_core:
+    case_dir: examples/inverter_sky130_try
+    top_cell: inverter_core
+    vdd: VPWR
+    vss: VGND
+    convert_xschem: no
+    raw_netlist: inverter_sky130_name_test.sp
+    magical_netlist: inverter_sky130_name_test.sp
+    config: inverter_trial.json
+    output_node: Y
+    out_dir: generated/sky130_cases/inverter_core
+
+  ota_core:
+    case_dir: examples/ota_core_sky130_try
+    top_cell: ota_core
+    vdd: VDD
+    vss: GND
+    convert_xschem: yes
+    raw_netlist: ota_core_raw.spice
+    magical_netlist: ota_core_magical.sp
+    config: ota_core.json
+    output_node: VOUT
+    out_dir: generated/sky130_cases/ota_core
