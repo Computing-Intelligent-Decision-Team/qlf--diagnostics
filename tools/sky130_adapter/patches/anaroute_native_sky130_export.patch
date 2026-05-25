@@ -1,0 +1,319 @@
+diff --git a/src/writer/wrLayout.cpp b/src/writer/wrLayout.cpp
+index fd726bc..2a0ba00 100644
+--- a/src/writer/wrLayout.cpp
++++ b/src/writer/wrLayout.cpp
+@@ -9,8 +9,33 @@ using namespace std;
+ #include "wrLayout.hpp"
+ #include "wrGds.hpp"
+ 
++#include <cstdlib>
++#include <fstream>
++#include <sstream>
++
+ PROJECT_NAMESPACE_START
+ 
++namespace {
++
++inline String_t trimCopy(const String_t& str) {
++  const String_t whitespace = " \t\r\n";
++  const size_t first = str.find_first_not_of(whitespace);
++  if (first == String_t::npos) {
++    return "";
++  }
++  const size_t last = str.find_last_not_of(whitespace);
++  return str.substr(first, last - first + 1);
++}
++
++inline void stripComment(String_t& line) {
++  const size_t pos = line.find('#');
++  if (pos != String_t::npos) {
++    line = line.substr(0, pos);
++  }
++}
++
++} // namespace
++
+ void LayoutWriter::writeGds(const String_t& placementFilename, const String_t& outputFilename, const bool bFlatten) {
+   GdsDB gdsDB;
+ 
+@@ -22,6 +47,11 @@ void LayoutWriter::writeGds(const String_t& placementFilename, const String_t& o
+   const Int_t db_unit = _cir.lef().units().databaseNumber();
+   const Float_t scale =  (Float_t)gds_unit / db_unit;
+ 
++  if (!loadGdsExportMapFromEnv()) {
++    fprintf(stderr, "LayoutWriter::%s ERROR: Failed to load MAGICAL_GDS_EXPORT_MAP.\n", __func__);
++    return;
++  }
++
+   String_t topCellName = this->topCellName(gdsDB);
+   GdsCell& gdsCell = *gdsDB.getCell(topCellName);
+ 
+@@ -34,6 +64,9 @@ void LayoutWriter::writeGds(const String_t& placementFilename, const String_t& o
+     gdsDB.addCell(flatCell);
+   }
+ 
++  remapGdsDB(gdsDB);
++  writeGdsExportMapReport(outputFilename);
++
+   GdsParser::GdsDB::GdsWriter gw(gdsDB);
+   gw(outputFilename.c_str());
+ }
+@@ -149,6 +182,200 @@ void LayoutWriter::addTxt2Cell(GdsCell& gdsCell, const Int_t maskIdx, const Poin
+                   5, 0, 0.2, 0);
+ }
+ 
++bool LayoutWriter::loadGdsExportMapFromEnv() {
++  _bUseGdsExportMap = false;
++  _gdsExportMapPath = "";
++  _gdsExportMap.clear();
++  _gdsExportMappedCounts.clear();
++  _gdsExportUnmappedShapeCounts.clear();
++  _gdsExportTextCounts.clear();
+ 
+-PROJECT_NAMESPACE_END
++  const char* envValue = std::getenv("MAGICAL_GDS_EXPORT_MAP");
++  if (envValue == nullptr || String_t(envValue).empty()) {
++    return true;
++  }
++
++  _gdsExportMapPath = envValue;
++  return loadGdsExportMap(_gdsExportMapPath);
++}
++
++bool LayoutWriter::loadGdsExportMap(const String_t& filename) {
++  std::ifstream fp(filename);
++  if (!fp.good()) {
++    fprintf(stderr, "LayoutWriter::%s ERROR: Cannot open GDS export map %s.\n", __func__, filename.c_str());
++    return false;
++  }
++
++  String_t line;
++  UInt_t lineNum = 0;
++  while (std::getline(fp, line)) {
++    ++lineNum;
++    stripComment(line);
++    line = trimCopy(line);
++    if (line.empty()) {
++      continue;
++    }
++
++    std::istringstream iss(line);
++    Int_t inputLayer = 0;
++    Int_t inputDatatype = 0;
++    Int_t outputLayer = 0;
++    Int_t outputDatatype = 0;
++    if (!(iss >> inputLayer >> inputDatatype >> outputLayer >> outputDatatype)) {
++      fprintf(stderr, "LayoutWriter::%s ERROR: Invalid export map row %u in %s: %s\n",
++              __func__, lineNum, filename.c_str(), line.c_str());
++      return false;
++    }
++    String_t name;
++    std::getline(iss, name);
++    name = trimCopy(name);
++    if (name.empty()) {
++      name = "unnamed";
++    }
++
++    const LayerDataTypeKey key(inputLayer, inputDatatype);
++    GdsExportMapValue value;
++    value.layer = outputLayer;
++    value.datatype = outputDatatype;
++    value.name = name;
++    _gdsExportMap[key] = value;
++  }
++
++  if (_gdsExportMap.empty()) {
++    fprintf(stderr, "LayoutWriter::%s ERROR: GDS export map %s contains no mapping rows.\n",
++            __func__, filename.c_str());
++    return false;
++  }
++
++  _bUseGdsExportMap = true;
++  fprintf(stderr, "LayoutWriter::%s INFO: Loaded %zu GDS export map rows from %s.\n",
++          __func__, _gdsExportMap.size(), filename.c_str());
++  return true;
++}
++
++bool LayoutWriter::remapLayerDatatype(Int_t& layer, Int_t& datatype) {
++  if (!_bUseGdsExportMap) {
++    return false;
++  }
++  const LayerDataTypeKey original(layer, datatype);
++  const auto iter = _gdsExportMap.find(original);
++  if (iter == _gdsExportMap.end()) {
++    _gdsExportUnmappedShapeCounts[original] += 1;
++    return false;
++  }
++
++  layer = iter->second.layer;
++  datatype = iter->second.datatype;
++  _gdsExportMappedCounts[original] += 1;
++  return true;
++}
++
++struct RemapGdsExportShapeAction {
++  LayoutWriter& writer;
++
++  explicit RemapGdsExportShapeAction(LayoutWriter& w) : writer(w) {}
++
++  template<typename ObjectType>
++  void operator()(::GdsParser::GdsRecords::EnumType type, ObjectType* object) {
++    remap(type, object);
++  }
++
++  String_t message() const {
++    return "RemapGdsExportShapeAction";
++  }
++
++  template<typename ObjectType>
++  void remap(::GdsParser::GdsRecords::EnumType, ObjectType*) {}
++
++  void remap(::GdsParser::GdsRecords::EnumType, ::GdsParser::GdsDB::GdsPolygon* object) {
++    Int_t layer = object->layer();
++    Int_t datatype = object->datatype();
++    writer.remapLayerDatatype(layer, datatype);
++    object->setLayer(layer);
++    object->setDatatype(datatype);
++  }
++
++  void remap(::GdsParser::GdsRecords::EnumType, ::GdsParser::GdsDB::GdsRectangle* object) {
++    Int_t layer = object->layer();
++    Int_t datatype = object->datatype();
++    writer.remapLayerDatatype(layer, datatype);
++    object->setLayer(layer);
++    object->setDatatype(datatype);
++  }
++
++  void remap(::GdsParser::GdsRecords::EnumType, ::GdsParser::GdsDB::GdsPath* object) {
++    Int_t layer = object->layer();
++    Int_t datatype = object->datatype();
++    writer.remapLayerDatatype(layer, datatype);
++    object->setLayer(layer);
++    object->setDatatype(datatype);
++  }
++
++  void remap(::GdsParser::GdsRecords::EnumType, ::GdsParser::GdsDB::GdsText* object) {
++    writer._gdsExportTextCounts[LayoutWriter::LayerDataTypeKey(object->layer(), object->texttype())] += 1;
++  }
++};
++
++void LayoutWriter::remapGdsDB(GdsDB& gdsDB) {
++  if (!_bUseGdsExportMap) {
++    return;
++  }
++
++  for (auto& cell : gdsDB.cells()) {
++    for (auto& obj : cell.objects()) {
++      GdsParser::GdsDB::GdsObjectHelpers()(obj.first, obj.second, RemapGdsExportShapeAction(*this));
++    }
++  }
++}
++
++void LayoutWriter::writeGdsExportMapReport(const String_t& outputFilename) const {
++  if (!_bUseGdsExportMap) {
++    return;
++  }
++
++  const String_t reportFilename = outputFilename + ".export_map_report.md";
++  std::ofstream fp(reportFilename);
++  if (!fp.good()) {
++    fprintf(stderr, "LayoutWriter::%s WARNING: Cannot write GDS export map report %s.\n",
++            __func__, reportFilename.c_str());
++    return;
++  }
++
++  fp << "# MAGICAL GDS Export Map Report\n\n";
++  fp << "- Output GDS: `" << outputFilename << "`\n";
++  fp << "- Export map: `" << _gdsExportMapPath << "`\n";
++  fp << "- Map rows: " << _gdsExportMap.size() << "\n";
++  fp << "- Text records: left unchanged in Native Sky130 Export Phase 1.\n\n";
+ 
++  fp << "## Mapped Shape Layers\n\n";
++  fp << "| Input layer | Input datatype | Output layer | Output datatype | Name | Count |\n";
++  fp << "| ---: | ---: | ---: | ---: | --- | ---: |\n";
++  for (const auto& pair : _gdsExportMappedCounts) {
++    const auto iter = _gdsExportMap.find(pair.first);
++    if (iter == _gdsExportMap.end()) {
++      continue;
++    }
++    fp << "| " << pair.first.first << " | " << pair.first.second
++       << " | " << iter->second.layer << " | " << iter->second.datatype
++       << " | " << iter->second.name << " | " << pair.second << " |\n";
++  }
++
++  fp << "\n## Preserved Unmapped Shape Layers\n\n";
++  fp << "| Layer | Datatype | Count | Reason |\n";
++  fp << "| ---: | ---: | ---: | --- |\n";
++  for (const auto& pair : _gdsExportUnmappedShapeCounts) {
++    fp << "| " << pair.first.first << " | " << pair.first.second
++       << " | " << pair.second << " | not listed in MAGICAL_GDS_EXPORT_MAP |\n";
++  }
++
++  fp << "\n## Preserved Text Layers\n\n";
++  fp << "| Text layer | Texttype | Count | Reason |\n";
++  fp << "| ---: | ---: | ---: | --- |\n";
++  for (const auto& pair : _gdsExportTextCounts) {
++    fp << "| " << pair.first.first << " | " << pair.first.second
++       << " | " << pair.second << " | native pin label/shape export deferred |\n";
++  }
++}
++
++
++PROJECT_NAMESPACE_END
+diff --git a/src/writer/wrLayout.hpp b/src/writer/wrLayout.hpp
+index d12ade1..5ddde38 100644
+--- a/src/writer/wrLayout.hpp
++++ b/src/writer/wrLayout.hpp
+@@ -9,6 +9,8 @@
+ #ifndef _WR_LAYOUT_HPP_
+ #define _WR_LAYOUT_HPP_
+ 
++#include <map>
++
+ #include <limbo/parsers/gdsii/gdsdb/GdsIO.h>
+ #include <limbo/parsers/gdsii/gdsdb/GdsObjectHelpers.h>
+ 
+@@ -16,7 +18,11 @@
+ 
+ PROJECT_NAMESPACE_START
+ 
++struct RemapGdsExportShapeAction;
++
+ class LayoutWriter {
++  friend struct RemapGdsExportShapeAction;
++
+  public:
+   LayoutWriter(const CirDB& c)
+     : _cir(c) {}
+@@ -32,12 +38,31 @@ class LayoutWriter {
+   typedef GdsParser::GdsDB::GdsDB   GdsDB;
+   typedef GdsParser::GdsDB::GdsCell GdsCell;
+   typedef boost::polygon::point_data<Int_t> GdsPoint;
++  typedef Pair_t<Int_t, Int_t> LayerDataTypeKey;
++
++  struct GdsExportMapValue {
++    Int_t layer = 0;
++    Int_t datatype = 0;
++    String_t name;
++  };
+ 
+   bool      readPlacementGds(const String_t& filename, GdsParser::GdsDB::GdsDB& gdsDB);
+   String_t  topCellName(const GdsDB& gdsDB);
+   void      addRoutingLayout(GdsCell& gdsCell, const Float_t scale);
+   void      addBox2Cell(GdsCell& gdsCell, const Int_t maskIdx, const Box<Int_t>& box, const Float_t scale, const Int_t dataType);
+   void      addTxt2Cell(GdsCell& gdsCell, const Int_t maskIdx, const Point<Int_t>& pt, const String_t& txt, const Int_t size, const Float_t scale);
++  bool      loadGdsExportMapFromEnv();
++  bool      loadGdsExportMap(const String_t& filename);
++  bool      remapLayerDatatype(Int_t& layer, Int_t& datatype);
++  void      remapGdsDB(GdsDB& gdsDB);
++  void      writeGdsExportMapReport(const String_t& outputFilename) const;
++
++  bool _bUseGdsExportMap = false;
++  String_t _gdsExportMapPath;
++  std::map<LayerDataTypeKey, GdsExportMapValue> _gdsExportMap;
++  std::map<LayerDataTypeKey, UInt_t> _gdsExportMappedCounts;
++  std::map<LayerDataTypeKey, UInt_t> _gdsExportUnmappedShapeCounts;
++  std::map<LayerDataTypeKey, UInt_t> _gdsExportTextCounts;
+ 
+ };
+ 

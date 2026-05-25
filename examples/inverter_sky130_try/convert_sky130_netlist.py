@@ -50,7 +50,7 @@ def to_nm(value):
     return f"{nm:g}n"
 
 
-def to_um(value, width_scale=1.0):
+def to_um(value):
     number, unit = parse_value_with_unit(value)
     scale = {
         "m": 1_000_000.0,
@@ -60,7 +60,7 @@ def to_um(value, width_scale=1.0):
     }
     if unit not in scale:
         raise ValueError(f"unsupported width unit: {unit}")
-    um = number * scale[unit] * width_scale
+    um = number * scale[unit]
     if abs(um - round(um)) < 1e-9:
         return f"{int(round(um))}u"
     return f"{um:g}u"
@@ -110,9 +110,8 @@ def convert_mos_line(line, index):
     if "w" not in params:
         raise ValueError(f"missing W parameter on {name}")
 
-    width_scale = 2.0 if model == PFET else 1.0
     length = to_nm(params["l"])
-    width = to_um(params["w"], width_scale=width_scale)
+    width = to_um(params["w"])
     nf = params.get("nf", "1")
     multi = params.get("multi", params.get("mult", "1"))
 

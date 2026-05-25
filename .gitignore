@@ -1,16 +1,36 @@
 execution
 install
-*.swp
-python_bk*
 placement
 routing
 constraint_generation
 thirdparty
+python_bk*
+
+# Editor / OS noise
+*.swp
+.DS_Store
+
+# Python
+__pycache__/
 *.pyc
 
+# Build artifacts
+anaroute_build/
+build/
+*.o
+*.so
+
+# Generated adapter outputs and large layout artifacts
+generated/
+*.gds
+*.log
+*.raw
+*.ext
+*.spice.tmp
+
+# MAGICAL run products
 *bound
 *con
-*gds
 *gr
 *gr.spec
 *ioPin
@@ -21,12 +41,6 @@ thirdparty
 
 # Codex / generated caches
 .oci-pull-cache/
-
-# Runtime logs
-*.log
-
-# Generated adapter outputs
-generated/
 
 # Temporary trial config
 examples/inverter_sky130_try/inverter_trial.json

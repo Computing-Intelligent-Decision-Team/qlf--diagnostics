@@ -5,9 +5,9 @@ cases:
     vdd: VPWR
     vss: VGND
     convert_xschem: no
-    raw_netlist: inverter_sky130_name_test.sp
-    magical_netlist: inverter_sky130_name_test.sp
-    config: inverter_trial.json
+    raw_netlist: inverter_clean.sp
+    magical_netlist: inverter_clean.sp
+    config: inverter.json
     output_node: Y
     out_dir: generated/sky130_cases/inverter_core
 

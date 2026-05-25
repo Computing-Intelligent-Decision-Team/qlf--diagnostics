@@ -1,5 +1,5 @@
 {
-    "spectre_netlist" : "inverter_sky130_name_test.sp",
+    "spectre_netlist" : "inverter_clean.sp",
     "resultDir" : "./",
     "techfile" : "../sky130PDK/sky130.techfile",
     "simple_tech_file" : "../sky130PDK/sky130.techfile.simple",

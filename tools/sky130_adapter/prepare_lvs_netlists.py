@@ -19,6 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--extracted", type=Path, required=True, help="Magic raw extracted netlist.")
     parser.add_argument("--out-dir", type=Path, required=True, help="Output directory.")
     parser.add_argument("--report", type=Path, help="Preparation report path.")
+    parser.add_argument("--prefix", default="inverter_core", help="Output filename prefix.")
     parser.add_argument(
         "--rename",
         action="append",
@@ -212,9 +213,9 @@ def main() -> int:
         raise FileNotFoundError(extracted_path)
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    raw_copy = out_dir / "inverter_core_extracted.raw.spice"
-    extracted_conn = out_dir / "inverter_core_extracted.connectivity.spice"
-    source_conn = out_dir / "inverter_source.connectivity.spice"
+    raw_copy = out_dir / f"{args.prefix}_extracted.raw.spice"
+    extracted_conn = out_dir / f"{args.prefix}_extracted.connectivity.spice"
+    source_conn = out_dir / f"{args.prefix}_source.connectivity.spice"
 
     shutil.copyfile(extracted_path, raw_copy)
 

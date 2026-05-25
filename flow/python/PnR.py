@@ -123,9 +123,12 @@ class PnR(object):
         router.writeLayoutGds(placeFile, dirname+ckt.name+'.route.gds', True)
         router.writeDumb(placeFile, dirname+ckt.name+'.ioPin') 
         # Read results to flow
-        ckt.setTechDB(self.tDB)
-        ckt.parseGDS(dirname+ckt.name+'.route.gds')
-        self.upscaleBBox(self.gridStep, ckt, self.origin)
+        if os.environ.get("MAGICAL_GDS_EXPORT_MAP"):
+            print("PnR: skip internal parseGDS for native GDS export map output")
+        else:
+            ckt.setTechDB(self.tDB)
+            ckt.parseGDS(dirname+ckt.name+'.route.gds')
+            self.upscaleBBox(self.gridStep, ckt, self.origin)
 
     def upscaleBBox(self, gridStep, ckt, origin):
         """

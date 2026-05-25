@@ -1,122 +1,216 @@
-# MAGICAL #
+# MAGICAL Sky130 Bridge/Remap Flow
 
-MAGICAL: Machine Generated Analog IC Layout
+这是一个面向 Sky130 的 MAGICAL bridge/remap 适配版本。目标是让用户在安装外部依赖后，输入一份 Sky130 网表，自动完成 MAGICAL placement/routing、Sky130 GDS 生成、Magic DRC、Magic extraction、connectivity LVS、PEX summary，并输出可用 KLayout 查看的一份最终 GDS。
 
-This is the top-level MAGICAL flow repository. In MAGICAL, we maintain seperate components, such as constraint generation, placement and routing, in different repository. And we integrate each component through top-level python flow.
+默认主线 flow 是：
 
-This project is currently still under active development.
-
-# Dependency #
-
-- Python 3.7 and additional packages
-    - Refer to [Dockerfile](https://github.com/magical-eda/MAGICAL/blob/docker/Dockerfile).
-
-- [Boost](https://www.boost.org)
-    - Need to install and visible for linking. Required version at least 1.62.
-
-- [Flex](https://github.com/westes/flex)
-    - Need to install, required by Limbo package
-
-- [Zlib](https://www.zlib.net)
-    - Required by Limbo package
-
-- [Limbo](https://github.com/limbo018/Limbo)
-    - Required latest
-
-- [LPSolve 5.5](http://lpsolve.sourceforge.net/5.5/)
-    - Required version 5.5
-
-- [Lemon 1.3.1](https://lemon.cs.elte.hu/trac/lemon)
-    - Required version 1.3.1
-
-
-# How to clone #
-
-To clone the repository and submodules, go to the path to download the repository. 
-```
-# clone the repository 
-git clone https://github.com/magical-eda/MAGICAL.git
-git submodule init
-git submodule update
+```text
+MAGICAL internal GDS
+-> remap_gds_to_sky130.py
+-> top-port pin label / pin shape postprocess
+-> Magic DRC
+-> Magic extraction
+-> connectivity LVS
+-> PEX summary
 ```
 
-# How to build #
+## 当前能力
 
-Two options are provided for building: with and without [Docker](https://hub.docker.com). You can also build from source (NOT RECOMMENDED) resolving the required dependancies first.
+- 支持 MAGICAL clean netlist。
+- 支持 xschem raw Sky130 netlist 转换。
+- 自动调用 Docker 内的 MAGICAL placement/routing。
+- 自动 remap MAGICAL internal GDS 到 Sky130 drawing layers。
+- 自动添加 top-port pin label 和 pin shape。
+- 自动运行 Magic DRC 和 Magic raw extraction。
+- 自动运行 connectivity LVS，优先使用 `netgen`，缺失时 fallback 到 `netgen-lvs`。
+- 自动生成 Magic PEX summary。
+- regression 示例重点覆盖 `inverter_core` 和 `ota_core`，额外保留 `current_mirror_core` 作为扩展示例。
 
-## Build with Docker
+## 当前限制
 
-You can use the Docker container to avoid building all the dependencies yourself. 
-1. Install Docker on [Linux](https://docs.docker.com/install/).
-2. Navigate to the repository. 
-    ```
-    cd MAGICAL
-    ```
-3. Get the docker container with either of the following options. 
-    - Option 1 (Recommended): pull from the cloud  [jayl940712/magical](https://hub.docker.com/r/jayl940712/magical). 
-    ```
-    docker pull jayl940712/magical:latest
-    ```
-    - Option 2: build the container. 
-    ```
-    docker build . --file Dockerfile --tag magical:latest
-    ```
-4. Run the docker container
-    ```
-    docker run -it -v $(pwd):/MAGICAL jayl940712/magical:latest bash
-    ```
-    Or if you used option 2 to build the container
-    ```
-    docker run -it -v $(pwd):/MAGICAL magical:latest bash
-    ```
-# How to run #
+- 默认主线是 bridge/remap flow。
+- native Sky130 export 仍是 experimental，不作为默认入口。
+- 当前 LVS 是 connectivity LVS，不是 parasitic-aware LVS。
+- PEX summary 只统计 Magic raw extraction 中列出的寄生电容，不等于完整后仿。
+- Sky130 PDK、Magic、Netgen、KLayout 不随仓库上传，需要用户自行安装。
+- generated 大文件、GDS、log、Magic extraction 临时产物不应提交到 GitHub。
 
-Benchmark circuit examples are under examples/
+## 安装依赖
 
-All technology related parameters including benchmark circuit sizing are samples and not related to any proprietary PDK information.
+推荐环境记录：
 
-Benchmark circuits currently includes:
-1 adc, 1 comparator, 3 ota
+- WSL2 Ubuntu 24.04.4 LTS
+- Kernel: `6.6.87.2-microsoft-standard-WSL2`
+- Host Python: Python 3.12.3
+- pip: 26.0.1
+- python3 path: `/usr/bin/python3`
 
-To run the benchmark circuits
+默认 MAGICAL placement/routing 通过 Docker 运行：
+
+- Docker image: `jayl940712/magical:latest`
+- Docker 内 Python: 3.7.5
+
+主机外部命令依赖：
+
+- `docker`
+- `magic`
+- `netgen-lvs` 或 `netgen`
+- 可选：`klayout`
+
+当前验证机器上的路径和版本：
+
+- docker: `/usr/bin/docker`, Docker version 29.4.1
+- magic: `/home/to/eda/tools/install/magic-src/bin/magic`, Magic version 8.3.637
+- netgen-lvs: `/usr/bin/netgen-lvs`, Netgen 1.5.133
+
+## Python 环境安装
+
+Host 侧 Python 依赖很少，默认只需要 PyYAML：
+
+```bash
+python3 -m pip install -r requirements.txt
 ```
-cd /MAGICAL/examples/BENCH/ (ex. adc1)
-source run.sh
+
+Docker 容器内已有 MAGICAL 所需依赖，例如 `gdspy`、`numpy`、`networkx`、`matplotlib`、`scipy`、`Cython`、`pybind11`、`pyparsing`。这些不是 host requirements。
+
+如果不使用 Docker、选择本地编译 MAGICAL，需要额外准备 `gcc/g++`、`make`、`cmake`、`zlib`、Boost >= 1.6、`flex`、`bison`、Python headers / PythonLibs、`pybind11`、LIMBO、LEMON、Eigen、lp_solve、wnlib、sparsehash、OpenSSL，以及 MAGICAL submodules: ConstGen、IdeaPlaceEx、anaroute、device_generation。
+
+## Sky130 PDK 配置
+
+本仓库不上传 Sky130 PDK。默认查找路径为：
+
+```bash
+/home/to/.ciel/ciel/sky130/versions/7b70722e33c03fcb5dabcf4d479fb0822d9251c9/sky130A
 ```
 
-The output layout gdsii files: BENCH/TOP_CIRCUIT.route.gds (ex. adc1/xxx.route.gds)
+关键文件：
 
-Note: currently adc2 have routing issues.
+- `libs.tech/magic/sky130A.magicrc`
+- `libs.tech/netgen/sky130A_setup.tcl`
 
-# Custom layout constraint inputs #
+如需覆盖：
 
-The automatic symmetry constraint generation is currently embedded into the flow. To ensure circuit functionality it is ideal that designers provide  constraints to guide the placement and routing. 
+```bash
+export SKY130A=/path/to/sky130A
+```
 
-A sample device and net symmetry constraint is given for adc1. These files should also be the output for the current automatic symmetry constraint generation flow.
+也可以单次运行：
 
-Sample symmetry device constraint file:
-examples/adc1/CTDSM_TOP.sym
+```bash
+SKY130A=/path/to/sky130A python3 tools/sky130_adapter/run_sky130_case_pipeline.py ...
+```
 
-Sample symmetry net constraint file:
-examples/adc1/CTDSM_TOP.symnet
+## 快速开始：inverter 示例
 
-## Device symmetry constraints
+推荐使用 Python CLI：
 
-Device symmetry constraints greatly affect the placement solution and output layout quality. Currently we only consider symmetry groups, symmetry device pairs and self-symmetric device constraints.
+```bash
+python3 tools/sky130_adapter/run_sky130_case_pipeline.py \
+  --netlist examples/inverter_sky130_try/inverter_clean.sp \
+  --top-cell inverter_core \
+  --vdd VPWR \
+  --vss VGND \
+  --convert-xschem no \
+  --case-name inverter_core \
+  --out-dir generated/sky130_cases/inverter_core
+```
 
-**Symmetry group**: A group of symmetry device pairs and self-symmetric devices that share the same symmetry axis.
+底层 shell 入口也保留：
 
-**Symmetry device pair**: Two devices that are reflection symmetric with respect to a symmetry axis (usually vertical).
+```bash
+tools/sky130_adapter/run_sky130_case_pipeline.sh \
+  --case-name inverter_core \
+  --case-dir examples/inverter_sky130_try \
+  --top-cell inverter_core \
+  --magical-netlist inverter_clean.sp \
+  --config inverter.json \
+  --vdd VPWR \
+  --vss VGND \
+  --out-dir generated/sky130_cases/inverter_core \
+  --convert-xschem no
+```
 
-**Self-symmetry device**: A single device that is reflection symmetric with itself respect to a symmetry axis.
+## 快速开始：OTA 示例
 
-## Net symmetry constraints
+```bash
+python3 tools/sky130_adapter/run_sky130_case_pipeline.py \
+  --netlist examples/ota_core_sky130_try/ota_core_raw.spice \
+  --top-cell ota_core \
+  --vdd VDD \
+  --vss GND \
+  --convert-xschem yes \
+  --case-name ota_core \
+  --out-dir generated/sky130_cases/ota_core
+```
 
-Similar to device symmetry constraints, we consider symmetry net pairs and self-symmetry net constraints. 
+## 自定义 MAGICAL Clean Netlist
 
-**Symmetry net pair**: Two nets that are reflection symmetric with respect to a symmetry axis (usually vertical). For a valid constraint, the corresponding pins of the two nets must be reflective symmetric with a axix.
+clean netlist 可以直接进入 pipeline：
 
-**Self-symmetry net**: A single net that is reflection symmetric with itself respect to a symmetry axis.
+```bash
+python3 tools/sky130_adapter/run_sky130_case_pipeline.py \
+  --netlist my.sp \
+  --top-cell my_cell \
+  --vdd VDD \
+  --vss GND \
+  --convert-xschem no
+```
 
-# License #
-[BSD 3-Clause](https://github.com/magical-eda/MAGICAL/blob/master/LICENSE)
+示例格式：
+
+```spice
+subckt my_cell A Y VDD GND
+M0 (Y A GND GND) sky130_fd_pr__nfet_01v8 l=150n w=1.26u multi=1 nf=2
+M1 (Y A VDD VDD) sky130_fd_pr__pfet_01v8 l=150n w=1.26u multi=1 nf=2
+ends my_cell
+```
+
+## 自定义 xschem Raw Netlist
+
+xschem/ngspice raw netlist 需要转换：
+
+```bash
+python3 tools/sky130_adapter/run_sky130_case_pipeline.py \
+  --netlist my_xschem.sp \
+  --top-cell my_cell \
+  --vdd VDD \
+  --vss GND \
+  --convert-xschem yes
+```
+
+转换脚本会处理 `XM` 实例、被注释的 `.subckt/.ends`、`.GLOBAL GND` 等常见 xschem 输出。若 GND 是 `.GLOBAL`，请通过 `--vss GND` 显式作为 top subckt port 注入。`ad/as/pd/ps/nrd/nrs` 等 xschem/ngspice 参数会从 MAGICAL 输入网表中移除，因为真实 layout 寄生由 Magic raw extraction 和 PEX summary 给出。
+
+## 输出文件说明
+
+默认输出目录是 `generated/sky130_cases/<case_name>/`。关键文件包括：
+
+- `summary.md`：本次运行总览。
+- `magic_drc.log`：Magic DRC 输出。
+- `<top_cell>_extracted.spice`：Magic raw extracted netlist 原始输出。
+- `<top_cell>_extracted.raw.spice`：保留寄生的 raw extracted copy。
+- `<top_cell>_source.connectivity.spice`：用于 connectivity LVS 的 source netlist。
+- `<top_cell>_extracted.connectivity.spice`：用于 connectivity LVS 的 extracted netlist。
+- `netgen_lvs_report.out`：Netgen LVS report。
+- `lvs_result_summary.md`：connectivity LVS 结果摘要。
+- `pex_summary.md`：寄生电容统计。
+- 最终 KLayout 可查看 GDS：case 目录中的 `<top_cell>.sky130.pinned_shapes.gds`。
+
+## LVS/PEX 说明
+
+Magic raw extraction 会保留寄生电容。当前 connectivity LVS 会从比较用 netlist 中删除寄生电容和 property-only mismatch，重点验证源网表和版图抽取网表的连通性是否一致。PEX summary 单独统计 raw extraction 中的寄生电容数量和总电容，用于快速检查，不用于当前 LVS 比较，也不等于完整后仿。
+
+## Regression
+
+```bash
+tools/sky130_adapter/run_sky130_case_regression.sh
+```
+
+case 列表在 `tools/sky130_adapter/sky130_case_registry.yaml`。
+
+## Experimental Native Sky130 Export
+
+当前保留 `MAGICAL_GDS_EXPORT_MAP` native drawing-layer export 试验能力，相关说明见 `docs/sky130_adapter/native_export_experimental.md`。该能力依赖 `flow/python/PnR.py` 和 `anaroute/src/writer/` 的实验修改，不作为默认主线。
+
+## GitHub 上传说明
+
+建议上传源码、轻量示例输入、配置、文档、wrapper 和测试脚本。不要上传 Sky130 PDK、`generated/`、GDS、log、Magic extraction 临时文件、build 产物。详见 `docs/sky130_adapter/github_upload_manifest.md`。
