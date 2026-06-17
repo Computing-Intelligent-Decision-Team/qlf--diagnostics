@@ -33,3 +33,14 @@ cases:
     config: current_mirror.json
     output_node: IOUT
     out_dir: generated/sky130_cases/current_mirror_core
+
+  SMCNR_SE_2st_AMP:
+    case_dir: examples/smcnr_se_2st_amp_sky130_try
+    top_cell: SMCNR_SE_2st_AMP
+    vdd: vdda
+    vss: gnda
+    convert_xschem: no
+    magical_netlist: SMCNR_SE_2st_AMP_layout_physical_hspice.sp
+    config: smcnr_se_2st_amp.json
+    output_node: vout
+    out_dir: generated/sky130_cases/smcnr_se_2st_amp

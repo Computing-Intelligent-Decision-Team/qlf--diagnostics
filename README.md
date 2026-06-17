@@ -1,6 +1,6 @@
 # MAGICAL Sky130 Bridge/Remap Flow
 
-这是一个面向 Sky130 的 MAGICAL bridge/remap 适配版本。目标是让用户在安装外部依赖后，输入一份 Sky130 网表，自动完成 MAGICAL placement/routing、Sky130 GDS 生成、Magic DRC、Magic extraction、connectivity LVS、PEX summary，并输出可用 KLayout 查看的一份最终 GDS。
+这是一个面向 Sky130 的 MAGICAL bridge/remap 适配版本。目标是让用户在安装外部依赖后，输入一份 Sky130 网表，自动完成 MAGICAL placement/routing、Sky130 GDS 生成、Magic DRC、Magic extraction、`netgen-lvs` connectivity LVS、PEX summary，并输出可用 KLayout 查看的一份最终 GDS。
 
 默认主线 flow 是：
 
@@ -22,7 +22,7 @@ MAGICAL internal GDS
 - 自动 remap MAGICAL internal GDS 到 Sky130 drawing layers。
 - 自动添加 top-port pin label 和 pin shape。
 - 自动运行 Magic DRC 和 Magic raw extraction。
-- 自动运行 connectivity LVS，优先使用 `netgen`，缺失时 fallback 到 `netgen-lvs`。
+- 自动运行 `netgen-lvs` connectivity LVS。
 - 自动生成 Magic PEX summary。
 - regression 示例重点覆盖 `inverter_core` 和 `ota_core`，额外保留 `current_mirror_core` 作为扩展示例。
 
@@ -54,7 +54,7 @@ MAGICAL internal GDS
 
 - `docker`
 - `magic`
-- `netgen-lvs` 或 `netgen`
+- `netgen-lvs`
 - 可选：`klayout`
 
 当前验证机器上的路径和版本：
@@ -62,6 +62,8 @@ MAGICAL internal GDS
 - docker: `/usr/bin/docker`, Docker version 29.4.1
 - magic: `/home/to/eda/tools/install/magic-src/bin/magic`, Magic version 8.3.637
 - netgen-lvs: `/usr/bin/netgen-lvs`, Netgen 1.5.133
+
+更完整的从零环境搭建说明见 `docs/sky130_adapter/environment_setup.md`。
 
 ## Python 环境安装
 
@@ -143,6 +145,20 @@ python3 tools/sky130_adapter/run_sky130_case_pipeline.py \
   --out-dir generated/sky130_cases/ota_core
 ```
 
+## 快速开始：SMC 两级放大器示例
+
+推荐使用仓库内 wrapper：
+
+```bash
+tools/sky130_adapter/run_smcnr_se_2st_amp_sky130_pipeline.sh
+```
+
+该示例对应：
+
+- case dir: `examples/smcnr_se_2st_amp_sky130_try`
+- out dir: `generated/sky130_cases/smcnr_se_2st_amp`
+- output node: `vout`
+
 ## 自定义 MAGICAL Clean Netlist
 
 clean netlist 可以直接进入 pipeline：
@@ -206,6 +222,17 @@ tools/sky130_adapter/run_sky130_case_regression.sh
 ```
 
 case 列表在 `tools/sky130_adapter/sky130_case_registry.yaml`。
+
+当前建议作为 harness 起点的 baseline case：
+
+| Case | Path | Entry | Purpose |
+| --- | --- | --- | --- |
+| `inverter_core` | `examples/inverter_sky130_try` | `run_sky130_case_pipeline.py` | 最小闭环样本 |
+| `ota_core` | `examples/ota_core_sky130_try` | `run_sky130_case_pipeline.py` | 中等复杂度样本 |
+| `current_mirror_core` | `examples/current_mirror_sky130_try` | `run_sky130_case_pipeline.py` | 额外简单模拟样本 |
+| `SMCNR_SE_2st_AMP` | `examples/smcnr_se_2st_amp_sky130_try` | `run_smcnr_se_2st_amp_sky130_pipeline.sh` | 复杂模拟样本 |
+
+通用 harness 的交接说明见 `docs/sky130_adapter/harness_handoff.md`。
 
 ## Experimental Native Sky130 Export
 

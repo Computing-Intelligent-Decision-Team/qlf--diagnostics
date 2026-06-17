@@ -1,0 +1,12 @@
+{
+    "hspice_netlist": "SMCNR_SE_2st_AMP_layout_physical_hspice.sp",
+    "resultDir": "./",
+    "techfile": "../sky130PDK/sky130.techfile",
+    "simple_tech_file": "../sky130PDK/sky130.techfile.simple",
+    "lef": "../sky130PDK/sky130.lef",
+    "vddNetNames": ["vdda"],
+    "vssNetNames": ["gnda"],
+    "useDeviceProximity": true,
+    "routeTopLevelSignalIoPorts": false,
+    "nwellBulkBottomTopLayer": 0
+}
