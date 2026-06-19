@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+
+# Training/runtime outputs created by AnalogGym GRPO.
+training_saves/
+wandb/
+simulation_output/
+
+# Full PDK copies are intentionally external. Set SKY130A instead.
+simulation_files/sky130_pdk/
+mosfet_model/sky130_pdk/
+
+# Local editor history and machine settings.
+.history/
+.vscode/

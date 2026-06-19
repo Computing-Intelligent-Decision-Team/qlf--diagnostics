@@ -60,6 +60,12 @@ cd AnalogHarness
 python3 -m pip install -r requirements.txt
 ```
 
+如果要运行 vendored AnalogGym GRPO 长训练，还需要安装可选 ML 依赖：
+
+```bash
+python3 -m pip install -r requirements-grpo.txt
+```
+
 ## Docker 要求
 
 默认 MAGICAL placement/routing 在 Docker 容器中运行：

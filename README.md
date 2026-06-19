@@ -67,19 +67,30 @@ python -m tools.analog_harness.cli summarize \
   --config tools/analog_harness/configs/smcnr_se_2st_amp.yaml
 ```
 
-GRPO/AnalogGym 不随本仓库 vendoring。默认配置引用相邻目录：
+GRPO/AnalogGym 关键源码已随本仓库 vendoring：
 
 ```text
-../Analoggym_opt_moo_Mahalanobis_paper
+third_party/analoggym_grpo
 ```
 
-如果你的 AnalogGym 路径不同，请修改 `tools/analog_harness/configs/smcnr_se_2st_amp.yaml` 中的 `paths.analog_gym_root`。没有 AnalogGym 时，harness 的基础 smoke、配置加载、legalizer、Sky130 adapter 测试仍可开发；要使用真实 GRPO episode/warm-start 训练接口，则必须提供 AnalogGym 本地源码。
+可选 GRPO 训练依赖：
+
+```bash
+python3 -m pip install -r requirements-grpo.txt
+```
+
+完整 Sky130 PDK、GRPO training checkpoint、wandb 记录和仿真输出不放进 Git。运行真实仿真/layout 前仍需设置：
+
+```bash
+export SKY130A=/path/to/sky130A
+```
 
 更完整的开发说明：
 
 - Analog Harness: `tools/analog_harness/README.md`
 - 环境搭建: `docs/sky130_adapter/environment_setup.md`
 - passive-aware LVS 状态: `docs/sky130_adapter/passive_aware_lvs_status.md`
+- Vendored GRPO: `third_party/analoggym_grpo/README.md`
 
 这是一个面向 Sky130 的 MAGICAL bridge/remap 适配版本。目标是让用户在安装外部依赖后，输入一份 Sky130 网表，自动完成 MAGICAL placement/routing、Sky130 GDS 生成、Magic DRC、Magic extraction、`netgen-lvs` connectivity LVS、PEX summary，并输出可用 KLayout 查看的一份最终 GDS。
 

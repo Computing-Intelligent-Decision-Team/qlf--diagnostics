@@ -2284,9 +2284,26 @@ class LayoutVerificationAdapter:
     def __init__(self, config: HarnessConfig):
         self.config = config
         self.layout_config = dict(config.data.get("layout", {}))
+        sky130a = self._resolve_optional_layout_path(self.layout_config.get("sky130a"))
+        if sky130a is not None:
+            self.layout_config["sky130a"] = sky130a
+        elif self.layout_config.get("sky130a"):
+            self.layout_config.pop("sky130a", None)
         self.pipeline = config.resolve_path(
             self.layout_config.get("pipeline", "tools/sky130_adapter/run_sky130_case_pipeline.py")
         )
+
+    def _resolve_optional_layout_path(self, value: Any) -> str | None:
+        if not value:
+            return None
+        raw = str(value)
+        expanded = os.path.expandvars(raw).strip()
+        if not expanded or "$" in expanded or "%" in expanded:
+            return None
+        path = Path(expanded).expanduser()
+        if path.is_absolute():
+            return str(path.resolve())
+        return str((self.config.repo_root / path).resolve())
 
     def run(self, compiled: CompiledCandidate, skip_layout: bool = False) -> EvidencePacket:
         if skip_layout:

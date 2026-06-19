@@ -45,10 +45,20 @@ netgen-lvs -batch quit
 ngspice --version
 ```
 
-The GRPO adapter references a local AnalogGym checkout through
-`paths.analog_gym_root` in `tools/analog_harness/configs/smcnr_se_2st_amp.yaml`.
-The default is `../Analoggym_opt_moo_Mahalanobis_paper`; change it if your
-checkout is elsewhere. The harness is intentionally not vendoring AnalogGym.
+The GRPO adapter uses the vendored AnalogGym GRPO source by default:
+
+```text
+third_party/analoggym_grpo
+```
+
+Install optional GRPO dependencies with:
+
+```bash
+python3 -m pip install -r requirements-grpo.txt
+```
+
+Sky130 PDK is still external. Set `SKY130A=/path/to/sky130A` before running
+real simulation/layout flows.
 
 The controller first checks configured front-end sizing results. If a reusable
 front-end candidate exists, it evaluates that candidate through the harness
@@ -114,9 +124,8 @@ that JSON. The durable status narrative is tracked in
 On Windows, the adapter resolves WSL distro selection explicitly and avoids the
 default `docker-desktop` distro, so `magic` and IC LVS `netgen-lvs` are checked
 and run from the configured `Ubuntu-24.04` environment. The Sky130 case
-pipeline also auto-discovers the AnalogGym-local Sky130 PDK
-(`../Analoggym_opt_moo_Mahalanobis_paper/mosfet_model/sky130_pdk`) when the
-legacy ciel PDK path is absent.
+pipeline can use the external `SKY130A` path for Magic/Netgen/ngspice PDK
+files. Full Sky130 PDK copies are intentionally not vendored in this repo.
 
 The Sky130 PDK generator and case pipeline also guard against CRLF line endings
 in MAGICAL tech/LEF files. CRLF can break Anaroute's tech parser and surface

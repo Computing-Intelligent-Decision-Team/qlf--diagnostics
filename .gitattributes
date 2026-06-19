@@ -4,3 +4,6 @@
 *.techfile.simple text eol=lf
 *.lef text eol=lf
 generated/sky130PDK_trial/sky130_gds_export_map.yaml text eol=lf
+
+# Preserve vendored AnalogGym GRPO source formatting.
+third_party/analoggym_grpo/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
