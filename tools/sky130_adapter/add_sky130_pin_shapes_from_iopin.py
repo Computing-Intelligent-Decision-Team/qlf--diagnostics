@@ -35,6 +35,9 @@ PDK_QUERY_SOURCES = [
 PIN_SHAPE_MAP = {
     1: ("li1.pin", 67, 16, "li1.label", 67, 5, "li1.drawing", 67, 20),
     2: ("met1.pin", 68, 16, "met1.label", 68, 5, "met1.drawing", 68, 20),
+    3: ("met2.pin", 69, 16, "met2.label", 69, 5, "met2.drawing", 69, 20),
+    4: ("met3.pin", 70, 16, "met3.label", 70, 5, "met3.drawing", 70, 20),
+    5: ("met4.pin", 71, 16, "met4.label", 71, 5, "met4.drawing", 71, 20),
     6: ("met5.pin", 72, 16, "met5.label", 72, 5, "met5.drawing", 72, 20),
 }
 

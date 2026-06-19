@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +37,7 @@ class LayerRecord:
     sky130_datatype: str
     status: str
     risk: str
+    datatype_overrides: dict[str, Any] = field(default_factory=dict)
 
 
 def is_tbd(value: Any) -> bool:
@@ -83,7 +84,27 @@ def make_record(
         sky130_datatype=sky130_datatype,
         status=status,
         risk=str(info.get("risk", "TBD")),
+        datatype_overrides=datatype_overrides(info),
     )
+
+
+def datatype_overrides(info: dict[str, Any]) -> dict[str, Any]:
+    raw = info.get("datatype_overrides", {})
+    if isinstance(raw, dict):
+        return raw
+    if isinstance(raw, list):
+        overrides: dict[str, Any] = {}
+        for item in raw:
+            if not isinstance(item, dict):
+                continue
+            input_datatype = item.get("input_datatype")
+            if input_datatype is None:
+                continue
+            overrides[str(input_datatype)] = {
+                key: value for key, value in item.items() if key != "input_datatype"
+            }
+        return overrides
+    return {}
 
 
 def annotation(record: LayerRecord) -> str:
@@ -122,6 +143,7 @@ def rewrite_simple_tech(
 def rewrite_techfile(
     text: str,
     layer_map: dict[str, dict[str, Any]],
+    simple_numbers: dict[str, int] | None = None,
 ) -> tuple[str, list[LayerRecord]]:
     records: list[LayerRecord] = []
     output: list[str] = [
@@ -197,20 +219,28 @@ def export_records(records: list[LayerRecord]) -> str:
             "Map MAGICAL internal layer IDs to real Sky130 GDS layer/datatype "
             "for a future export remap or post-processing step."
         ),
-        "layers": [
-            {
-                "magical_layer": record.magical_layer,
-                "magical_internal_number": record.magical_internal_number,
-                "sky130_layer_name": record.sky130_layer_name,
-                "sky130_gds_layer": record.sky130_gds_layer,
-                "sky130_datatype": record.sky130_datatype,
-                "status": record.status,
-                "risk": record.risk,
-            }
-            for record in sorted(unique.values(), key=lambda item: item.magical_internal_number)
-        ],
+        "layers": [],
     }
+    for record in sorted(unique.values(), key=lambda item: item.magical_internal_number):
+        entry = {
+            "magical_layer": record.magical_layer,
+            "magical_internal_number": record.magical_internal_number,
+            "sky130_layer_name": record.sky130_layer_name,
+            "sky130_gds_layer": record.sky130_gds_layer,
+            "sky130_datatype": record.sky130_datatype,
+            "status": record.status,
+            "risk": record.risk,
+        }
+        if record.datatype_overrides:
+            entry["datatype_overrides"] = record.datatype_overrides
+        data["layers"].append(entry)
     return yaml.safe_dump(data, sort_keys=False, allow_unicode=True)
+
+
+def write_lf(path: Path, text: str) -> None:
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    with path.open("w", encoding="utf-8", newline="\n") as fp:
+        fp.write(text)
 
 
 def print_summary(records: list[LayerRecord], output_dir: Path, dry_run: bool) -> None:
@@ -267,7 +297,7 @@ def main(argv: list[str]) -> int:
         simple_numbers = read_simple_numbers(simple_text)
         generated_simple, simple_records = rewrite_simple_tech(simple_text, layer_map)
         generated_techfile, techfile_records = rewrite_techfile(
-            techfile_path.read_text(encoding="utf-8"), layer_map
+            techfile_path.read_text(encoding="utf-8"), layer_map, simple_numbers
         )
         generated_lef, lef_records = rewrite_lef(
             lef_path.read_text(encoding="utf-8"), layer_map, simple_numbers
@@ -282,12 +312,10 @@ def main(argv: list[str]) -> int:
             return 0
 
         output_dir.mkdir(parents=True, exist_ok=True)
-        (output_dir / "sky130.techfile.simple").write_text(generated_simple, encoding="utf-8")
-        (output_dir / "sky130.techfile").write_text(generated_techfile, encoding="utf-8")
-        (output_dir / "sky130.lef").write_text(generated_lef, encoding="utf-8")
-        (output_dir / "sky130_gds_export_map.yaml").write_text(
-            generated_export_map, encoding="utf-8"
-        )
+        write_lf(output_dir / "sky130.techfile.simple", generated_simple)
+        write_lf(output_dir / "sky130.techfile", generated_techfile)
+        write_lf(output_dir / "sky130.lef", generated_lef)
+        write_lf(output_dir / "sky130_gds_export_map.yaml", generated_export_map)
 
         print()
         print("Generated files:")

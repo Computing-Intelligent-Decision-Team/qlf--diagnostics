@@ -39,6 +39,7 @@ NORMALIZED_LVS="$OUT_DIR/inverter_core_extracted_normalized.spice"
 NORMALIZE_REPORT="$OUT_DIR/normalize_lvs_report.md"
 NETGEN_LOG="$OUT_DIR/netgen_lvs.log"
 NETGEN_REPORT="$OUT_DIR/netgen_lvs_report.out"
+NETGEN_TCL="$OUT_DIR/netgen_lvs.tcl"
 
 require_file() {
     if [[ ! -f "$1" ]]; then
@@ -57,12 +58,17 @@ if ! command -v magic >/dev/null 2>&1; then
 fi
 
 NETGEN_CMD=""
-if command -v netgen >/dev/null 2>&1; then
-    NETGEN_CMD="$(command -v netgen)"
-elif command -v netgen-lvs >/dev/null 2>&1; then
+if command -v netgen-lvs >/dev/null 2>&1; then
     NETGEN_CMD="$(command -v netgen-lvs)"
-else
-    echo "error: neither netgen nor netgen-lvs command was found in PATH" >&2
+elif command -v netgen >/dev/null 2>&1; then
+    netgen_candidate="$(command -v netgen)"
+    netgen_version_out="$("$netgen_candidate" -batch quit 2>&1 || true)"
+    if printf '%s\n' "$netgen_version_out" | grep -q 'Netgen 1\.'; then
+        NETGEN_CMD="$netgen_candidate"
+    fi
+fi
+if [[ -z "$NETGEN_CMD" ]]; then
+    echo "error: IC netgen-lvs command was not found in PATH" >&2
     exit 1
 fi
 
@@ -257,12 +263,11 @@ python3 "$SCRIPT_DIR/normalize_lvs_netlists_inverter.py" \
     --report "$NORMALIZE_REPORT" >/dev/null
 
 set +e
-"$NETGEN_CMD" -batch lvs \
-    "$SOURCE_LVS inverter_core" \
-    "$NORMALIZED_LVS inverter_core_flat" \
-    "$NETGEN_SETUP" \
-    "$NETGEN_REPORT" \
-    > "$NETGEN_LOG" 2>&1
+cat > "$NETGEN_TCL" <<EOF
+lvs {$SOURCE_LVS inverter_core} {$NORMALIZED_LVS inverter_core_flat} {$NETGEN_SETUP} {$NETGEN_REPORT}
+quit
+EOF
+"$NETGEN_CMD" -batch source "$NETGEN_TCL" > "$NETGEN_LOG" 2>&1
 netgen_status=$?
 set -e
 

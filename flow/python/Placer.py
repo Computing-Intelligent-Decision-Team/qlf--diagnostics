@@ -2,7 +2,7 @@ import magicalFlow
 import IdeaPlaceExPy
 import anaroutePy
 import sys
-import os.path
+import os
 import device_generation.basic as basic
 import gdspy
 import device_generation.glovar as glovar
@@ -32,6 +32,9 @@ class Placer(object):
     def run(self):
         self.useIoPin = True
         self.usePowerStripe = True
+        if os.environ.get("MAGICAL_DISABLE_POWER_STRIPE", "0") == "1":
+            print("MAGICAL_DISABLE_POWER_STRIPE enabled")
+            self.usePowerStripe = False
         self.isTopLevel = False
         if (self.dDB.rootCktIdx() ==  self.cktIdx):
             self.useIoPin = False
@@ -210,6 +213,18 @@ class Placer(object):
             subCkt = self.dDB.subCkt(cktNode.graphIdx)
             x_offset = self.placer.xCellLoc(nodeIdx) - self.origin[0]
             y_offset = self.placer.yCellLoc(nodeIdx) - self.origin[1]
+            if subCkt.implType in [magicalFlow.ImplTypePCELL_Res, magicalFlow.ImplTypePCELL_Cap]:
+                try:
+                    passiveOffsetX = int(os.environ.get("MAGICAL_PASSIVE_PLACEMENT_OFFSET_X_DBU", "0") or "0")
+                    passiveOffsetY = int(os.environ.get("MAGICAL_PASSIVE_PLACEMENT_OFFSET_Y_DBU", "0") or "0")
+                except ValueError:
+                    print("WARNING: invalid MAGICAL_PASSIVE_PLACEMENT_OFFSET_* value; ignoring passive placement offset")
+                    passiveOffsetX = 0
+                    passiveOffsetY = 0
+                if passiveOffsetX != 0 or passiveOffsetY != 0:
+                    print("MAGICAL_PASSIVE_PLACEMENT_OFFSET", cktNode.name, passiveOffsetX, passiveOffsetY)
+                    x_offset += passiveOffsetX
+                    y_offset += passiveOffsetY
             print("node ", cktNode.name, x_offset, y_offset)
             cktNode.setOffset(x_offset, y_offset)
             self.ckt.layout().insertLayout(subCkt.layout(), x_offset, y_offset, cktNode.flipVertFlag)
@@ -342,6 +357,163 @@ class Placer(object):
                     otherDataType.append(datatype)
         self.addIoPinToNet(netIdx, offsetX, offsetY, routableShapes, routablePdkLayers, otherShapes, otherPdkLayers, addtocurrentlayout=False, isPowerStripe=isPowerStripe, useDatatype=True, routableDatatype=routableDatatype, otherDataType=otherDataType)
 
+    def addPowerStripeShapeToNet(self, netIdx, shape):
+        powerPdkLayer = 30 + self.params.powerLayer
+        self.addIoPinToNet(
+            netIdx,
+            0,
+            0,
+            [shape],
+            [powerPdkLayer],
+            [],
+            [],
+            addtocurrentlayout=False,
+            isPowerStripe=True,
+        )
+
+    def passiveKeepoutIntervals(self, margin):
+        intervals = []
+        passive_types = [magicalFlow.ImplTypePCELL_Res, magicalFlow.ImplTypePCELL_Cap]
+        for nodeIdx in range(self.numCktNodes):
+            cktNode = self.ckt.node(nodeIdx)
+            subCkt = self.dDB.subCkt(cktNode.graphIdx)
+            if subCkt.implType not in passive_types:
+                continue
+            boundary = subCkt.layout().boundary()
+            offset = cktNode.offset()
+            intervals.append((boundary.xLo + offset.x - margin, boundary.xHi + offset.x + margin))
+        return intervals
+
+    def activeKeepoutIntervals(self, margin):
+        intervals = []
+        passive_types = [magicalFlow.ImplTypePCELL_Res, magicalFlow.ImplTypePCELL_Cap]
+        for nodeIdx in range(self.numCktNodes):
+            cktNode = self.ckt.node(nodeIdx)
+            subCkt = self.dDB.subCkt(cktNode.graphIdx)
+            if subCkt.implType in passive_types:
+                continue
+            boundary = subCkt.layout().boundary()
+            offset = cktNode.offset()
+            intervals.append((boundary.xLo + offset.x - margin, boundary.xHi + offset.x + margin))
+        return intervals
+
+    def splitStripeAroundIntervals(self, xLo, xHi, intervals):
+        merged = []
+        for left, right in sorted(intervals):
+            left = max(left, xLo)
+            right = min(right, xHi)
+            if right <= left:
+                continue
+            if merged and left <= merged[-1][1]:
+                merged[-1] = (merged[-1][0], max(merged[-1][1], right))
+            else:
+                merged.append((left, right))
+        segments = []
+        cursor = xLo
+        for left, right in merged:
+            if left - cursor >= self.gridStep:
+                segments.append((cursor, left))
+            cursor = max(cursor, right)
+        if xHi - cursor >= self.gridStep:
+            segments.append((cursor, xHi))
+        return segments
+
+    def parseStripeExcludeIntervals(self, env_name):
+        value = os.environ.get(env_name, "").strip()
+        if not value:
+            return []
+        intervals = []
+        for token in value.replace(";", ",").split(","):
+            token = token.strip()
+            if not token:
+                continue
+            if ":" in token:
+                parts = token.split(":", 1)
+            else:
+                parts = token.split()
+            if len(parts) != 2:
+                print("WARNING: invalid", env_name, "interval", token)
+                continue
+            try:
+                left = int(parts[0])
+                right = int(parts[1])
+            except ValueError:
+                print("WARNING: invalid", env_name, "interval", token)
+                continue
+            if right < left:
+                left, right = right, left
+            intervals.append((left, right))
+        return intervals
+
+    def activeAndPassiveVerticalBounds(self):
+        passive_types = [magicalFlow.ImplTypePCELL_Res, magicalFlow.ImplTypePCELL_Cap]
+        active_y_hi = None
+        passive_y_lo = None
+        for nodeIdx in range(self.numCktNodes):
+            cktNode = self.ckt.node(nodeIdx)
+            subCkt = self.dDB.subCkt(cktNode.graphIdx)
+            boundary = subCkt.layout().boundary()
+            offset = cktNode.offset()
+            placed_y_lo = boundary.yLo + offset.y
+            placed_y_hi = boundary.yHi + offset.y
+            if subCkt.implType in passive_types:
+                if passive_y_lo is None or placed_y_lo < passive_y_lo:
+                    passive_y_lo = placed_y_lo
+            else:
+                if active_y_hi is None or placed_y_hi > active_y_hi:
+                    active_y_hi = placed_y_hi
+        return active_y_hi, passive_y_lo
+
+    def localVddStripeBelowPassives(self, xLo, xHi):
+        if os.environ.get("MAGICAL_ADD_LOCAL_VDD_STRIPE_BELOW_PASSIVES", "0") != "1":
+            return None
+        try:
+            height = int(os.environ.get("MAGICAL_LOCAL_VDD_STRIPE_HEIGHT_DBU", "400") or "400")
+        except ValueError:
+            print("WARNING: invalid MAGICAL_LOCAL_VDD_STRIPE_HEIGHT_DBU value; using 400")
+            height = 400
+        height = max(self.gridStep, height)
+        if height % self.gridStep != 0:
+            height += self.gridStep - (height % self.gridStep)
+        active_y_hi, passive_y_lo = self.activeAndPassiveVerticalBounds()
+        if active_y_hi is None or passive_y_lo is None:
+            return None
+        explicit_y = os.environ.get("MAGICAL_LOCAL_VDD_STRIPE_Y_DBU")
+        if explicit_y:
+            try:
+                yLo = int(explicit_y)
+            except ValueError:
+                print("WARNING: invalid MAGICAL_LOCAL_VDD_STRIPE_Y_DBU value; using automatic placement")
+                yLo = int(active_y_hi + self.gridStep)
+        else:
+            yLo = int(active_y_hi + self.gridStep)
+        max_yLo = int(passive_y_lo - height - self.gridStep)
+        if yLo > max_yLo:
+            yLo = max_yLo
+        if yLo + height >= passive_y_lo:
+            print("WARNING: no room for MAGICAL_ADD_LOCAL_VDD_STRIPE_BELOW_PASSIVES")
+            return None
+        yHi = yLo + height
+        print("MAGICAL_LOCAL_VDD_STRIPE_BELOW_PASSIVES", xLo, yLo, xHi, yHi)
+        try:
+            active_keepout = int(os.environ.get("MAGICAL_LOCAL_VDD_STRIPE_ACTIVE_KEEP_OUT_DBU", "0") or "0")
+        except ValueError:
+            print("WARNING: invalid MAGICAL_LOCAL_VDD_STRIPE_ACTIVE_KEEP_OUT_DBU value; ignoring active keepout")
+            active_keepout = 0
+        intervals = self.parseStripeExcludeIntervals("MAGICAL_LOCAL_VDD_STRIPE_EXCLUDE_X_DBU")
+        if active_keepout > 0:
+            intervals.extend(self.activeKeepoutIntervals(active_keepout))
+        if intervals:
+            print("MAGICAL_LOCAL_VDD_STRIPE_EXCLUDE_X intervals", intervals)
+            segments = self.splitStripeAroundIntervals(xLo, xHi, intervals)
+            stripes = [[left, yLo, right, yHi] for left, right in segments]
+            if len(stripes) == 0:
+                print("WARNING: local VDD exclude intervals removed all stripe segments; skipping local stripe")
+                return None
+            print("MAGICAL_LOCAL_VDD_STRIPE_EXCLUDE_X segments", stripes)
+            return stripes
+        return [[xLo, yLo, xHi, yHi]]
+
 
     def addIoPinToNet(self, netIdx, offsetX, offsetY, routableShapes, routablePdkLayers, otherShapes, otherPdkLayers, addtocurrentlayout=False,
             isPowerStripe=False, useDatatype=False, routableDatatype=[], otherDataType=[]):
@@ -438,6 +610,18 @@ class Placer(object):
         while offsetLo > boundaryWithGuardRing.yLo - self.gridStep * 5 - height:
             offsetLo -= self.gridStep
         vssOffset[1] = ( float(offsetLo)) / 1000.0 
+        try:
+            extra_grid = int(os.environ.get("MAGICAL_POWER_STRIPE_EXTRA_GRID", "0") or "0")
+            extra_dbu = int(os.environ.get("MAGICAL_POWER_STRIPE_EXTRA_DBU", "0") or "0")
+        except ValueError:
+            print("WARNING: invalid MAGICAL_POWER_STRIPE_EXTRA_* value; ignoring power stripe offset")
+            extra_grid = 0
+            extra_dbu = 0
+        extra_offset = extra_grid * self.gridStep + extra_dbu
+        if extra_offset != 0:
+            print("MAGICAL_POWER_STRIPE_EXTRA_OFFSET", extra_offset)
+            vddOffset[1] += float(extra_offset) / 1000.0
+            vssOffset[1] -= float(extra_offset) / 1000.0
         # update width to ensure symmetry
         halfWidth = float(self.symAxis) / 1000.0 - vddOffset[0]
         fWidth =  halfWidth *2 
@@ -447,11 +631,40 @@ class Placer(object):
         print("generated vdd")
         vssStripe = basic.basic.power_strip(fWidth, fHeight, vssOffset, lay=[self.params.powerLayer])
         print("generated vss")
+        split_vdd = os.environ.get("MAGICAL_SPLIT_POWER_STRIPE_AROUND_PASSIVES", "0") == "1"
+        try:
+            keepout_margin = int(os.environ.get("MAGICAL_POWER_STRIPE_PASSIVE_KEEP_OUT_DBU", "400") or "400")
+        except ValueError:
+            print("WARNING: invalid MAGICAL_POWER_STRIPE_PASSIVE_KEEP_OUT_DBU value; using 400")
+            keepout_margin = 400
+        vdd_segments = []
+        stripe_xLo = int(round(vddOffset[0] * 1000))
+        stripe_xHi = int(round((vddOffset[0] + fWidth) * 1000))
+        local_vdd_stripes = self.localVddStripeBelowPassives(stripe_xLo, stripe_xHi)
+        if split_vdd:
+            xLo = stripe_xLo
+            yLo = int(round(vddOffset[1] * 1000))
+            xHi = stripe_xHi
+            yHi = int(round((vddOffset[1] + fHeight) * 1000))
+            intervals = self.passiveKeepoutIntervals(keepout_margin)
+            vdd_segments = self.splitStripeAroundIntervals(xLo, xHi, intervals)
+            if len(vdd_segments) == 0:
+                print("WARNING: passive keepouts removed all VDD power stripe segments; using full stripe")
+                split_vdd = False
+            else:
+                print("MAGICAL_SPLIT_POWER_STRIPE_AROUND_PASSIVES segments", vdd_segments)
         for netIdx in range(self.ckt.numNets()):
             net = self.ckt.net(netIdx)
             if net.isVdd():
                 print("\n\n\n\n add vdd ")
-                self.addPycellIoPinToNet(netIdx, 0, 0, vddStripe, isPowerStripe=True)
+                if split_vdd:
+                    for left, right in vdd_segments:
+                        self.addPowerStripeShapeToNet(netIdx, [left, yLo, right, yHi])
+                else:
+                    self.addPycellIoPinToNet(netIdx, 0, 0, vddStripe, isPowerStripe=True)
+                if local_vdd_stripes is not None:
+                    for local_vdd_stripe in local_vdd_stripes:
+                        self.addPowerStripeShapeToNet(netIdx, local_vdd_stripe)
             elif net.isVss():
                 print("\n\n\n\n add vss ")
                 self.addPycellIoPinToNet(netIdx, 0, 0, vssStripe, isPowerStripe=True)

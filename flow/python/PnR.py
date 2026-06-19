@@ -9,6 +9,8 @@ import IdeaPlaceExPy
 import anaroutePy
 import sys
 import os
+import json
+import struct
 import Router
 import Placer
 import gdspy
@@ -97,12 +99,18 @@ class PnR(object):
         router = anaroutePy.AnaroutePy()
         router.setCircuitName(ckt.name)
         placeFile = dirname + ckt.name + '.place.gds'
+        routerPlaceFile = placeFile
+        passiveObstructions = self.routerPassiveObstructions(cktIdx)
+        if passiveObstructions:
+            routerPlaceFile = dirname + ckt.name + '.place.router_obstructed.gds'
+            self.writeRouterObstructionGds(placeFile, routerPlaceFile, ckt.name, passiveObstructions)
+            print("PnR: router passive obstruction GDS", routerPlaceFile)
         if self.debug:
             iopinfile = dirname + ckt.name + ".iopin"
             self.writeiopifile(cktIdx, iopinfile)
         router.parseLef(self.params.lef)
         router.parseTechfile(self.params.techfile)
-        router.parseGds(placeFile)
+        router.parseGds(routerPlaceFile)
         self.routeParsePin(router, cktIdx, dirname+ckt.name+'.gr')  
         router.setGridStep(2*self.gridStep)
         router.setSymAxisX(2*self.symAxis)
@@ -129,6 +137,182 @@ class PnR(object):
             ckt.setTechDB(self.tDB)
             ckt.parseGDS(dirname+ckt.name+'.route.gds')
             self.upscaleBBox(self.gridStep, ckt, self.origin)
+
+    def routerPassiveObstructions(self, cktIdx):
+        layerText = os.environ.get("MAGICAL_ROUTER_PASSIVE_OBSTRUCTION_LAYERS", "").strip()
+        localLayerText = os.environ.get("MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_LAYERS", layerText).strip()
+        layers = self.parseRouterObstructionLayers(layerText)
+        localLayers = self.parseRouterObstructionLayers(localLayerText)
+        if not layers and not localLayers:
+            return []
+        if localLayerText and not localLayers:
+            print("WARNING: no valid MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_LAYERS; using passive obstruction layers")
+            localLayers = layers
+        if not localLayers:
+            localLayers = layers
+        if not layers:
+            layers = localLayers
+        try:
+            margin = int(os.environ.get("MAGICAL_ROUTER_PASSIVE_OBSTRUCTION_MARGIN_DBU", "400") or "400")
+        except ValueError:
+            print("WARNING: invalid MAGICAL_ROUTER_PASSIVE_OBSTRUCTION_MARGIN_DBU value; using 400")
+            margin = 400
+        try:
+            localMargin = int(os.environ.get("MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_MARGIN_DBU", "0") or "0")
+        except ValueError:
+            print("WARNING: invalid MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_MARGIN_DBU value; using 0")
+            localMargin = 0
+        ckt = self.dDB.subCkt(cktIdx)
+        obstructions = []
+        passiveTypes = [magicalFlow.ImplTypePCELL_Res, magicalFlow.ImplTypePCELL_Cap]
+        for nodeIdx in range(ckt.numNodes()):
+            cktNode = ckt.node(nodeIdx)
+            subCkt = self.dDB.subCkt(cktNode.graphIdx)
+            if subCkt.implType not in passiveTypes:
+                continue
+            boundary = subCkt.layout().boundary()
+            offset = cktNode.offset()
+            box = [
+                int(boundary.xLo + offset.x - margin),
+                int(boundary.yLo + offset.y - margin),
+                int(boundary.xHi + offset.x + margin),
+                int(boundary.yHi + offset.y + margin),
+            ]
+            for layer in layers:
+                obstructions.append(
+                    {
+                        "instance": cktNode.name,
+                        "layer": layer,
+                        "datatype": 0,
+                        "bbox": box,
+                    }
+                )
+        for idx, box in enumerate(self.parseRouterObstructionBoxes("MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_BOX_DBU")):
+            expanded = [
+                int(box[0] - localMargin),
+                int(box[1] - localMargin),
+                int(box[2] + localMargin),
+                int(box[3] + localMargin),
+            ]
+            for layer in localLayers:
+                obstructions.append(
+                    {
+                        "instance": "MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_%d" % idx,
+                        "layer": layer,
+                        "datatype": 0,
+                        "bbox": expanded,
+                    }
+                )
+        if obstructions:
+            print("MAGICAL_ROUTER_PASSIVE_OBSTRUCTION_COUNT", len(obstructions))
+        return obstructions
+
+    def parseRouterObstructionLayers(self, layerText):
+        layers = []
+        for item in layerText.replace(",", " ").split():
+            try:
+                layers.append(int(item))
+            except ValueError:
+                print("WARNING: invalid MAGICAL_ROUTER_PASSIVE_OBSTRUCTION_LAYERS item", item)
+        return layers
+
+    def parseRouterObstructionBoxes(self, envName):
+        value = os.environ.get(envName, "").strip()
+        if not value:
+            return []
+        boxes = []
+        for token in value.replace(";", " ").split():
+            parts = [part.strip() for part in token.replace(":", ",").split(",") if part.strip()]
+            if len(parts) != 4:
+                print("WARNING: invalid", envName, "box", token)
+                continue
+            try:
+                x1, y1, x2, y2 = [int(part) for part in parts]
+            except ValueError:
+                print("WARNING: invalid", envName, "box", token)
+                continue
+            xLo, xHi = sorted((x1, x2))
+            yLo, yHi = sorted((y1, y2))
+            boxes.append([xLo, yLo, xHi, yHi])
+        return boxes
+
+    @staticmethod
+    def gdsRecord(recordType, dataType, payload=b""):
+        return struct.pack(">HBB", len(payload) + 4, recordType, dataType) + payload
+
+    @staticmethod
+    def gdsInt2Record(recordType, value):
+        return PnR.gdsRecord(recordType, 0x02, struct.pack(">h", int(value)))
+
+    @staticmethod
+    def gdsBoundaryRecord(layer, datatype, bbox):
+        xLo, yLo, xHi, yHi = [int(value) for value in bbox]
+        points = [
+            (xLo, yLo),
+            (xLo, yHi),
+            (xHi, yHi),
+            (xHi, yLo),
+            (xLo, yLo),
+        ]
+        xyValues = []
+        for x, y in points:
+            xyValues.extend([x, y])
+        return b"".join(
+            [
+                PnR.gdsRecord(0x08, 0x00),
+                PnR.gdsInt2Record(0x0D, layer),
+                PnR.gdsInt2Record(0x0E, datatype),
+                PnR.gdsRecord(0x10, 0x03, struct.pack(">%di" % len(xyValues), *xyValues)),
+                PnR.gdsRecord(0x11, 0x00),
+            ]
+        )
+
+    @staticmethod
+    def decodeGdsString(payload):
+        return payload.rstrip(b"\0").decode("ascii", errors="replace")
+
+    def writeRouterObstructionGds(self, inputGds, outputGds, topCell, obstructions):
+        data = open(inputGds, "rb").read()
+        output = bytearray()
+        offset = 0
+        inStruct = False
+        currentStruct = None
+        inserted = False
+        obstructionBytes = b"".join(
+            self.gdsBoundaryRecord(item["layer"], item["datatype"], item["bbox"])
+            for item in obstructions
+        )
+        while offset + 4 <= len(data):
+            recordLen, recordType, dataType = struct.unpack(">HBB", data[offset : offset + 4])
+            if recordLen < 4 or offset + recordLen > len(data):
+                raise RuntimeError("invalid GDS record while adding router obstructions")
+            record = data[offset : offset + recordLen]
+            payload = data[offset + 4 : offset + recordLen]
+            if recordType == 0x05:
+                inStruct = True
+                currentStruct = None
+            elif inStruct and recordType == 0x06:
+                currentStruct = self.decodeGdsString(payload)
+            elif inStruct and recordType == 0x07:
+                if currentStruct == topCell:
+                    output.extend(obstructionBytes)
+                    inserted = True
+                inStruct = False
+                currentStruct = None
+            output.extend(record)
+            offset += recordLen
+        if not inserted:
+            raise RuntimeError("top cell not found while adding router obstructions: " + topCell)
+        open(outputGds, "wb").write(bytes(output))
+        manifest = {
+            "schema_version": "router_passive_obstruction.v1",
+            "input_gds": inputGds,
+            "output_gds": outputGds,
+            "top_cell": topCell,
+            "obstructions": obstructions,
+        }
+        with open(outputGds + ".json", "w") as fp:
+            json.dump(manifest, fp, indent=2, sort_keys=True)
 
     def upscaleBBox(self, gridStep, ckt, origin):
         """
@@ -305,7 +489,7 @@ class PnR(object):
                     router.addPin2Net(pinName[netIdx][pinId], routerNetIdx)
             if isPsub:
                 print("addPin2Net pubs ver", pinName[netIdx]['sub'], routerNetIdx)
-                router.addPin2Net(pinName[netIdx]['sub'], netIdx)                
+                router.addPin2Net(pinName[netIdx]['sub'], routerNetIdx)
 
     def updateOriginPin(self, shape):
         xCenter = (shape[0] + shape[2]) / 2

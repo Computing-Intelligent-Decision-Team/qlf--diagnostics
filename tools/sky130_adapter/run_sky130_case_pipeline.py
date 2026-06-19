@@ -16,6 +16,8 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_DIR = Path(__file__).resolve().parent
 SHELL_PIPELINE = SCRIPT_DIR / "run_sky130_case_pipeline.sh"
+TRIAL_PDK_DIR = REPO_ROOT / "generated/sky130PDK_trial"
+TRIAL_PDK_GENERATOR = SCRIPT_DIR / "generate_magical_sky130_pdk.py"
 DEFAULT_SKY130A = Path(
     "/home/to/.ciel/ciel/sky130/versions/"
     "7b70722e33c03fcb5dabcf4d479fb0822d9251c9/sky130A"
@@ -72,14 +74,39 @@ def command_path(names: tuple[str, ...]) -> str | None:
     return None
 
 
+def ic_netgen_lvs_path() -> str | None:
+    netgen_lvs = shutil.which("netgen-lvs")
+    if netgen_lvs:
+        return netgen_lvs
+    netgen = shutil.which("netgen")
+    if not netgen:
+        return None
+    try:
+        result = subprocess.run(
+            [netgen, "-batch", "quit"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=10,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if "Netgen 1." in (result.stdout or ""):
+        return netgen
+    return None
+
+
 def preflight(env: dict[str, str]) -> list[str]:
     errors: list[str] = []
     if not command_path(("docker",)):
         errors.append("Docker not found: install docker or add it to PATH.")
     if not command_path(("magic",)):
         errors.append("Magic not found: install magic or add it to PATH.")
-    if not command_path(("netgen", "netgen-lvs")):
-        errors.append("netgen-lvs/netgen not found: install netgen-lvs or netgen.")
+    if not ic_netgen_lvs_path():
+        errors.append("IC netgen-lvs not found: install netgen-lvs or put an IC Netgen 1.x command on PATH.")
 
     sky130a = Path(env.get("SKY130A", str(DEFAULT_SKY130A))).expanduser()
     if not sky130a.is_dir():
@@ -109,8 +136,27 @@ def rel_from_case(case_dir: Path, path: Path) -> str:
     return os.path.relpath(path.resolve(), case_dir.resolve())
 
 
+def ensure_trial_pdk() -> Path:
+    required = (
+        TRIAL_PDK_DIR / "sky130.techfile",
+        TRIAL_PDK_DIR / "sky130.techfile.simple",
+        TRIAL_PDK_DIR / "sky130.lef",
+    )
+    if all(path.is_file() for path in required):
+        return TRIAL_PDK_DIR
+
+    status = subprocess.run(
+        [sys.executable, str(TRIAL_PDK_GENERATOR)],
+        cwd=REPO_ROOT,
+        check=False,
+    ).returncode
+    if status != 0 or not all(path.is_file() for path in required):
+        raise RuntimeError(f"failed to generate trial Sky130 PDK in {TRIAL_PDK_DIR}")
+    return TRIAL_PDK_DIR
+
+
 def write_config(config: Path, case_dir: Path, netlist_name: str, vdd: str, vss: str) -> None:
-    tech_dir = REPO_ROOT / "examples/sky130PDK"
+    tech_dir = ensure_trial_pdk()
     data = {
         "spectre_netlist": netlist_name,
         "resultDir": "./",
@@ -195,7 +241,11 @@ def main() -> int:
 
     config = repo_path(args.config) if args.config else case_dir / f"{case_name}.json"
     if not args.config:
-        write_config(config, case_dir, magical_netlist.name, args.vdd, args.vss)
+        try:
+            write_config(config, case_dir, magical_netlist.name, args.vdd, args.vss)
+        except RuntimeError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
 
     if args.convert_xschem == "no":
         ports = read_subckt_ports(magical_netlist, args.top_cell)

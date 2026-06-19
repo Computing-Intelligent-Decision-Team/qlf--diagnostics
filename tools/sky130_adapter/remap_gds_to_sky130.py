@@ -45,6 +45,15 @@ ENDEL_RECORD = 0x11
 
 
 @dataclass(frozen=True)
+class TargetSpec:
+    sky130_layer_name: str
+    sky130_gds_layer: int | None
+    sky130_datatype: int | None
+    status: str
+    risk: str
+
+
+@dataclass(frozen=True)
 class RemapTarget:
     magical_layer: str
     internal_layer: int
@@ -53,6 +62,7 @@ class RemapTarget:
     sky130_datatype: int | None
     status: str
     risk: str
+    datatype_overrides: dict[int, TargetSpec]
 
 
 @dataclass(frozen=True)
@@ -108,37 +118,122 @@ def load_export_map(path: Path) -> dict[int, RemapTarget]:
             sky130_datatype=int_or_none(entry.get("sky130_datatype")),
             status=str(entry.get("status", "tbd")),
             risk=str(entry.get("risk", "TBD")),
+            datatype_overrides=parse_datatype_overrides(entry),
         )
     return mapping
 
 
-def target_for(layer: int, mapping: dict[int, RemapTarget]) -> RemapTarget | None:
-    target = mapping.get(layer)
-    if target and target.status == "confirmed" and target.sky130_gds_layer is not None and target.sky130_datatype is not None:
-        return target
-    return None
+def parse_datatype_overrides(entry: dict[str, Any]) -> dict[int, TargetSpec]:
+    raw = entry.get("datatype_overrides", {})
+    overrides: dict[int, TargetSpec] = {}
+    if isinstance(raw, dict):
+        iterable = raw.items()
+    elif isinstance(raw, list):
+        iterable = ((item.get("input_datatype"), item) for item in raw if isinstance(item, dict))
+    else:
+        iterable = ()
+    for raw_datatype, spec_data in iterable:
+        datatype = int_or_none(raw_datatype)
+        if datatype is None or not isinstance(spec_data, dict):
+            continue
+        overrides[datatype] = TargetSpec(
+            sky130_layer_name=str(spec_data.get("sky130_layer_name", spec_data.get("name", "TBD"))),
+            sky130_gds_layer=int_or_none(spec_data.get("sky130_gds_layer")),
+            sky130_datatype=int_or_none(spec_data.get("sky130_datatype")),
+            status=str(spec_data.get("status", entry.get("status", "tbd"))),
+            risk=str(spec_data.get("risk", entry.get("risk", "TBD"))),
+        )
+    return overrides
 
 
-def describe_mapping(layer: int, mapping: dict[int, RemapTarget]) -> tuple[str, str]:
-    target = mapping.get(layer)
-    if target is None:
-        return "preserved_unmapped", "not listed in export map"
-    if target.status != "confirmed" or target.sky130_gds_layer is None or target.sky130_datatype is None:
-        return "preserved_tbd", f"{target.magical_layer} -> TBD"
-    return (
-        "remapped",
-        f"{target.magical_layer} -> {target.sky130_layer_name} "
-        f"{target.sky130_gds_layer}/{target.sky130_datatype}",
+def base_spec(target: RemapTarget) -> TargetSpec:
+    return TargetSpec(
+        sky130_layer_name=target.sky130_layer_name,
+        sky130_gds_layer=target.sky130_gds_layer,
+        sky130_datatype=target.sky130_datatype,
+        status=target.status,
+        risk=target.risk,
     )
 
 
-def remap_gds(data: bytes, mapping: dict[int, RemapTarget]) -> tuple[bytes, list[LayerAction]]:
+def usable_target(spec: TargetSpec, allow_experimental: bool) -> bool:
+    if spec.status == "confirmed":
+        return spec.sky130_gds_layer is not None and spec.sky130_datatype is not None
+    if allow_experimental and spec.status == "experimental":
+        return spec.sky130_gds_layer is not None and spec.sky130_datatype is not None
+    return False
+
+
+def spec_for_datatype(target: RemapTarget, input_datatype: int) -> TargetSpec:
+    return target.datatype_overrides.get(input_datatype, base_spec(target))
+
+
+def target_for(
+    layer: int,
+    input_datatype: int,
+    mapping: dict[int, RemapTarget],
+    *,
+    allow_experimental: bool = False,
+    exclude_input_pairs: set[tuple[int, int]] | None = None,
+) -> tuple[RemapTarget, TargetSpec] | None:
+    if exclude_input_pairs and (layer, input_datatype) in exclude_input_pairs:
+        return None
+    target = mapping.get(layer)
+    if target is None:
+        return None
+    spec = spec_for_datatype(target, input_datatype)
+    if usable_target(spec, allow_experimental):
+        return target, spec
+    return None
+
+
+def describe_mapping(
+    layer: int,
+    input_datatype: int,
+    mapping: dict[int, RemapTarget],
+    *,
+    allow_experimental: bool = False,
+    exclude_input_pairs: set[tuple[int, int]] | None = None,
+) -> tuple[str, str]:
+    if exclude_input_pairs and (layer, input_datatype) in exclude_input_pairs:
+        target = mapping.get(layer)
+        if target is None:
+            return "preserved_excluded", "excluded by input-pair override"
+        suffix = f"[{input_datatype}]" if input_datatype in target.datatype_overrides else ""
+        return "preserved_excluded", f"{target.magical_layer}{suffix} excluded by input-pair override"
+    target = mapping.get(layer)
+    if target is None:
+        return "preserved_unmapped", "not listed in export map"
+    spec = spec_for_datatype(target, input_datatype)
+    datatype_suffix = f"[{input_datatype}]" if input_datatype in target.datatype_overrides else ""
+    if not usable_target(spec, allow_experimental):
+        if spec.sky130_gds_layer is not None and spec.sky130_datatype is not None:
+            return (
+                "preserved_tbd",
+                f"{target.magical_layer}{datatype_suffix} -> {spec.sky130_layer_name} "
+                f"{spec.sky130_gds_layer}/{spec.sky130_datatype} ({spec.status})",
+            )
+        return "preserved_tbd", f"{target.magical_layer}{datatype_suffix} -> TBD"
+    return (
+        "remapped",
+        f"{target.magical_layer}{datatype_suffix} -> {spec.sky130_layer_name} "
+        f"{spec.sky130_gds_layer}/{spec.sky130_datatype}",
+    )
+
+
+def remap_gds(
+    data: bytes,
+    mapping: dict[int, RemapTarget],
+    *,
+    allow_experimental: bool = False,
+    exclude_input_pairs: set[tuple[int, int]] | None = None,
+) -> tuple[bytes, list[LayerAction]]:
     output = bytearray(data)
     actions: list[LayerAction] = []
     offset = 0
     current_element = ""
     current_layer: int | None = None
-    current_output_layer: int | None = None
+    current_layer_payload_start: int | None = None
 
     while offset < len(data):
         if offset + 4 > len(data):
@@ -153,23 +248,42 @@ def remap_gds(data: bytes, mapping: dict[int, RemapTarget]) -> tuple[bytes, list
         if record_type in ELEMENT_RECORDS:
             current_element = ELEMENT_RECORDS[record_type]
             current_layer = None
-            current_output_layer = None
+            current_layer_payload_start = None
         elif record_type == LAYER_RECORD:
             current_layer = read_int2(payload)
-            target = target_for(current_layer, mapping)
-            current_output_layer = target.sky130_gds_layer if target else current_layer
-            output[payload_start : payload_start + 2] = write_int2(current_output_layer)
-        elif record_type in DATATYPE_RECORDS and current_layer is not None and current_output_layer is not None:
+            current_layer_payload_start = payload_start
+        elif record_type in DATATYPE_RECORDS and current_layer is not None and current_layer_payload_start is not None:
             input_datatype = read_int2(payload)
-            target = target_for(current_layer, mapping)
-            output_datatype = target.sky130_datatype if target else input_datatype
+            resolved = target_for(
+                current_layer,
+                input_datatype,
+                mapping,
+                allow_experimental=allow_experimental,
+                exclude_input_pairs=exclude_input_pairs,
+            )
+            if resolved is None:
+                output_layer = current_layer
+                output_datatype = input_datatype
+            else:
+                _target, spec = resolved
+                assert spec.sky130_gds_layer is not None
+                assert spec.sky130_datatype is not None
+                output_layer = spec.sky130_gds_layer
+                output_datatype = spec.sky130_datatype
+            output[current_layer_payload_start : current_layer_payload_start + 2] = write_int2(output_layer)
             output[payload_start : payload_start + 2] = write_int2(output_datatype)
-            action, mapping_text = describe_mapping(current_layer, mapping)
+            action, mapping_text = describe_mapping(
+                current_layer,
+                input_datatype,
+                mapping,
+                allow_experimental=allow_experimental,
+                exclude_input_pairs=exclude_input_pairs,
+            )
             actions.append(
                 LayerAction(
                     input_layer=current_layer,
                     input_datatype=input_datatype,
-                    output_layer=current_output_layer,
+                    output_layer=output_layer,
                     output_datatype=output_datatype,
                     element_type=current_element or "UNKNOWN",
                     datatype_record=DATATYPE_RECORDS[record_type],
@@ -180,7 +294,7 @@ def remap_gds(data: bytes, mapping: dict[int, RemapTarget]) -> tuple[bytes, list
         elif record_type == ENDEL_RECORD:
             current_element = ""
             current_layer = None
-            current_output_layer = None
+            current_layer_payload_start = None
 
         offset += record_len
 
@@ -211,11 +325,15 @@ def generate_report(
     output_gds: Path,
     export_map: Path,
     actions: list[LayerAction],
+    *,
+    allow_experimental: bool = False,
+    exclude_input_pairs: set[tuple[int, int]] | None = None,
 ) -> str:
     unique = unique_actions(actions)
     remapped = [item for item in unique if item.action == "remapped"]
     preserved_tbd = [item for item in unique if item.action == "preserved_tbd"]
     preserved_unmapped = [item for item in unique if item.action == "preserved_unmapped"]
+    preserved_excluded = [item for item in unique if item.action == "preserved_excluded"]
 
     lines = [
         "# GDS Remap Report",
@@ -229,8 +347,11 @@ def generate_report(
         f"- Successfully remapped pairs: {len(remapped)}",
         f"- Preserved TBD pairs: {len(preserved_tbd)}",
         f"- Preserved unmapped pairs: {len(preserved_unmapped)}",
+        f"- Preserved excluded pairs: {len(preserved_excluded)}",
         "",
         "The original MAGICAL GDS is not modified. This post-processing step rewrites confirmed MAGICAL internal layers to their proposed Sky130 GDS layer/datatype targets. TBD and unmapped layers are left unchanged.",
+        f"Experimental datatype-specific mappings enabled: {'yes' if allow_experimental else 'no'}.",
+        f"Excluded input layer/datatype pairs: {sorted(exclude_input_pairs or [])}",
         "",
         "## Layer Actions",
         "",
@@ -250,8 +371,10 @@ def generate_report(
             "## Notes",
             "",
             "- `remapped` means both GDS layer and datatype were replaced from `sky130_gds_export_map.yaml`.",
+            "- Datatype-specific overrides allow one MAGICAL layer number to map different input datatypes to different Sky130 targets.",
             "- `preserved_tbd` means the MAGICAL layer exists in the export map but its Sky130 target is not confirmed.",
             "- `preserved_unmapped` means the input GDS layer is not listed in the export map.",
+            "- `preserved_excluded` means the input layer/datatype matched an explicit exclusion override.",
             "- This remap is a layer/datatype translation only; it does not make the layout Sky130 DRC-clean.",
             "",
         ]
@@ -265,7 +388,33 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--output-gds", type=Path, default=DEFAULT_OUTPUT_GDS, help="Remapped output GDS.")
     parser.add_argument("--export-map", type=Path, default=DEFAULT_EXPORT_MAP, help="Sky130 export map YAML.")
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT, help="Markdown report output.")
+    parser.add_argument(
+        "--allow-experimental",
+        action="store_true",
+        help="Enable datatype-specific export-map entries marked status=experimental.",
+    )
+    parser.add_argument(
+        "--exclude-input-pair",
+        action="append",
+        default=[],
+        metavar="LAYER:DATATYPE",
+        help="Preserve this input layer/datatype pair even if the export map would remap it.",
+    )
     return parser.parse_args(argv)
+
+
+def parse_input_pair(text: str) -> tuple[int, int]:
+    if ":" in text:
+        left, right = text.split(":", 1)
+    elif "/" in text:
+        left, right = text.split("/", 1)
+    else:
+        raise ValueError(f"input pair must be LAYER:DATATYPE, got {text!r}")
+    return int(left.strip()), int(right.strip())
+
+
+def parse_input_pairs(values: list[str]) -> set[tuple[int, int]]:
+    return {parse_input_pair(value) for value in values}
 
 
 def main(argv: list[str]) -> int:
@@ -282,13 +431,26 @@ def main(argv: list[str]) -> int:
             raise FileNotFoundError(export_map)
 
         mapping = load_export_map(export_map)
-        remapped_data, actions = remap_gds(input_gds.read_bytes(), mapping)
+        exclude_input_pairs = parse_input_pairs(list(args.exclude_input_pair or []))
+        remapped_data, actions = remap_gds(
+            input_gds.read_bytes(),
+            mapping,
+            allow_experimental=bool(args.allow_experimental),
+            exclude_input_pairs=exclude_input_pairs,
+        )
 
         output_gds.parent.mkdir(parents=True, exist_ok=True)
         output_gds.write_bytes(remapped_data)
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(
-            generate_report(input_gds, output_gds, export_map, actions),
+            generate_report(
+                input_gds,
+                output_gds,
+                export_map,
+                actions,
+                allow_experimental=bool(args.allow_experimental),
+                exclude_input_pairs=exclude_input_pairs,
+            ),
             encoding="utf-8",
         )
 

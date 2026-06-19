@@ -24,6 +24,7 @@ NORMALIZE_REPORT="$OUT_DIR/normalize_lvs_report.md"
 EXTRACTED_EXT="$OUT_DIR/inverter_core_flat.ext"
 NETGEN_LOG="$OUT_DIR/netgen_lvs.log"
 NETGEN_REPORT="$OUT_DIR/netgen_lvs_report.out"
+NETGEN_TCL="$OUT_DIR/netgen_lvs.tcl"
 NORMALIZE_SCRIPT="$REPO_ROOT/tools/sky130_adapter/normalize_lvs_netlists_inverter.py"
 
 mkdir -p "$OUT_DIR"
@@ -36,10 +37,14 @@ if ! command -v magic >/dev/null 2>&1; then
 fi
 
 NETGEN_CMD=""
-if command -v netgen >/dev/null 2>&1; then
-    NETGEN_CMD="$(command -v netgen)"
-elif command -v netgen-lvs >/dev/null 2>&1; then
+if command -v netgen-lvs >/dev/null 2>&1; then
     NETGEN_CMD="$(command -v netgen-lvs)"
+elif command -v netgen >/dev/null 2>&1; then
+    netgen_candidate="$(command -v netgen)"
+    netgen_version_out="$("$netgen_candidate" -batch quit 2>&1 || true)"
+    if printf '%s\n' "$netgen_version_out" | grep -q 'Netgen 1\.'; then
+        NETGEN_CMD="$netgen_candidate"
+    fi
 fi
 
 if [[ ! -f "$INPUT_GDS" ]]; then
@@ -235,24 +240,23 @@ python3 "$NORMALIZE_SCRIPT" \
 
 if [[ -z "$NETGEN_CMD" ]]; then
     {
-        echo "error: neither netgen nor netgen-lvs command was found in PATH"
+        echo "error: IC netgen-lvs command was not found in PATH"
         echo "Magic extraction succeeded and produced: $EXTRACTED_LVS"
-        echo "Install netgen or netgen-lvs, or add one of them to PATH, then rerun this script."
+        echo "Install netgen-lvs, or add an IC Netgen 1.x command to PATH, then rerun this script."
         echo "Expected LVS command:"
-        echo "netgen -batch lvs \"$SOURCE_LVS inverter_core\" \"$NORMALIZED_EXTRACTED_LVS inverter_core_flat\" \"$NETGEN_SETUP\" $NETGEN_REPORT"
+        echo "netgen-lvs -batch source \"$NETGEN_TCL\""
     } > "$NETGEN_LOG"
-    echo "error: neither netgen nor netgen-lvs command was found in PATH" >&2
+    echo "error: IC netgen-lvs command was not found in PATH" >&2
     echo "Netgen LVS log: $NETGEN_LOG" >&2
     exit 127
 fi
 
 set +e
-"$NETGEN_CMD" -batch lvs \
-    "$SOURCE_LVS inverter_core" \
-    "$NORMALIZED_EXTRACTED_LVS inverter_core_flat" \
-    "$NETGEN_SETUP" \
-    "$NETGEN_REPORT" \
-    > "$NETGEN_LOG" 2>&1
+cat > "$NETGEN_TCL" <<EOF
+lvs {$SOURCE_LVS inverter_core} {$NORMALIZED_EXTRACTED_LVS inverter_core_flat} {$NETGEN_SETUP} {$NETGEN_REPORT}
+quit
+EOF
+"$NETGEN_CMD" -batch source "$NETGEN_TCL" > "$NETGEN_LOG" 2>&1
 netgen_status=$?
 set -e
 

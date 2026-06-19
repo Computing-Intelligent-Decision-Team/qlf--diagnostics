@@ -1,0 +1,6 @@
+*.sh text eol=lf
+*.py text eol=lf
+*.techfile text eol=lf
+*.techfile.simple text eol=lf
+*.lef text eol=lf
+generated/sky130PDK_trial/sky130_gds_export_map.yaml text eol=lf

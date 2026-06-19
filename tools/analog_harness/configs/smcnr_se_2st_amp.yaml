@@ -1,0 +1,153 @@
+design_id: smcnr_se_2st_amp
+top_cell: SMCNR_SE_2st_AMP
+
+paths:
+  analog_gym_root: ../Analoggym_opt_moo_Mahalanobis_paper
+  source_netlist: examples/smcnr_se_2st_amp_sky130_try/SMCNR_SE_2st_AMP_layout_physical_hspice.sp
+  source_config: examples/smcnr_se_2st_amp_sky130_try/smcnr_se_2st_amp.json
+  runs_dir: generated/analog_harness/smcnr_se_2st_amp
+
+ports:
+  vdd: vdda
+  vss: gnda
+  inputs: [vin, vip]
+  bias: ibias
+  output: vout
+
+verification:
+  scope: mos_only_projection
+  note: "MOS-only projection LVS/PEX is evidence-limited; passive-aware closure is not claimed."
+  passive_aware:
+    enabled: true
+    mode: experimental_full_extraction_probe
+    require_explicit_passive_match: true
+    run_full_extraction_probe: true
+    experimental_passive_remap: true
+    reuse_existing_pinned_gds_probe: true
+    run_passive_identity_label_probe: true
+    run_resistor_remap_variant_probe: true
+    enable_mos_route_bridge_trial: true
+    mos_route_bridge_max_gap_dbu: 200
+    magical_env:
+      MAGICAL_PASSIVE_PLACEMENT_OFFSET_X_DBU: 40000
+      MAGICAL_ADD_LOCAL_VDD_STRIPE_BELOW_PASSIVES: 1
+      MAGICAL_LOCAL_VDD_STRIPE_HEIGHT_DBU: 200
+      MAGICAL_LOCAL_VDD_STRIPE_Y_DBU: 13200
+      MAGICAL_LOCAL_VDD_STRIPE_ACTIVE_KEEP_OUT_DBU: 0
+      MAGICAL_LOCAL_VDD_STRIPE_EXCLUDE_X_DBU: "3000:3450,6400:8150,9950:11250,12100:12300,12900:13650,15150:16450,18350:19650,20350:21650"
+      MAGICAL_ROUTER_PASSIVE_OBSTRUCTION_LAYERS: "35,36"
+      MAGICAL_ROUTER_PASSIVE_OBSTRUCTION_MARGIN_DBU: 400
+      MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_LAYERS: "35,36"
+      MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_BOX_DBU: "1900,13200,32900,13400"
+      MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_MARGIN_DBU: 100
+
+optimizer:
+  backend: analoggym_grpo
+  analoggym_template_circuit: amp_dfcfc2
+  random_seed: 152
+  cold_start_sigma: 0.35
+  model_safe_repair_values:
+    diff_pair_w: 7.0
+    diff_pair_l: 8.0
+    load_nmos_w: 1.0
+    load_nmos_l: 8.0
+    bias_pmos_w: 0.42
+    bias_pmos_l: 8.0
+    second_stage_pmos_w: 0.42
+    second_stage_pmos_l: 8.0
+    second_stage_nmos_w: 1.0
+    second_stage_nmos_l: 8.0
+
+frontend_results:
+  enabled: true
+  max_candidates: 1
+  skip_repair_requested: true
+  sources:
+    - generated/analog_harness/smcnr_se_2st_amp
+
+policy:
+  sizing_repair_reward_threshold: -0.05
+
+knowledge_transfer:
+  enabled: true
+  archive_dir: generated/analog_harness/smcnr_se_2st_amp/knowledge_transfer
+  min_reward: -0.25
+  max_records: 32
+  closure_levels:
+    - L4_layout_verified_mos_only
+    - L5_post_layout_nominal
+    - L6_post_layout_pvt
+  preserve_model_artifacts: true
+  model_artifact_globs:
+    - "{analog_gym_root}/training_saves/**/*.pt"
+    - "{analog_gym_root}/training_saves/**/*.pth"
+    - "{analog_gym_root}/training_saves/**/*.pkl"
+
+layout:
+  pipeline: tools/sky130_adapter/run_sky130_case_pipeline.py
+  wsl_distro: Ubuntu-24.04
+  sky130a: /root/.ciel/ciel/sky130/versions/7b70722e33c03fcb5dabcf4d479fb0822d9251c9/sky130A
+  required_magic_version: 8.3.411
+
+simulation:
+  source: analoggym_amp_dfcfc2_template
+  ngspice_binary: ngspice
+  run_ngspice: true
+  allow_proxy_fallback: true
+  vdd: 1.8
+  temp_c: 27.0
+  ac_stop_hz: 1000000000000.0
+  tran_step_s: 0.000000001
+  tran_stop_s: 0.0000003
+  step_time_s: 0.00000001
+  settling_tolerance_fraction: 0.01
+  sky130_model_lib: "{analog_gym_root}/simulation_files/sky130_pdk/libs.tech/ngspice/sky130.lib.spice"
+  sky130_model_corner: tt
+  snap_sky130_mos_to_model_bins: true
+  project_sky130_primitives_to_direct_models: true
+  project_magical_macros_to_sky130: true
+  macro_projection:
+    rppolywo_sheet_ohms: 48.0
+    cfmom_unit_cap_f: 0.000000000000001
+  pvt:
+    enabled: true
+    require_all_corners: true
+    corners:
+      - {name: tt_1v8_27C, model_corner: tt, vdd: 1.8, temp_c: 27.0}
+      - {name: ss_1v62_125C, model_corner: ss, vdd: 1.62, temp_c: 125.0}
+      - {name: ff_1v98_-25C, model_corner: ff, vdd: 1.98, temp_c: -25.0}
+
+performance:
+  phase_margin: {target: 60.0, objective: max}
+  dcgain: {target: 70.0, objective: max}
+  GBW: {target: 4000000.0, objective: max}
+  Power: {target: 0.25, objective: min}
+  Active_Area: {target: 120.0, objective: min}
+  settlingTime: {target: 0.000001, objective: min}
+  FOML: {target: 0.001, objective: max}
+  FOMS: {target: 1000.0, objective: max}
+
+sizing_variables:
+  - {name: diff_pair_w, kind: device, instances: [xm0, xm2], param: w, min: 0.5, max: 20.0, step: 0.01, init: 7.52, unit: u}
+  - {name: diff_pair_l, kind: device, instances: [xm0, xm2], param: l, min: 0.5, max: 12.0, step: 0.01, init: 8.24, unit: u}
+  - {name: diff_pair_multi, kind: device, instances: [xm0, xm2], param: multi, min: 1, max: 16, step: 1, init: 1, integer: true}
+  - {name: diff_pair_nf, kind: device, instances: [xm0, xm2], param: nf, min: 1, max: 8, step: 1, init: 1, integer: true}
+  - {name: load_nmos_w, kind: device, instances: [xm1, xm3], param: w, min: 0.5, max: 12.0, step: 0.1, init: 1.5, unit: u}
+  - {name: load_nmos_l, kind: device, instances: [xm1, xm3], param: l, min: 0.5, max: 12.0, step: 0.1, init: 10.0, unit: u}
+  - {name: load_nmos_multi, kind: device, instances: [xm1, xm3], param: multi, min: 1, max: 16, step: 1, init: 1, integer: true}
+  - {name: bias_pmos_w, kind: device, instances: [xm7, xm6], param: w, min: 0.22, max: 8.0, step: 0.02, init: 0.22, unit: u}
+  - {name: bias_pmos_l, kind: device, instances: [xm7, xm6], param: l, min: 0.5, max: 12.0, step: 0.1, init: 10.0, unit: u}
+  - {name: bias_ref_multi, kind: device, instances: [xm7], param: multi, min: 1, max: 16, step: 1, init: 1, integer: true}
+  - {name: bias_tail_multi, kind: device, instances: [xm6], param: multi, min: 1, max: 24, step: 1, init: 2, integer: true}
+  - {name: second_stage_pmos_w, kind: device, instances: [xm5], param: w, min: 0.22, max: 12.0, step: 0.02, init: 0.22, unit: u}
+  - {name: second_stage_pmos_l, kind: device, instances: [xm5], param: l, min: 0.5, max: 12.0, step: 0.1, init: 10.0, unit: u}
+  - {name: second_stage_pmos_multi, kind: device, instances: [xm5], param: multi, min: 1, max: 32, step: 1, init: 10, integer: true}
+  - {name: second_stage_nmos_w, kind: device, instances: [xm4], param: w, min: 0.5, max: 12.0, step: 0.01, init: 1.48, unit: u}
+  - {name: second_stage_nmos_l, kind: device, instances: [xm4], param: l, min: 0.5, max: 12.0, step: 0.1, init: 10.0, unit: u}
+  - {name: second_stage_nmos_multi, kind: device, instances: [xm4], param: multi, min: 1, max: 32, step: 1, init: 10, integer: true}
+  - {name: comp_res_lr, kind: device, instances: [xr0], param: lr, min: 1.0, max: 20.0, step: 0.5, init: 4.0, unit: e-6}
+  - {name: comp_res_wr, kind: device, instances: [xr0], param: wr, min: 200.0, max: 1000.0, step: 50.0, init: 400.0, unit: e-9}
+  - {name: comp_res_series, kind: device, instances: [xr0], param: series, min: 1, max: 64, step: 1, init: 31, integer: true}
+  - {name: comp_cap_nr, kind: device, instances: [xc0], param: nr, min: 20, max: 160, step: 1, init: 94, integer: true}
+  - {name: comp_cap_lr, kind: device, instances: [xc0], param: lr, min: 2.0, max: 20.0, step: 0.5, init: 10.0, unit: e-6}
+  - {name: ibias_current_uA, kind: testbench, param: ibias_current, min: 1.0, max: 30.0, step: 0.5, init: 10.0}

@@ -7,9 +7,9 @@ inverter GDS. This checks whether Magic can extract a SPICE netlist from the
 remapped GDS and whether Netgen can compare it against an LVS-friendly source
 netlist.
 
-Depending on the local installation, the LVS executable may be named `netgen`
-or `netgen-lvs`. The wrapper checks for `netgen` first and falls back to
-`netgen-lvs`.
+Depending on the local installation, the LVS executable should be `netgen-lvs`
+or an IC Netgen 1.x binary named `netgen`. The wrapper prefers `netgen-lvs` and
+only accepts plain `netgen` when its version output identifies IC Netgen 1.x.
 
 LVS is not required to pass at this stage. The main goal is to produce clear
 logs and expose the next compatibility issues.
@@ -133,7 +133,7 @@ generated/sky130_lvs/netgen_lvs_report.out
 - `generated/sky130_lvs/inverter_core_extracted.spice` is produced.
 - `generated/sky130_lvs/inverter_core_extracted_normalized.spice` is produced.
 - `generated/sky130_lvs/inverter_source_for_lvs.spice` is produced.
-- If `netgen` or `netgen-lvs` is available, Netgen runs and writes
+- If IC `netgen-lvs` is available, Netgen runs and writes
   `netgen_lvs.log` and `netgen_lvs_report.out`.
 
 LVS passes only if the Netgen report says the circuits match. A nonzero Netgen
@@ -148,7 +148,7 @@ automation step.
 - Magic reads the GDS but extracts no MOS devices.
 - The layer remap is sufficient for DRC loading but not sufficient for correct
   extraction connectivity.
-- Neither `netgen` nor `netgen-lvs` is installed or present in `PATH`.
+- IC `netgen-lvs` is not installed or present in `PATH`.
 
 ## Current Normalization
 

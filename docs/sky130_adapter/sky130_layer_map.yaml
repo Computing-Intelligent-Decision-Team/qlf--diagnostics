@@ -642,6 +642,13 @@ layers:
         gds_layer: TBD
         datatype: TBD
         source: TBD
+    datatype_overrides:
+      1:
+        sky130_layer_name: POLYRES
+        sky130_gds_layer: 66
+        sky130_datatype: 13
+        status: experimental
+        risk: "Experimental passive probe only: maps MAGICAL resistor dummy marker to Sky130 poly resistor ID."
     risk: "Only needed for resistor support."
 
   RH:
@@ -659,6 +666,13 @@ layers:
         gds_layer: TBD
         datatype: TBD
         source: TBD
+    datatype_overrides:
+      0:
+        sky130_layer_name: URPM
+        sky130_gds_layer: 79
+        sky130_datatype: 20
+        status: experimental
+        risk: "Experimental passive probe only: RH is treated as a high-resistor marker candidate."
     risk: "Only needed for resistor support."
 
   MRDMY:
@@ -676,6 +690,31 @@ layers:
         gds_layer: TBD
         datatype: TBD
         source: TBD
+    datatype_overrides:
+      2:
+        sky130_layer_name: MET1RES
+        sky130_gds_layer: 68
+        sky130_datatype: 13
+        status: experimental
+        risk: "Experimental passive probe only: maps cfmom metal dummy/exclusion datatype 2 to Sky130 met1 resistor purpose."
+      3:
+        sky130_layer_name: MET2RES
+        sky130_gds_layer: 69
+        sky130_datatype: 13
+        status: experimental
+        risk: "Experimental passive probe only: maps cfmom metal dummy/exclusion datatype 3 to Sky130 met2 resistor purpose."
+      4:
+        sky130_layer_name: MET3RES
+        sky130_gds_layer: 70
+        sky130_datatype: 13
+        status: experimental
+        risk: "Experimental passive probe only: maps cfmom metal dummy/exclusion datatype 4 to Sky130 met3 resistor purpose."
+      5:
+        sky130_layer_name: MET4RES
+        sky130_gds_layer: 71
+        sky130_datatype: 13
+        status: experimental
+        risk: "Experimental passive probe only: maps cfmom metal dummy/exclusion datatype 5 to Sky130 met4 resistor purpose."
     risk: "Only needed for resistor or dummy-exclusion support."
 
   TSV_PPI:
@@ -693,6 +732,43 @@ layers:
         gds_layer: TBD
         datatype: TBD
         source: TBD
+    datatype_overrides:
+      2:
+        sky130_layer_name: CAPID
+        sky130_gds_layer: 82
+        sky130_datatype: 64
+        status: experimental
+        risk: "Experimental passive probe only: coarse cfmom identity marker; not a verified MOM-to-MIM mapping."
+      3:
+        sky130_layer_name: CAPID
+        sky130_gds_layer: 82
+        sky130_datatype: 64
+        status: experimental
+        risk: "Experimental passive probe only: coarse cfmom identity marker; not a verified MOM-to-MIM mapping."
+      4:
+        sky130_layer_name: CAPID
+        sky130_gds_layer: 82
+        sky130_datatype: 64
+        status: experimental
+        risk: "Experimental passive probe only: coarse cfmom identity marker; not a verified MOM-to-MIM mapping."
+      5:
+        sky130_layer_name: CAPID
+        sky130_gds_layer: 82
+        sky130_datatype: 64
+        status: experimental
+        risk: "Experimental passive probe only: coarse cfmom identity marker; not a verified MOM-to-MIM mapping."
+      27:
+        sky130_layer_name: CAPID
+        sky130_gds_layer: 82
+        sky130_datatype: 64
+        status: experimental
+        risk: "Experimental passive probe only: coarse cfmom identity marker; not a verified MOM-to-MIM mapping."
+      100:
+        sky130_layer_name: CAPID
+        sky130_gds_layer: 82
+        sky130_datatype: 64
+        status: experimental
+        risk: "Experimental passive probe only: coarse cfmom identity marker; not a verified MOM-to-MIM mapping."
     risk: "Not required for first-stage inverter routing."
 
   STDPIN:
@@ -731,6 +807,13 @@ layers:
         gds_layer: TBD
         datatype: TBD
         source: TBD
+    datatype_overrides:
+      1:
+        sky130_layer_name: LVSTEXT
+        sky130_gds_layer: 83
+        sky130_datatype: 44
+        status: experimental
+        risk: "Experimental passive probe only: maps MAGICAL LVS dummy marker to a recognized Sky130 LVS marker layer."
     risk: "Not required for first-stage inverter routing; LVS marker semantics need separate confirmation."
 
 not_in_current_sky130PDK_files:

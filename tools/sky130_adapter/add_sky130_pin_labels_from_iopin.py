@@ -28,6 +28,9 @@ DEFAULT_CELL = "inverter_core_flat"
 PIN_LABEL_MAP = {
     1: ("li1.label", 67, 5),
     2: ("met1.label", 68, 5),
+    3: ("met2.label", 69, 5),
+    4: ("met3.label", 70, 5),
+    5: ("met4.label", 71, 5),
     6: ("met5.label", 72, 5),
 }
 
@@ -284,6 +287,9 @@ def generate_report(
             "",
             "- ioPin layer 1 is mapped to `li1.label` `67/5`.",
             "- ioPin layer 2 is mapped to `met1.label` `68/5`.",
+            "- ioPin layer 3 is mapped to `met2.label` `69/5`.",
+            "- ioPin layer 4 is mapped to `met3.label` `70/5`.",
+            "- ioPin layer 5 is mapped to `met4.label` `71/5`.",
             "- ioPin layer 6 is mapped to `met5.label` `72/5`.",
             "- The older MAGICAL TEXT records on `131/0` and `136/0` are intentionally retained for comparison.",
             "- If Magic still extracts anonymous internal node names, the next check is whether Magic expects pin shapes in addition to labels.",

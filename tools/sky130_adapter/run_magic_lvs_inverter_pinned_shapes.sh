@@ -24,6 +24,7 @@ NORMALIZE_REPORT="$OUT_DIR/normalize_lvs_pinned_shapes_report.md"
 EXTRACTED_EXT="$OUT_DIR/inverter_core_flat_pinned_shapes.ext"
 NETGEN_LOG="$OUT_DIR/netgen_lvs_pinned_shapes.log"
 NETGEN_REPORT="$OUT_DIR/netgen_lvs_pinned_shapes_report.out"
+NETGEN_TCL="$OUT_DIR/netgen_lvs_pinned_shapes.tcl"
 PINNED_SHAPES_REPORT="$OUT_DIR/pinned_shapes_lvs_report.md"
 NORMALIZE_SCRIPT="$REPO_ROOT/tools/sky130_adapter/normalize_lvs_netlists_inverter.py"
 
@@ -38,10 +39,14 @@ if ! command -v magic >/dev/null 2>&1; then
 fi
 
 NETGEN_CMD=""
-if command -v netgen >/dev/null 2>&1; then
-    NETGEN_CMD="$(command -v netgen)"
-elif command -v netgen-lvs >/dev/null 2>&1; then
+if command -v netgen-lvs >/dev/null 2>&1; then
     NETGEN_CMD="$(command -v netgen-lvs)"
+elif command -v netgen >/dev/null 2>&1; then
+    netgen_candidate="$(command -v netgen)"
+    netgen_version_out="$("$netgen_candidate" -batch quit 2>&1 || true)"
+    if printf '%s\n' "$netgen_version_out" | grep -q 'Netgen 1\.'; then
+        NETGEN_CMD="$netgen_candidate"
+    fi
 fi
 
 for path in "$INPUT_GDS" "$SOURCE_SPICE" "$NORMALIZE_SCRIPT" "$MAGICRC" "$NETGEN_SETUP"; do
@@ -267,18 +272,17 @@ python3 "$NORMALIZE_SCRIPT" \
     --report "$NORMALIZE_REPORT"
 
 if [[ -z "$NETGEN_CMD" ]]; then
-    echo "error: neither netgen nor netgen-lvs command was found in PATH" >&2
+    echo "error: IC netgen-lvs command was not found in PATH" >&2
     echo "Netgen LVS log: $NETGEN_LOG" >&2
     exit 127
 fi
 
 set +e
-"$NETGEN_CMD" -batch lvs \
-    "$SOURCE_LVS inverter_core" \
-    "$NORMALIZED_EXTRACTED_LVS inverter_core_flat" \
-    "$NETGEN_SETUP" \
-    "$NETGEN_REPORT" \
-    > "$NETGEN_LOG" 2>&1
+cat > "$NETGEN_TCL" <<EOF
+lvs {$SOURCE_LVS inverter_core} {$NORMALIZED_EXTRACTED_LVS inverter_core_flat} {$NETGEN_SETUP} {$NETGEN_REPORT}
+quit
+EOF
+"$NETGEN_CMD" -batch source "$NETGEN_TCL" > "$NETGEN_LOG" 2>&1
 netgen_status=$?
 set -e
 

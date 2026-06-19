@@ -1,4 +1,4 @@
-# Sky130 Adapter 用户快速指南
+﻿# Sky130 Adapter 用户快速指南
 
 本文档给出 MAGICAL Sky130 bridge/remap flow 的最短使用路径。默认推荐 Python CLI，底层 shell pipeline 仍可直接调用。
 
@@ -8,7 +8,7 @@
 
 - `docker`
 - `magic`
-- `netgen-lvs` 或 `netgen`
+- IC LVS `netgen-lvs`
 - 可选：`klayout`
 
 安装 host Python 依赖：
@@ -79,7 +79,12 @@ klayout <FINAL_GDS>
 
 - `Docker not found`：安装 Docker 或修正 `PATH`。
 - `Magic not found`：安装 Magic 或修正 `PATH`。
-- `netgen-lvs/netgen not found`：安装 Netgen。
+- `IC netgen-lvs command was not found in PATH`：安装 Netgen。
 - `SKY130A path invalid`：设置正确的 Sky130 PDK 路径。
 - `sky130A.magicrc not found`：检查 PDK 的 Magic tech 文件。
 - `sky130A_setup.tcl not found`：检查 PDK 的 Netgen setup 文件。
+## Netgen LVS Note
+
+Use IC LVS `netgen-lvs` for Sky130 LVS. Do not rely on an unrelated meshing
+binary named `netgen`; current scripts only accept plain `netgen` when its
+version output identifies IC Netgen 1.x.
