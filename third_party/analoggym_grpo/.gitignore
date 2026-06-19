@@ -6,8 +6,8 @@ training_saves/
 wandb/
 simulation_output/
 
-# Full PDK copies are intentionally external. Set SKY130A instead.
-simulation_files/sky130_pdk/
+# Keep one bundled Sky130 PDK copy at simulation_files/sky130_pdk for
+# reproducible local development. Do not add the duplicate mosfet_model copy.
 mosfet_model/sky130_pdk/
 
 # Local editor history and machine settings.

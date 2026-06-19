@@ -10,11 +10,12 @@ Included:
 - AnalogGym AMP environment and helper modules
 - `circuit_configs/*.yaml`
 - lightweight `simulation_files/<amp>` templates
+- bundled Sky130 PDK convenience copy at `simulation_files/sky130_pdk`
 - small baseline `model/` files
 
 Not included:
 
-- Sky130 PDK copies
+- duplicate `mosfet_model/sky130_pdk` copy
 - `training_saves/`
 - `wandb/`
 - `simulation_output/`
@@ -27,8 +28,15 @@ paths:
   analog_gym_root: third_party/analoggym_grpo
 ```
 
-Sky130 PDK remains an external dependency. Set `SKY130A` before running
-simulation/layout flows:
+The repository includes a Sky130 PDK convenience copy for reproducible local
+development:
+
+```text
+third_party/analoggym_grpo/simulation_files/sky130_pdk
+```
+
+You can still override it with an external PDK by setting `SKY130A` and editing
+the harness config:
 
 ```bash
 export SKY130A=/path/to/sky130A

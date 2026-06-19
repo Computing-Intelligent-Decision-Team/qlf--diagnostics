@@ -5596,7 +5596,7 @@ class LayoutVerificationAdapter:
         exports = ""
         sky130a = self.layout_config.get("sky130a")
         if sky130a:
-            exports += f"SKY130A={shlex.quote(str(sky130a))} "
+            exports += f"SKY130A={shlex.quote(_wsl_or_posix_path(str(sky130a)))} "
         if docker_image:
             exports += f"DOCKER_IMAGE={shlex.quote(str(docker_image))} "
         for key, value in sorted(self._magical_env_overrides(compiled).items()):

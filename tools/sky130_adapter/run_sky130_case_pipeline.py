@@ -18,10 +18,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 SHELL_PIPELINE = SCRIPT_DIR / "run_sky130_case_pipeline.sh"
 TRIAL_PDK_DIR = REPO_ROOT / "generated/sky130PDK_trial"
 TRIAL_PDK_GENERATOR = SCRIPT_DIR / "generate_magical_sky130_pdk.py"
-DEFAULT_SKY130A = Path(
-    "/home/to/.ciel/ciel/sky130/versions/"
-    "7b70722e33c03fcb5dabcf4d479fb0822d9251c9/sky130A"
-)
+DEFAULT_SKY130A = REPO_ROOT / "third_party/analoggym_grpo/simulation_files/sky130_pdk"
 
 
 def parse_args() -> argparse.Namespace:

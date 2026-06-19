@@ -33,7 +33,7 @@ Required external tools:
 - MAGICAL Docker image: `jayl940712/magical:latest`
 - Docker Hub: <https://hub.docker.com/r/jayl940712/magical>
 - MAGICAL upstream Docker instructions: <https://github.com/magical-eda/MAGICAL>
-- Magic, `netgen-lvs`, ngspice, and a local Sky130 PDK.
+- Magic, `netgen-lvs`, ngspice, and the bundled or external Sky130 PDK.
 
 Check the toolchain first:
 
@@ -57,8 +57,15 @@ Install optional GRPO dependencies with:
 python3 -m pip install -r requirements-grpo.txt
 ```
 
-Sky130 PDK is still external. Set `SKY130A=/path/to/sky130A` before running
-real simulation/layout flows.
+The repository includes a bundled Sky130 PDK convenience copy:
+
+```text
+third_party/analoggym_grpo/simulation_files/sky130_pdk
+```
+
+The default SMC config points to this copy. You can still set
+`SKY130A=/path/to/sky130A` and edit the config when a machine-specific PDK is
+preferred.
 
 The controller first checks configured front-end sizing results. If a reusable
 front-end candidate exists, it evaluates that candidate through the harness
@@ -124,8 +131,8 @@ that JSON. The durable status narrative is tracked in
 On Windows, the adapter resolves WSL distro selection explicitly and avoids the
 default `docker-desktop` distro, so `magic` and IC LVS `netgen-lvs` are checked
 and run from the configured `Ubuntu-24.04` environment. The Sky130 case
-pipeline can use the external `SKY130A` path for Magic/Netgen/ngspice PDK
-files. Full Sky130 PDK copies are intentionally not vendored in this repo.
+pipeline uses the bundled Sky130 PDK by default for Magic/Netgen/ngspice PDK
+files. Developers can still override it with an external `SKY130A` path.
 
 The Sky130 PDK generator and case pipeline also guard against CRLF line endings
 in MAGICAL tech/LEF files. CRLF can break Anaroute's tech parser and surface
@@ -224,7 +231,7 @@ python -m tools.analog_harness.cli run \
   --layout-budget 1
 ```
 
-The full run requires the same Docker, Magic, netgen, Sky130A, and ngspice
+The full run requires the same Docker, Magic, netgen, bundled or external Sky130A, and ngspice
 environment used by `tools/sky130_adapter/run_sky130_case_pipeline.py`.
 
 Use `--force-sizing` to skip front-end reuse and call GRPO first. Use

@@ -26,7 +26,7 @@ python3 -m pip install -r requirements.txt
 - Magic，用于 DRC、extraction 和 GDS 操作。
 - `netgen-lvs`，用于 LVS。
 - ngspice，用于 pre-layout/post-layout/PVT 仿真。
-- Sky130 PDK，至少需要 Magic、Netgen、ngspice 相关 tech/model 文件。
+- Sky130 PDK，本仓库已带一份便捷副本；也可用 `SKY130A` 指向外部 PDK 覆盖。
 - 可选：KLayout，用于查看最终 GDS。
 
 先检查基础环境：
@@ -79,7 +79,13 @@ third_party/analoggym_grpo
 python3 -m pip install -r requirements-grpo.txt
 ```
 
-完整 Sky130 PDK、GRPO training checkpoint、wandb 记录和仿真输出不放进 Git。运行真实仿真/layout 前仍需设置：
+仓库内已包含一份 Sky130 PDK 便捷副本，默认路径为：
+
+```text
+third_party/analoggym_grpo/simulation_files/sky130_pdk
+```
+
+GRPO training checkpoint、wandb 记录和仿真输出不放进 Git。如需使用外部 PDK，可设置：
 
 ```bash
 export SKY130A=/path/to/sky130A
@@ -124,7 +130,7 @@ MAGICAL internal GDS
 - native Sky130 export 仍是 experimental，不作为默认入口。
 - 当前 LVS 是 connectivity LVS，不是 parasitic-aware LVS。
 - PEX summary 只统计 Magic raw extraction 中列出的寄生电容，不等于完整后仿。
-- Sky130 PDK、Magic、Netgen、KLayout 不随仓库上传，需要用户自行安装。
+- 仓库已带一份 Sky130 PDK 便捷副本；Magic、Netgen、KLayout 仍需要用户自行安装。
 - generated 大文件、GDS、log、Magic extraction 临时产物不应提交到 GitHub。
 
 ## 安装依赖
@@ -173,10 +179,10 @@ Docker 容器内已有 MAGICAL 所需依赖，例如 `gdspy`、`numpy`、`networ
 
 ## Sky130 PDK 配置
 
-本仓库不上传 Sky130 PDK。默认查找路径为：
+本仓库已上传一份 Sky130 PDK 便捷副本。默认查找路径为：
 
-```bash
-/home/to/.ciel/ciel/sky130/versions/7b70722e33c03fcb5dabcf4d479fb0822d9251c9/sky130A
+```text
+third_party/analoggym_grpo/simulation_files/sky130_pdk
 ```
 
 关键文件：
@@ -184,7 +190,7 @@ Docker 容器内已有 MAGICAL 所需依赖，例如 `gdspy`、`numpy`、`networ
 - `libs.tech/magic/sky130A.magicrc`
 - `libs.tech/netgen/sky130A_setup.tcl`
 
-如需覆盖：
+如需覆盖为本机已有 PDK：
 
 ```bash
 export SKY130A=/path/to/sky130A
@@ -334,4 +340,4 @@ case 列表在 `tools/sky130_adapter/sky130_case_registry.yaml`。
 
 ## GitHub 上传说明
 
-建议上传源码、轻量示例输入、配置、文档、wrapper 和测试脚本。不要上传 Sky130 PDK、`generated/`、GDS、log、Magic extraction 临时文件、build 产物。详见 `docs/sky130_adapter/github_upload_manifest.md`。
+建议上传源码、轻量示例输入、配置、文档、wrapper、测试脚本，以及当前这份受控的 bundled Sky130 PDK。不要上传 `generated/`、额外 GDS、log、Magic extraction 临时文件、build 产物。详见 `docs/sky130_adapter/github_upload_manifest.md`。

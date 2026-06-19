@@ -86,7 +86,7 @@ knowledge_transfer:
 layout:
   pipeline: tools/sky130_adapter/run_sky130_case_pipeline.py
   wsl_distro: Ubuntu-24.04
-  sky130a: "$SKY130A"
+  sky130a: third_party/analoggym_grpo/simulation_files/sky130_pdk
   required_magic_version: 8.3.411
 
 simulation:
@@ -101,7 +101,7 @@ simulation:
   tran_stop_s: 0.0000003
   step_time_s: 0.00000001
   settling_tolerance_fraction: 0.01
-  sky130_model_lib: "$SKY130A/libs.tech/ngspice/sky130.lib.spice"
+  sky130_model_lib: third_party/analoggym_grpo/simulation_files/sky130_pdk/libs.tech/ngspice/sky130.lib.spice
   sky130_model_corner: tt
   snap_sky130_mos_to_model_bins: true
   project_sky130_primitives_to_direct_models: true

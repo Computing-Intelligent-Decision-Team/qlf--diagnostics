@@ -15,6 +15,7 @@ resolve_sky130a() {
 
     local candidate
     for candidate in \
+        "$REPO_ROOT/third_party/analoggym_grpo/simulation_files/sky130_pdk" \
         "$REPO_ROOT/../Analoggym_opt_moo_Mahalanobis_paper/mosfet_model/sky130_pdk" \
         "$REPO_ROOT/../Analoggym_opt_moo_Mahalanobis_paper/simulation_files/sky130_pdk" \
         "$LEGACY_DEFAULT_SKY130A" \

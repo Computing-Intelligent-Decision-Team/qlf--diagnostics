@@ -1,6 +1,6 @@
 # GitHub 上传 Manifest
 
-本文档用于上传前分类，避免把 PDK、GDS、log、generated 结果和早期实验目录误提交。
+本文档用于上传前分类，避免把额外 PDK 副本、GDS、log、generated 结果和早期实验目录误提交。
 
 ## must_upload
 
@@ -8,7 +8,9 @@
 | --- | --- |
 | `README.md` | 对外入口说明，中文主文档。 |
 | `requirements.txt` | Host Python 依赖。 |
+| `requirements-grpo.txt` | Vendored AnalogGym GRPO 的可选训练依赖。 |
 | `.gitignore` | 防止 generated/GDS/log/build 产物进入仓库。 |
+| `third_party/analoggym_grpo/` | GRPO optimizer、AMP 模板和受控 bundled Sky130 PDK。 |
 | `tools/sky130_adapter/run_sky130_case_pipeline.py` | 推荐用户入口。 |
 | `tools/sky130_adapter/run_sky130_case_pipeline.sh` | 底层稳定 pipeline。 |
 | `tools/sky130_adapter/run_sky130_case_regression.sh` | regression 入口。 |
@@ -52,7 +54,7 @@
 | `*.ext` | Magic extraction 临时文件。 |
 | `*.spice.tmp` | 临时 netlist。 |
 | `anaroute_build/`, `build/`, `*.o`, `*.so` | build 产物。 |
-| Sky130 PDK 路径 | PDK 不随仓库上传。 |
+| 其他 Sky130 PDK 副本 | 只保留 `third_party/analoggym_grpo/simulation_files/sky130_pdk` 这一份受控副本。 |
 | `examples/inverter_sky130_try_powernets/` | 早期 powernet 实验目录，不作为主线示例。 |
 | `examples/inverter_sky130_try_terminal_swap/` | 早期 terminal swap 实验目录，不作为主线示例。 |
 | `examples/inverter_sky130_try_terminal_swap_powernets/` | 早期组合实验目录，不作为主线示例。 |

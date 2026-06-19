@@ -44,3 +44,10 @@ generated/
 
 # Temporary trial config
 examples/inverter_sky130_try/inverter_trial.json
+
+# Keep the bundled Sky130 PDK copy even though generic layout artifacts are
+# ignored above.
+!third_party/analoggym_grpo/simulation_files/sky130_pdk/
+!third_party/analoggym_grpo/simulation_files/sky130_pdk/**
+third_party/analoggym_grpo/simulation_files/sky130_pdk/**/*.log
+third_party/analoggym_grpo/simulation_files/sky130_pdk/**/gmon.out

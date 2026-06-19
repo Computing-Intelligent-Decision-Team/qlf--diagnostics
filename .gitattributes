@@ -7,3 +7,5 @@ generated/sky130PDK_trial/sky130_gds_export_map.yaml text eol=lf
 
 # Preserve vendored AnalogGym GRPO source formatting.
 third_party/analoggym_grpo/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+third_party/analoggym_grpo/simulation_files/sky130_pdk/** -text
+third_party/analoggym_grpo/simulation_files/sky130_pdk/**/*.gds binary -diff

@@ -23,7 +23,7 @@ Linux 原生环境也可以，但本文档优先按照上面的验证环境描�
 - `pip`
 - `magic`
 - `netgen-lvs`
-- Sky130 PDK
+- bundled Sky130 PDK 或外部 Sky130 PDK
 
 可选：
 
@@ -42,7 +42,7 @@ which magic
 magic --version
 which netgen-lvs
 netgen-lvs -batch quit
-echo "$SKY130A"
+test -d third_party/analoggym_grpo/simulation_files/sky130_pdk || echo "$SKY130A"
 ```
 
 若上述任一项缺失，优先解决环境问题，再开始运行 flow 或搭建 harness。
@@ -87,7 +87,7 @@ docker image inspect jayl940712/magical:latest >/dev/null
 docker pull jayl940712/magical:latest
 ```
 
-这个 Docker image 只负责 MAGICAL placement/routing 环境；Magic、`netgen-lvs`、ngspice 和 Sky130 PDK 仍然需要在 host/WSL 环境中可用。
+这个 Docker image 只负责 MAGICAL placement/routing 环境；Magic、`netgen-lvs` 和 ngspice 仍然需要在 host/WSL 环境中可用。Sky130 PDK 默认使用仓库内 bundled 副本，也可以用 `SKY130A` 指向外部 PDK。
 
 常见问题：
 
@@ -110,7 +110,13 @@ permission denied while trying to connect to the docker API at unix:///var/run/d
 
 ## Sky130 PDK
 
-仓库不包含 Sky130 PDK。必须自行准备 `sky130A`，并确保 `SKY130A` 指向其根目录。
+仓库已包含一份 Sky130 PDK 便捷副本，默认路径为：
+
+```text
+third_party/analoggym_grpo/simulation_files/sky130_pdk
+```
+
+如需使用本机已有 PDK，可以设置 `SKY130A` 指向其根目录，并在 harness config 中覆盖默认路径。
 
 关键文件：
 
