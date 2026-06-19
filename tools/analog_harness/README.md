@@ -3,9 +3,52 @@
 This package connects the local AnalogGym GRPO optimizer to the existing
 MAGICAL/Sky130 layout verification flow.
 
-The first supported design is `SMCNR_SE_2st_AMP`. Version 1 records the
-current SMC layout verification scope as `mos_only_projection`; this is not a
-passive-aware LVS/PEX closure claim.
+The first supported design is `SMCNR_SE_2st_AMP`. The candidate lifecycle still
+tracks the original MOS-only layout/post-layout closure levels separately from
+passive evidence, but the current best SMC evidence includes a native
+full-GDS passive trial:
+
+- `best_closure_level=L6_post_layout_pvt`
+- `best_passive_aware_scope=full_passive_inclusive_gds_lvs`
+- `best_full_passive_inclusive_gds_lvs_proven=true`
+- `best_native_passive_device_recognition_status=pass`
+
+The top-level config keeps the historical default
+`verification.scope=mos_only_projection`; summaries and evidence packets expose
+the stronger passive scope explicitly.
+
+## Developer Setup
+
+Clone the current development repository:
+
+```bash
+git clone https://github.com/Computing-Intelligent-Decision-Team/AnalogHarness.git
+cd AnalogHarness
+python3 -m pip install -r requirements.txt
+```
+
+Required external tools:
+
+- Docker, used to run MAGICAL placement/routing.
+- MAGICAL Docker image: `jayl940712/magical:latest`
+- Docker Hub: <https://hub.docker.com/r/jayl940712/magical>
+- MAGICAL upstream Docker instructions: <https://github.com/magical-eda/MAGICAL>
+- Magic, `netgen-lvs`, ngspice, and a local Sky130 PDK.
+
+Check the toolchain first:
+
+```bash
+docker ps
+docker image inspect jayl940712/magical:latest >/dev/null || docker pull jayl940712/magical:latest
+magic --version
+netgen-lvs -batch quit
+ngspice --version
+```
+
+The GRPO adapter references a local AnalogGym checkout through
+`paths.analog_gym_root` in `tools/analog_harness/configs/smcnr_se_2st_amp.yaml`.
+The default is `../Analoggym_opt_moo_Mahalanobis_paper`; change it if your
+checkout is elsewhere. The harness is intentionally not vendoring AnalogGym.
 
 The controller first checks configured front-end sizing results. If a reusable
 front-end candidate exists, it evaluates that candidate through the harness
@@ -46,22 +89,32 @@ Post-layout PVT is enabled in the SMC config with three corners:
 `tt_1v8_27C`, `ss_1v62_125C`, and `ff_1v98_-25C`. The aggregate `pvt_sim`
 packet records per-corner status and worst-case metrics.
 
-Passive-aware LVS/PEX is probed separately as `passive_aware_lvs`. The current
-adapter now has a formal source-equivalent abstraction for the SMC resistor and
-MOM capacitor (`xr0` as a segmented-chain resistor and `xc0` as a plate-coupling
-capacitor). The dedicated passive LVS evidence verifier requires primitive R/C
-netlists plus passive-only and hybrid Netgen passes before reporting a formal
-pass. Passive-only Netgen, the hybrid MOS-only-projection plus passive
-abstraction trial, and the DRC-clean route-bridge GDS MOS plus formal passive
-trial pass. The `passive_aware_lvs` packet is classified as
-`formal_abstraction_with_gds_mos_bridge_pass` with
-`verification_scope=formal_passive_abstraction_with_gds_mos_bridge`; it is not a
-native passive-device full-GDS pass and does not promote candidate closure
-beyond the MOS-only layout/post-layout levels. On Windows, the
-adapter now resolves WSL distro selection explicitly and avoids the default
-`docker-desktop` distro, so `magic` and IC LVS `netgen-lvs` are checked and run
-from the configured `Ubuntu-24.04` environment. The Sky130 case pipeline also
-auto-discovers the AnalogGym-local Sky130 PDK
+Passive-aware LVS/PEX is probed separately as `passive_aware_lvs`. The adapter
+records both the formal source-equivalent abstraction and the stronger native
+full-GDS passive evidence:
+
+- `xr0` is covered by a formal segmented-chain resistor abstraction and a
+  native 31-device `sky130_fd_pr__res_xhigh_po` retarget.
+- `xc0` is covered by a formal capacitor abstraction and a full-GDS native MIM
+  capacitor replacement trial using `sky130_fd_pr__cap_mim_m3_1`.
+- The canonical full-GDS trial inserts `m4_outside_stacks` terminal bridges,
+  reruns Magic extraction/DRC, and reports native passive Netgen pass.
+
+The canonical evidence is:
+
+```text
+generated/analog_harness/smcnr_se_2st_amp/cand_0031/layout_passive_existing_gds/resistor_remap_variants/native_cap_full_gds_trial/native_cap_full_gds_trial_summary.json
+```
+
+Because generated artifacts are intentionally ignored by Git, developers should
+rerun the harness or copy archived evidence locally when they need to inspect
+that JSON. The durable status narrative is tracked in
+`docs/sky130_adapter/passive_aware_lvs_status.md`.
+
+On Windows, the adapter resolves WSL distro selection explicitly and avoids the
+default `docker-desktop` distro, so `magic` and IC LVS `netgen-lvs` are checked
+and run from the configured `Ubuntu-24.04` environment. The Sky130 case
+pipeline also auto-discovers the AnalogGym-local Sky130 PDK
 (`../Analoggym_opt_moo_Mahalanobis_paper/mosfet_model/sky130_pdk`) when the
 legacy ciel PDK path is absent.
 
@@ -70,34 +123,31 @@ in MAGICAL tech/LEF files. CRLF can break Anaroute's tech parser and surface
 later as `parseGds` crashes; the generated trial PDK is now written as LF and
 the pipeline fails early if a configured PDK file regresses.
 
-The latest full-GDS diagnostic with a passive X offset plus local VDD repair
-keeps the top-level ports complete and removes the supply-role corruption. The
-remaining `mos_internal_net_mismatch` is now repairable by a physical
-route-label bridge probe: the adapter injects route labels from MAGICAL `.gr`,
-derives two small LI1 bridges from MOS split-net evidence, reruns Magic DRC and
-extraction, and then runs formal passive R/C LVS. The integrated probe records
+The full-GDS diagnostic with a passive X offset plus local VDD repair keeps the
+top-level ports complete and removes the supply-role corruption. A physical
+route-label bridge probe injects route labels from MAGICAL `.gr`, derives two
+small LI1 bridges from MOS split-net evidence, reruns Magic DRC/extraction, and
+then runs formal passive R/C LVS. The integrated probe records
 `route_bridge_count=2`, `route_bridge_drc_count=0`,
 `route_bridge_mos_connectivity_status=pass`, and
-`formal_passive_lvs_netgen_status=pass`. This is stronger than a rename-only
-diagnostic because the repaired MOS network comes from the bridged GDS
-extraction, but it still does not claim native passive device recognition:
-`xr0` and `xc0` are matched through the formal R/C abstraction packet.
+`formal_passive_lvs_netgen_status=pass`. The native passive replacement trial
+then proves direct passive device recognition for the SMC passive path.
 
-Future passive probes automatically derive a diagnostic
-`mos_connectivity_repair_plan.v1` from those comparator hints and run a
-`formal_passive_mos_repair_lvs_trial`. That repair trial is always marked
-`signoff_eligible=false`; it helps prove whether the remaining mismatch is only
-internal-net recovery, but it does not change the candidate closure level or the
-native full-GDS claim.
+Passive probes automatically derive a diagnostic
+`mos_connectivity_repair_plan.v1` from comparator hints and run a
+`formal_passive_mos_repair_lvs_trial` when needed. That repair trial is marked
+`signoff_eligible=false`; it is a localization tool. The stronger native
+full-GDS claim comes only from the dedicated native passive replacement and
+retarget evidence.
 
 The Sky130 adapter also has a route-net label probe
 (`add_net_labels_from_gr_to_gds.py`) that injects labels from MAGICAL `.gr`
 rectangles. On the current SMC full-GDS case it recovers most internal signal
 names. The companion `add_mos_route_bridges_to_gds.py` tool now turns the two
-remaining source-pin opens into physical bridge candidates using `.pin`, `.gr`,
-placement-log, and MOS split-net evidence. The harness classifies the passing
-result as `formal_abstraction_with_gds_mos_bridge_pass`, not as native
-full-GDS passive-aware LVS.
+source-pin opens into physical bridge candidates using `.pin`, `.gr`,
+placement-log, and MOS split-net evidence. The formal bridge result and native
+passive replacement result are recorded as separate evidence scopes so the
+harness does not confuse localization diagnostics with native full-GDS proof.
 
 Power-stripe diagnostics are now wired through the layout pipeline. Moving the
 stripe, disabling it, splitting the VDD stripe around passive bboxes, and
@@ -135,7 +185,8 @@ candidate state still contains an `unsupported` passive packet. The GRPO
 feedback flattener exposes both `verification_mask` and
 `verification_native_pass_mask`: scoped formal passive evidence sets `E2P` in
 `verification_mask`, while `verification_native_pass_mask["E2P"]` remains
-`false` unless native full-GDS passive LVS actually passes.
+`false` unless native full-GDS passive LVS actually passes. For the current
+`cand_0031` best evidence, native full-GDS passive LVS is recorded as pass.
 
 The passive evidence packet now includes explicit
 `passive_lvs_primitive_abstractions` records. For the current SMC candidate,

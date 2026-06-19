@@ -1,5 +1,86 @@
 # MAGICAL Sky130 Bridge/Remap Flow
 
+## AnalogHarness 开发者快速入口
+
+当前仓库已经从单纯的 Sky130 bridge/remap flow 扩展为一个面向模拟电路自动闭环设计的 Analog Harness。它把 AnalogGym/GRPO sizing optimizer、ngspice 仿真、MAGICAL 自动版图、Magic DRC/extraction、Netgen LVS、PEX summary、post-layout/PVT 仿真和 evidence feedback 接在一起。
+
+新仓库地址：
+
+```bash
+git clone https://github.com/Computing-Intelligent-Decision-Team/AnalogHarness.git
+cd AnalogHarness
+```
+
+最小 Python 依赖：
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+外部工具依赖：
+
+- Docker，用于运行 MAGICAL placement/routing 容器。
+- MAGICAL Docker image: `jayl940712/magical:latest`
+- Docker Hub: <https://hub.docker.com/r/jayl940712/magical>
+- MAGICAL upstream Docker instructions: <https://github.com/magical-eda/MAGICAL>
+- Magic，用于 DRC、extraction 和 GDS 操作。
+- `netgen-lvs`，用于 LVS。
+- ngspice，用于 pre-layout/post-layout/PVT 仿真。
+- Sky130 PDK，至少需要 Magic、Netgen、ngspice 相关 tech/model 文件。
+- 可选：KLayout，用于查看最终 GDS。
+
+先检查基础环境：
+
+```bash
+docker ps
+docker image inspect jayl940712/magical:latest >/dev/null || docker pull jayl940712/magical:latest
+magic --version
+netgen-lvs -batch quit
+ngspice --version
+python3 --version
+```
+
+Analog Harness smoke run：
+
+```bash
+python -m tools.analog_harness.cli run \
+  --config tools/analog_harness/configs/smcnr_se_2st_amp.yaml \
+  --max-candidates 1 \
+  --layout-budget 0 \
+  --skip-layout \
+  --skip-sim
+```
+
+单候选完整 layout run：
+
+```bash
+python -m tools.analog_harness.cli run \
+  --config tools/analog_harness/configs/smcnr_se_2st_amp.yaml \
+  --max-candidates 1 \
+  --layout-budget 1
+```
+
+查看当前结果摘要：
+
+```bash
+python -m tools.analog_harness.cli summarize \
+  --config tools/analog_harness/configs/smcnr_se_2st_amp.yaml
+```
+
+GRPO/AnalogGym 不随本仓库 vendoring。默认配置引用相邻目录：
+
+```text
+../Analoggym_opt_moo_Mahalanobis_paper
+```
+
+如果你的 AnalogGym 路径不同，请修改 `tools/analog_harness/configs/smcnr_se_2st_amp.yaml` 中的 `paths.analog_gym_root`。没有 AnalogGym 时，harness 的基础 smoke、配置加载、legalizer、Sky130 adapter 测试仍可开发；要使用真实 GRPO episode/warm-start 训练接口，则必须提供 AnalogGym 本地源码。
+
+更完整的开发说明：
+
+- Analog Harness: `tools/analog_harness/README.md`
+- 环境搭建: `docs/sky130_adapter/environment_setup.md`
+- passive-aware LVS 状态: `docs/sky130_adapter/passive_aware_lvs_status.md`
+
 这是一个面向 Sky130 的 MAGICAL bridge/remap 适配版本。目标是让用户在安装外部依赖后，输入一份 Sky130 网表，自动完成 MAGICAL placement/routing、Sky130 GDS 生成、Magic DRC、Magic extraction、`netgen-lvs` connectivity LVS、PEX summary，并输出可用 KLayout 查看的一份最终 GDS。
 
 默认主线 flow 是：
@@ -48,6 +129,8 @@ MAGICAL internal GDS
 默认 MAGICAL placement/routing 通过 Docker 运行：
 
 - Docker image: `jayl940712/magical:latest`
+- Docker Hub: <https://hub.docker.com/r/jayl940712/magical>
+- MAGICAL upstream Docker instructions: <https://github.com/magical-eda/MAGICAL>
 - Docker 内 Python: 3.7.5
 
 主机外部命令依赖：

@@ -50,8 +50,8 @@ echo "$SKY130A"
 ## 获取仓库
 
 ```bash
-git clone https://github.com/pcs152/magical-sky130-harness.git
-cd magical-sky130-harness
+git clone https://github.com/Computing-Intelligent-Decision-Team/AnalogHarness.git
+cd AnalogHarness
 ```
 
 安装 host Python 依赖：
@@ -65,6 +65,8 @@ python3 -m pip install -r requirements.txt
 默认 MAGICAL placement/routing 在 Docker 容器中运行：
 
 - image: `jayl940712/magical:latest`
+- Docker Hub: <https://hub.docker.com/r/jayl940712/magical>
+- MAGICAL upstream Docker instructions: <https://github.com/magical-eda/MAGICAL>
 
 建议先验证 Docker 能正常访问 daemon：
 
@@ -78,6 +80,8 @@ docker image inspect jayl940712/magical:latest >/dev/null
 ```bash
 docker pull jayl940712/magical:latest
 ```
+
+这个 Docker image 只负责 MAGICAL placement/routing 环境；Magic、`netgen-lvs`、ngspice 和 Sky130 PDK 仍然需要在 host/WSL 环境中可用。
 
 常见问题：
 
