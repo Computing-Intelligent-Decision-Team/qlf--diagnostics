@@ -1,0 +1,143 @@
+{
+  "candidate_passive_abstraction_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_candidate_passive_abs.spice",
+  "candidate_passive_primitive_counts": {
+    "capacitor": 1,
+    "resistor": 1,
+    "total": 2
+  },
+  "failed_requirements": [],
+  "formal_passive_lvs_evidence_pass": true,
+  "full_gds_formal_passive_lvs_evidence_pass": false,
+  "full_gds_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_passive_aware_lvs_result_summary.md",
+  "full_passive_inclusive_gds_lvs_proven": false,
+  "hybrid_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_hybrid_mos_passive_lvs_result_summary.md",
+  "limitations": [
+    "Formal passive LVS evidence proves source-equivalent primitive R/C abstraction plus Netgen matching.",
+    "Native passive device recognition is reported separately from full passive-inclusive GDS LVS closure.",
+    "Full passive-inclusive GDS LVS is proven only when full_passive_inclusive_gds_lvs_proven is true."
+  ],
+  "lvs_primitive_abstractions": [
+    {
+      "abstraction_rule": "collapse_plate_coupling_evidence_to_lvs_capacitor",
+      "candidate_type": "plate_coupling_capacitor_source_equivalent",
+      "electrical_terminals": [
+        "outn",
+        "net027"
+      ],
+      "lvs_primitive_device_class": "c",
+      "lvs_primitive_kind": "capacitor",
+      "lvs_primitive_spice": "C_xc0 outn net027 1f",
+      "source_instance": "xc0",
+      "support_type": "plate_coupling_capacitance"
+    },
+    {
+      "abstraction_rule": "collapse_segmented_resistor_chain_to_lvs_resistor",
+      "candidate_type": "segmented_resistor_chain_source_equivalent",
+      "electrical_terminals": [
+        "net027",
+        "vout"
+      ],
+      "lvs_primitive_device_class": "r",
+      "lvs_primitive_kind": "resistor",
+      "lvs_primitive_spice": "R_xr0 net027 vout 1",
+      "source_instance": "xr0",
+      "support_type": "segmented_resistor_chain"
+    }
+  ],
+  "native_passive_device_recognition_blockers": {
+    "xc0": [
+      "source_capacitor_requires_plate_coupling_abstraction",
+      "coordinate_matched_devices_are_resistor_markers_not_capacitor",
+      "source_capacitor_touches_extracted_resistor_markers_not_a_capacitor_device"
+    ],
+    "xr0": [
+      "body_or_substrate_pin_has_no_magical_geometry:gnda",
+      "source_resistor_requires_segmented_chain_abstraction"
+    ]
+  },
+  "native_passive_device_recognition_claimed": false,
+  "native_passive_device_recognition_missing_instances": [
+    "xr0",
+    "xc0"
+  ],
+  "native_passive_device_recognition_status": "fail",
+  "native_passive_device_recognition_summary": {
+    "blockers_by_instance": {
+      "xc0": [
+        "source_capacitor_requires_plate_coupling_abstraction",
+        "coordinate_matched_devices_are_resistor_markers_not_capacitor",
+        "source_capacitor_touches_extracted_resistor_markers_not_a_capacitor_device"
+      ],
+      "xr0": [
+        "body_or_substrate_pin_has_no_magical_geometry:gnda",
+        "source_resistor_requires_segmented_chain_abstraction"
+      ]
+    },
+    "claimable": false,
+    "missing_source_passive_instances": [
+      "xr0",
+      "xc0"
+    ],
+    "reason": "one or more source passives require formal abstraction instead of direct extracted passive devices",
+    "recognized_source_passive_count": 0,
+    "recognized_source_passive_instances": [],
+    "scope": "native_magic_extraction_device_recognition",
+    "source_passive_count": 2,
+    "source_passives": [
+      {
+        "blockers": [
+          "body_or_substrate_pin_has_no_magical_geometry:gnda",
+          "source_resistor_requires_segmented_chain_abstraction"
+        ],
+        "direct_expected_device_present": false,
+        "expected_kind": "resistor",
+        "native_ready": false,
+        "source_instance": "xr0",
+        "source_model": "rppolywo_m"
+      },
+      {
+        "blockers": [
+          "source_capacitor_requires_plate_coupling_abstraction",
+          "coordinate_matched_devices_are_resistor_markers_not_capacitor",
+          "source_capacitor_touches_extracted_resistor_markers_not_a_capacitor_device"
+        ],
+        "direct_expected_device_present": false,
+        "expected_kind": "capacitor",
+        "native_ready": false,
+        "source_instance": "xc0",
+        "source_model": "cfmom_2t"
+      }
+    ],
+    "status": "fail"
+  },
+  "packet_verification_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_abstraction_packet_verification_summary.json",
+  "passive_only_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_passive_abs_lvs_result_summary.md",
+  "requirements": {
+    "all_source_passives_have_candidate": true,
+    "cfmom_plate_coupling_formalized": true,
+    "hybrid_mos_reference_passive_netgen_lvs_pass": true,
+    "packet_formal_lvs_abstraction_ready": true,
+    "passive_only_netgen_lvs_pass": true,
+    "primitive_counts_match": true,
+    "primitive_netlists_present": true,
+    "segmented_resistor_chain_formalized": true
+  },
+  "route_bridge_formal_passive_lvs_evidence_pass": true,
+  "route_bridge_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\fp_lvs.md",
+  "route_bridge_requirements": {
+    "route_bridge_drc_clean": true,
+    "route_bridge_formal_passive_lvs_pass": true,
+    "route_bridge_inserted": true,
+    "route_bridge_mos_connectivity_pass": true
+  },
+  "route_bridge_trial_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\rb_trial.json",
+  "schema_version": "passive_lvs_evidence_verification.v1",
+  "source_passive_abstraction_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_source_passive_abs.spice",
+  "source_passive_primitive_counts": {
+    "capacitor": 1,
+    "resistor": 1,
+    "total": 2
+  },
+  "status": "formal_passive_lvs_evidence_pass",
+  "verification_scope": "formal_passive_abstraction_with_gds_mos_bridge"
+}

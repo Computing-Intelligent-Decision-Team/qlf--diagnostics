@@ -1,0 +1,33 @@
+* ACDC testbench adapted from AnalogGym AMP_DFCFC2 for SMCNR_SE_2st_AMP
+.include "E:/codex-magical-sky130-harness/magical-sky130-harness/generated/analog_harness/smcnr_se_2st_amp/cand_0031/sim/post_layout_pvt/ff_1v98_-25C/SMCNR_SE_2st_AMP_extracted.raw.ngspice_units.spice"
+.temp -25
+.param VDDVAL=1.98
+.param VCM=0.99
+.param IBIAS=10u
+.param CLOAD=100f
+VDD vdda 0 {VDDVAL}
+VGND gnda 0 0
+IIB vdda ibias DC {IBIAS}
+VINP vip 0 DC {VCM} AC 0.5
+VINN vin 0 DC {VCM} AC -0.5
+CLOAD vout 0 {CLOAD}
+XU vdda gnda vin vip ibias vout SMCNR_SE_2st_AMP_flat
+.control
+save all
+.options savecurrents
+set filetype=ascii
+set units=degrees
+op
+let supply_current = abs(i(VDD))
+let power_mw = 1.98 * supply_current * 1000
+wrdata SMCNR_SE_2st_AMP_ACDC_POWER power_mw
+ac dec 20 1 1e+12
+meas ac dcgain_ find vdb(vout) at = 1
+meas ac gain_bandwidth_product_ when vdb(vout)=0
+meas ac phase_at_unity find vp(vout) when vdb(vout)=0
+let phase_margin = 180 + phase_at_unity
+wrdata SMCNR_SE_2st_AMP_ACDC_AC dcgain_
+wrdata SMCNR_SE_2st_AMP_ACDC_GBW_PM gain_bandwidth_product_ phase_margin
+wrdata SMCNR_SE_2st_AMP_ACDC_SWEEP vdb(vout) vp(vout)
+.endc
+.end

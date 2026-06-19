@@ -1,0 +1,72 @@
+{
+  "candidate_native_passive_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_candidate_native_passive.spice",
+  "candidate_top": "SMCNR_SE_2st_AMP_native_cap_full_gds_candidate_native_passive",
+  "full_native_passive_lvs_proven": true,
+  "full_native_passive_lvs_ready": true,
+  "missing_native_source_passive_instances": [],
+  "native_capacitor_device_count": 1,
+  "native_capacitor_device_recognition_status": "pass",
+  "native_capacitor_devices": [
+    {
+      "electrical_terminals": [
+        "outn",
+        "net027"
+      ],
+      "native_extracted_devices": [
+        {
+          "line": "X30 outn net027 sky130_fd_pr__cap_mim_m3_1 l=10.3 w=10.95",
+          "model": "sky130_fd_pr__cap_mim_m3_1",
+          "model_index": 3,
+          "params": [
+            "l=10.3",
+            "w=10.95"
+          ],
+          "terminals": [
+            "outn",
+            "net027"
+          ],
+          "tokens": [
+            "X30",
+            "outn",
+            "net027",
+            "sky130_fd_pr__cap_mim_m3_1",
+            "l=10.3",
+            "w=10.95"
+          ]
+        }
+      ],
+      "source_instance": "xc0",
+      "source_model": "cfmom_2t"
+    }
+  ],
+  "native_passive_netgen": {
+    "log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.log",
+    "report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.out",
+    "returncode": 0,
+    "status": "pass",
+    "tcl": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.out.tcl"
+  },
+  "native_passive_netgen_status": "pass",
+  "native_resistor_chain_device_count": 31,
+  "native_resistor_chain_model": [
+    "sky130_fd_pr__res_xhigh_po"
+  ],
+  "native_resistor_chain_netgen": {
+    "log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.log",
+    "report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.out",
+    "returncode": 0,
+    "status": "pass",
+    "tcl": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.out.tcl"
+  },
+  "native_resistor_chain_netgen_status": "pass",
+  "native_resistor_chain_source_instance": "xr0",
+  "native_resistor_chain_status": "pass",
+  "schema_version": "sky130_native_passive_retarget_trial.v1",
+  "source_native_passive_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_source_native_passive.spice",
+  "source_passive_instances": [
+    "xc0",
+    "xr0"
+  ],
+  "source_top": "SMCNR_SE_2st_AMP_native_cap_full_gds_source_native_passive",
+  "status": "native_passive_retarget_ready"
+}

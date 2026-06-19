@@ -1,0 +1,905 @@
+* Harness-generated direct Sky130 model projection for ngspice compatibility
+.param l=1u
+.param w=1u
+.param mult=1
+.param mc_mm_switch=0
+.param sky130_fd_pr__nfet_01v8__toxe_slope=0
+.param sky130_fd_pr__nfet_01v8__toxe_slope_spectre=0
+.param sky130_fd_pr__nfet_01v8__voff_slope=0
+.param sky130_fd_pr__nfet_01v8__voff_slope_spectre=0
+.param sky130_fd_pr__nfet_01v8__vth0_slope=0
+.param sky130_fd_pr__nfet_01v8__vth0_slope_spectre=0
+.param sky130_fd_pr__pfet_01v8__ku0_diff=0
+.param sky130_fd_pr__pfet_01v8__kvsat_diff=0
+.param sky130_fd_pr__pfet_01v8__kvth0_diff=0
+.param sky130_fd_pr__pfet_01v8__lku0_diff=0
+.param sky130_fd_pr__pfet_01v8__lkvth0_diff=0
+.param sky130_fd_pr__pfet_01v8__nfactor_slope=0
+.param sky130_fd_pr__pfet_01v8__nfactor_slope_spectre=0
+.param sky130_fd_pr__pfet_01v8__toxe_slope=0
+.param sky130_fd_pr__pfet_01v8__toxe_slope_spectre=0
+.param sky130_fd_pr__pfet_01v8__voff_slope=0
+.param sky130_fd_pr__pfet_01v8__voff_slope_spectre=0
+.param sky130_fd_pr__pfet_01v8__vth0_slope=0
+.param sky130_fd_pr__pfet_01v8__vth0_slope_spectre=0
+.param sky130_fd_pr__pfet_01v8__wku0_diff=0
+.param sky130_fd_pr__pfet_01v8__wkvth0_diff=0
+.param sky130_fd_pr__pfet_01v8__wlod_diff=0
+.model sky130_harness_pfet_100 pmos
+* DC IV MOS Parameters
++ lmin = 8e-06 lmax = 2.0e-05 wmin = 4.2e-07 wmax = 5.5e-7
++ level = 54.0
++ tnom = 30.0
++ version = 4.5
++ toxm = 4.23e-9
++ xj = 1.5e-7
++ lln = 1.0
++ lwn = 1.0
++ wln = 1.0
++ wwn = 1.0
++ lint = -1.8665e-9
++ ll = 0.0
++ lw = 0.0
++ lwl = 0.0
++ wint = -1.52161e-8
++ wl = 0.0
++ ww = 0.0
++ wwl = 0.0
++ xl = 0.0
++ xw = 0.0
++ mobmod = 0.0
++ binunit = 2.0
++ dwg = -5.722e-9
++ dwb = -1.7864e-8
+* BSIM4 - Model Selectors
++ igcmod = 0.0
++ igbmod = 0.0
++ rgatemod = 0.0
++ rbodymod = 1.0
++ trnqsmod = 0.0
++ acnqsmod = 0.0
++ fnoimod = 1.0
++ tnoimod = 1.0
++ permod = 1.0
++ geomod = 0.0
++ rdsmod = 0.0
++ tempmod = 0.0
++ lintnoi = -2.0e-7
++ vfbsdoff = 0.0
++ lambda = 0.0
++ vtl = 0.0
++ lc = 5.0e-9
++ xn = 3.0
++ rnoia = 0.69
++ rnoib = 0.34
++ tnoia = 25.0e+6
++ tnoib = .0e-6
+* BSIM4 - Process Parameters
++ epsrox = 3.9
+*(mismatch parameter sky130_fd_pr__pfet_01v8__toxe_slope_spectre)
++ toxe = {4.075605e-09+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.075605e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ dtox = 0.0
++ ndep = 1.7000000000000000e+17
++ nsd = 1.0e+20
++ rshg = 0.1
++ rsh = 1.0
+* Threshold Voltage Parameters
+*(mismatch parameter sky130_fd_pr__pfet_01v8__vth0_slope_spectre)
++ vth0 = {-1.10948925172375+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0 = -3.87056177170956e-07 wvth0 = 4.91137069276693e-08 pvth0 = 2.24659868438929e-13
++ k1 = 0.574355740814426 lk1 = -4.75420297583363e-07 wk1 = -5.55414357999574e-08 pk1 = 2.75949249250966e-13
++ k2 = -0.0670095009372213 lk2 = -1.44331360963172e-07 wk2 = 3.66771836080165e-08 pk2 = 8.37745693728481e-14
++ k3 = -15.845
++ dvt0 = 4.4955
++ dvt1 = 0.294
++ dvt2 = 0.015
++ dvt0w = -4.9772
++ dvt1w = 1147200.0
++ dvt2w = -0.00896
++ w0 = 0.0
++ k3b = 2.0
+* NEW BSIM4 Parameters for Level 54
++ phin = 0.0
++ lpe0 = 0.0
++ lpeb = 0.0
++ vbm = -3.0
++ dvtp0 = 0.0
++ dvtp1 = 0.0
+* Mobility Parameters
++ vsat = -327296.44819703 lvsat = 1.79220550316356 wvsat = 0.204188774098032 pvsat = -1.04025378305333e-6
++ ua = -1.24500116300283e-09 lua = -7.20240136769779e-16 wua = 1.93066418984632e-16 pua = 4.18050567113583e-22
++ ub = 3.56520234338192e-18 lub = 1.64813389934676e-24 wub = -1.3290711518602e-24 pub = -9.56629985092422e-31
++ uc = 3.14482087977308e-12 luc = -2.12263933771552e-16 wuc = -4.1300289190227e-17 puc = 1.23204822059676e-22
++ rdsw = 547.88
++ prwb = -0.32348
++ prwg = 0.1376
++ wr = 1.0
++ u0 = 0.0194849088629452 lu0 = 9.74909852300865e-11 wu0 = -5.4433196178005e-09 pu0 = -5.65869070372145e-17
++ a0 = -0.697713175798624 la0 = 1.51417428666717e-05 wa0 = 1.13105629032174e-06 pa0 = -8.78875512393658e-12
++ keta = -0.0863636558239739 lketa = 6.77548293928021e-07 wketa = 5.44278596811787e-08 pketa = -3.93270846850888e-13
++ a1 = 0.0
++ a2 = -0.352282006377447 la2 = 9.22255751974938e-06 wa2 = 6.68821579982076e-07 pa2 = -5.35306935081468e-12
++ ags = 0.783913218218862 lags = -4.12335507816919e-06 wags = -3.18628359633966e-07 pags = 2.39332805940291e-12
++ b0 = 2.73404702607802e-07 lb0 = -7.20926627893431e-12 wb0 = -1.94180517732992e-13 pb0 = 4.18449028666766e-18
++ b1 = -1.58641297923116e-09 lb1 = 3.88919180018303e-14 wb1 = 1.16198055906569e-15 pb1 = -2.2574121528022e-20
+* BSIM4 - Mobility Parameters
++ eu = 1.67
++ rdswmin = 0.0
++ rdw = 0.0
++ rdwmin = 0.0
++ rsw = 0.0
++ rswmin = 0.0
+* Subthreshold Current Parameters
+*(mismatch parameter sky130_fd_pr__pfet_01v8__voff_slope_spectre)
++ voff = {-0.269132556912914+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff = -2.18024726893762e-06 wvoff = -3.48978493414242e-08 pvoff = 1.26548571885346e-12
+*(mismatch parameter sky130_fd_pr__pfet_01v8__nfactor_slope_spectre)
++ nfactor = {3.44516134415316+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor = -3.31243293109206e-06 wnfactor = -9.11183156574235e-07 pnfactor = 1.92264273354621e-12
++ up = 0.0
++ ud = 0.0
++ lp = 1.0
++ tvfbsdoff = 0.0
++ tvoff = 0.0
++ cit = -1.55493289552115e-06 lcit = 2.31141792474922e-10 wcit = 6.7068551213997e-12 pcit = -1.34162139118162e-16
++ cdsc = 0.00013
++ cdscb = 0.00078
++ cdscd = 0.0
++ eta0 = 0.08
++ etab = -0.07
++ dsub = 0.56
+* BSIM4 - Sub-threshold parameters
++ voffl = 0.0
++ minv = 0.0
+* Rout Parameters
++ pclm = 1.42345057948295 lpclm = -2.83286449235647e-05 wpclm = -8.25206463359257e-07 ppclm = 1.64428576960035e-11
++ pdiblc1 = 0.39
++ pdiblc2 = -0.00905765647069958 lpdiblc2 = 8.86088667485042e-08 wpdiblc2 = 5.74368511912036e-09 ppdiblc2 = -5.14314394663411e-14
++ pdiblcb = -0.225
++ drout = 0.56
++ pscbe1 = 1621356134.90286 lpscbe1 = -6582.24978762193 wpscbe1 = -482.489388507783 ppscbe1 = 0.00382054972517893
++ pscbe2 = 7.2406543815033e-09 lpscbe2 = 1.91100591252547e-14 wpscbe2 = 1.32173932101688e-15 ppscbe2 = -1.10920936602017e-20
++ pvag = 0.0
++ delta = 0.01
++ alpha0 = 6.7758496560273e-10 lalpha0 = -4.62283584949844e-15 walpha0 = -3.35248912271717e-16 palpha0 = 2.68324278236325e-21
++ alpha1 = 6.7758496560273e-10 lalpha1 = -4.62283584949844e-15 walpha1 = -3.35248912271717e-16 palpha1 = 2.68324278236325e-21
++ beta0 = -148.728845080245 lbeta0 = 0.00116376801683074 wbeta0 = 8.80683073533859e-05 pbeta0 = -6.75488430298704e-10
+* BSIM4 - Rout Parameters
++ fprout = 0.0
++ pdits = 0.0
++ pditsl = 0.0
++ pditsd = 0.0
+* BSIM4 - Gate Induced Drain Leakage Model Parameters
++ agidl = 3.9323543701791e-09 lagidl = -1.29664642217051e-14 wagidl = -1.60152107939883e-15 pagidl = 7.5261533544256e-21
++ bgidl = 1000000000.0
++ cgidl = 300.0
++ egidl = 0.1
+* BSIM4 - Gate Leakage Current Parameters
++ aigbacc = 0.43
++ bigbacc = 0.054
++ cigbacc = 0.075
++ nigbacc = 1.0
++ aigbinv = 0.35
++ bigbinv = 0.03
++ cigbinv = 0.006
++ eigbinv = 1.1
++ nigbinv = 3.0
++ aigc = 0.43
++ bigc = 0.054
++ cigc = 0.075
++ nigc = 1.0
++ aigsd = 0.43
++ bigsd = 0.054
++ cigsd = 0.075
++ dlcig = 0.0
++ poxedge = 1.0
++ pigcd = 1.0
++ ntox = 1.0
++ toxref = 4.23e-9
+* Temperature Effects Parameters
++ kt1 = -1.28940056201675 lkt1 = 2.31141792474922e-06 wkt1 = 4.43328636250618e-07 pkt1 = -1.34162139118162e-12
++ kt2 = -0.0300782446267031 wkt2 = -1.30050218839845e-8
++ at = -249995.0962425 wat = 0.150909525701246
++ ute = -4.58147212363077 wute = 1.92817958805768e-6
++ ua1 = -3.28960529262205e-09 wua1 = 1.76077317231826e-15
++ ub1 = 1.35807361061972e-18 wub1 = -5.01338799825949e-25
++ uc1 = -2.18821282912638e-10 luc1 = 3.14352837765893e-16 wuc1 = 1.31767618570025e-16 puc1 = -1.824605092007e-22
++ kt1l = 0.0
++ prt = 0.0
+* BSIM4 - High Speed RF Model Parameters
++ xrcrg1 = 12.0
++ xrcrg2 = 1.0
++ rbpb = 50.0
++ rbpd = 50.0
++ rbps = 50.0
++ rbdb = 50.0
++ rbsb = 50.0
++ gbmin = 1.0e-12
+* BSIM4 - Flicker and Thermal Noise Parameters
++ noia = 1.5e+42
++ noib = 0.0
++ noic = 0.0
++ em = 41000000.0
++ af = 1.0
++ ef = 1.0
++ kf = 0.0
++ ntnoi = 1.0
+* BSIM4 - Layout Dependent Parasitic Model Parameters
++ dmcg = 0.0
++ dmcgt = 0.0
++ dmdg = 0.0
++ xgw = 0.0
++ xgl = 0.0
++ ngcon = 1.0
+* Diode DC IV Parameters
+* BSIM4 - Diode DC IV parameters
++ diomod = 1.0
++ njs = 1.3632
++ jss = 2.1483e-5
++ jsws = 8.04e-10
++ xtis = 5.2
++ bvs = 12.69
++ xjbvs = 1.0
++ ijthsrev = 0.1
++ ijthsfwd = 0.1
+* Diode and FET Capacitance Parameters
++ tpb = 0.0020386
++ tpbsw = 0.001246
++ tpbswg = 0.0
++ tcj = 0.0012407
++ tcjsw = 0.00037357
++ tcjswg = 2.0e-12
++ cgdo = 4.86838e-11
++ cgso = 4.86838e-11
++ cgbo = 0.0
++ capmod = 2.0
++ xpart = 0.0
++ cgsl = 8.8560258e-12
++ cgdl = 8.8560258e-12
++ cf = 1.2e-11
++ clc = 1.0e-7
++ cle = 0.6
++ dlc = 9.1275e-9
++ dwc = -2.252e-8
++ vfbcv = -0.14469
++ acde = 0.8
++ moin = 18.13
++ noff = 3.9
++ voffcv = -0.10701
++ ngate = 1.0e+23
++ lwc = 0.0
++ llc = 0.0
++ lwlc = 0.0
++ wlc = 0.0
++ wwc = 0.0
++ wwlc = 0.0
+* BSIM4 - FET and Diode capacitance parameters
++ ckappas = 0.6
++ cjs = 0.0006889421079
++ mjs = 0.34629
++ pbs = 0.6587
++ cjsws = 9.2317732e-11
++ mjsws = 0.29781
++ pbsws = 0.7418
++ cjswgs = 2.232631466e-10
++ mjswgs = 0.9274
++ pbswgs = 1.4338
+* Stress Parameters
++ saref = 3.0e-6
++ sbref = 3.0e-6
++ wlod = {0+sky130_fd_pr__pfet_01v8__wlod_diff}
++ kvth0 = {0+sky130_fd_pr__pfet_01v8__kvth0_diff}
++ lkvth0 = {0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
++ wkvth0 = {0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ pkvth0 = 0.0
++ llodvth = 0.0
++ wlodvth = 1.0
++ stk2 = 0.0
++ lodk2 = 1.0
++ lodeta0 = 1.0
++ ku0 = {0+sky130_fd_pr__pfet_01v8__ku0_diff}
++ lku0 = {0+sky130_fd_pr__pfet_01v8__lku0_diff}
++ wku0 = {0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ pku0 = 0.0
++ llodku0 = 0.0
++ wlodku0 = 1.0
++ kvsat = {0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ steta0 = 0.0
++ tku0 = 0.0
+.model sky130_harness_nfet_46 nmos
+* Model Flag Parameters
++ lmin = 8.0e-06 lmax = 2.0e-05 wmin = 1.26e-06 wmax = 1.68e-6
++ level = 54.0
++ version = 4.5
++ binunit = 2.0
++ mobmod = 0.0
++ capmod = 2.0
++ igcmod = 0.0
++ igbmod = 0.0
++ geomod = 0.0
++ diomod = 1.0
++ rdsmod = 0.0
++ rbodymod = 1.0
++ rgatemod = 0.0
++ permod = 1.0
++ acnqsmod = 0.0
++ trnqsmod = 0.0
++ fnoimod = 1.0
++ tnoimod = 1.0
++ tempmod = 0.0
+* Process Parameters
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {3.996598e-09+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*0.9635*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxm = 4.148e-9
++ dtox = 0.0
++ epsrox = 3.9
++ xj = 1.5e-7
++ ngate = 1.0e+23
++ ndep = 1.7e+17
++ nsd = 1.0e+20
++ rsh = 1.0
++ rshg = 0.1
+* Basic Model Parameters
++ wint = -6.60999999999998e-10
++ lint = 2.40595e-8
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {5.040377539e-01+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0 = 2.878834541e-8
++ k1 = 7.855670614e-01 wk1 = -3.935968941e-7
++ k2 = -1.145495216e-01 wk2 = 1.444905758e-7
++ k3 = 2.0
++ k3b = 0.54
++ w0 = 0.0
++ dvt0 = 0.0
++ dvt1 = 0.53
++ dvt2 = -0.032
++ dvt0w = -3.58
++ dvt1w = 1670600.0
++ dvt2w = 0.068
++ dsub = 0.56
++ minv = 0.0
++ voffl = 5.8197729e-9
++ lpe0 = 1.0325e-7
++ lpeb = -7.082e-8
++ vbm = -3.0
++ dvtp0 = 0.0
++ dvtp1 = 0.0
++ phin = 0.0
++ cdsc = 0.0
++ cdscb = 0.0
++ cdscd = 0.0054
++ cit = 0.0
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-8.872312583e-02+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff = -2.862474944e-8
++ nfactor = 3.522176090e+00 wnfactor = -1.052467371e-6
++ eta0 = 0.08
++ etab = -0.07
++ u0 = 3.488233125e-02 wu0 = -6.627151337e-9
++ ua = -8.279133382e-10 wua = 2.081679374e-16
++ ub = 1.906768045e-18 wub = -5.262336856e-25
++ uc = 2.066331874e-10 wuc = -2.280901389e-16
++ ud = 0.0
++ up = 0.0
++ lp = 1.0
++ eu = 1.67
++ vtl = 0.0
++ xn = 3.0
++ vsat = 80000.0
++ a0 = 1.521939659e+00 wa0 = -2.112003704e-7
++ ags = 7.323010281e-01 wags = -4.864238194e-7
++ a1 = 0.0
++ a2 = 0.42385546
++ b0 = 8.435832978e-24 wb0 = -1.064030172e-29
++ b1 = 0.0
++ keta = -1.804450939e-02 wketa = 2.082587887e-8
++ dwg = 0.0
++ dwb = 0.0
++ pclm = 0.083531
++ pdiblc1 = 0.39
++ pdiblc2 = 3.968660562e-04 wpdiblc2 = 3.473058507e-9
++ pdiblcb = -3.391735258e+00 wpdiblcb = 1.479762863e-6
++ drout = 0.56
++ pscbe1 = 8.896224500e+08 wpscbe1 = -1.615862587e+2
++ pscbe2 = 1.0e-12
++ pvag = 0.0
++ delta = 0.01
++ fprout = 0.0
++ pdits = 0.0
++ pditsl = 0.0
++ pditsd = 0.0
++ lambda = 0.0
++ lc = 5.0e-9
+* Parameters FOR Asymmetric AND Bias-Dependent RDS Model
++ rdsw = 65.968
++ rsw = 0.0
++ rdw = 0.0
++ rdswmin = 0.0
++ rdwmin = 0.0
++ rswmin = 0.0
++ prwb = 0.0
++ prwg = 0.021507
++ wr = 1.0
+* Impact Ionization Current Model Parameters
++ alpha0 = 3.0e-8
++ alpha1 = 0.85
++ beta0 = 13.86
+* Gidl Induced Drain Leakage Model Parameters
++ agidl = 0.0
++ bgidl = 2300000000.0
++ cgidl = 0.5
++ egidl = 0.8
+* Gate Dielectric Tunneling Current Model Parameters
++ toxref = 4.148e-9
++ dlcig = 0.0
++ aigbacc = 1.0
++ bigbacc = 0.0
++ cigbacc = 0.0
++ nigbacc = 0.0
++ aigbinv = 0.35
++ bigbinv = 0.03
++ cigbinv = 0.006
++ eigbinv = 1.1
++ nigbinv = 0.0
++ aigc = 0.43
++ bigc = 0.054
++ cigc = 0.075
++ aigsd = 0.43
++ bigsd = 0.054
++ cigsd = 0.075
++ nigc = 0.0
++ poxedge = 1.0
++ pigcd = 1.0
++ ntox = 1.0
++ vfbsdoff = 0.0
+* Charge AND Capacitance Model Parameters
++ dlc = 1.85814e-8
++ dwc = -2.252e-8
++ xpart = 0.0
++ cgso = 2.4133302e-10
++ cgdo = 2.4133302e-10
++ cgbo = 1.0e-13
++ cgdl = 0.0
++ cgsl = 0.0
++ clc = 1.0e-7
++ cle = 0.6
++ cf = 1.4067e-12
++ ckappas = 0.6
++ vfbcv = -1.0
++ acde = 0.4
++ moin = 6.9
++ noff = 3.4037
++ voffcv = -0.17287
+* High-Speed/RF Model Parameters
++ xrcrg1 = 12.0
++ xrcrg2 = 1.0
++ rbpb = 50.0
++ rbpd = 50.0
++ rbps = 50.0
++ rbdb = 50.0
++ rbsb = 50.0
++ gbmin = 1.0e-12
+* Flicker AND Thermal Noise Model Parameters
++ ef = 0.84
++ noia = 2.5e+42
++ noib = 0.0
++ noic = 0.0
++ em = 41000000.0
++ ntnoi = 1.0
++ lintnoi = -1.0e-7
++ af = 1.0
++ kf = 0.0
++ tnoia = 15000000.0
++ tnoib = 9900000.0
++ rnoia = 0.94
++ rnoib = 0.26
+* Layout-Dependent Parasitics Model Parameters
++ xl = 0.0
++ xw = 0.0
++ dmcg = 0.0
++ dmdg = 0.0
++ dmcgt = 0.0
++ xgw = 0.0
++ xgl = 0.0
++ ngcon = 1.0
+* Asymmetric Source/Drain Junction Diode Model Parameters
++ jss = 0.00275
++ jsws = 6.0e-10
++ ijthsfwd = 0.1
++ ijthsrev = 0.1
++ bvs = 11.7
++ xjbvs = 1.0
++ pbs = 0.729
++ cjs = 0.001131080901
++ mjs = 0.44
++ pbsws = 0.2
++ cjsws = 3.101378147e-11
++ mjsws = 0.0009
++ pbswgs = 0.95578
++ cjswgs = 2.011274009e-10
++ mjswgs = 0.8
+* Temperature Dependence Parameters
++ tnom = 30.0
++ kt1 = -3.879951022e-01 wkt1 = 1.204752997e-7
++ kt2 = -1.024009761e-01 wkt2 = 1.031311383e-7
++ at = 140000.0
++ ute = -3.299681993e+00 wute = 2.537757152e-6
++ ua1 = -2.740499133e-09 wua1 = 5.163977307e-15
++ ub1 = 1.127167004e-18 wub1 = -2.609961543e-24
++ uc1 = 1.340188661e-10 wuc1 = -1.998276990e-16
++ kt1l = 0.0
++ prt = 0.0
++ tvoff = 0.0
++ njs = 1.2928
++ tpb = 0.0012287
++ tcj = 0.000792
++ tpbsw = 0.0
++ tcjsw = 1.0e-5
++ tpbswg = 0.0
++ tcjswg = 0.0
++ xtis = 2.0
++ tvfbsdoff = 0.0
+* DW AND DL Parameters
++ ll = 0.0
++ wl = 0.0
++ lln = 1.0
++ wln = 1.0
++ lw = 0.0
++ ww = 0.0
++ lwn = 1.0
++ wwn = 1.0
++ lwl = 0.0
++ wwl = 0.0
++ llc = 0.0
++ wlc = 0.0
++ lwc = 0.0
++ wwc = 0.0
++ lwlc = 0.0
++ wwlc = 0.0
+* Stress Parameters
++ saref = 3.0e-6
++ sbref = 3.0e-6
++ kvth0 = 9.8e-9
++ lkvth0 = 0.0
++ wkvth0 = 2.0e-7
++ pkvth0 = 0.0
++ llodvth = 0.0
++ wlodvth = 1.0
++ wlod = 0.0
++ stk2 = 0.0
++ lodk2 = 1.0
++ lodeta0 = 1.0
++ ku0 = -2.7e-8
++ lku0 = 0.0
++ wku0 = 0.0
++ pku0 = 0.0
++ tku0 = 0.0
++ llodku0 = 0.0
++ wlodku0 = 1.0
++ kvsat = 0.2
++ steta0 = 0.0
+* Well Proximity Effect Parameters
+.model sky130_harness_pfet_1 pmos
+* DC IV MOS Parameters
++ lmin = 8e-06 lmax = 2.0e-05 wmin = 7e-06 wmax = 1.0e-4
++ level = 54.0
++ tnom = 30.0
++ version = 4.5
++ toxm = 4.23e-9
++ xj = 1.5e-7
++ lln = 1.0
++ lwn = 1.0
++ wln = 1.0
++ wwn = 1.0
++ lint = -1.8665e-9
++ ll = 0.0
++ lw = 0.0
++ lwl = 0.0
++ wint = -1.52161e-8
++ wl = 0.0
++ ww = 0.0
++ wwl = 0.0
++ xl = 0.0
++ xw = 0.0
++ mobmod = 0.0
++ binunit = 2.0
++ dwg = -5.722e-9
++ dwb = -1.7864e-8
+* BSIM4 - Model Selectors
++ igcmod = 0.0
++ igbmod = 0.0
++ rgatemod = 0.0
++ rbodymod = 1.0
++ trnqsmod = 0.0
++ acnqsmod = 0.0
++ fnoimod = 1.0
++ tnoimod = 1.0
++ permod = 1.0
++ geomod = 0.0
++ rdsmod = 0.0
++ tempmod = 0.0
++ lintnoi = -2.0e-7
++ vfbsdoff = 0.0
++ lambda = 0.0
++ vtl = 0.0
++ lc = 5.0e-9
++ xn = 3.0
++ rnoia = 0.69
++ rnoib = 0.34
++ tnoia = 25.0e+6
++ tnoib = .0e-6
+* BSIM4 - Process Parameters
++ epsrox = 3.9
+*(mismatch parameter sky130_fd_pr__pfet_01v8__toxe_slope_spectre)
++ toxe = {4.075605e-09+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.075605e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ dtox = 0.0
++ ndep = 1.7000000000000000e+17
++ nsd = 1.0e+20
++ rshg = 0.1
++ rsh = 1.0
+* Threshold Voltage Parameters
+*(mismatch parameter sky130_fd_pr__pfet_01v8__vth0_slope_spectre)
++ vth0 = {-1.0498303+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ k1 = 0.43448553
++ k2 = 0.021784346
++ k3 = -15.845
++ dvt0 = 4.4955
++ dvt1 = 0.294
++ dvt2 = 0.015
++ dvt0w = -4.9772
++ dvt1w = 1147200.0
++ dvt2w = -0.00896
++ w0 = 0.0
++ k3b = 2.0
+* NEW BSIM4 Parameters for Level 54
++ phin = 0.0
++ lpe0 = 0.0
++ lpeb = 0.0
++ vbm = -3.0
++ dvtp0 = 0.0
++ dvtp1 = 0.0
+* Mobility Parameters
++ vsat = 160312.5
++ ua = -5.9240701e-10
++ ub = 9.3030446e-19
++ uc = -6.6549964e-11
++ rdsw = 547.88
++ prwb = -0.32348
++ prwg = 0.1376
++ wr = 1.0
++ u0 = 0.0104306
++ a0 = 1.171369
++ keta = 0.0051290095
++ a1 = 0.0
++ a2 = 0.9995
++ ags = 0.2846738
++ b0 = 0.0
++ b1 = 0.0
+* BSIM4 - Mobility Parameters
++ eu = 1.67
++ rdswmin = 0.0
++ rdw = 0.0
++ rdwmin = 0.0
++ rsw = 0.0
++ rswmin = 0.0
+* Subthreshold Current Parameters
+*(mismatch parameter sky130_fd_pr__pfet_01v8__voff_slope_spectre)
++ voff = {-0.28370745+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__pfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.3961358+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ up = 0.0
++ ud = 0.0
++ lp = 1.0
++ tvfbsdoff = 0.0
++ tvoff = 0.0
++ cit = 1.0e-5
++ cdsc = 0.00013
++ cdscb = 0.00078
++ cdscd = 0.0
++ eta0 = 0.08
++ etab = -0.07
++ dsub = 0.56
+* BSIM4 - Sub-threshold parameters
++ voffl = 0.0
++ minv = 0.0
+* Rout Parameters
++ pclm = 0.0015228006
++ pdiblc1 = 0.39
++ pdiblc2 = 0.0029632464
++ pdiblcb = -0.025
++ drout = 0.56
++ pscbe1 = 800000000.0
++ pscbe2 = 9.3760948e-9
++ pvag = 0.0
++ delta = 0.01
++ alpha0 = 1.0e-10
++ alpha1 = 1.0e-10
++ beta0 = 4.6464006
+* BSIM4 - Rout Parameters
++ fprout = 0.0
++ pdits = 0.0
++ pditsl = 0.0
++ pditsd = 0.0
+* BSIM4 - Gate Induced Drain Leakage Model Parameters
++ agidl = 1.0e-10
++ bgidl = 1181082000.0
++ cgidl = 300.0
++ egidl = 0.1
+* BSIM4 - Gate Leakage Current Parameters
++ aigbacc = 0.43
++ bigbacc = 0.054
++ cigbacc = 0.075
++ nigbacc = 1.0
++ aigbinv = 0.35
++ bigbinv = 0.03
++ cigbinv = 0.006
++ eigbinv = 1.1
++ nigbinv = 3.0
++ aigc = 0.43
++ bigc = 0.054
++ cigc = 0.075
++ nigc = 1.0
++ aigsd = 0.43
++ bigsd = 0.054
++ cigsd = 0.075
++ dlcig = 0.0
++ poxedge = 1.0
++ pigcd = 1.0
++ ntox = 1.0
++ toxref = 4.23e-9
+* Temperature Effects Parameters
++ kt1 = -0.4485
++ kt2 = -0.0075706
++ at = 90900.0
++ ute = -0.33954
++ ua1 = 1.6104e-9
++ ub1 = -5.609e-19
++ uc1 = -1.0858e-10
++ kt1l = 0.0
++ prt = 0.0
+* BSIM4 - High Speed RF Model Parameters
++ xrcrg1 = 12.0
++ xrcrg2 = 1.0
++ rbpb = 50.0
++ rbpd = 50.0
++ rbps = 50.0
++ rbdb = 50.0
++ rbsb = 50.0
++ gbmin = 1.0e-12
+* BSIM4 - Flicker and Thermal Noise Parameters
++ noia = 1.5e+42
++ noib = 0.0
++ noic = 0.0
++ em = 41000000.0
++ af = 1.0
++ ef = 1.0
++ kf = 0.0
++ ntnoi = 1.0
+* BSIM4 - Layout Dependent Parasitic Model Parameters
++ dmcg = 0.0
++ dmcgt = 0.0
++ dmdg = 0.0
++ xgw = 0.0
++ xgl = 0.0
++ ngcon = 1.0
+* Diode DC IV Parameters
+* BSIM4 - Diode DC IV parameters
++ diomod = 1.0
++ njs = 1.3632
++ jss = 2.1483e-5
++ jsws = 8.04e-10
++ xtis = 5.2
++ bvs = 12.69
++ xjbvs = 1.0
++ ijthsrev = 0.1
++ ijthsfwd = 0.1
+* Diode and FET Capacitance Parameters
++ tpb = 0.0020386
++ tpbsw = 0.001246
++ tpbswg = 0.0
++ tcj = 0.0012407
++ tcjsw = 0.00037357
++ tcjswg = 2.0e-12
++ cgdo = 4.86838e-11
++ cgso = 4.86838e-11
++ cgbo = 0.0
++ capmod = 2.0
++ xpart = 0.0
++ cgsl = 8.8560258e-12
++ cgdl = 8.8560258e-12
++ cf = 1.2e-11
++ clc = 1.0e-7
++ cle = 0.6
++ dlc = 9.1275e-9
++ dwc = -2.252e-8
++ vfbcv = -0.14469
++ acde = 0.8
++ moin = 18.13
++ noff = 3.9
++ voffcv = -0.10701
++ ngate = 1.0e+23
++ lwc = 0.0
++ llc = 0.0
++ lwlc = 0.0
++ wlc = 0.0
++ wwc = 0.0
++ wwlc = 0.0
+* BSIM4 - FET and Diode capacitance parameters
++ ckappas = 0.6
++ cjs = 0.0006889421079
++ mjs = 0.34629
++ pbs = 0.6587
++ cjsws = 9.2317732e-11
++ mjsws = 0.29781
++ pbsws = 0.7418
++ cjswgs = 2.232631466e-10
++ mjswgs = 0.9274
++ pbswgs = 1.4338
+* Stress Parameters
++ saref = 3.0e-6
++ sbref = 3.0e-6
++ wlod = {0+sky130_fd_pr__pfet_01v8__wlod_diff}
++ kvth0 = {0+sky130_fd_pr__pfet_01v8__kvth0_diff}
++ lkvth0 = {0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
++ wkvth0 = {0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ pkvth0 = 0.0
++ llodvth = 0.0
++ wlodvth = 1.0
++ stk2 = 0.0
++ lodk2 = 1.0
++ lodeta0 = 1.0
++ ku0 = {0+sky130_fd_pr__pfet_01v8__ku0_diff}
++ lku0 = {0+sky130_fd_pr__pfet_01v8__lku0_diff}
++ wku0 = {0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ pku0 = 0.0
++ llodku0 = 0.0
++ wlodku0 = 1.0
++ kvsat = {0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ steta0 = 0.0
++ tku0 = 0.0
+
+* NGSPICE file created from SMCNR_SE_2st_AMP_flat.ext - technology: sky130A
+
+.subckt SMCNR_SE_2st_AMP_flat vdda gnda vin vip ibias vout
+M0 vdda ibias a_785_2846# vdda sky130_harness_pfet_100 ad=0.0385p pd=0.79u as=0.0385p ps=0.79u w=0.485u l=14u
+M1 a_4024_586# ibias vdda vdda sky130_harness_pfet_100 ad=0.0385p pd=0.79u as=0.0385p ps=0.79u w=0.485u l=14u
+M2 vout a_20_494# gnda gnda sky130_harness_nfet_46 ad=0.259p pd=3.31u as=0.259p ps=3.31u w=1.48u l=10u
+M3 gnda a_2100_n30# a_20_494# gnda sky130_harness_nfet_46 ad=0.2625p pd=3.35u as=0.2625p ps=3.35u w=1.5u l=10u
+M4 a_2100_n30# vin a_4024_586# vdda sky130_harness_pfet_1 ad=1.1656p pd=15.35u as=1.1656p ps=15.35u w=7.52u l=8.24u
+M5 gnda a_2100_n30# a_4345_n10# gnda sky130_harness_nfet_46 ad=0.2625p pd=3.35u as=0.2625p ps=3.35u w=1.5u l=10u
+M6 vout ibias vdda vdda sky130_harness_pfet_100 ad=0.0385p pd=0.79u as=0.0385p ps=0.79u w=0.485u l=14u
+M7 a_4024_586# vip a_20_494# vdda sky130_harness_pfet_1 ad=1.1656p pd=15.35u as=1.1656p ps=15.35u w=7.52u l=8.24u
+C0 a_2100_n30# vdda 2.63138f
+C1 ibias vdda 6.97853f
+C2 vip ibias 0.05802f
+C3 vip a_2100_n30# 0.11415f
+C4 a_2100_n30# a_4345_n10# 0.08803f
+C5 a_785_2846# vdda 0.01547f
+C6 vout a_20_494# 0.96845f
+C7 a_20_494# vdda 0.23551f
+C8 a_785_2846# ibias 0.02635f
+C9 vip a_20_494# 0.37661f
+C10 vout vdda 0.67357f
+C11 vin a_4024_586# 0.91307f
+C12 a_4024_586# vdda 0.85387f
+C13 vin vdda 3.37202f
+C14 vip vout 0.09055f
+C15 a_2100_n30# a_20_494# 0.12045f
+C16 a_20_494# ibias 0.01301f
+C17 vip a_4024_586# 0.37862f
+C18 vin vip 0.00245f
+C19 vip vdda 3.90033f
+C20 vout ibias 0.06626f
+C21 a_2100_n30# vout 0
+C22 a_4345_n10# vdda 0.00829f
+C23 a_4024_586# ibias 0.02881f
+C24 a_2100_n30# a_4024_586# 0.00859f
+C25 vin a_2100_n30# 0.43335f
+C26 vin ibias 0.00213f
+C27 vin gnda 0.41695f
+C28 vip gnda 0.30334f
+C29 vout gnda 0.41056f
+C30 ibias gnda 1.98759f
+C31 vdda gnda 35.8705f
+C32 a_4345_n10# gnda 0.09551f
+C33 a_2100_n30# gnda 6.57175f
+C34 a_20_494# gnda 3.04694f
+C35 a_4024_586# gnda 0.4266f
+C36 a_785_2846# gnda 0.00878f
+.ends
+

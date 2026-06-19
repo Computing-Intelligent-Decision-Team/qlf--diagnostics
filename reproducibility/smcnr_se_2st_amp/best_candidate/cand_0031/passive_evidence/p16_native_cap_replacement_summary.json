@@ -1,0 +1,78 @@
+{
+  "full_native_capacitor_lvs_ready": false,
+  "native_cap_gencell_devices": [
+    {
+      "instance": "X0",
+      "line": "X0 C1 C2 sky130_fd_pr__cap_mim_m3_1 l=10.3 w=10.95",
+      "model": "sky130_fd_pr__cap_mim_m3_1",
+      "params": "l=10.3 w=10.95",
+      "terminals": [
+        "C1",
+        "C2"
+      ]
+    }
+  ],
+  "native_cap_gencell_extraction_status": "pass",
+  "native_cap_gencell_model": "sky130_fd_pr__cap_mim_m3_1",
+  "remaining_gates": [
+    "connect original MAGICAL xc0 route-pin boxes to generated MIM C1/C2 terminals",
+    "replace xc0 cell in the full routed Sky130 GDS without disturbing MOS/resistor routing",
+    "rerun Magic extraction and prove xc0 appears as sky130_fd_pr__cap_* in the full top netlist"
+  ],
+  "replacement_cap_length_um": 10.3,
+  "replacement_cap_width_um": 10.95,
+  "replacement_cell_name": "SMCNR_SE_2st_AMP_xc0",
+  "replacement_gds": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\SMCNR_SE_2st_AMP_xc0.gds",
+  "replacement_gencell_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_replacement_gencell_report.md",
+  "replacement_gencell_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_replacement_gencell_summary.json",
+  "replacement_magic_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_gencell_probe.magic.log",
+  "replacement_spice": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\SMCNR_SE_2st_AMP_xc0.spice",
+  "schema_version": "sky130_native_cap_replacement_candidate.v1",
+  "source_bbox_height_um": 10.7,
+  "source_bbox_width_um": 13.11,
+  "source_cell_bbox": [
+    -55,
+    -50,
+    13055,
+    10650
+  ],
+  "source_instance": "xc0",
+  "source_model": "cfmom_2t",
+  "source_terminals": [
+    {
+      "global_box": [
+        40350,
+        18350,
+        53450,
+        18560
+      ],
+      "local_box": [
+        -50,
+        -50,
+        13050,
+        160
+      ],
+      "match_status": "exact",
+      "terminal": "outn"
+    },
+    {
+      "global_box": [
+        40350,
+        28840,
+        53450,
+        29050
+      ],
+      "local_box": [
+        -50,
+        10440,
+        13050,
+        10650
+      ],
+      "match_status": "exact",
+      "terminal": "net027"
+    }
+  ],
+  "status": "replacement_candidate_prepared",
+  "terminal_bridge_status": "not_implemented",
+  "top_gds_merge_status": "not_implemented"
+}

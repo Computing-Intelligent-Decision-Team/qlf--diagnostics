@@ -1,0 +1,10 @@
+.subckt SMCNR_SE_2st_AMP vdda gnda vin vip ibias vout
+xm1 outp outp gnda gnda sky130_fd_pr__nfet_01v8 w=1.5 l=10
+xm3 outn outp gnda gnda sky130_fd_pr__nfet_01v8 w=1.5 l=10
+xm7 ibias ibias vdda vdda sky130_fd_pr__pfet_01v8 w=0.22 l=10
+xm6 net53 ibias vdda vdda sky130_fd_pr__pfet_01v8 w=0.22 l=10
+xm5 vout ibias vdda vdda sky130_fd_pr__pfet_01v8 w=0.22 l=10
+xm2 outn vip net53 vdda sky130_fd_pr__pfet_01v8 w=7.52 l=8.24
+xm0 outp vin net53 vdda sky130_fd_pr__pfet_01v8 w=7.52 l=8.24
+xm4 vout outn gnda gnda sky130_fd_pr__nfet_01v8 w=1.48 l=10
+.ends SMCNR_SE_2st_AMP

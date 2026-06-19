@@ -1,0 +1,13 @@
+* NGSPICE file created from SMCNR_SE_2st_AMP_flat.ext - technology: sky130A
+
+.subckt SMCNR_SE_2st_AMP_flat vdda gnda vin vip ibias vout
+X0 vdda ibias ibias vdda sky130_fd_pr__pfet_01v8 w=0.22 l=10
+X1 net53 ibias vdda vdda sky130_fd_pr__pfet_01v8 w=0.22 l=10
+X2 vout outn gnda gnda sky130_fd_pr__nfet_01v8 w=1.48 l=10
+X3 gnda outp outn gnda sky130_fd_pr__nfet_01v8 w=1.5 l=10
+X4 outp vin net53 vdda sky130_fd_pr__pfet_01v8 w=7.52 l=8.24
+X5 gnda outp outp gnda sky130_fd_pr__nfet_01v8 w=1.5 l=10
+X6 vout ibias vdda vdda sky130_fd_pr__pfet_01v8 w=0.22 l=10
+X7 net53 vip outn vdda sky130_fd_pr__pfet_01v8 w=7.52 l=8.24
+.ends
+

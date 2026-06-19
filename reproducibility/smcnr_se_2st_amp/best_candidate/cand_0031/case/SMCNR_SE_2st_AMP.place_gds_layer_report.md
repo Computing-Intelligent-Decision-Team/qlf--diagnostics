@@ -1,0 +1,58 @@
+# GDS Remap Report
+
+## Summary
+
+- Input GDS: `E:\codex-magical-sky130-harness\magical-sky130-harness\generated\analog_harness\smcnr_se_2st_amp\cand_0031\case\SMCNR_SE_2st_AMP.place.gds`
+- Output GDS: `E:\codex-magical-sky130-harness\magical-sky130-harness\generated\analog_harness\smcnr_se_2st_amp\cand_0031\case\SMCNR_SE_2st_AMP.place.debug.sky130.gds`
+- Export map: `E:\codex-magical-sky130-harness\magical-sky130-harness\generated\sky130PDK_trial\sky130_gds_export_map.yaml`
+- Unique input layer/datatype pairs: 31
+- Successfully remapped pairs: 31
+- Preserved TBD pairs: 0
+- Preserved unmapped pairs: 0
+
+The original MAGICAL GDS is not modified. This post-processing step rewrites confirmed MAGICAL internal layers to their proposed Sky130 GDS layer/datatype targets. TBD and unmapped layers are left unchanged.
+Experimental datatype-specific mappings enabled: yes.
+
+## Layer Actions
+
+| input layer | input datatype | element type | output layer | output datatype | action | mapping |
+| ---: | ---: | --- | ---: | ---: | --- | --- |
+| 3 | 0 | BOUNDARY | 64 | 20 | remapped | NW -> nwell.drawing 64/20 |
+| 6 | 0 | BOUNDARY | 65 | 20 | remapped | OD -> diff.drawing 65/20 |
+| 17 | 0 | BOUNDARY | 66 | 20 | remapped | PO -> poly.drawing 66/20 |
+| 25 | 0 | BOUNDARY | 94 | 20 | remapped | PP -> psdm.drawing 94/20 |
+| 26 | 0 | BOUNDARY | 93 | 44 | remapped | NP -> nsdm.drawing 93/44 |
+| 29 | 0 | BOUNDARY | 86 | 20 | remapped | RPO -> RPM 86/20 |
+| 30 | 0 | BOUNDARY | 66 | 44 | remapped | CO -> licon1.drawing 66/44 |
+| 31 | 0 | BOUNDARY | 67 | 20 | remapped | M1 -> li1 67/20 |
+| 32 | 0 | BOUNDARY | 68 | 20 | remapped | M2 -> met1 68/20 |
+| 33 | 0 | BOUNDARY | 69 | 20 | remapped | M3 -> met2 69/20 |
+| 34 | 0 | BOUNDARY | 70 | 20 | remapped | M4 -> met3 70/20 |
+| 35 | 0 | BOUNDARY | 71 | 20 | remapped | M5 -> met4 71/20 |
+| 36 | 0 | BOUNDARY | 72 | 20 | remapped | M6 -> met5 72/20 |
+| 51 | 0 | BOUNDARY | 67 | 44 | remapped | VIA1 -> mcon 67/44 |
+| 52 | 0 | BOUNDARY | 68 | 44 | remapped | VIA2 -> via 68/44 |
+| 53 | 0 | BOUNDARY | 69 | 44 | remapped | VIA3 -> via2 69/44 |
+| 54 | 0 | BOUNDARY | 70 | 44 | remapped | VIA4 -> via3 70/44 |
+| 55 | 0 | BOUNDARY | 71 | 44 | remapped | VIA5 -> via4 71/44 |
+| 115 | 1 | BOUNDARY | 66 | 13 | remapped | RPDMY[1] -> POLYRES 66/13 |
+| 117 | 0 | BOUNDARY | 79 | 20 | remapped | RH[0] -> URPM 79/20 |
+| 150 | 2 | BOUNDARY | 68 | 13 | remapped | MRDMY[2] -> MET1RES 68/13 |
+| 150 | 3 | BOUNDARY | 69 | 13 | remapped | MRDMY[3] -> MET2RES 69/13 |
+| 150 | 4 | BOUNDARY | 70 | 13 | remapped | MRDMY[4] -> MET3RES 70/13 |
+| 150 | 5 | BOUNDARY | 71 | 13 | remapped | MRDMY[5] -> MET4RES 71/13 |
+| 155 | 2 | BOUNDARY | 82 | 64 | remapped | TSV_PPI[2] -> CAPID 82/64 |
+| 155 | 3 | BOUNDARY | 82 | 64 | remapped | TSV_PPI[3] -> CAPID 82/64 |
+| 155 | 4 | BOUNDARY | 82 | 64 | remapped | TSV_PPI[4] -> CAPID 82/64 |
+| 155 | 5 | BOUNDARY | 82 | 64 | remapped | TSV_PPI[5] -> CAPID 82/64 |
+| 155 | 27 | BOUNDARY | 82 | 64 | remapped | TSV_PPI[27] -> CAPID 82/64 |
+| 155 | 100 | BOUNDARY | 82 | 64 | remapped | TSV_PPI[100] -> CAPID 82/64 |
+| 208 | 1 | BOUNDARY | 83 | 44 | remapped | LVS_DUMMY[1] -> LVSTEXT 83/44 |
+
+## Notes
+
+- `remapped` means both GDS layer and datatype were replaced from `sky130_gds_export_map.yaml`.
+- Datatype-specific overrides allow one MAGICAL layer number to map different input datatypes to different Sky130 targets.
+- `preserved_tbd` means the MAGICAL layer exists in the export map but its Sky130 target is not confirmed.
+- `preserved_unmapped` means the input GDS layer is not listed in the export map.
+- This remap is a layer/datatype translation only; it does not make the layout Sky130 DRC-clean.

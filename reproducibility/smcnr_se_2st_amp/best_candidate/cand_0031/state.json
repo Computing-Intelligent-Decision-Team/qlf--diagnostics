@@ -1,0 +1,641 @@
+{
+  "action_normalized": [
+    -0.28,
+    0.34608695652173926,
+    -1.0,
+    -1.0,
+    -0.8260869565217391,
+    0.6521739130434783,
+    -1.0,
+    -1.0,
+    0.6521739130434783,
+    -1.0,
+    -0.9130434782608696,
+    -1.0,
+    0.6521739130434783,
+    -0.4193548387096774,
+    -0.8295652173913044,
+    0.6521739130434783,
+    -0.4193548387096774,
+    -0.6842105263157895,
+    -0.5,
+    -0.04761904761904767,
+    0.05714285714285716,
+    -0.11111111111111116,
+    -0.3793103448275862
+  ],
+  "artifacts": {
+    "candidate_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031",
+    "case_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\case",
+    "config": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\case\\smcnr_se_2st_amp_cand_0031.json",
+    "layout_out_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout",
+    "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\case\\SMCNR_SE_2st_AMP_cand_0031.sp"
+  },
+  "assignments": {
+    "xc0": {
+      "lr": 10.0,
+      "nr": 94
+    },
+    "xm0": {
+      "l": 8.24,
+      "multi": 1,
+      "nf": 1,
+      "w": 7.52
+    },
+    "xm1": {
+      "l": 10.0,
+      "multi": 1,
+      "w": 1.5
+    },
+    "xm2": {
+      "l": 8.24,
+      "multi": 1,
+      "nf": 1,
+      "w": 7.52
+    },
+    "xm3": {
+      "l": 10.0,
+      "multi": 1,
+      "w": 1.5
+    },
+    "xm4": {
+      "l": 10.0,
+      "multi": 10,
+      "w": 1.48
+    },
+    "xm5": {
+      "l": 10.0,
+      "multi": 10,
+      "w": 0.22
+    },
+    "xm6": {
+      "l": 10.0,
+      "multi": 2,
+      "w": 0.22
+    },
+    "xm7": {
+      "l": 10.0,
+      "multi": 1,
+      "w": 0.22
+    },
+    "xr0": {
+      "lr": 4.0,
+      "series": 31,
+      "wr": 400.0
+    }
+  },
+  "candidate_id": "cand_0031",
+  "closure_level": "L6_post_layout_pvt",
+  "design_id": "smcnr_se_2st_amp",
+  "evidence": [
+    {
+      "artifacts": {
+        "ACDC.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\pre_layout\\ACDC.log",
+        "Tran.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\pre_layout\\Tran.log",
+        "acdc_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\pre_layout\\SMCNR_SE_2st_AMP_ACDC.cir",
+        "instantiated_subckt": "SMCNR_SE_2st_AMP",
+        "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\case\\SMCNR_SE_2st_AMP_cand_0031.sp",
+        "prelayout_macro_projection": "True",
+        "prelayout_projected_capacitors": "1",
+        "prelayout_projected_mos": "8",
+        "prelayout_projected_resistors": "1",
+        "prelayout_projection_scope": "macro_to_sky130_approximation",
+        "proxy_metric_fields": "Active_Area",
+        "simulated_metric_fields": "FOML,FOMS,GBW,Power,dcgain,phase_margin,settlingTime",
+        "simulation_corner": "tt",
+        "simulation_direct_model_count": "3",
+        "simulation_direct_model_projection": "True",
+        "simulation_model_corner": "tt",
+        "simulation_model_projection": "direct_nearest_sky130_bin",
+        "simulation_model_projection_snapped_mos": "3",
+        "simulation_netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\pre_layout\\SMCNR_SE_2st_AMP_cand_0031.ngspice_units.sp",
+        "simulation_temp_c": "27.0",
+        "simulation_vdd": "1.8",
+        "tran_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\pre_layout\\SMCNR_SE_2st_AMP_Tran.cir"
+      },
+      "candidate_id": "cand_0031",
+      "fidelity": "E0",
+      "messages": [],
+      "metrics": {
+        "Active_Area": 101.4848,
+        "FOML": 0.03277688498947907,
+        "FOMS": 327768849.89479065,
+        "GBW": 18.330632160473446,
+        "Power": 5.59254858e-08,
+        "dcgain": 24.74035,
+        "phase_margin": 80.06306827256023,
+        "settlingTime": 2.032e-07
+      },
+      "physical_feedback": {
+        "prelayout_macro_projection": true,
+        "prelayout_projected_capacitors": 1,
+        "prelayout_projected_mos": 8,
+        "prelayout_projected_resistors": 1,
+        "prelayout_projection_scope": "macro_to_sky130_approximation",
+        "simulation_direct_model_count": 3,
+        "simulation_direct_model_projection": true,
+        "simulation_model_projection": "direct_nearest_sky130_bin",
+        "simulation_model_projection_snapped_mos": 3,
+        "simulation_template": "AnalogGym AMP_DFCFC2 adapted to SMC"
+      },
+      "stage": "pre_sim",
+      "status": "pass",
+      "timestamp": "2026-06-18T12:18:47Z",
+      "verification_scope": "mos_only_projection"
+    },
+    {
+      "artifacts": {
+        "out_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout",
+        "raw_extracted_netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout\\lvs_mos_projection\\SMCNR_SE_2st_AMP_extracted.raw.spice",
+        "run_log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout\\layout_adapter_run.log",
+        "summary": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout\\summary.md"
+      },
+      "candidate_id": "cand_0031",
+      "fidelity": "E2",
+      "messages": [],
+      "metrics": {
+        "drc_count": 0,
+        "failed_stage": null,
+        "lvs_match": "yes",
+        "lvs_mode": "mos_only_projection",
+        "message": null,
+        "netgen_exit_status": 0,
+        "pex_caps": 37,
+        "pex_output_node": "vout",
+        "pex_total_cap_ff": 71.4964,
+        "pipeline_status": null
+      },
+      "physical_feedback": {
+        "drc_count": 0,
+        "failed_stage": null,
+        "layout_pipeline_returncode": 0,
+        "lvs_match": "yes",
+        "lvs_mode": "mos_only_projection",
+        "lvs_scope_note": "MOS-only projection; passive-aware LVS/PEX is not claimed.",
+        "message": null,
+        "netgen_exit_status": 0,
+        "pex_caps": 37,
+        "pex_output_node": "vout",
+        "pex_total_cap_ff": 71.4964,
+        "pipeline_status": null,
+        "runtime_failure": false,
+        "verification_scope": "mos_only_projection"
+      },
+      "stage": "layout_verification",
+      "status": "pass",
+      "timestamp": "2026-06-18T12:18:54Z",
+      "verification_scope": "mos_only_projection"
+    },
+    {
+      "artifacts": {
+        "candidate_passive_abstraction_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_candidate_passive_abs.spice",
+        "full_gds_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_passive_aware_lvs_result_summary.md",
+        "hybrid_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_hybrid_mos_passive_lvs_result_summary.md",
+        "native_cap_full_gds_trial_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_full_gds_trial_summary.json",
+        "native_cap_gencell_ext": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\sky130_native_cap_gencell_probe.ext",
+        "native_cap_gencell_gds": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\sky130_native_cap_gencell_probe.gds",
+        "native_cap_gencell_log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\native_cap_gencell.log",
+        "native_cap_gencell_mag": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\sky130_native_cap_gencell_probe.mag",
+        "native_cap_gencell_magic_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\native_cap_gencell_probe.magic.log",
+        "native_cap_gencell_report": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\native_cap_gencell_report.md",
+        "native_cap_gencell_spice": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\sky130_native_cap_gencell_probe.spice",
+        "native_cap_gencell_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_gencell_probe\\native_cap_gencell_summary.json",
+        "native_cap_replacement_full_gds": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced.gds",
+        "native_cap_replacement_gds": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\SMCNR_SE_2st_AMP_xc0.gds",
+        "native_cap_replacement_magic_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_gencell_probe.magic.log",
+        "native_cap_replacement_report": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_replacement_report.md",
+        "native_cap_replacement_spice": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\SMCNR_SE_2st_AMP_xc0.spice",
+        "native_cap_replacement_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_replacement_summary.json",
+        "native_passive_capability_log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_capability\\native_passive_capability.log",
+        "native_passive_capability_report": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_capability\\native_passive_capability_report.md",
+        "native_passive_capability_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_capability\\native_passive_capability_summary.json",
+        "native_passive_netgen_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.log",
+        "native_passive_netgen_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.out",
+        "native_passive_retarget_candidate_native_passive_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_retarget_trial\\SMCNR_SE_2st_AMP_candidate_native_passive.spice",
+        "native_passive_retarget_log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_retarget_trial\\native_passive_retarget.log",
+        "native_passive_retarget_report": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_retarget_trial\\native_passive_retarget_report.md",
+        "native_passive_retarget_source_native_passive_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_retarget_trial\\SMCNR_SE_2st_AMP_source_native_passive.spice",
+        "native_passive_retarget_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_retarget_trial\\native_passive_retarget_summary.json",
+        "native_resistor_chain_netgen_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_retarget_trial\\SMCNR_SE_2st_AMP_native_resistor_chain_netgen.log",
+        "native_resistor_chain_netgen_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_passive_retarget_trial\\SMCNR_SE_2st_AMP_native_resistor_chain_netgen.out",
+        "passive_lvs_evidence_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\passive_lvs_evidence.log",
+        "passive_lvs_evidence_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\passive_lvs_evidence_report.md",
+        "passive_lvs_evidence_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\passive_lvs_evidence_summary.json",
+        "passive_only_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_passive_abs_lvs_result_summary.md",
+        "passive_resistor_variant_best_hybrid_mos_passive_lvs_trial_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_hybrid_mos_passive_lvs_result_summary.md",
+        "passive_resistor_variant_best_passive_abs_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_passive_abs_lvs_result_summary.md",
+        "passive_resistor_variant_best_route_bridge_formal_passive_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\fp_lvs.md",
+        "passive_resistor_variant_best_route_bridge_trial_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\rb_trial.json",
+        "route_bridge_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\fp_lvs.md",
+        "route_bridge_trial_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\rb_trial.json",
+        "source_passive_abstraction_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_source_passive_abs.spice"
+      },
+      "candidate_id": "cand_0031",
+      "fidelity": "E2P",
+      "messages": [
+        "Full passive-inclusive extracted GDS LVS matched the source netlist."
+      ],
+      "metrics": {
+        "candidate_passive_primitive_counts": {
+          "capacitor": 1,
+          "resistor": 1,
+          "total": 2
+        },
+        "formal_passive_abstraction_ready": true,
+        "formal_passive_only_lvs_match": true,
+        "full_passive_inclusive_gds_lvs_proven": true,
+        "hybrid_mos_reference_passive_lvs_match": true,
+        "native_cap_full_gds_trial_status": "pass",
+        "native_cap_full_gds_trial_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_full_gds_trial_summary.json",
+        "native_cap_gencell_cell_name": "sky130_native_cap_gencell_probe",
+        "native_cap_gencell_devices": [
+          {
+            "instance": "X0",
+            "line": "X0 C1 C2 sky130_fd_pr__cap_mim_m3_1 l=10 w=10",
+            "model": "sky130_fd_pr__cap_mim_m3_1",
+            "params": "l=10 w=10",
+            "terminals": [
+              "C1",
+              "C2"
+            ]
+          }
+        ],
+        "native_cap_gencell_extraction_status": "pass",
+        "native_cap_gencell_model": "sky130_fd_pr__cap_mim_m3_1",
+        "native_cap_gencell_probe_status": "pass",
+        "native_cap_gencell_recognized_device_count": 1,
+        "native_cap_replacement_bridge_mode": "m4_outside_stacks",
+        "native_cap_replacement_cell_name": "SMCNR_SE_2st_AMP_xc0",
+        "native_cap_replacement_drc_count": 0,
+        "native_cap_replacement_drc_status": "pass",
+        "native_cap_replacement_extract_status": "pass",
+        "native_cap_replacement_full_gds": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced.gds",
+        "native_cap_replacement_full_native_capacitor_lvs_ready": true,
+        "native_cap_replacement_native_capacitor_device_count": 1,
+        "native_cap_replacement_native_passive_netgen_status": "pass",
+        "native_cap_replacement_remaining_gates": [],
+        "native_cap_replacement_status": "replacement_candidate_prepared",
+        "native_cap_replacement_terminal_bridge_status": "m4_outside_stacks_inserted",
+        "native_cap_replacement_top_gds_merge_status": "merged_replacement_candidate",
+        "native_capacitor_device_recognition_status": "pass",
+        "native_capacitor_devices": [
+          {
+            "electrical_terminals": [
+              "outn",
+              "net027"
+            ],
+            "native_extracted_devices": [
+              {
+                "line": "X30 outn net027 sky130_fd_pr__cap_mim_m3_1 l=10.3 w=10.95",
+                "model": "sky130_fd_pr__cap_mim_m3_1",
+                "model_index": 3,
+                "params": [
+                  "l=10.3",
+                  "w=10.95"
+                ],
+                "terminals": [
+                  "outn",
+                  "net027"
+                ],
+                "tokens": [
+                  "X30",
+                  "outn",
+                  "net027",
+                  "sky130_fd_pr__cap_mim_m3_1",
+                  "l=10.3",
+                  "w=10.95"
+                ]
+              }
+            ],
+            "source_instance": "xc0",
+            "source_model": "cfmom_2t"
+          }
+        ],
+        "native_passive_capability_can_fix_current_gds_by_layer_remap_only": false,
+        "native_passive_capability_device_generation_source_status": {
+          "can_patch_current_generator_source": true,
+          "checked": true,
+          "missing_files": [],
+          "recognized_layout_generator_files": [
+            "device_generation\\device_generation\\Resistor.py",
+            "device_generation\\device_generation\\Capacitor.py"
+          ]
+        },
+        "native_passive_capability_direct_source_model_support": false,
+        "native_passive_capability_probe_status": "pass",
+        "native_passive_capability_requires_geometry_replacement": true,
+        "native_passive_capability_retarget_available": true,
+        "native_passive_capability_retarget_map": {
+          "cfmom_2t": [
+            "sky130_fd_pr__cap_mim_m3_1",
+            "sky130_fd_pr__cap_mim_m3_2",
+            "sky130_fd_pr__cap_var",
+            "sky130_fd_pr__cap_var_hvt",
+            "sky130_fd_pr__cap_var_lvt"
+          ],
+          "rppolywo_m": [
+            "sky130_fd_pr__res_xhigh_po",
+            "sky130_fd_pr__res_xhigh_po_0p35",
+            "sky130_fd_pr__res_xhigh_po_0p69",
+            "sky130_fd_pr__res_xhigh_po_1p41",
+            "sky130_fd_pr__res_xhigh_po_2p85",
+            "sky130_fd_pr__res_xhigh_po_5p73",
+            "sky130_fd_pr__res_generic_po",
+            "sky130_fd_pr__res_generic_l1",
+            "sky130_fd_pr__res_generic_m1",
+            "sky130_fd_pr__res_generic_m2",
+            "sky130_fd_pr__res_generic_m3",
+            "sky130_fd_pr__res_generic_m4",
+            "sky130_fd_pr__res_generic_m5",
+            "sky130_fd_pr__res_generic_nd",
+            "sky130_fd_pr__res_generic_nd__hv",
+            "sky130_fd_pr__res_generic_pd",
+            "sky130_fd_pr__res_generic_pd__hv",
+            "sky130_fd_pr__res_high_po",
+            "sky130_fd_pr__res_high_po_0p35",
+            "sky130_fd_pr__res_high_po_0p69",
+            "sky130_fd_pr__res_high_po_1p41",
+            "sky130_fd_pr__res_high_po_2p85",
+            "sky130_fd_pr__res_high_po_5p73",
+            "sky130_fd_pr__res_iso_pw"
+          ]
+        },
+        "native_passive_capability_source_model_native_status": "fail",
+        "native_passive_capability_unsupported_source_models": [
+          "cfmom_2t",
+          "rppolywo_m"
+        ],
+        "native_passive_device_recognition_blockers": {},
+        "native_passive_device_recognition_claimed": true,
+        "native_passive_device_recognition_missing_instances": [],
+        "native_passive_device_recognition_status": "pass",
+        "native_passive_retarget_full_native_passive_lvs_proven": true,
+        "native_passive_retarget_full_native_passive_lvs_ready": true,
+        "native_passive_retarget_missing_native_source_passive_instances": [],
+        "native_passive_retarget_trial_status": "native_passive_retarget_ready",
+        "native_resistor_chain_device_count": 31,
+        "native_resistor_chain_model": [
+          "sky130_fd_pr__res_xhigh_po"
+        ],
+        "native_resistor_chain_netgen_status": "pass",
+        "native_resistor_chain_source_instance": "xr0",
+        "native_resistor_chain_status": "pass",
+        "passive_aware_status": "full_passive_aware_lvs_pass",
+        "passive_aware_verification_scope_detail": "full_passive_inclusive_gds_lvs",
+        "passive_lvs_evidence_failed_requirements": [],
+        "passive_lvs_evidence_pass": true,
+        "passive_lvs_evidence_scope": "formal_passive_abstraction_with_gds_mos_bridge",
+        "passive_lvs_evidence_status": "formal_passive_lvs_evidence_pass",
+        "passive_lvs_evidence_summary_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\passive_lvs_evidence_summary.json",
+        "passive_lvs_primitive_abstractions": [
+          {
+            "abstraction_rule": "collapse_plate_coupling_evidence_to_lvs_capacitor",
+            "candidate_type": "plate_coupling_capacitor_source_equivalent",
+            "electrical_terminals": [
+              "outn",
+              "net027"
+            ],
+            "lvs_primitive_device_class": "c",
+            "lvs_primitive_kind": "capacitor",
+            "lvs_primitive_spice": "C_xc0 outn net027 1f",
+            "source_instance": "xc0",
+            "support_type": "plate_coupling_capacitance"
+          },
+          {
+            "abstraction_rule": "collapse_segmented_resistor_chain_to_lvs_resistor",
+            "candidate_type": "segmented_resistor_chain_source_equivalent",
+            "electrical_terminals": [
+              "net027",
+              "vout"
+            ],
+            "lvs_primitive_device_class": "r",
+            "lvs_primitive_kind": "resistor",
+            "lvs_primitive_spice": "R_xr0 net027 vout 1",
+            "source_instance": "xr0",
+            "support_type": "segmented_resistor_chain"
+          }
+        ],
+        "passive_requirement_all_source_passives_have_candidate": true,
+        "passive_requirement_cfmom_plate_coupling_formalized": true,
+        "passive_requirement_hybrid_mos_reference_passive_netgen_lvs_pass": true,
+        "passive_requirement_packet_formal_lvs_abstraction_ready": true,
+        "passive_requirement_passive_only_netgen_lvs_pass": true,
+        "passive_requirement_primitive_counts_match": true,
+        "passive_requirement_primitive_netlists_present": true,
+        "passive_requirement_segmented_resistor_chain_formalized": true,
+        "passive_resistor_variant_best_all_source_passives_have_candidate": true,
+        "passive_resistor_variant_best_hybrid_mos_passive_lvs_trial_netgen_status": "pass",
+        "passive_resistor_variant_best_missing_source_passive_instances": [],
+        "passive_resistor_variant_best_native_passive_device_recognition_blockers": null,
+        "passive_resistor_variant_best_native_passive_device_recognition_claimed": null,
+        "passive_resistor_variant_best_native_passive_device_recognition_missing_instances": null,
+        "passive_resistor_variant_best_native_passive_device_recognition_status": null,
+        "passive_resistor_variant_best_passive_abs_netgen_status": "pass",
+        "passive_resistor_variant_best_passive_aware_lvs_trial_netgen_status": "fail",
+        "passive_resistor_variant_best_route_bridge_count": 2,
+        "passive_resistor_variant_best_route_bridge_drc_count": 0,
+        "passive_resistor_variant_best_route_bridge_formal_passive_lvs_netgen_status": "pass",
+        "passive_resistor_variant_best_route_bridge_formal_passive_lvs_prepare_status": "ready_for_netgen_trial",
+        "passive_resistor_variant_best_route_bridge_formal_passive_lvs_result_summary": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\fp_lvs.md",
+        "passive_resistor_variant_best_route_bridge_injection_status": "bridges_inserted",
+        "passive_resistor_variant_best_route_bridge_mos_connectivity_status": "pass",
+        "passive_resistor_variant_best_route_bridge_trial_status": "pass",
+        "passive_resistor_variant_best_route_bridge_trial_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\rb_trial.json",
+        "passive_route_bridge_requirement_route_bridge_drc_clean": true,
+        "passive_route_bridge_requirement_route_bridge_formal_passive_lvs_pass": true,
+        "passive_route_bridge_requirement_route_bridge_inserted": true,
+        "passive_route_bridge_requirement_route_bridge_mos_connectivity_pass": true,
+        "source_passive_primitive_counts": {
+          "capacitor": 1,
+          "resistor": 1,
+          "total": 2
+        }
+      },
+      "physical_feedback": {
+        "all_source_passives_have_candidate": true,
+        "formal_passive_abstraction_ready": true,
+        "formal_passive_only_lvs_match": true,
+        "full_passive_inclusive_gds_lvs_proven": true,
+        "hybrid_mos_reference_passive_lvs_match": true,
+        "native_cap_gencell_extraction_status": "pass",
+        "native_capacitor_device_recognition_status": "pass",
+        "native_passive_device_recognition_claimed": false,
+        "native_passive_retarget_full_native_passive_lvs_proven": true,
+        "native_resistor_chain_netgen_status": "pass",
+        "passive_aware_reason": "Full passive-inclusive extracted GDS LVS matched the source netlist.",
+        "passive_aware_requested": true,
+        "passive_aware_status": "full_passive_aware_lvs_pass",
+        "passive_aware_verification_scope_detail": "full_passive_inclusive_gds_lvs",
+        "passive_evidence_source": "backfilled_from_artifacts"
+      },
+      "stage": "passive_aware_lvs",
+      "status": "pass",
+      "timestamp": "2026-06-19T00:42:01Z",
+      "verification_scope": "full_passive_inclusive_gds_lvs"
+    },
+    {
+      "artifacts": {
+        "ACDC.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout\\ACDC.log",
+        "Tran.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout\\Tran.log",
+        "acdc_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout\\SMCNR_SE_2st_AMP_ACDC.cir",
+        "instantiated_subckt": "SMCNR_SE_2st_AMP_flat",
+        "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout\\lvs_mos_projection\\SMCNR_SE_2st_AMP_extracted.raw.spice",
+        "proxy_metric_fields": "Active_Area",
+        "simulated_metric_fields": "FOML,FOMS,GBW,GBW_lower_bound,Power,dcgain,phase_margin,phase_margin_at_closest_unity,settlingTime",
+        "simulation_corner": "tt",
+        "simulation_direct_model_count": "3",
+        "simulation_direct_model_projection": "True",
+        "simulation_model_corner": "tt",
+        "simulation_model_projection": "direct_nearest_sky130_bin",
+        "simulation_model_projection_snapped_mos": "3",
+        "simulation_netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout\\SMCNR_SE_2st_AMP_extracted.raw.ngspice_units.spice",
+        "simulation_temp_c": "27.0",
+        "simulation_vdd": "1.8",
+        "tran_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout\\SMCNR_SE_2st_AMP_Tran.cir"
+      },
+      "candidate_id": "cand_0031",
+      "fidelity": "E3",
+      "messages": [],
+      "metrics": {
+        "Active_Area": 101.4848,
+        "FOML": 4946.634568548548,
+        "FOMS": 49466345685485.47,
+        "GBW": 1000000000000.0,
+        "GBW_lower_bound": 1000000000000.0,
+        "Power": 0.0202157646,
+        "dcgain": 135.7105,
+        "phase_margin": 194.0366496,
+        "phase_margin_at_closest_unity": 194.0366496,
+        "settlingTime": 2.882e-07
+      },
+      "physical_feedback": {
+        "simulation_direct_model_count": 3,
+        "simulation_direct_model_projection": true,
+        "simulation_model_projection": "direct_nearest_sky130_bin",
+        "simulation_model_projection_snapped_mos": 3,
+        "simulation_template": "AnalogGym AMP_DFCFC2 adapted to SMC"
+      },
+      "stage": "post_sim",
+      "status": "pass",
+      "timestamp": "2026-06-18T12:18:59Z",
+      "verification_scope": "mos_only_projection"
+    },
+    {
+      "artifacts": {
+        "corner_dirs": "{\"ff_1v98_-25C\": \"E:\\\\codex-magical-sky130-harness\\\\magical-sky130-harness\\\\generated\\\\analog_harness\\\\smcnr_se_2st_amp\\\\cand_0031\\\\sim\\\\post_layout_pvt\\\\ff_1v98_-25C\", \"ss_1v62_125C\": \"E:\\\\codex-magical-sky130-harness\\\\magical-sky130-harness\\\\generated\\\\analog_harness\\\\smcnr_se_2st_amp\\\\cand_0031\\\\sim\\\\post_layout_pvt\\\\ss_1v62_125C\", \"tt_1v8_27C\": \"E:\\\\codex-magical-sky130-harness\\\\magical-sky130-harness\\\\generated\\\\analog_harness\\\\smcnr_se_2st_amp\\\\cand_0031\\\\sim\\\\post_layout_pvt\\\\tt_1v8_27C\"}",
+        "corner_evidence": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\corner_evidence.json"
+      },
+      "candidate_id": "cand_0031",
+      "fidelity": "E4",
+      "messages": [],
+      "metrics": {
+        "Active_Area": 101.4848,
+        "FOML": 3896.2742746118192,
+        "FOMS": 38962742746118.19,
+        "GBW": 1000000000000.0,
+        "GBW_lower_bound": 1000000000000.0,
+        "Power": 0.0256655443,
+        "dcgain": 103.2323,
+        "phase_margin": 192.1600932,
+        "phase_margin_at_closest_unity": 192.1600932,
+        "pvt_max_Active_Area": 101.4848,
+        "pvt_max_FOML": 6691.899365477449,
+        "pvt_max_FOMS": 66918993654774.48,
+        "pvt_max_GBW": 1000000000000.0,
+        "pvt_max_GBW_lower_bound": 1000000000000.0,
+        "pvt_max_Power": 0.0256655443,
+        "pvt_max_dcgain": 149.6016,
+        "pvt_max_phase_margin": 194.0366496,
+        "pvt_max_phase_margin_at_closest_unity": 194.0366496,
+        "pvt_max_settlingTime": 2.882e-07,
+        "pvt_min_Active_Area": 101.4848,
+        "pvt_min_FOML": 3896.2742746118192,
+        "pvt_min_FOMS": 38962742746118.19,
+        "pvt_min_GBW": 1000000000000.0,
+        "pvt_min_GBW_lower_bound": 1000000000000.0,
+        "pvt_min_Power": 0.0149434405,
+        "pvt_min_dcgain": 103.2323,
+        "pvt_min_phase_margin": 192.1600932,
+        "pvt_min_phase_margin_at_closest_unity": 192.1600932,
+        "pvt_min_settlingTime": 2.862e-07,
+        "pvt_passed_corners": 3,
+        "pvt_total_corners": 3,
+        "settlingTime": 2.882e-07
+      },
+      "physical_feedback": {
+        "pvt_corner_statuses": {
+          "ff_1v98_-25C": "pass",
+          "ss_1v62_125C": "pass",
+          "tt_1v8_27C": "pass"
+        },
+        "pvt_corners": [
+          {
+            "model_corner": "tt",
+            "name": "tt_1v8_27C",
+            "temp_c": 27.0,
+            "vcm": null,
+            "vdd": 1.8
+          },
+          {
+            "model_corner": "ss",
+            "name": "ss_1v62_125C",
+            "temp_c": 125.0,
+            "vcm": null,
+            "vdd": 1.62
+          },
+          {
+            "model_corner": "ff",
+            "name": "ff_1v98_-25C",
+            "temp_c": -25.0,
+            "vcm": null,
+            "vdd": 1.98
+          }
+        ],
+        "pvt_require_all_corners": true,
+        "simulation_template": "AnalogGym AMP_DFCFC2 adapted to SMC"
+      },
+      "stage": "pvt_sim",
+      "status": "pass",
+      "timestamp": "2026-06-18T12:18:59Z",
+      "verification_scope": "mos_only_projection"
+    }
+  ],
+  "optimizer_metadata": {
+    "frontend_closure_level": "L6_post_layout_pvt",
+    "frontend_origin_id": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0028\\state.json:cand_0028",
+    "frontend_reward": 0.6000000000000001,
+    "frontend_source": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0028\\state.json",
+    "proposal_mode": "reuse_frontend_result"
+  },
+  "optimizer_source": "frontend_result",
+  "passive_evidence_backfilled_from_artifacts": true,
+  "redesign_request": null,
+  "reward": 0.6000000000000001,
+  "top_cell": "SMCNR_SE_2st_AMP",
+  "values": {
+    "bias_pmos_l": 10.0,
+    "bias_pmos_w": 0.22,
+    "bias_ref_multi": 1,
+    "bias_tail_multi": 2,
+    "comp_cap_lr": 10.0,
+    "comp_cap_nr": 94,
+    "comp_res_lr": 4.0,
+    "comp_res_series": 31,
+    "comp_res_wr": 400.0,
+    "diff_pair_l": 8.24,
+    "diff_pair_multi": 1,
+    "diff_pair_nf": 1,
+    "diff_pair_w": 7.52,
+    "ibias_current_uA": 10.0,
+    "load_nmos_l": 10.0,
+    "load_nmos_multi": 1,
+    "load_nmos_w": 1.5,
+    "second_stage_nmos_l": 10.0,
+    "second_stage_nmos_multi": 10,
+    "second_stage_nmos_w": 1.48,
+    "second_stage_pmos_l": 10.0,
+    "second_stage_pmos_multi": 10,
+    "second_stage_pmos_w": 0.22
+  },
+  "verification_scope": "mos_only_projection"
+}

@@ -1,0 +1,26 @@
+﻿{
+    "package":  "smcnr_se_2st_amp_reproducibility",
+    "source_run_dir":  "generated/analog_harness/smcnr_se_2st_amp",
+    "source_commit":  "a6f2e11337220767c813f354ab4f5619af85d1de",
+    "packaged_at_utc":  "2026-06-19T10:05:32Z",
+    "best_candidate":  "cand_0031",
+    "best_closure_level":  "L6_post_layout_pvt",
+    "candidate_count":  38,
+    "verification_scope":  "mos_only_projection",
+    "passive_aware_status":  "pass",
+    "included":  [
+                     "run_summary/summary.json and summary.md",
+                     "event_log/events.jsonl",
+                     "knowledge_transfer warm-start/proxy datasets",
+                     "all candidate state.json and evidence.jsonl files",
+                     "candidate_index.csv",
+                     "cand_0031 selected case/layout/simulation/passive evidence text artifacts",
+                     "selected cand_0031 GDS: pinned_shapes, local_power, native_cap_replaced"
+                 ],
+    "excluded":  [
+                     "bulk generated layout variants",
+                     "raw Magic extraction .ext files",
+                     "bulk .log files; metrics are summarized in evidence packets",
+                     "full generated/ tree, which is reproducible from config and tools"
+                 ]
+}

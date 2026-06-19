@@ -51,3 +51,8 @@ examples/inverter_sky130_try/inverter_trial.json
 !third_party/analoggym_grpo/simulation_files/sky130_pdk/**
 third_party/analoggym_grpo/simulation_files/sky130_pdk/**/*.log
 third_party/analoggym_grpo/simulation_files/sky130_pdk/**/gmon.out
+
+# Curated reproducibility packages are intentionally tracked, including a small
+# number of selected GDS reference artifacts.
+!reproducibility/
+!reproducibility/**

@@ -1,0 +1,35 @@
+* Native Sky130 passive retarget trial netlist.
+* Keeps extracted Sky130 passive subcircuit models; not a primitive R/C collapse.
+.subckt SMCNR_SE_2st_AMP_source_native_passive net027 vout gnda
+XNR0 a_10945_6600# net027 gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR1 a_10945_6600# a_11789_6470# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR2 a_10945_6340# a_11789_6470# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR3 a_10945_6340# a_11789_6210# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR4 a_10945_6080# a_11789_6210# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR5 a_10945_6080# a_11789_5950# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR6 a_10945_5820# a_11789_5950# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR7 a_10945_5820# a_11789_5690# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR8 a_10945_5560# a_11789_5690# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR9 a_10945_5560# a_11789_5430# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR10 a_10945_5300# a_11789_5430# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR11 a_10945_5300# a_11789_5170# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR12 a_10945_5040# a_11789_5170# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR13 a_10945_5040# a_11789_4910# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR14 a_10945_4780# a_11789_4910# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR15 a_10945_4780# a_11789_4650# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR16 a_10945_4520# a_11789_4650# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR17 a_10945_4520# a_11789_4390# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR18 a_10945_4260# a_11789_4390# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR19 a_10945_4260# a_11789_4130# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR20 a_10945_4000# a_11789_4130# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR21 a_10945_4000# a_11789_3870# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR22 a_10945_3740# a_11789_3870# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR23 a_10945_3740# a_11789_3610# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR24 a_10945_3480# a_11789_3610# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR25 a_10945_3480# a_11789_3350# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR26 a_10945_3220# a_11789_3350# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR27 a_10945_3220# a_11789_3090# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR28 a_10945_2960# a_11789_3090# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR29 a_10945_2960# a_11789_2830# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+XNR30 vout a_11789_2830# gnda sky130_fd_pr__res_xhigh_po w=0.4 l=4
+.ends SMCNR_SE_2st_AMP_source_native_passive

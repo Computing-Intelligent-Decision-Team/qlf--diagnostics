@@ -94,9 +94,22 @@ export SKY130A=/path/to/sky130A
 更完整的开发说明：
 
 - Analog Harness: `tools/analog_harness/README.md`
+- 复现指南: `docs/reproducibility.md`
+- SMC 复现实验数据: `reproducibility/smcnr_se_2st_amp/README.md`
 - 环境搭建: `docs/sky130_adapter/environment_setup.md`
 - passive-aware LVS 状态: `docs/sky130_adapter/passive_aware_lvs_status.md`
 - Vendored GRPO: `third_party/analoggym_grpo/README.md`
+
+当前仓库还包含一份精选复现实验数据包：
+
+```text
+reproducibility/smcnr_se_2st_amp
+```
+
+该数据包保留 38 个 candidate 的 state/evidence、`cand_0031` 最佳结果的
+关键 netlist/testbench/layout/passive evidence、warm-start 数据和少量参考
+GDS。完整 `generated/` 目录仍不进 Git，因为其中包含大量可再生成的中间
+GDS、Magic extraction 和日志文件。
 
 这是一个面向 Sky130 的 MAGICAL bridge/remap 适配版本。目标是让用户在安装外部依赖后，输入一份 Sky130 网表，自动完成 MAGICAL placement/routing、Sky130 GDS 生成、Magic DRC、Magic extraction、`netgen-lvs` connectivity LVS、PEX summary，并输出可用 KLayout 查看的一份最终 GDS。
 
@@ -131,7 +144,7 @@ MAGICAL internal GDS
 - 当前 LVS 是 connectivity LVS，不是 parasitic-aware LVS。
 - PEX summary 只统计 Magic raw extraction 中列出的寄生电容，不等于完整后仿。
 - 仓库已带一份 Sky130 PDK 便捷副本；Magic、Netgen、KLayout 仍需要用户自行安装。
-- generated 大文件、GDS、log、Magic extraction 临时产物不应提交到 GitHub。
+- `generated/` 大文件、临时 GDS、log、Magic extraction 临时产物不应直接提交；需要长期保存的结果应整理到 `reproducibility/` 下。
 
 ## 安装依赖
 

@@ -1,0 +1,93 @@
+{
+  "artifacts": {
+    "drc_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced_drc.log",
+    "magic_extract_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced_extract.log",
+    "magic_extract_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced.spice",
+    "merge_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replacement_merge.md",
+    "merge_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replacement_merge_summary.json",
+    "native_passive_retarget_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\native_passive_retarget_report.md",
+    "native_passive_retarget_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\native_passive_retarget_summary.json",
+    "replacement_candidate_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_replacement_report.md",
+    "replacement_candidate_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_replacement_summary.json",
+    "source_gds_structure_report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\xc0_source_gds_structure_diagnostic.md"
+  },
+  "bridge_mode": "m4_outside_stacks",
+  "drc_count": 0,
+  "drc_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced_drc.log",
+  "drc_status": "pass",
+  "full_native_passive_lvs_proven": true,
+  "full_native_passive_lvs_ready": true,
+  "full_passive_inclusive_gds_lvs_proven": true,
+  "inserted_replacement_element_count": 679,
+  "magic_extract_log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced_extract.log",
+  "magic_extract_netlist": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced.spice",
+  "magic_extract_returncode": 0,
+  "magic_extract_status": "pass",
+  "merge_status": "native_cap_replacement_merged",
+  "merge_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replacement_merge_summary.json",
+  "merged_gds": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_cap_replaced.gds",
+  "native_capacitor_device_count": 1,
+  "native_capacitor_device_recognition_status": "pass",
+  "native_capacitor_devices": [
+    {
+      "electrical_terminals": [
+        "outn",
+        "net027"
+      ],
+      "native_extracted_devices": [
+        {
+          "line": "X30 outn net027 sky130_fd_pr__cap_mim_m3_1 l=10.3 w=10.95",
+          "model": "sky130_fd_pr__cap_mim_m3_1",
+          "model_index": 3,
+          "params": [
+            "l=10.3",
+            "w=10.95"
+          ],
+          "terminals": [
+            "outn",
+            "net027"
+          ],
+          "tokens": [
+            "X30",
+            "outn",
+            "net027",
+            "sky130_fd_pr__cap_mim_m3_1",
+            "l=10.3",
+            "w=10.95"
+          ]
+        }
+      ],
+      "source_instance": "xc0",
+      "source_model": "cfmom_2t"
+    }
+  ],
+  "native_passive_netgen": {
+    "log": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.log",
+    "report": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.out",
+    "returncode": 0,
+    "status": "pass",
+    "tcl": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\SMCNR_SE_2st_AMP_native_cap_full_gds_native_resistor_chain_netgen.out.tcl"
+  },
+  "native_passive_netgen_status": "pass",
+  "native_passive_retarget_status": "native_passive_retarget_ready",
+  "native_passive_retarget_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\native_passive_retarget\\native_passive_retarget_summary.json",
+  "native_resistor_chain_device_count": 31,
+  "native_resistor_chain_status": "pass",
+  "passive_abstraction_packet_json": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_po_second_stage_abstraction_packet.json",
+  "preserved_terminal_element_count": 8,
+  "reason": null,
+  "removed_element_count": 1252,
+  "replacement_candidate_status": "replacement_candidate_prepared",
+  "replacement_candidate_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\native_cap_replacement_summary.json",
+  "replacement_gds": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_replacement_candidate\\SMCNR_SE_2st_AMP_xc0.gds",
+  "route_bridge_gds": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\xhigh_rb\\rb.gds",
+  "schema_version": "native_cap_full_gds_trial.v1",
+  "source_cap_gds": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\case\\gds\\SMCNR_SE_2st_AMP_xc0.gds",
+  "source_gds_structure_status": "pass",
+  "source_gds_structure_summary_json": "generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout_passive_existing_gds\\resistor_remap_variants\\native_cap_full_gds_trial\\xc0_source_gds_structure_summary.json",
+  "source_instance": "xc0",
+  "status": "pass",
+  "terminal_bridge_status": "m4_outside_stacks_inserted",
+  "top_gds_merge_status": "merged_replacement_candidate",
+  "verification_scope": "full_passive_inclusive_gds_lvs"
+}

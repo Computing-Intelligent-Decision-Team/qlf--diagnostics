@@ -1,0 +1,190 @@
+{
+  "action_normalized": [
+    0.05641025641025643,
+    0.28695652173913055,
+    -0.4666666666666667,
+    -0.1428571428571429,
+    -0.6869565217391305,
+    0.19999999999999996,
+    -0.6,
+    -1.0,
+    1.0,
+    -0.8666666666666667,
+    -1.0,
+    -1.0,
+    0.6695652173913043,
+    0.5483870967741935,
+    -0.8782608695652174,
+    0.37391304347826093,
+    -0.4838709677419355,
+    -0.6842105263157895,
+    -0.75,
+    0.4920634920634921,
+    -0.0714285714285714,
+    0.16666666666666674,
+    0.31034482758620685
+  ],
+  "artifacts": {
+    "candidate_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005",
+    "case_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\case",
+    "config": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\case\\smcnr_se_2st_amp_cand_0005.json",
+    "layout_out_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\layout",
+    "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\case\\SMCNR_SE_2st_AMP_cand_0005.sp"
+  },
+  "assignments": {
+    "xc0": {
+      "lr": 12.5,
+      "nr": 85
+    },
+    "xm0": {
+      "l": 7.9,
+      "multi": 5,
+      "nf": 4,
+      "w": 10.8
+    },
+    "xm1": {
+      "l": 7.4,
+      "multi": 4,
+      "w": 2.3
+    },
+    "xm2": {
+      "l": 7.9,
+      "multi": 5,
+      "nf": 4,
+      "w": 10.8
+    },
+    "xm3": {
+      "l": 7.4,
+      "multi": 4,
+      "w": 2.3
+    },
+    "xm4": {
+      "l": 8.4,
+      "multi": 9,
+      "w": 1.2
+    },
+    "xm5": {
+      "l": 10.1,
+      "multi": 25,
+      "w": 0.22
+    },
+    "xm6": {
+      "l": 12.0,
+      "multi": 1,
+      "w": 0.22
+    },
+    "xm7": {
+      "l": 12.0,
+      "multi": 2,
+      "w": 0.22
+    },
+    "xr0": {
+      "lr": 4.0,
+      "series": 48,
+      "wr": 300.0
+    }
+  },
+  "candidate_id": "cand_0005",
+  "closure_level": "L1_pre_layout_nominal",
+  "design_id": "smcnr_se_2st_amp",
+  "evidence": [
+    {
+      "artifacts": {
+        "acdc_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\sim\\pre_layout\\SMCNR_SE_2st_AMP_ACDC.cir",
+        "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\case\\SMCNR_SE_2st_AMP_cand_0005.sp",
+        "tran_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\sim\\pre_layout\\SMCNR_SE_2st_AMP_Tran.cir"
+      },
+      "candidate_id": "cand_0005",
+      "fidelity": "E0",
+      "messages": [
+        "ngspice execution skipped"
+      ],
+      "metrics": {
+        "Active_Area": 122.49199999999999,
+        "FOML": 0.006079646916811065,
+        "FOMS": 60796.46916811065,
+        "GBW": 2188672.8900519833,
+        "Power": 0.036,
+        "dcgain": 68.17261016132869,
+        "phase_margin": 61.56666666666666,
+        "settlingTime": 1.0051753325037748e-06
+      },
+      "physical_feedback": {
+        "simulation_template": "AnalogGym AMP_DFCFC2 adapted to SMC"
+      },
+      "stage": "pre_sim",
+      "status": "proxy_fallback",
+      "timestamp": "2026-06-18T10:55:01Z",
+      "verification_scope": "mos_only_projection"
+    },
+    {
+      "artifacts": {
+        "out_dir": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0005\\layout"
+      },
+      "candidate_id": "cand_0005",
+      "fidelity": "E2",
+      "messages": [
+        "layout execution skipped"
+      ],
+      "metrics": {},
+      "physical_feedback": {},
+      "stage": "layout_verification",
+      "status": "skipped",
+      "timestamp": "2026-06-18T10:55:01Z",
+      "verification_scope": "mos_only_projection"
+    }
+  ],
+  "optimizer_metadata": {
+    "backend_status": {
+      "analog_gym_root": "E:\\codex-magical-sky130-harness\\Analoggym_opt_moo_Mahalanobis_paper",
+      "backend": "analoggym_grpo",
+      "grpo_file": "E:\\codex-magical-sky130-harness\\Analoggym_opt_moo_Mahalanobis_paper\\grpo.py",
+      "imported_grpo": true,
+      "last_redesign_request": {
+        "action": "propose_repaired_sizing",
+        "latest_closure_level": "L1_pre_layout_nominal",
+        "owner": "sizing_optimizer",
+        "reasons": [
+          "reward -0.1139 below threshold -0.05"
+        ],
+        "verification_scope": "mos_only_projection"
+      }
+    },
+    "context_keys": [
+      "completed_candidates",
+      "force_optimizer_next",
+      "frontend_candidates_available"
+    ],
+    "proposal_mode": "cold_start_grpo_contract"
+  },
+  "optimizer_source": "analoggym_grpo",
+  "redesign_request": null,
+  "reward": -0.039845910155576196,
+  "top_cell": "SMCNR_SE_2st_AMP",
+  "values": {
+    "bias_pmos_l": 12.0,
+    "bias_pmos_w": 0.22,
+    "bias_ref_multi": 2,
+    "bias_tail_multi": 1,
+    "comp_cap_lr": 12.5,
+    "comp_cap_nr": 85,
+    "comp_res_lr": 4.0,
+    "comp_res_series": 48,
+    "comp_res_wr": 300.0,
+    "diff_pair_l": 7.9,
+    "diff_pair_multi": 5,
+    "diff_pair_nf": 4,
+    "diff_pair_w": 10.8,
+    "ibias_current_uA": 20.0,
+    "load_nmos_l": 7.4,
+    "load_nmos_multi": 4,
+    "load_nmos_w": 2.3,
+    "second_stage_nmos_l": 8.4,
+    "second_stage_nmos_multi": 9,
+    "second_stage_nmos_w": 1.2,
+    "second_stage_pmos_l": 10.1,
+    "second_stage_pmos_multi": 25,
+    "second_stage_pmos_w": 0.22
+  },
+  "verification_scope": "mos_only_projection"
+}

@@ -1,0 +1,74 @@
+{
+  "input_gds": "./SMCNR_SE_2st_AMP.place.gds",
+  "obstructions": [
+    {
+      "bbox": [
+        54000,
+        13200,
+        60400,
+        35000
+      ],
+      "datatype": 0,
+      "instance": "SMCNR_SE_2st_AMP_xr0",
+      "layer": 35
+    },
+    {
+      "bbox": [
+        54000,
+        13200,
+        60400,
+        35000
+      ],
+      "datatype": 0,
+      "instance": "SMCNR_SE_2st_AMP_xr0",
+      "layer": 36
+    },
+    {
+      "bbox": [
+        39800,
+        17800,
+        54200,
+        29600
+      ],
+      "datatype": 0,
+      "instance": "SMCNR_SE_2st_AMP_xc0",
+      "layer": 35
+    },
+    {
+      "bbox": [
+        39800,
+        17800,
+        54200,
+        29600
+      ],
+      "datatype": 0,
+      "instance": "SMCNR_SE_2st_AMP_xc0",
+      "layer": 36
+    },
+    {
+      "bbox": [
+        1800,
+        13100,
+        33000,
+        13500
+      ],
+      "datatype": 0,
+      "instance": "MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_0",
+      "layer": 35
+    },
+    {
+      "bbox": [
+        1800,
+        13100,
+        33000,
+        13500
+      ],
+      "datatype": 0,
+      "instance": "MAGICAL_ROUTER_LOCAL_VDD_OBSTRUCTION_0",
+      "layer": 36
+    }
+  ],
+  "output_gds": "./SMCNR_SE_2st_AMP.place.router_obstructed.gds",
+  "schema_version": "router_passive_obstruction.v1",
+  "top_cell": "SMCNR_SE_2st_AMP"
+}

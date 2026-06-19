@@ -1,0 +1,8 @@
+* Passive-only abstraction netlist generated for diagnostic LVS trial.
+* This is not a full layout-extracted LVS netlist.
+* xc0: plate_coupling_capacitor_source_equivalent status=candidate_requires_review
+* xr0: segmented_resistor_chain_source_equivalent status=candidate_requires_review
+.subckt SMCNR_SE_2st_AMP_candidate_passive_abs net027 outn vout
+C_xc0 outn net027 1f
+R_xr0 net027 vout 1
+.ends SMCNR_SE_2st_AMP_candidate_passive_abs

@@ -1,0 +1,18 @@
+{
+    "hspice_netlist": "SMCNR_SE_2st_AMP_cand_0031.sp",
+    "resultDir": "./",
+    "techfile": "../../../../sky130PDK_trial/sky130.techfile",
+    "simple_tech_file": "../../../../sky130PDK_trial/sky130.techfile.simple",
+    "lef": "../../../../sky130PDK_trial/sky130.lef",
+    "vddNetNames": [
+        "vdda"
+    ],
+    "vssNetNames": [
+        "gnda"
+    ],
+    "useDeviceProximity": true,
+    "routeTopLevelSignalIoPorts": false,
+    "nwellBulkBottomTopLayer": 0,
+    "passiveAwareProbe": true,
+    "experimentalPassiveRemap": true
+}

@@ -1,0 +1,19 @@
+* Transient testbench adapted from AnalogGym AMP_DFCFC2 for SMCNR_SE_2st_AMP
+.include "E:/codex-magical-sky130-harness/magical-sky130-harness/generated/analog_harness/smcnr_se_2st_amp/cand_0031/sim/post_layout_pvt/tt_1v8_27C/SMCNR_SE_2st_AMP_extracted.raw.ngspice_units.spice"
+.temp 27
+.param VDDVAL=1.8
+.param VCM=0.9
+.param IBIAS=10u
+.param CLOAD=100f
+VDD vdda 0 {VDDVAL}
+VGND gnda 0 0
+IIB vdda ibias DC {IBIAS}
+VINP vip 0 PULSE(0.895 0.905 1e-08 1n 1n 100n 200n)
+VINN vin 0 DC {VCM}
+CLOAD vout 0 {CLOAD}
+XU vdda gnda vin vip ibias vout SMCNR_SE_2st_AMP_flat
+.control
+tran 1e-09 3e-07
+wrdata SMCNR_SE_2st_AMP_Tran v(vout)
+.endc
+.end

@@ -1,0 +1,143 @@
+[
+  {
+    "artifacts": {
+      "ACDC.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\tt_1v8_27C\\ACDC.log",
+      "Tran.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\tt_1v8_27C\\Tran.log",
+      "acdc_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\tt_1v8_27C\\SMCNR_SE_2st_AMP_ACDC.cir",
+      "instantiated_subckt": "SMCNR_SE_2st_AMP_flat",
+      "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout\\lvs_mos_projection\\SMCNR_SE_2st_AMP_extracted.raw.spice",
+      "proxy_metric_fields": "Active_Area",
+      "simulated_metric_fields": "FOML,FOMS,GBW,GBW_lower_bound,Power,dcgain,phase_margin,phase_margin_at_closest_unity,settlingTime",
+      "simulation_corner": "tt_1v8_27C",
+      "simulation_direct_model_count": "3",
+      "simulation_direct_model_projection": "True",
+      "simulation_model_corner": "tt",
+      "simulation_model_projection": "direct_nearest_sky130_bin",
+      "simulation_model_projection_snapped_mos": "3",
+      "simulation_netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\tt_1v8_27C\\SMCNR_SE_2st_AMP_extracted.raw.ngspice_units.spice",
+      "simulation_temp_c": "27.0",
+      "simulation_vdd": "1.8",
+      "tran_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\tt_1v8_27C\\SMCNR_SE_2st_AMP_Tran.cir"
+    },
+    "candidate_id": "cand_0031",
+    "fidelity": "E4",
+    "messages": [],
+    "metrics": {
+      "Active_Area": 101.4848,
+      "FOML": 4946.634568548548,
+      "FOMS": 49466345685485.47,
+      "GBW": 1000000000000.0,
+      "GBW_lower_bound": 1000000000000.0,
+      "Power": 0.0202157646,
+      "dcgain": 135.7105,
+      "phase_margin": 194.0366496,
+      "phase_margin_at_closest_unity": 194.0366496,
+      "settlingTime": 2.882e-07
+    },
+    "physical_feedback": {
+      "simulation_direct_model_count": 3,
+      "simulation_direct_model_projection": true,
+      "simulation_model_projection": "direct_nearest_sky130_bin",
+      "simulation_model_projection_snapped_mos": 3,
+      "simulation_template": "AnalogGym AMP_DFCFC2 adapted to SMC"
+    },
+    "stage": "pvt_corner",
+    "status": "pass",
+    "timestamp": "2026-06-18T12:18:59Z",
+    "verification_scope": "mos_only_projection"
+  },
+  {
+    "artifacts": {
+      "ACDC.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ss_1v62_125C\\ACDC.log",
+      "Tran.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ss_1v62_125C\\Tran.log",
+      "acdc_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ss_1v62_125C\\SMCNR_SE_2st_AMP_ACDC.cir",
+      "instantiated_subckt": "SMCNR_SE_2st_AMP_flat",
+      "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout\\lvs_mos_projection\\SMCNR_SE_2st_AMP_extracted.raw.spice",
+      "proxy_metric_fields": "Active_Area",
+      "simulated_metric_fields": "FOML,FOMS,GBW,GBW_lower_bound,Power,dcgain,phase_margin,phase_margin_at_closest_unity,settlingTime",
+      "simulation_corner": "ss_1v62_125C",
+      "simulation_direct_model_count": "3",
+      "simulation_direct_model_projection": "True",
+      "simulation_model_corner": "ss",
+      "simulation_model_projection": "direct_nearest_sky130_bin",
+      "simulation_model_projection_snapped_mos": "3",
+      "simulation_netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ss_1v62_125C\\SMCNR_SE_2st_AMP_extracted.raw.ngspice_units.spice",
+      "simulation_temp_c": "125.0",
+      "simulation_vdd": "1.62",
+      "tran_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ss_1v62_125C\\SMCNR_SE_2st_AMP_Tran.cir"
+    },
+    "candidate_id": "cand_0031",
+    "fidelity": "E4",
+    "messages": [],
+    "metrics": {
+      "Active_Area": 101.4848,
+      "FOML": 6691.899365477449,
+      "FOMS": 66918993654774.48,
+      "GBW": 1000000000000.0,
+      "GBW_lower_bound": 1000000000000.0,
+      "Power": 0.0149434405,
+      "dcgain": 103.2323,
+      "phase_margin": 192.1600932,
+      "phase_margin_at_closest_unity": 192.1600932,
+      "settlingTime": 2.882e-07
+    },
+    "physical_feedback": {
+      "simulation_direct_model_count": 3,
+      "simulation_direct_model_projection": true,
+      "simulation_model_projection": "direct_nearest_sky130_bin",
+      "simulation_model_projection_snapped_mos": 3,
+      "simulation_template": "AnalogGym AMP_DFCFC2 adapted to SMC"
+    },
+    "stage": "pvt_corner",
+    "status": "pass",
+    "timestamp": "2026-06-18T12:18:59Z",
+    "verification_scope": "mos_only_projection"
+  },
+  {
+    "artifacts": {
+      "ACDC.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ff_1v98_-25C\\ACDC.log",
+      "Tran.log": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ff_1v98_-25C\\Tran.log",
+      "acdc_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ff_1v98_-25C\\SMCNR_SE_2st_AMP_ACDC.cir",
+      "instantiated_subckt": "SMCNR_SE_2st_AMP_flat",
+      "netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\layout\\lvs_mos_projection\\SMCNR_SE_2st_AMP_extracted.raw.spice",
+      "proxy_metric_fields": "Active_Area",
+      "simulated_metric_fields": "FOML,FOMS,GBW,GBW_lower_bound,Power,dcgain,phase_margin,phase_margin_at_closest_unity,settlingTime",
+      "simulation_corner": "ff_1v98_-25C",
+      "simulation_direct_model_count": "3",
+      "simulation_direct_model_projection": "True",
+      "simulation_model_corner": "ff",
+      "simulation_model_projection": "direct_nearest_sky130_bin",
+      "simulation_model_projection_snapped_mos": "3",
+      "simulation_netlist": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ff_1v98_-25C\\SMCNR_SE_2st_AMP_extracted.raw.ngspice_units.spice",
+      "simulation_temp_c": "-25.0",
+      "simulation_vdd": "1.98",
+      "tran_testbench": "E:\\codex-magical-sky130-harness\\magical-sky130-harness\\generated\\analog_harness\\smcnr_se_2st_amp\\cand_0031\\sim\\post_layout_pvt\\ff_1v98_-25C\\SMCNR_SE_2st_AMP_Tran.cir"
+    },
+    "candidate_id": "cand_0031",
+    "fidelity": "E4",
+    "messages": [],
+    "metrics": {
+      "Active_Area": 101.4848,
+      "FOML": 3896.2742746118192,
+      "FOMS": 38962742746118.19,
+      "GBW": 1000000000000.0,
+      "GBW_lower_bound": 1000000000000.0,
+      "Power": 0.0256655443,
+      "dcgain": 149.6016,
+      "phase_margin": 193.9879828,
+      "phase_margin_at_closest_unity": 193.9879828,
+      "settlingTime": 2.862e-07
+    },
+    "physical_feedback": {
+      "simulation_direct_model_count": 3,
+      "simulation_direct_model_projection": true,
+      "simulation_model_projection": "direct_nearest_sky130_bin",
+      "simulation_model_projection_snapped_mos": 3,
+      "simulation_template": "AnalogGym AMP_DFCFC2 adapted to SMC"
+    },
+    "stage": "pvt_corner",
+    "status": "pass",
+    "timestamp": "2026-06-18T12:18:59Z",
+    "verification_scope": "mos_only_projection"
+  }
+]
