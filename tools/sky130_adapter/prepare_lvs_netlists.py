@@ -362,6 +362,14 @@ def source_to_connectivity(lines: list[str]) -> tuple[list[str], bool, bool, Cou
             continue
         flattened = stripped.replace("(", " ").replace(")", " ")
         tokens = flattened.split()
+        if tokens and tokens[0][0].lower() in {"x", "c", "r"}:
+            passive_model = next(
+                (token.lower() for token in tokens[1:] if token.lower() in PASSIVE_ALIASES),
+                None,
+            )
+            if passive_model is not None:
+                dropped_passives[passive_model] += 1
+                continue
         if (
             len(tokens) >= 4
             and tokens[0].lower().startswith("x")

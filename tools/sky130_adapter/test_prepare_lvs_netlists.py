@@ -12,10 +12,24 @@ from prepare_lvs_netlists import (
     passive_abstraction_diagnostic,
     parse_extracted_physical_passives,
     parse_source_passives,
+    source_to_connectivity,
 )
 
 
 class PrepareLvsNetlistsTest(unittest.TestCase):
+    def test_source_connectivity_drops_parenthesized_cfmom_instance(self) -> None:
+        output, _saw_subckt, _saw_ends, _aliases, dropped = source_to_connectivity(
+            [
+                "subckt fan_smc gnda vdda vout\n",
+                "M0 (vout vout gnda gnda) sky130_fd_pr__nfet_01v8 l=1u w=1u\n",
+                "C0 (net050 vout) cfmom_2t nr=94 lr=10u\n",
+                "ends fan_smc\n",
+            ]
+        )
+
+        self.assertNotIn("cfmom_2t", "".join(output))
+        self.assertEqual(dropped, Counter({"cfmom_2t": 1}))
+
     def test_source_passive_parser_detects_resistor_and_capacitor_instances(self) -> None:
         devices = parse_source_passives(
             [
