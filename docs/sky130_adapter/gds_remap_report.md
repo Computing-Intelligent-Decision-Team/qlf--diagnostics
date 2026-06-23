@@ -2,15 +2,18 @@
 
 ## Summary
 
-- Input GDS: `/home/to/eda/tools/src/MAGICAL/examples/inverter_sky130_try/inverter_core.route.gds`
-- Output GDS: `/home/to/eda/tools/src/MAGICAL/examples/inverter_sky130_try/inverter_core.sky130.gds`
-- Export map: `/home/to/eda/tools/src/MAGICAL/generated/sky130PDK_trial/sky130_gds_export_map.yaml`
-- Unique input layer/datatype pairs: 19
-- Successfully remapped pairs: 17
+- Input GDS: `/home/qlf/IOT/references/AnalogHarness/generated/smcnr_variants/mc_pmos_l_0001/mc_second_stage_pmos_1p05/case/SMCNR_SE_2st_AMP.route.gds`
+- Output GDS: `/home/qlf/IOT/references/AnalogHarness/generated/smcnr_variants/mc_pmos_l_0001/mc_second_stage_pmos_1p05/case/sky130.gds`
+- Export map: `/home/qlf/IOT/references/AnalogHarness/generated/sky130PDK_trial/sky130_gds_export_map.yaml`
+- Unique input layer/datatype pairs: 20
+- Successfully remapped pairs: 18
 - Preserved TBD pairs: 0
 - Preserved unmapped pairs: 2
+- Preserved excluded pairs: 0
 
 The original MAGICAL GDS is not modified. This post-processing step rewrites confirmed MAGICAL internal layers to their proposed Sky130 GDS layer/datatype targets. TBD and unmapped layers are left unchanged.
+Experimental datatype-specific mappings enabled: yes.
+Excluded input layer/datatype pairs: []
 
 ## Layer Actions
 
@@ -35,10 +38,13 @@ The original MAGICAL GDS is not modified. This post-processing step rewrites con
 | 55 | 0 | BOUNDARY | 71 | 44 | remapped | VIA5 -> via4 71/44 |
 | 131 | 0 | TEXT | 131 | 0 | preserved_unmapped | not listed in export map |
 | 136 | 0 | TEXT | 136 | 0 | preserved_unmapped | not listed in export map |
+| 208 | 1 | BOUNDARY | 83 | 44 | remapped | LVS_DUMMY[1] -> LVSTEXT 83/44 |
 
 ## Notes
 
 - `remapped` means both GDS layer and datatype were replaced from `sky130_gds_export_map.yaml`.
+- Datatype-specific overrides allow one MAGICAL layer number to map different input datatypes to different Sky130 targets.
 - `preserved_tbd` means the MAGICAL layer exists in the export map but its Sky130 target is not confirmed.
 - `preserved_unmapped` means the input GDS layer is not listed in the export map.
+- `preserved_excluded` means the input layer/datatype matched an explicit exclusion override.
 - This remap is a layer/datatype translation only; it does not make the layout Sky130 DRC-clean.

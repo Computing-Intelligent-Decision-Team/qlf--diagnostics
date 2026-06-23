@@ -55,6 +55,30 @@ It contains the 38-candidate evidence set, warm-start data, selected best
 candidate netlists/testbenches, passive evidence, and three small GDS reference
 files. It intentionally does not include the full 563 MB `generated/` tree.
 
+## Debug Upstream Layout Differences
+
+If a fresh local MAGICAL run does not match the packaged clean `cand_0031`
+layout, use the upstream diagnostic archive:
+
+```text
+reproducibility/smcnr_se_2st_amp/upstream_artifacts/smcnr_cand0031_upstream_full_run.tar.gz
+```
+
+Verify and extract it:
+
+```bash
+cd reproducibility/smcnr_se_2st_amp/upstream_artifacts
+sha256sum -c smcnr_cand0031_upstream_full_run.sha256
+tar -xzf smcnr_cand0031_upstream_full_run.tar.gz
+```
+
+The archive root is `SMCNR_SE_2st_AMP/cand_0031/`. It includes MAGICAL
+intermediate GDS files, placement/routing logs, Magic DRC/extraction logs,
+`.ext`, extracted SPICE, Netgen reports, PEX summaries, passive/native-cap
+diagnostics, simulation logs, runner metadata, and environment metadata. This
+is the package to use for diagnosing `vdda/gnda` extraction collapse in fresh
+local SMCNR generation.
+
 ## Rerun
 
 Smoke layout closure:

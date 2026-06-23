@@ -2,13 +2,28 @@
 
 ## Summary
 
-- Input GDS: `examples/inverter_sky130_try/inverter_core.sky130.pinned.gds`
-- Output GDS: `examples/inverter_sky130_try/inverter_core.sky130.pinned_shapes.gds`
-- ioPin file: `examples/inverter_sky130_try/inverter_core.ioPin`
+- Input GDS: `generated/smcnr_variants/mc_pmos_l_0001/mc_second_stage_pmos_1p05/case/sky130.gds`
+- Output GDS: `generated/smcnr_variants/mc_pmos_l_0001/mc_second_stage_pmos_1p05/case/pinned.gds`
+- ioPin file: `generated/smcnr_variants/mc_pmos_l_0001/mc_second_stage_pmos_1p05/case/SMCNR_SE_2st_AMP.ioPin`
 - Target cell: `inverter_core_flat`
-- Added pin-purpose BOUNDARY elements: 4
+- Top-port filtering: enabled
+- Added pin-purpose BOUNDARY elements: 6
 - Existing drawing geometry, old TEXT, and new label TEXT are preserved.
 - This is an experimental postprocess, not final native Sky130 export.
+
+## Top-Port Filter
+
+- Netlist: `generated/smcnr_variants/mc_pmos_l_0001/mc_second_stage_pmos_1p05/case/netlist.sp`
+- Top cell: `SMCNR_SE_2st_AMP`
+- Top ports: vdda, gnda, vin, vip, ibias, vout
+- Processed pins: vdda, gnda, vin, vip, ibias, vout
+- Skipped internal nets: outp, outn, net53
+
+| skipped net | skipped reason |
+| --- | --- |
+| outp | not in top subckt port list |
+| outn | not in top subckt port list |
+| net53 | not in top subckt port list |
 
 ## Local PDK Datatype Confirmation
 
@@ -31,10 +46,12 @@ Checked PDK files:
 
 | pin | ioPin layer | box | Sky130 pin purpose | GDS layer | datatype | expected drawing layer | expected label layer |
 | --- | ---: | --- | --- | ---: | ---: | --- | --- |
-| A | 1 | (350, 2150) - (1850, 2250) | li1.pin | 67 | 16 | li1.drawing 67/20 | li1.label 67/5 |
-| Y | 2 | (350, 550) - (2250, 650) | met1.pin | 68 | 16 | met1.drawing 68/20 | met1.label 68/5 |
-| VPWR | 6 | (1350, -450) - (2650, -350) | met5.pin | 72 | 16 | met5.drawing 72/20 | met5.label 72/5 |
-| VGND | 6 | (-650, -1050) - (3250, -950) | met5.pin | 72 | 16 | met5.drawing 72/20 | met5.label 72/5 |
+| vdda | 6 | (1900, 18775) - (32100, 20575) | met5.pin | 72 | 16 | met5.drawing 72/20 | met5.label 72/5 |
+| gnda | 6 | (1900, -3700) - (32100, -1900) | met5.pin | 72 | 16 | met5.drawing 72/20 | met5.label 72/5 |
+| vin | 1 | (17950, 10550) - (26450, 10650) | li1.pin | 67 | 16 | li1.drawing 67/20 | li1.label 67/5 |
+| vip | 1 | (7550, 10550) - (16050, 10650) | li1.pin | 67 | 16 | li1.drawing 67/20 | li1.label 67/5 |
+| ibias | 1 | (6550, 15150) - (17450, 15250) | li1.pin | 67 | 16 | li1.drawing 67/20 | li1.label 67/5 |
+| vout | 1 | (10150, 13350) - (18050, 13450) | li1.pin | 67 | 16 | li1.drawing 67/20 | li1.label 67/5 |
 
 ## Notes
 

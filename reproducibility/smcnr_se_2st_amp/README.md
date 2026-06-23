@@ -23,6 +23,22 @@ experiments, and reproducing the closure flow without committing the entire
 The full local run was about 563 MB. This package is about 2.7 MB because bulk
 GDS variants, `.ext` files, and transient logs were intentionally excluded.
 
+## Upstream Diagnostic Archive
+
+For debugging fresh local MAGICAL generation differences, this repository also
+includes:
+
+```text
+reproducibility/smcnr_se_2st_amp/upstream_artifacts/smcnr_cand0031_upstream_full_run.tar.gz
+```
+
+That archive keeps the original `SMCNR_SE_2st_AMP/cand_0031` structure and adds
+the raw upstream artifacts that were intentionally omitted from the lightweight
+package: MAGICAL logs, `place`/`route`/remapped/pinned GDS stages, Magic Tcl/logs,
+`.ext`, extracted SPICE, Netgen LVS files, PEX summaries, environment metadata,
+and runner metadata. Use it when comparing the known-clean packaged GDS against
+a fresh local MAGICAL GDS that collapses `vdda/gnda`.
+
 ## Reference Result
 
 - Design: `SMCNR_SE_2st_AMP`
