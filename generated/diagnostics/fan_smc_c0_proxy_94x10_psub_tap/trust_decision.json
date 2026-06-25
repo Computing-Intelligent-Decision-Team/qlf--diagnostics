@@ -1,0 +1,23 @@
+{
+  "candidate_id": "AH-SMC-009",
+  "circuit": "Fan_SMC_Pin_3",
+  "experiment_scope": "single_top_level_diagnostic_psub_tap",
+  "drc_clean": true,
+  "lvs_match": false,
+  "pex_available": false,
+  "post_sim_valid": false,
+  "pvt_valid": false,
+  "usable_for_reward": false,
+  "usable_for_post_sim": false,
+  "usable_for_training": false,
+  "usable_for_parasitic_modeling": false,
+  "usable_only_as_failure_case": true,
+  "c0_proxy_equivalence_proven": false,
+  "reasons": [
+    "lvs_not_matched",
+    "pex_missing",
+    "post_sim_invalid",
+    "pvt_invalid",
+    "scope_not_full_passive_lvs"
+  ]
+}

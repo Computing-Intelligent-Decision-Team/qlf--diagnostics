@@ -1,0 +1,121 @@
+* NGSPICE file created from fan_smc_pin_3_flat.ext - technology: sky130A
+
+.subckt fan_smc_pin_3_flat vinn vinp net050 net049 net013 net043 voutn net063 net31
++ dm_2 vb3 dm_1 vb4 net54 net56
+X0 dm_2 vb3 voutn net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X1 net050 vb3 a_2425_4610# net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X2 net050 net050 net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=30 ps=400.2 w=1 l=1
+X3 dm_1 net013 net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X4 net063 vinp net31 net31 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X5 net050 vb4 dm_2 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X6 net043 net050 net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X7 net56 vb3 dm_1 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X8 net050 net043 a_2145_2370# net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X9 vb4 vb3 net54 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X10 net050 vb3 net063 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X11 net050 net013 a_n15_3490# net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X12 net063 vb4 net050 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X13 a_1100_2930# voutn net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X14 net050 voutn net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0 ps=0 w=1 l=1
+X15 net31 vinn dm_2 net31 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X16 net049 net013 net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X17 vb3 net013 net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X18 net56 vb4 net050 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X19 net54 vb4 net050 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X20 vb4 net013 net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X21 net049 net043 net050 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+X22 net050 net049 net050 net050 sky130_fd_pr__nfet_01v8 ad=0.175 pd=2.35 as=13.75 ps=183.5 w=1 l=1
+X23 a_500_2930# net013 net050 net050 sky130_fd_pr__pfet_01v8 ad=0.175 pd=2.35 as=0.175 ps=2.35 w=1 l=1
+C0 net31 a_1100_2930# 4.12e-19
+C1 net063 net56 1.99e-19
+C2 vb3 net013 0.094716f
+C3 vb3 net56 0.16512f
+C4 a_500_2930# net013 0.136151f
+C5 a_500_2930# net56 8.25e-20
+C6 net31 dm_2 0.25038f
+C7 vb4 dm_2 0.469212f
+C8 dm_1 net013 0.173384f
+C9 net043 voutn 0.010848f
+C10 a_1100_2930# a_500_2930# 6.55e-20
+C11 net063 dm_2 0.162365f
+C12 dm_1 net56 1.02e-19
+C13 vb3 dm_2 0.217113f
+C14 net31 vinp 0.189398f
+C15 vinp vb4 0.013745f
+C16 net31 vinn 0.189269f
+C17 net063 vinp 0.10563f
+C18 vb4 vinn 0.005101f
+C19 vb3 vinp 0.013767f
+C20 net063 vinn 2.66e-20
+C21 vb3 vinn 0.022493f
+C22 net31 net049 2.31e-19
+C23 vb4 net049 6.6e-20
+C24 net063 net049 2.51e-20
+C25 net013 voutn 0.289153f
+C26 vb3 net049 2.33e-19
+C27 a_2425_4610# net54 4.94e-20
+C28 a_500_2930# net049 2.93e-20
+C29 a_1100_2930# voutn 0.081614f
+C30 net31 vb4 0.281436f
+C31 net54 net013 1.53e-20
+C32 net31 net063 0.266716f
+C33 net063 vb4 0.898214f
+C34 dm_2 voutn 0.040332f
+C35 net31 vb3 0.278068f
+C36 vb3 vb4 0.324885f
+C37 net31 a_500_2930# 0.012794f
+C38 a_500_2930# vb4 0.003741f
+C39 net063 vb3 0.152472f
+C40 net56 net013 2.31e-20
+C41 net063 a_500_2930# 0.009759f
+C42 a_1100_2930# net013 0.004961f
+C43 dm_1 vb4 0.008349f
+C44 vb3 a_500_2930# 8.32e-19
+C45 net043 net049 0.236848f
+C46 a_2145_2370# net043 0.106488f
+C47 dm_1 vb3 0.07528f
+C48 a_n15_3490# net013 0.081614f
+C49 net013 dm_2 2.91e-19
+C50 voutn net049 0.040715f
+C51 net013 vinp 0.002664f
+C52 net043 vb4 4.43e-20
+C53 vb3 net043 4.05e-20
+C54 net31 voutn 0.011546f
+C55 vb4 voutn 9.95e-20
+C56 vinp dm_2 2.66e-20
+C57 net063 voutn 0.030252f
+C58 net013 net049 0.051184f
+C59 dm_2 vinn 0.10563f
+C60 vb3 voutn 0.066874f
+C61 net31 net54 0.001407f
+C62 a_500_2930# voutn 0.018237f
+C63 net54 vb4 0.309196f
+C64 a_1100_2930# net049 2.28e-19
+C65 a_2425_4610# vb4 0.014041f
+C66 vinp vinn 0.002417f
+C67 net54 vb3 0.080516f
+C68 net31 net013 0.006992f
+C69 net013 vb4 0.157001f
+C70 a_2425_4610# vb3 0.146459f
+C71 net56 vb4 0.121761f
+C72 net063 net013 0.016149f
+C73 net043 net050 1.22572f
+C74 net049 net050 1.85923f
+C75 voutn net050 1.59392f
+C76 dm_2 net050 0.628527f
+C77 vinn net050 0.206719f
+C78 net063 net050 0.569758f
+C79 vinp net050 0.204956f
+C80 net54 net050 0.232467f
+C81 vb3 net050 3.1282f
+C82 dm_1 net050 0.289998f
+C83 net013 net050 4.73157f
+C84 net56 net050 0.3054f
+C85 vb4 net050 3.25905f
+C86 net31 net050 4.30478f
+C87 a_2145_2370# net050 0.032417f
+C88 a_1100_2930# net050 0.054845f
+C89 a_500_2930# net050 0.786253f
+C90 a_n15_3490# net050 0.056226f
+C91 a_2425_4610# net050 0.029622f
+.ends

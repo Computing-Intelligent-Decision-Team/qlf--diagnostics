@@ -1,0 +1,48 @@
+* NGSPICE file created from SMCNR_SE_2st_AMP_flat.ext - technology: sky130A
+
+.subckt SMCNR_SE_2st_AMP_flat vdda gnda vin vip ibias vout
+X0 vout ibias vdda vdda sky130_fd_pr__pfet_01v8 ad=0.0385 pd=0.79 as=0.0385 ps=0.79 w=0.22 l=10
+X1 vout a_20_494# gnda gnda sky130_fd_pr__nfet_01v8 ad=0.259 pd=3.31 as=0.259 ps=3.31 w=1.48 l=10
+X2 gnda a_2100_n30# a_20_494# gnda sky130_fd_pr__nfet_01v8 ad=0.2625 pd=3.35 as=0.2625 ps=3.35 w=1.5 l=10
+X3 a_4024_586# ibias vdda vdda sky130_fd_pr__pfet_01v8 ad=0.0495 pd=0.89 as=0.0495 ps=0.89 w=0.22 l=10.5
+X4 a_2100_n30# vin a_4024_586# vdda sky130_fd_pr__pfet_01v8 ad=1.1656 pd=15.35 as=1.1656 ps=15.35 w=7.52 l=8.24
+X5 gnda a_2100_n30# a_4345_n10# gnda sky130_fd_pr__nfet_01v8 ad=0.2625 pd=3.35 as=0.2625 ps=3.35 w=1.5 l=10
+X6 vdda ibias a_665_2846# vdda sky130_fd_pr__pfet_01v8 ad=0.0495 pd=0.89 as=0.0495 ps=0.89 w=0.22 l=10.5
+X7 a_4024_586# vip a_20_494# vdda sky130_fd_pr__pfet_01v8 ad=1.1656 pd=15.35 as=1.1656 ps=15.35 w=7.52 l=8.24
+C0 vdda a_665_2846# 0.011185f
+C1 vip a_4024_586# 0.37862f
+C2 vdda vin 1.40489f
+C3 a_4345_n10# a_2100_n30# 0.088027f
+C4 vip vin 0.002455f
+C5 vdda vip 1.58256f
+C6 vdda vout 0.577257f
+C7 vout vip 0.08541f
+C8 a_2100_n30# a_4024_586# 0.016632f
+C9 vdda a_20_494# 0.155428f
+C10 vip a_20_494# 0.376615f
+C11 vin a_2100_n30# 0.433347f
+C12 vout a_20_494# 0.968451f
+C13 ibias a_4024_586# 0.028261f
+C14 vdda a_2100_n30# 1.22141f
+C15 ibias a_665_2846# 0.037893f
+C16 vip a_2100_n30# 0.114147f
+C17 ibias vin 0.002326f
+C18 vout a_2100_n30# 4.18e-19
+C19 ibias vdda 5.90712f
+C20 vdda a_4345_n10# 0.005259f
+C21 ibias vip 0.059689f
+C22 ibias vout 0.065999f
+C23 a_2100_n30# a_20_494# 0.120446f
+C24 ibias a_20_494# 0.013422f
+C25 vin a_4024_586# 0.957313f
+C26 vdda a_4024_586# 0.697118f
+C27 vin gnda 1.31226f
+C28 vip gnda 1.21339f
+C29 vout gnda 0.401496f
+C30 ibias gnda 5.50727f
+C31 vdda gnda 47.871197f
+C32 a_4345_n10# gnda 0.065072f
+C33 a_2100_n30# gnda 6.408319f
+C34 a_20_494# gnda 3.52593f
+C35 a_4024_586# gnda 0.430838f
+.ends

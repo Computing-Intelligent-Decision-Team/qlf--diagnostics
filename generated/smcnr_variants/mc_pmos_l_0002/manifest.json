@@ -1,0 +1,27 @@
+{
+  "batch_id": "mc_pmos_l_0002",
+  "runner": "tools/analog_harness/ml/smcnr_pmos_l_mc_runner.py",
+  "total": 26,
+  "accepted": 25,
+  "rejected": 1,
+  "axes": [
+    "bias_pmos_l",
+    "second_stage_pmos_l"
+  ],
+  "factors": [
+    0.95,
+    0.96,
+    0.97,
+    0.98,
+    0.99,
+    1.005,
+    1.01,
+    1.015,
+    1.02,
+    1.025,
+    1.03,
+    1.04,
+    1.05
+  ],
+  "seeds": 1
+}

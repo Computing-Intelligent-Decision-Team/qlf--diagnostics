@@ -1,0 +1,3567 @@
+{
+  "schema_version": "extracted_device_mapping_diagnosis.v1",
+  "status": "fail",
+  "issue_codes": [
+    "unmatched_extracted_devices",
+    "source_body_extracted_body_mismatch",
+    "source_extracted_terminal_topology_mismatch",
+    "extracted_body_collapses_to_signal"
+  ],
+  "mapped_source_instance_count": 23,
+  "mapped_extracted_device_count": 23,
+  "unmatched_extracted_device_count": 1,
+  "body_mismatch_count": 23,
+  "terminal_mismatch_count": 88,
+  "mismatch_extracted_body_nets": [
+    "a_1220_2750#",
+    "a_1500_3250#",
+    "a_1905_2290#",
+    "a_2345_3890#",
+    "a_25_4050#",
+    "a_665_3890#",
+    "a_900_2930#",
+    "a_940_4290#",
+    "vout"
+  ],
+  "inputs": {
+    "source_netlist": "generated/diagnostics/fan_smc_c0_proxy_94x10/case/fan_smc_pin_3.sp",
+    "bound_file": "generated/diagnostics/fan_smc_c0_proxy_94x10/case/fan_smc_pin_3.bound",
+    "magical_run_log": "generated/diagnostics/fan_smc_c0_proxy_94x10/case/run_fan_smc_pin_3_trial.log",
+    "magic_ext": "generated/diagnostics/fan_smc_c0_proxy_94x10/extract/fan_smc_pin_3_flat.ext",
+    "vdd": "vdda",
+    "vss": "gnda",
+    "top_ports": [
+      "gnda",
+      "vdda",
+      "vinn",
+      "vinp",
+      "vout"
+    ],
+    "magic_to_layout_scale": 5
+  },
+  "source_instance_count": 24,
+  "extracted_device_count": 24,
+  "terminal_mismatch_summary": {
+    "total_terminal_mismatch_count": 88,
+    "role_mismatch_counts": {
+      "D": 21,
+      "G": 21,
+      "S": 23,
+      "B": 23
+    },
+    "source_drain_equivalent_mismatch_count": 0,
+    "hard_gate_body_or_net_domain_mismatch_count": 88,
+    "top_offending_instances": [
+      {
+        "source_instance": "M0",
+        "source_model": "sky130_fd_pr__pfet_01v8",
+        "source_terminals": [
+          "net013",
+          "net013",
+          "vdda",
+          "vdda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "net013",
+          "G": "net013",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_20_2910#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_25_4050#"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "net013",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_20_2910#",
+          "a_25_4050#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M10",
+        "source_model": "sky130_fd_pr__pfet_01v8",
+        "source_terminals": [
+          "net043",
+          "net050",
+          "vdda",
+          "vdda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "net043",
+          "G": "net050",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_1500_2270#"
+          ],
+          "G": [
+            "vout"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "net043",
+          "net050",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1500_2270#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M12",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "vb4",
+          "vb3",
+          "net54",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "vb4",
+          "G": "vb3",
+          "S": "net54",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_420_4610#"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_940_4290#"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net54",
+          "vb3",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_420_4610#",
+          "a_700_3870#",
+          "a_940_4290#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M13",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "dm_1",
+          "vb3",
+          "net56",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "dm_1",
+          "G": "vb3",
+          "S": "net56",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_900_3890#"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_665_3890#"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "dm_1",
+          "gnda",
+          "net56",
+          "vb3"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_665_3890#",
+          "a_700_3870#",
+          "a_900_3890#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M14",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "vb3",
+          "vb3",
+          "gnda",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "vb3",
+          "G": "vb3",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_2345_3890#"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "gnda",
+          "vb3"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_2345_3890#",
+          "a_700_3870#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M15",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "voutn",
+          "vb3",
+          "dm_2",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "voutn",
+          "G": "vb3",
+          "S": "dm_2",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_1500_3250#"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_1220_2750#"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "dm_2",
+          "gnda",
+          "vb3",
+          "voutn"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1220_2750#",
+          "a_1500_3250#",
+          "a_700_3870#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M16",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "net050",
+          "vb3",
+          "net063",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "net050",
+          "G": "vb3",
+          "S": "net063",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_900_2930#"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net050",
+          "net063",
+          "vb3"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_700_3870#",
+          "a_900_2930#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M17",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "net54",
+          "vb4",
+          "gnda",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "net54",
+          "G": "vb4",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_940_4290#"
+          ],
+          "G": [
+            "a_420_4610#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net54",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_420_4610#",
+          "a_940_4290#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M18",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "net56",
+          "vb4",
+          "gnda",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "net56",
+          "G": "vb4",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_900_3890#"
+          ],
+          "G": [
+            "a_420_4610#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net56",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_420_4610#",
+          "a_900_3890#",
+          "vout"
+        ]
+      },
+      {
+        "source_instance": "M19",
+        "source_model": "sky130_fd_pr__nfet_01v8",
+        "source_terminals": [
+          "dm_2",
+          "vb4",
+          "gnda",
+          "gnda"
+        ],
+        "extracted_device_count": 1,
+        "total_terminal_mismatch_count": 4,
+        "mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "hard_mismatched_roles": [
+          "D",
+          "G",
+          "S",
+          "B"
+        ],
+        "source_drain_equivalent_only": false,
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "source_terminal_roles": {
+          "D": "dm_2",
+          "G": "vb4",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_420_4610#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_1500_3250#"
+          ]
+        },
+        "missing_source_terminal_nets": [
+          "dm_2",
+          "gnda",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1500_3250#",
+          "a_420_4610#",
+          "vout"
+        ]
+      }
+    ]
+  },
+  "instances": [
+    {
+      "source_instance": "M11",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "vout",
+        "net050",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "32",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        2600,
+        11800
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        2000,
+        11200,
+        4400,
+        13600
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 116,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            540,
+            2370
+          ],
+          "mapped_origin": [
+            2700,
+            11850
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "vout",
+            "vout",
+            "vout"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "vout",
+            "vout",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "vout",
+          "G": "net050",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "vout"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 0,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 3,
+        "missing_source_terminal_nets": [
+          "net050",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": []
+      }
+    },
+    {
+      "source_instance": "M7",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "net049",
+        "net013",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        0,
+        14600
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        -600,
+        14000,
+        1800,
+        16400
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 121,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            20,
+            2930
+          ],
+          "mapped_origin": [
+            100,
+            14650
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_220_2930#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_220_2930#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net049",
+          "G": "net013",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_220_2930#"
+          ],
+          "G": [
+            "a_20_2910#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "net013",
+          "net049",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_20_2910#",
+          "a_220_2930#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M10",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "net043",
+        "net050",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "8",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        12200,
+        12000
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        11600,
+        11400,
+        14000,
+        13800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 112,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            2460,
+            2410
+          ],
+          "mapped_origin": [
+            12300,
+            12050
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "vout",
+            "vout",
+            "a_1500_2270#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "vout",
+            "vout",
+            "a_1500_2270#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net043",
+          "G": "net050",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_1500_2270#"
+          ],
+          "G": [
+            "vout"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "net043",
+          "net050",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1500_2270#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M6",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "net050",
+        "voutn",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        9200,
+        13800
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        8600,
+        13200,
+        11000,
+        15600
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 118,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            1860,
+            2770
+          ],
+          "mapped_origin": [
+            9300,
+            13850
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_1220_2750#",
+            "vout",
+            "vout"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_1220_2750#",
+            "vout",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net050",
+          "G": "voutn",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_1220_2750#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "net050",
+          "vdda",
+          "voutn"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1220_2750#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M5",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "voutn",
+        "voutn",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        6000,
+        13800
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        5400,
+        13200,
+        7800,
+        15600
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 119,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            1220,
+            2770
+          ],
+          "mapped_origin": [
+            6100,
+            13850
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_1220_2750#",
+            "vout",
+            "a_1420_2770#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_1220_2750#",
+            "vout",
+            "a_1420_2770#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "voutn",
+          "G": "voutn",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_1420_2770#"
+          ],
+          "G": [
+            "a_1220_2750#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "vdda",
+          "voutn"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1220_2750#",
+          "a_1420_2770#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M9",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "net063",
+        "vinp",
+        "net31",
+        "net31"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "4",
+        "nf": "1"
+      },
+      "expected_body_net": "net31",
+      "placement_origin": [
+        6000,
+        18600
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        5400,
+        18000,
+        7800,
+        20400
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 126,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            1220,
+            3730
+          ],
+          "mapped_origin": [
+            6100,
+            18650
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "vinp",
+            "vout",
+            "a_900_2930#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "vinp",
+            "vout",
+            "a_900_2930#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net063",
+          "G": "vinp",
+          "S": "net31",
+          "B": "net31"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_900_2930#"
+          ],
+          "G": [
+            "vinp"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 0,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 3,
+        "missing_source_terminal_nets": [
+          "net063",
+          "net31"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_900_2930#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M8",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "dm_2",
+        "vinn",
+        "net31",
+        "net31"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "4",
+        "nf": "1"
+      },
+      "expected_body_net": "net31",
+      "placement_origin": [
+        9200,
+        18600
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        8600,
+        18000,
+        11000,
+        20400
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_1500_3250#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 125,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            1860,
+            3730
+          ],
+          "mapped_origin": [
+            9300,
+            18650
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "vinn",
+            "a_1500_3250#",
+            "vout"
+          ],
+          "extracted_body_net": "a_1500_3250#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "vinn",
+            "a_1500_3250#",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "dm_2",
+          "G": "vinn",
+          "S": "net31",
+          "B": "net31"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "vinn"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_1500_3250#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 0,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 3,
+        "missing_source_terminal_nets": [
+          "dm_2",
+          "net31"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1500_3250#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M4",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "net31",
+        "net013",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "64",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        0,
+        17400
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        -600,
+        16800,
+        1800,
+        19200
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 128,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            20,
+            3490
+          ],
+          "mapped_origin": [
+            100,
+            17450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_220_3490#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_220_3490#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net31",
+          "G": "net013",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_220_3490#"
+          ],
+          "G": [
+            "a_20_2910#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "net013",
+          "net31",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_20_2910#",
+          "a_220_3490#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M3",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "vb3",
+        "net013",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        3000,
+        17000
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        2400,
+        16400,
+        4800,
+        18800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 127,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            620,
+            3410
+          ],
+          "mapped_origin": [
+            3100,
+            17050
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_700_3870#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_700_3870#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "vb3",
+          "G": "net013",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_700_3870#"
+          ],
+          "G": [
+            "a_20_2910#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "net013",
+          "vb3",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_20_2910#",
+          "a_700_3870#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M2",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "dm_1",
+        "net013",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        2400,
+        25800
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        1800,
+        25200,
+        4200,
+        27600
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 135,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            500,
+            5170
+          ],
+          "mapped_origin": [
+            2500,
+            25850
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_665_3890#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_20_2910#",
+            "vout",
+            "a_665_3890#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "dm_1",
+          "G": "net013",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_665_3890#"
+          ],
+          "G": [
+            "a_20_2910#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "dm_1",
+          "net013",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_20_2910#",
+          "a_665_3890#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M1",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "vb4",
+        "net013",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": null,
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": null,
+      "extracted_device_count": 0,
+      "extracted_body_nets": [],
+      "extracted_parameter_values": {},
+      "body_mismatch_count": 0,
+      "extracted_devices": [],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "vb4",
+          "G": "net013",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [],
+          "G": [],
+          "S": [],
+          "B": []
+        },
+        "role_mismatch_counts": {
+          "D": 0,
+          "G": 0,
+          "S": 0,
+          "B": 0
+        },
+        "total_terminal_mismatch_count": 0,
+        "missing_source_terminal_nets": [
+          "net013",
+          "vb4",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": []
+      }
+    },
+    {
+      "source_instance": "M0",
+      "source_model": "sky130_fd_pr__pfet_01v8",
+      "source_terminals": [
+        "net013",
+        "net013",
+        "vdda",
+        "vdda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "vdda",
+      "placement_origin": [
+        200,
+        20200
+      ],
+      "bound_box": [
+        -600,
+        -600,
+        1800,
+        1800
+      ],
+      "layout_box": [
+        -400,
+        19600,
+        2000,
+        22000
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_25_4050#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 132,
+          "model": "sky130_fd_pr__pfet_01v8",
+          "magic_origin": [
+            60,
+            4050
+          ],
+          "mapped_origin": [
+            300,
+            20250
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_20_2910#",
+            "a_25_4050#",
+            "vout"
+          ],
+          "extracted_body_net": "a_25_4050#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_20_2910#",
+            "a_25_4050#",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net013",
+          "G": "net013",
+          "S": "vdda",
+          "B": "vdda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_20_2910#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_25_4050#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "net013",
+          "vdda"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_20_2910#",
+          "a_25_4050#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M23",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "vout",
+        "net049",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        5200,
+        11400
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        5000,
+        11200,
+        6600,
+        12800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 115,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            1060,
+            2290
+          ],
+          "mapped_origin": [
+            5300,
+            11450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_220_2930#",
+            "vout",
+            "vout"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_220_2930#",
+            "vout",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "vout",
+          "G": "net049",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_220_2930#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 0,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 3,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net049"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_220_2930#"
+        ]
+      }
+    },
+    {
+      "source_instance": "M22",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "net049",
+        "net043",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "4",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        7400,
+        11400
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        7200,
+        11200,
+        8800,
+        12800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 114,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            1500,
+            2290
+          ],
+          "mapped_origin": [
+            7500,
+            11450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_1500_2270#",
+            "vout",
+            "a_220_2930#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_1500_2270#",
+            "vout",
+            "a_220_2930#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net049",
+          "G": "net043",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_220_2930#"
+          ],
+          "G": [
+            "a_1500_2270#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net043",
+          "net049"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1500_2270#",
+          "a_220_2930#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M21",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "net043",
+        "net043",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "4",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        9600,
+        11400
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        9400,
+        11200,
+        11000,
+        12800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_1905_2290#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 113,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            1940,
+            2290
+          ],
+          "mapped_origin": [
+            9700,
+            11450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_1500_2270#",
+            "a_1905_2290#",
+            "vout"
+          ],
+          "extracted_body_net": "a_1905_2290#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_1500_2270#",
+            "a_1905_2290#",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net043",
+          "G": "net043",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_1500_2270#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_1905_2290#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net043"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1500_2270#",
+          "a_1905_2290#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M19",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "dm_2",
+        "vb4",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "32",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        11800,
+        14600
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        11600,
+        14400,
+        13200,
+        16000
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_1500_3250#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 117,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            2380,
+            2930
+          ],
+          "mapped_origin": [
+            11900,
+            14650
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_420_4610#",
+            "a_1500_3250#",
+            "vout"
+          ],
+          "extracted_body_net": "a_1500_3250#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_420_4610#",
+            "a_1500_3250#",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "dm_2",
+          "G": "vb4",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_420_4610#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_1500_3250#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "dm_2",
+          "gnda",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1500_3250#",
+          "a_420_4610#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M15",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "voutn",
+        "vb3",
+        "dm_2",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        6400,
+        16200
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        6200,
+        16000,
+        7800,
+        17600
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_1220_2750#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 123,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            1300,
+            3250
+          ],
+          "mapped_origin": [
+            6500,
+            16250
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_1220_2750#",
+            "a_1500_3250#"
+          ],
+          "extracted_body_net": "a_1220_2750#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_1220_2750#",
+            "a_1500_3250#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "voutn",
+          "G": "vb3",
+          "S": "dm_2",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_1500_3250#"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_1220_2750#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "dm_2",
+          "gnda",
+          "vb3",
+          "voutn"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_1220_2750#",
+          "a_1500_3250#",
+          "a_700_3870#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M20",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "net063",
+        "vb4",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "32",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        3400,
+        14600
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        3200,
+        14400,
+        4800,
+        16000
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 120,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            700,
+            2930
+          ],
+          "mapped_origin": [
+            3500,
+            14650
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_420_4610#",
+            "vout",
+            "a_900_2930#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_420_4610#",
+            "vout",
+            "a_900_2930#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net063",
+          "G": "vb4",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_900_2930#"
+          ],
+          "G": [
+            "a_420_4610#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net063",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_420_4610#",
+          "a_900_2930#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M16",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "net050",
+        "vb3",
+        "net063",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        8800,
+        16200
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        8600,
+        16000,
+        10200,
+        17600
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_900_2930#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 122,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            1780,
+            3250
+          ],
+          "mapped_origin": [
+            8900,
+            16250
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_900_2930#",
+            "vout"
+          ],
+          "extracted_body_net": "a_900_2930#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_900_2930#",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net050",
+          "G": "vb3",
+          "S": "net063",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_900_2930#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net050",
+          "net063",
+          "vb3"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_700_3870#",
+          "a_900_2930#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M17",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "net54",
+        "vb4",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        3600,
+        21400
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        3400,
+        21200,
+        5000,
+        22800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 131,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            740,
+            4290
+          ],
+          "mapped_origin": [
+            3700,
+            21450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_420_4610#",
+            "vout",
+            "a_940_4290#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_420_4610#",
+            "vout",
+            "a_940_4290#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net54",
+          "G": "vb4",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_940_4290#"
+          ],
+          "G": [
+            "a_420_4610#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net54",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_420_4610#",
+          "a_940_4290#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M14",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "vb3",
+        "vb3",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "4",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        11800,
+        19400
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        11600,
+        19200,
+        13200,
+        20800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_2345_3890#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 124,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            2380,
+            3890
+          ],
+          "mapped_origin": [
+            11900,
+            19450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_2345_3890#",
+            "vout"
+          ],
+          "extracted_body_net": "a_2345_3890#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_2345_3890#",
+            "vout"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "vb3",
+          "G": "vb3",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "vout"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_2345_3890#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "vb3"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_2345_3890#",
+          "a_700_3870#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M12",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "vb4",
+        "vb3",
+        "net54",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        4800,
+        23400
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        4600,
+        23200,
+        6200,
+        24800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_940_4290#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 133,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            980,
+            4690
+          ],
+          "mapped_origin": [
+            4900,
+            23450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_940_4290#",
+            "a_420_4610#"
+          ],
+          "extracted_body_net": "a_940_4290#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_940_4290#",
+            "a_420_4610#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "vb4",
+          "G": "vb3",
+          "S": "net54",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_420_4610#"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_940_4290#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net54",
+          "vb3",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_420_4610#",
+          "a_700_3870#",
+          "a_940_4290#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M18",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "net56",
+        "vb4",
+        "gnda",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        5800,
+        21000
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        5600,
+        20800,
+        7200,
+        22400
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "vout"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 130,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            1180,
+            4210
+          ],
+          "mapped_origin": [
+            5900,
+            21050
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_420_4610#",
+            "vout",
+            "a_900_3890#"
+          ],
+          "extracted_body_net": "vout",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_420_4610#",
+            "vout",
+            "a_900_3890#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "net56",
+          "G": "vb4",
+          "S": "gnda",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_900_3890#"
+          ],
+          "G": [
+            "a_420_4610#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "vout"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "gnda",
+          "net56",
+          "vb4"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_420_4610#",
+          "a_900_3890#",
+          "vout"
+        ]
+      }
+    },
+    {
+      "source_instance": "M13",
+      "source_model": "sky130_fd_pr__nfet_01v8",
+      "source_terminals": [
+        "dm_1",
+        "vb3",
+        "net56",
+        "gnda"
+      ],
+      "source_parameters": {
+        "l": "1u",
+        "w": "1u",
+        "multi": "16",
+        "nf": "1"
+      },
+      "expected_body_net": "gnda",
+      "placement_origin": [
+        3400,
+        19400
+      ],
+      "bound_box": [
+        -200,
+        -200,
+        1400,
+        1400
+      ],
+      "layout_box": [
+        3200,
+        19200,
+        4800,
+        20800
+      ],
+      "extracted_device_count": 1,
+      "extracted_body_nets": [
+        "a_665_3890#"
+      ],
+      "extracted_parameter_values": {
+        "l": [
+          "200"
+        ],
+        "w": [
+          "200"
+        ]
+      },
+      "body_mismatch_count": 1,
+      "extracted_devices": [
+        {
+          "line_number": 129,
+          "model": "sky130_fd_pr__nfet_01v8",
+          "magic_origin": [
+            700,
+            3890
+          ],
+          "mapped_origin": [
+            3500,
+            19450
+          ],
+          "extracted_terminal_order": [
+            "S",
+            "G",
+            "B",
+            "D"
+          ],
+          "extracted_terminal_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_665_3890#",
+            "a_900_3890#"
+          ],
+          "extracted_body_net": "a_665_3890#",
+          "extracted_parameters": {
+            "l": "200",
+            "w": "200"
+          },
+          "quoted_nets": [
+            "vout",
+            "a_700_3870#",
+            "a_665_3890#",
+            "a_900_3890#"
+          ]
+        }
+      ],
+      "terminal_alignment": {
+        "source_terminal_roles": {
+          "D": "dm_1",
+          "G": "vb3",
+          "S": "net56",
+          "B": "gnda"
+        },
+        "role_extracted_nets": {
+          "D": [
+            "a_900_3890#"
+          ],
+          "G": [
+            "a_700_3870#"
+          ],
+          "S": [
+            "vout"
+          ],
+          "B": [
+            "a_665_3890#"
+          ]
+        },
+        "role_mismatch_counts": {
+          "D": 1,
+          "G": 1,
+          "S": 1,
+          "B": 1
+        },
+        "total_terminal_mismatch_count": 4,
+        "missing_source_terminal_nets": [
+          "dm_1",
+          "gnda",
+          "net56",
+          "vb3"
+        ],
+        "unexpected_extracted_terminal_nets": [
+          "a_665_3890#",
+          "a_700_3870#",
+          "a_900_3890#",
+          "vout"
+        ]
+      }
+    }
+  ],
+  "unmatched_extracted_devices": [
+    {
+      "line_number": 134,
+      "model": "sky130_fd_pr__pfet_01v8",
+      "magic_origin": [
+        220,
+        4610
+      ],
+      "magic_other_origin": [
+        221,
+        4611
+      ],
+      "mapped_origin": [
+        1100,
+        23050
+      ],
+      "quoted_nets": [
+        "vout",
+        "a_20_2910#",
+        "vout",
+        "a_420_4610#"
+      ],
+      "extracted_terminal_order": [
+        "S",
+        "G",
+        "B",
+        "D"
+      ],
+      "extracted_terminal_nets": [
+        "vout",
+        "a_20_2910#",
+        "vout",
+        "a_420_4610#"
+      ],
+      "extracted_body_net": "vout",
+      "extracted_parameters": {
+        "l": "200",
+        "w": "200"
+      },
+      "raw_line": "device msubckt sky130_fd_pr__pfet_01v8 220 4610 221 4611 l=200 w=200 \"vout\" \"a_20_2910#\" 400 0 \"vout\" 200 7000,470 \"a_420_4610#\" 200 7000,470"
+    }
+  ]
+}

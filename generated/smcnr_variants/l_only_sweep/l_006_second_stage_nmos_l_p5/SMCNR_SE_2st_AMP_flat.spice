@@ -1,0 +1,49 @@
+* NGSPICE file created from SMCNR_SE_2st_AMP_flat.ext - technology: sky130A
+
+.subckt SMCNR_SE_2st_AMP_flat vdda gnda vin vip ibias vout
+X0 vout a_30_494# gnda gnda sky130_fd_pr__nfet_01v8 ad=0.333 pd=3.41 as=0.333 ps=3.41 w=1.48 l=10.5
+X1 gnda a_2180_n30# a_4425_n10# gnda sky130_fd_pr__nfet_01v8 ad=0.2625 pd=3.35 as=0.2625 ps=3.35 w=1.5 l=10
+X2 a_4104_586# vip a_30_494# vdda sky130_fd_pr__pfet_01v8 ad=1.1656 pd=15.35 as=1.1656 ps=15.35 w=7.52 l=8.24
+X3 vout ibias vdda vdda sky130_fd_pr__pfet_01v8 ad=0.0385 pd=0.79 as=0.0385 ps=0.79 w=0.22 l=10
+X4 vdda ibias a_865_2846# vdda sky130_fd_pr__pfet_01v8 ad=0.0385 pd=0.79 as=0.0385 ps=0.79 w=0.22 l=10
+X5 a_4104_586# ibias vdda vdda sky130_fd_pr__pfet_01v8 ad=0.0385 pd=0.79 as=0.0385 ps=0.79 w=0.22 l=10
+X6 gnda a_2180_n30# a_30_494# gnda sky130_fd_pr__nfet_01v8 ad=0.2625 pd=3.35 as=0.2625 ps=3.35 w=1.5 l=10
+X7 a_2180_n30# vin a_4104_586# vdda sky130_fd_pr__pfet_01v8 ad=1.1656 pd=15.35 as=1.1656 ps=15.35 w=7.52 l=8.24
+C0 ibias a_4104_586# 0.028987f
+C1 vdda a_2180_n30# 1.22694f
+C2 ibias a_865_2846# 0.026346f
+C3 vip a_2180_n30# 0.114147f
+C4 ibias vin 0.002127f
+C5 vout a_2180_n30# 4.18e-19
+C6 ibias vdda 5.65204f
+C7 vdda a_4425_n10# 0.005259f
+C8 ibias vip 0.058024f
+C9 ibias vout 0.066258f
+C10 a_2180_n30# a_30_494# 0.122804f
+C11 ibias a_30_494# 0.013321f
+C12 vin a_4104_586# 0.913068f
+C13 vdda a_4104_586# 0.679116f
+C14 vdda a_865_2846# 0.011123f
+C15 vip a_4104_586# 0.37862f
+C16 vdda vin 1.39596f
+C17 a_4425_n10# a_2180_n30# 0.088027f
+C18 vip vin 0.002455f
+C19 vdda vip 1.56906f
+C20 vdda vout 0.603701f
+C21 vout vip 0.090553f
+C22 a_2180_n30# a_4104_586# 0.004841f
+C23 vdda a_30_494# 0.164549f
+C24 vip a_30_494# 0.376605f
+C25 vin a_2180_n30# 0.433347f
+C26 vout a_30_494# 0.967687f
+C27 vin gnda 1.3278f
+C28 vip gnda 1.21419f
+C29 vout gnda 0.388605f
+C30 ibias gnda 5.30342f
+C31 vdda gnda 47.458897f
+C32 a_4425_n10# gnda 0.065072f
+C33 a_2180_n30# gnda 6.42218f
+C34 a_30_494# gnda 3.66507f
+C35 a_4104_586# gnda 0.423843f
+C36 a_865_2846# gnda 0.008824f
+.ends

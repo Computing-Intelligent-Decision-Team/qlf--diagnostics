@@ -85,7 +85,7 @@ def classify_by_connectivity(extracted_lines: list[str]) -> dict[str, str]:
     outp_nets -= port_names
 
     renames: dict[str, str] = {}
-    anon_pattern = re.compile(r"^a_\d+_\d+#$")
+    anon_pattern = re.compile(r"^a_\d+_[a-z]*\d+#$")
 
     # Classify anonymous nodes
     all_anon: set[str] = set()
@@ -127,7 +127,7 @@ def discover_renames(extracted_spice_path: str | Path) -> dict[str, str]:
 
     # Method 1: suffix pattern matching (fast, works for most cases)
     renames: dict[str, str] = {}
-    anon_pattern = re.compile(r"(a_\d+_\d+#)")
+    anon_pattern = re.compile(r"(a_\d+_[a-z]*\d+#)")
     for line in lines:
         if not line.startswith("X"):
             continue
