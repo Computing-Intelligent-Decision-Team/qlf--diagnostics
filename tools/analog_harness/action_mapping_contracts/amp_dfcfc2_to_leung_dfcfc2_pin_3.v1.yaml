@@ -1,0 +1,32 @@
+schema_version: analog_harness.action_mapping_contract.v1
+contract_id: amp_dfcfc2_to_leung_dfcfc2_pin_3.v1
+source_circuit_id: amp_dfcfc2
+target_pcs_design_id: leung_dfcfc2_pin_3
+variables:
+  W_M0: {pcs_name: mosfet_0_8_w_biascm_pmos, unit: u}
+  L_M0: {pcs_name: mosfet_0_8_l_biascm_pmos, unit: u}
+  M_M0: {pcs_name: mosfet_0_8_m_biascm_pmos, unit: count, integer: true}
+  W_M8: {pcs_name: mosfet_8_2_w_gm1_pmos, unit: u}
+  L_M8: {pcs_name: mosfet_8_2_l_gm1_pmos, unit: u}
+  M_M8: {pcs_name: mosfet_8_2_m_gm1_pmos, unit: count, integer: true}
+  W_M10: {pcs_name: mosfet_10_1_w_gm4_pmos, unit: u}
+  L_M10: {pcs_name: mosfet_10_1_l_gm4_pmos, unit: u}
+  M_M10: {pcs_name: mosfet_10_1_m_gm4_pmos, unit: count, integer: true}
+  W_M11: {pcs_name: mosfet_11_1_w_gm2_pmos, unit: u}
+  L_M11: {pcs_name: mosfet_11_1_l_gm2_pmos, unit: u}
+  M_M11: {pcs_name: mosfet_11_1_m_gm2_pmos, unit: count, integer: true}
+  W_M12: {pcs_name: mosfet_12_1_w_gmf2_pmos, unit: u}
+  L_M12: {pcs_name: mosfet_12_1_l_gmf2_pmos, unit: u}
+  M_M12: {pcs_name: mosfet_12_1_m_gmf2_pmos, unit: count, integer: true}
+  W_M18: {pcs_name: mosfet_18_7_w_biascm_nmos, unit: u}
+  L_M18: {pcs_name: mosfet_18_7_l_biascm_nmos, unit: u}
+  M_M18: {pcs_name: mosfet_18_7_m_biascm_nmos, unit: count, integer: true}
+  W_M23: {pcs_name: mosfet_23_2_w_load2_nmos, unit: u}
+  L_M23: {pcs_name: mosfet_23_2_l_load2_nmos, unit: u}
+  M_M23: {pcs_name: mosfet_23_2_m_load2_nmos, unit: count, integer: true}
+  W_M25: {pcs_name: mosfet_25_1_w_gm3_nmos, unit: u}
+  L_M25: {pcs_name: mosfet_25_1_l_gm3_nmos, unit: u}
+  M_M25: {pcs_name: mosfet_25_1_m_gm3_nmos, unit: count, integer: true}
+  I_Ib: {pcs_name: current_0_bias, unit: u, scale: 1000000.0}
+  M_C0: {pcs_name: capacitor_0, unit: p}
+  M_C1: {pcs_name: capacitor_1, unit: p}

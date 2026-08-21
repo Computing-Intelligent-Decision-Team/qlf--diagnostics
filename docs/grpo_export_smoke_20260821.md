@@ -90,6 +90,34 @@ PCS L0 bundle:
 generated/grpo_exports/grpo_amp_dfcfc2_smoke_20260821/pcs_l0/
 ```
 
+## YAML mapping follow-up
+
+The action mapping was then moved into a versioned YAML contract:
+
+```text
+tools/analog_harness/action_mapping_contracts/amp_dfcfc2_to_leung_dfcfc2_pin_3.v1.yaml
+```
+
+The YAML mapping generated:
+
+```text
+generated/grpo_exports/grpo_amp_dfcfc2_smoke_20260821/pcs_manifest_input.yaml_mapping.jsonl
+```
+
+PCS L0 result with the YAML-generated input:
+
+| item | count |
+|---|---:|
+| input candidates | 4 |
+| L0 replayable candidates | 4 |
+| L0 invalid candidates | 0 |
+
+YAML-mapping PCS L0 bundle:
+
+```text
+generated/grpo_exports/grpo_amp_dfcfc2_smoke_20260821/pcs_l0_yaml_mapping/
+```
+
 ## Important bug found and fixed
 
 During the first L0 attempt, all four candidates were incorrectly labeled invalid because the JSON export did not preserve the original action vector order. The temporary conversion used `sizing.keys()`, but JSON output sorts object keys; this mismatched `action_names` and `action_real`.
