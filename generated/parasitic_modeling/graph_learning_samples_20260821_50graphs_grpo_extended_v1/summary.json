@@ -1,0 +1,63 @@
+{
+  "added_graphs": [
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0001",
+      "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0001",
+      "m12_m": 227,
+      "num_edges": 131,
+      "num_nodes": 19,
+      "raw_spice_sha256": "12aa25a1d5fef2ae9eb1d1dcfe8371fa52df5c56401e0b044e65e46c00d17441",
+      "total_cap_ff": 1557.8
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0006",
+      "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0006",
+      "m12_m": 421,
+      "num_edges": 151,
+      "num_nodes": 19,
+      "raw_spice_sha256": "47f7997cf2c869921f78031e56c15b4a468fd3de8af2c2e6095c03c63e8b4f58",
+      "total_cap_ff": 5698.66
+    }
+  ],
+  "counts": {
+    "added_grpo_graphs": 2,
+    "base_graphs": 48,
+    "edges": 4330,
+    "graphs": 50,
+    "nodes": 740,
+    "skipped_non_admitted_grpo_records": 6
+  },
+  "notes": [
+    "Only GRPO records with admission_status=admitted_raw_pex_graph are appended.",
+    "Added samples keep source_type=grpo_export and action_space_contract_id metadata.",
+    "No layout, DRC, LVS, PEX, or sizing rerun is performed by this dataset extension step."
+  ],
+  "schema_version": "parasitic_graph_grpo_extension.v1",
+  "skipped_records": [
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0000",
+      "reason": "replay_failed_or_incomplete"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0002",
+      "reason": "replay_failed_or_incomplete"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0003",
+      "reason": "replay_failed_or_incomplete"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0004",
+      "reason": "replay_failed_or_incomplete"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0005",
+      "reason": "replay_failed_or_incomplete"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0007",
+      "reason": "replay_failed_or_incomplete"
+    }
+  ],
+  "source_family": "grpo_admission_20260821_analoggym_contract_v1"
+}
