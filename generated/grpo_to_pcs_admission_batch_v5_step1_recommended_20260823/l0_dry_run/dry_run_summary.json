@@ -1,0 +1,17 @@
+{
+  "boundary": "Dry run stops before executing promote-source-candidate; no layout/DRC/LVS/PEX/post-sim evidence is claimed.",
+  "design_id": "leung_dfcfc2_pin_3",
+  "family_id": "leung_dfcfc2_pin_3__grpo_step1_recommended_batch_v5",
+  "generated_outputs": {
+    "l0_batch_replay_manifest": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/batch_replay_manifest.json",
+    "l0_validated_sizing_manifest": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/validated_sizing_manifest.json",
+    "promotion_progress": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/promotion_progress.json",
+    "run_plan": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/run_plan.json"
+  },
+  "l0_jobs": 4,
+  "progress_status": "dry_run",
+  "progress_total": 4,
+  "schema_version": "grpo_to_pcs_admission_batch_v5_step1_recommended_dry_run_summary.v1",
+  "status": "dry_run_prepared",
+  "total_jobs": 4
+}

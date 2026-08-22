@@ -1,0 +1,19 @@
+{
+  "action_parameter_count": 27,
+  "candidate_count": 4,
+  "candidate_ids": [
+    "grpo_amp_dfcfc2_20260821-204623_tt_0001",
+    "grpo_amp_dfcfc2_20260821-204623_tt_0002",
+    "grpo_amp_dfcfc2_20260821-204623_tt_0003",
+    "grpo_amp_dfcfc2_20260821-204623_tt_0004"
+  ],
+  "reward_range": [
+    -0.29457988872767804,
+    -0.041849874619075106
+  ],
+  "run_dir": "/home/qlf/IOT/references/AnalogGym-Opt-9f2cbba1463efeb5d6160311630e5d56b297f9bf/training_saves/grpo_amp_dfcfc2_20260821-204623",
+  "run_id": "grpo_amp_dfcfc2_20260821-204623",
+  "schema_version": "grpo_batch_v5_step1_recommended_source_summary.v1",
+  "source_commit": "9f2cbba1463efeb5d6160311630e5d56b297f9bf",
+  "source_repo": "/home/qlf/IOT/references/AnalogGym-Opt-9f2cbba1463efeb5d6160311630e5d56b297f9bf"
+}

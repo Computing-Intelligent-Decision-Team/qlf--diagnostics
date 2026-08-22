@@ -1,0 +1,113 @@
+{
+  "config": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/auto_grpo_configs_v1/leung_dfcfc2_pin_3.analoggym_action_space_v1.yaml",
+  "created_at": "2026-08-22T16:48:25.951403+00:00",
+  "design_id": "leung_dfcfc2_pin_3",
+  "family_id": "leung_dfcfc2_pin_3__grpo_step1_recommended_batch_v5",
+  "jobs": [
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0000",
+      "command": [
+        "python3",
+        "-m",
+        "tools.analog_harness.cli",
+        "promote-source-candidate",
+        "--config",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/auto_grpo_configs_v1/leung_dfcfc2_pin_3.analoggym_action_space_v1.yaml",
+        "--source-state",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0000.source_state.json",
+        "--no-knowledge-archive"
+      ],
+      "design_id": "leung_dfcfc2_pin_3",
+      "expected_flow": {
+        "run_drc": true,
+        "run_layout": true,
+        "run_lvs": true,
+        "run_pex": true,
+        "run_post_sim": true
+      },
+      "family_id": "leung_dfcfc2_pin_3__grpo_step1_recommended_batch_v5",
+      "source_state": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0000.source_state.json",
+      "source_state_sha256": "6fc0309e148b0a58bdf7fd9599a7f1322d27d75da09a7a5709f75ccf6b4139bf"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0001",
+      "command": [
+        "python3",
+        "-m",
+        "tools.analog_harness.cli",
+        "promote-source-candidate",
+        "--config",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/auto_grpo_configs_v1/leung_dfcfc2_pin_3.analoggym_action_space_v1.yaml",
+        "--source-state",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0001.source_state.json",
+        "--no-knowledge-archive"
+      ],
+      "design_id": "leung_dfcfc2_pin_3",
+      "expected_flow": {
+        "run_drc": true,
+        "run_layout": true,
+        "run_lvs": true,
+        "run_pex": true,
+        "run_post_sim": true
+      },
+      "family_id": "leung_dfcfc2_pin_3__grpo_step1_recommended_batch_v5",
+      "source_state": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0001.source_state.json",
+      "source_state_sha256": "88d84b65eae593ac425582946339fc752df247d5392a0d3132c4d560692c78ce"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0002",
+      "command": [
+        "python3",
+        "-m",
+        "tools.analog_harness.cli",
+        "promote-source-candidate",
+        "--config",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/auto_grpo_configs_v1/leung_dfcfc2_pin_3.analoggym_action_space_v1.yaml",
+        "--source-state",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0002.source_state.json",
+        "--no-knowledge-archive"
+      ],
+      "design_id": "leung_dfcfc2_pin_3",
+      "expected_flow": {
+        "run_drc": true,
+        "run_layout": true,
+        "run_lvs": true,
+        "run_pex": true,
+        "run_post_sim": true
+      },
+      "family_id": "leung_dfcfc2_pin_3__grpo_step1_recommended_batch_v5",
+      "source_state": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0002.source_state.json",
+      "source_state_sha256": "1f0ed188b8dec278a985e6625842282b7b3d56d4e63e4661ed125113ca94107d"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0003",
+      "command": [
+        "python3",
+        "-m",
+        "tools.analog_harness.cli",
+        "promote-source-candidate",
+        "--config",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/auto_grpo_configs_v1/leung_dfcfc2_pin_3.analoggym_action_space_v1.yaml",
+        "--source-state",
+        "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0003.source_state.json",
+        "--no-knowledge-archive"
+      ],
+      "design_id": "leung_dfcfc2_pin_3",
+      "expected_flow": {
+        "run_drc": true,
+        "run_layout": true,
+        "run_lvs": true,
+        "run_pex": true,
+        "run_post_sim": true
+      },
+      "family_id": "leung_dfcfc2_pin_3__grpo_step1_recommended_batch_v5",
+      "source_state": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/grpo_batch_v5_step1_recommended_l0_dry_run_20260823/l0_replay_preparation/source_states/grpo_leung_dfcfc2_0003.source_state.json",
+      "source_state_sha256": "ca460b8981d4fb739929131e3d27fb95c840ccfe516a48f03910df437c71d063"
+    }
+  ],
+  "notes": [
+    "Commands prepare replay through the existing PCS promote-source-candidate path.",
+    "If run_post_sim=false, --skip-sim is used so layout/DRC/LVS/PEX can be collected without simulation."
+  ],
+  "schema_version": "analog_harness.batch_replay_manifest.v1"
+}
