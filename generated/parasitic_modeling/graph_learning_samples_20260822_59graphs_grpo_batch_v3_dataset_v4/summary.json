@@ -1,0 +1,89 @@
+{
+  "added_graphs": [
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0002",
+      "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0002",
+      "m12_m": 339,
+      "num_edges": 118,
+      "num_nodes": 19,
+      "raw_spice_sha256": "99bf8ec9e4c41dd9eed51eeaa4055bbe9f9782c2d497e0f1894de55319ddca01",
+      "total_cap_ff": 2001.61333
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0005",
+      "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0005",
+      "m12_m": 375,
+      "num_edges": 135,
+      "num_nodes": 19,
+      "raw_spice_sha256": "db2688cc59e17d4e6639024d144539b90b8f292f7fd0b0e431e2905b70a96b4f",
+      "total_cap_ff": 3351.97493
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0010",
+      "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0010",
+      "m12_m": 392,
+      "num_edges": 129,
+      "num_nodes": 19,
+      "raw_spice_sha256": "b5d20d446e4deda88667ef1142a1663630706e6eae317cadbb460598d8ac00e0",
+      "total_cap_ff": 2365.25273
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0011",
+      "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0011",
+      "m12_m": 394,
+      "num_edges": 112,
+      "num_nodes": 19,
+      "raw_spice_sha256": "75338bc53fa99c9824c2960692379d99482861c704e12d83a0359705558d5f17",
+      "total_cap_ff": 1991.44623
+    }
+  ],
+  "counts": {
+    "added_grpo_graphs": 4,
+    "base_graphs": 55,
+    "edges": 5457,
+    "graphs": 59,
+    "nodes": 911,
+    "skipped_non_admitted_grpo_records": 8
+  },
+  "notes": [
+    "Only GRPO records with admission_status=admitted_raw_pex_graph are appended.",
+    "Added samples keep source_type=grpo_export and action_space_contract_id metadata.",
+    "No layout, DRC, LVS, PEX, or sizing rerun is performed by this dataset extension step."
+  ],
+  "schema_version": "parasitic_graph_grpo_extension.v1",
+  "skipped_records": [
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0000",
+      "reason": "raw_pex_available_not_l6"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0001",
+      "reason": "physical_closure_failed"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0003",
+      "reason": "physical_closure_failed"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0004",
+      "reason": "raw_pex_available_not_l6"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0006",
+      "reason": "physical_closure_failed"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0007",
+      "reason": "physical_closure_failed"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0008",
+      "reason": "physical_closure_failed"
+    },
+    {
+      "candidate_id": "grpo_leung_dfcfc2_0009",
+      "reason": "physical_closure_failed"
+    }
+  ],
+  "source_family": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822"
+}

@@ -1,0 +1,316 @@
+{
+  "counts": {
+    "profiles": 3,
+    "profiles_by_default_order": [
+      "no_total_cap_leakage",
+      "structure_only",
+      "leaky_smoke_test"
+    ],
+    "rows": 27
+  },
+  "notes": [
+    "leaky_smoke_test is for pipeline smoke checks and includes direct total-cap leakage.",
+    "no_total_cap_leakage is the default research profile.",
+    "structure_only isolates topology/count signal by removing all capacitance value features."
+  ],
+  "rows": [
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 39.184102863822325,
+      "max_abs_error": 64.60344827586206,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 270.002500905903,
+      "max_abs_error": 442.74577999999997,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 871.4793495032145,
+      "max_abs_error": 4849.981648448275,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 3.1016949152542375,
+      "max_abs_error": 32.0,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 23.572411694915264,
+      "max_abs_error": 473.11652000000004,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 193.87972491525426,
+      "max_abs_error": 2041.8247899999997,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 0.7694145403038181,
+      "max_abs_error": 4.875673445806427,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 34.36568452811488,
+      "max_abs_error": 442.6751420316647,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 89.68186496013976,
+      "max_abs_error": 811.979722952568,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/no_total_cap_leakage/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 39.184102863822325,
+      "max_abs_error": 64.60344827586206,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 270.002500905903,
+      "max_abs_error": 442.74577999999997,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 871.4793495032145,
+      "max_abs_error": 4849.981648448275,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 2.169491525423729,
+      "max_abs_error": 21.0,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 23.958515762711873,
+      "max_abs_error": 473.19262000000003,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 748.7738908474577,
+      "max_abs_error": 5564.37941,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 0.7485671791442312,
+      "max_abs_error": 3.8985153935194603,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 34.84194370494923,
+      "max_abs_error": 466.63042861870986,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 672.7926704278897,
+      "max_abs_error": 4178.5381343644185,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/structure_only/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 39.184102863822325,
+      "max_abs_error": 64.60344827586206,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 270.002500905903,
+      "max_abs_error": 442.74577999999997,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 871.4793495032145,
+      "max_abs_error": 4849.981648448275,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 4.186440677966102,
+      "max_abs_error": 39.0,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 21.14845322033899,
+      "max_abs_error": 473.11652000000004,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 87.86847508474578,
+      "max_abs_error": 486.9552100000001,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 0.8423527608878664,
+      "max_abs_error": 5.412314420581453,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 33.039721924168376,
+      "max_abs_error": 440.3277097810018,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 34.10472659577083,
+      "max_abs_error": 366.4138482394484,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_grpo_batch_v3_dataset_v4/leaky_smoke_test/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 59,
+      "target": "total_cap_ff"
+    }
+  ],
+  "schema_version": "parasitic_profile_comparison.v1"
+}

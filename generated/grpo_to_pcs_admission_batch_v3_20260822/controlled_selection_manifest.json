@@ -1,0 +1,136 @@
+{
+  "batch_id": "grpo_to_pcs_batch_v3_20260822",
+  "candidate_source": "real AnalogGym-Opt GRPO exports from seeds 85-88; selected by M12 window, no sizing hand edits",
+  "schema_version": "grpo_controlled_selection_manifest.v1",
+  "selected": [
+    {
+      "I_Ib": 2.2828634500503542e-05,
+      "M_C0": 18,
+      "M_C1": 11,
+      "M_M12": 331,
+      "bucket": "l6_neighborhood_m12_330_390",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0000",
+      "source_pool_design_idx": 21,
+      "source_pool_seed": 85
+    },
+    {
+      "I_Ib": 1e-06,
+      "M_C0": 11,
+      "M_C1": 19,
+      "M_M12": 336,
+      "bucket": "diagnostic_neighborhood_m12_335_365",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0001",
+      "source_pool_design_idx": 20,
+      "source_pool_seed": 88
+    },
+    {
+      "I_Ib": 1.0521869331598283e-05,
+      "M_C0": 26,
+      "M_C1": 12,
+      "M_M12": 339,
+      "bucket": "diagnostic_neighborhood_m12_335_365",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0002",
+      "source_pool_design_idx": 2,
+      "source_pool_seed": 86
+    },
+    {
+      "I_Ib": 1.308076660335064e-05,
+      "M_C0": 4,
+      "M_C1": 30,
+      "M_M12": 356,
+      "bucket": "diagnostic_neighborhood_m12_335_365",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0003",
+      "source_pool_design_idx": 18,
+      "source_pool_seed": 87
+    },
+    {
+      "I_Ib": 2.211238805949688e-05,
+      "M_C0": 1,
+      "M_C1": 29,
+      "M_M12": 363,
+      "bucket": "diagnostic_neighborhood_m12_335_365",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0004",
+      "source_pool_design_idx": 21,
+      "source_pool_seed": 87
+    },
+    {
+      "I_Ib": 2.3504800975322723e-05,
+      "M_C0": 27,
+      "M_C1": 17,
+      "M_M12": 375,
+      "bucket": "l6_neighborhood_m12_330_390",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0005",
+      "source_pool_design_idx": 11,
+      "source_pool_seed": 88
+    },
+    {
+      "I_Ib": 8.795277506113052e-06,
+      "M_C0": 10,
+      "M_C1": 30,
+      "M_M12": 380,
+      "bucket": "l6_neighborhood_m12_330_390",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0006",
+      "source_pool_design_idx": 23,
+      "source_pool_seed": 88
+    },
+    {
+      "I_Ib": 1e-06,
+      "M_C0": 23,
+      "M_C1": 30,
+      "M_M12": 390,
+      "bucket": "boundary_m12_388_397",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0007",
+      "source_pool_design_idx": 1,
+      "source_pool_seed": 85
+    },
+    {
+      "I_Ib": 3e-05,
+      "M_C0": 30,
+      "M_C1": 29,
+      "M_M12": 390,
+      "bucket": "boundary_m12_388_397",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0008",
+      "source_pool_design_idx": 5,
+      "source_pool_seed": 85
+    },
+    {
+      "I_Ib": 8.611035153269768e-06,
+      "M_C0": 2,
+      "M_C1": 7,
+      "M_M12": 390,
+      "bucket": "boundary_m12_388_397",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0009",
+      "source_pool_design_idx": 22,
+      "source_pool_seed": 87
+    },
+    {
+      "I_Ib": 1e-06,
+      "M_C0": 30,
+      "M_C1": 1,
+      "M_M12": 392,
+      "bucket": "boundary_m12_388_397",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0010",
+      "source_pool_design_idx": 8,
+      "source_pool_seed": 85
+    },
+    {
+      "I_Ib": 1.3936556570231915e-05,
+      "M_C0": 25,
+      "M_C1": 30,
+      "M_M12": 394,
+      "bucket": "boundary_m12_388_397",
+      "candidate_id": "grpo_leung_dfcfc2_batch_v3_0011",
+      "source_pool_design_idx": 14,
+      "source_pool_seed": 86
+    }
+  ],
+  "selection_policy": {
+    "bucket_rule": {
+      "boundary_m12_388_397": "388 <= M_M12 <= 397, around v2 local transition",
+      "diagnostic_neighborhood_m12_335_365": "335 <= M_M12 <= 365, near v2 raw-PEX/LVS diagnostic rows 339/350",
+      "l6_neighborhood_m12_330_390": "remaining controlled-window rows near admitted v2 L6 examples"
+    },
+    "reason": "Batch v2 found L6 examples at 337/367/389 and place-route failures at 393+; v3 probes that local region without changing action-space.",
+    "window": "330 <= M_M12 <= 397"
+  }
+}
