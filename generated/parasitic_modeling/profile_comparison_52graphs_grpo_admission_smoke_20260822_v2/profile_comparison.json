@@ -1,0 +1,316 @@
+{
+  "counts": {
+    "profiles": 3,
+    "profiles_by_default_order": [
+      "no_total_cap_leakage",
+      "structure_only",
+      "leaky_smoke_test"
+    ],
+    "rows": 27
+  },
+  "notes": [
+    "leaky_smoke_test is for pipeline smoke checks and includes direct total-cap leakage.",
+    "no_total_cap_leakage is the default research profile.",
+    "structure_only isolates topology/count signal by removing all capacitance value features."
+  ],
+  "rows": [
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 41.43061840120664,
+      "max_abs_error": 69.03921568627452,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 287.05441886877827,
+      "max_abs_error": 414.87640411764704,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 523.6326658521871,
+      "max_abs_error": 5048.187741372549,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 3.4615384615384617,
+      "max_abs_error": 32.0,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 21.264650576923085,
+      "max_abs_error": 473.11652000000004,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 145.45386461538462,
+      "max_abs_error": 2528.7799999999997,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 0.8098157126398404,
+      "max_abs_error": 5.136085230510162,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 32.651169040559935,
+      "max_abs_error": 413.1926102724717,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 5,
+      "feature_count": 12,
+      "feature_profile": "no_total_cap_leakage",
+      "mae": 92.9240351278536,
+      "max_abs_error": 805.8565789688303,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/no_total_cap_leakage/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 41.43061840120664,
+      "max_abs_error": 69.03921568627452,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 287.05441886877827,
+      "max_abs_error": 414.87640411764704,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 523.6326658521871,
+      "max_abs_error": 5048.187741372549,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 2.0576923076923075,
+      "max_abs_error": 21.0,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 27.96582846153847,
+      "max_abs_error": 473.19262000000003,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 428.6869703846154,
+      "max_abs_error": 5564.37941,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 0.7461512585573934,
+      "max_abs_error": 4.345137775856017,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 38.308229042750334,
+      "max_abs_error": 466.2866874219602,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 8,
+      "feature_count": 9,
+      "feature_profile": "structure_only",
+      "mae": 517.9028408255751,
+      "max_abs_error": 4414.053853723444,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/structure_only/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 41.43061840120664,
+      "max_abs_error": 69.03921568627452,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 287.05441886877827,
+      "max_abs_error": 414.87640411764704,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 523.6326658521871,
+      "max_abs_error": 5048.187741372549,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "mean_baseline",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 3.7115384615384617,
+      "max_abs_error": 32.0,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 19.59097500000001,
+      "max_abs_error": 473.11652000000004,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 110.5759475,
+      "max_abs_error": 1699.29,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "nearest_neighbor",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 0.9028829860778381,
+      "max_abs_error": 5.7267456752734915,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "cap_count"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 25.044191384839525,
+      "max_abs_error": 402.1845513134872,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "output_node_cap_ff"
+    },
+    {
+      "excluded_feature_count": 0,
+      "feature_count": 17,
+      "feature_profile": "leaky_smoke_test",
+      "mae": 32.30025525133111,
+      "max_abs_error": 302.99516566136856,
+      "metrics_path": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815/generated/analog_harness/parasitic_modeling/graph_training_baseline_52graphs_grpo_admission_smoke_20260822_v2/leaky_smoke_test/metrics.json",
+      "model": "ridge_regression",
+      "sample_count": 52,
+      "target": "total_cap_ff"
+    }
+  ],
+  "schema_version": "parasitic_profile_comparison.v1"
+}

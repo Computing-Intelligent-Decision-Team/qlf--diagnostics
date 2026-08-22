@@ -1,0 +1,73 @@
+{
+  "added_graphs": [
+    {
+      "action_space_contract_id": "amp_dfcfc2_to_leung_dfcfc2_pin_3.analoggym_action_space_v1",
+      "design_id": "leung_dfcfc2_pin_3",
+      "edges": 134,
+      "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0000",
+      "nodes": 19,
+      "raw_pex_sha256": "8115cd3da42a76660ac578ab6d11e08ffa2d09cbd3eaba0f3027c7fc2e0865a1",
+      "source_type": "grpo_export",
+      "total_cap_ff": 3999.37
+    },
+    {
+      "action_space_contract_id": "amp_dfcfc2_to_leung_dfcfc2_pin_3.analoggym_action_space_v1",
+      "design_id": "leung_dfcfc2_pin_3",
+      "edges": 127,
+      "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0001",
+      "nodes": 19,
+      "raw_pex_sha256": "19a57d0079146af75d40f3eafd28f7d6c65a5e552e30e4d279e0e31b39c7b095",
+      "source_type": "grpo_export",
+      "total_cap_ff": 3169.88
+    }
+  ],
+  "admission_smoke_source": "generated/analog_harness/grpo_smoke_l1_l6_admission_20260822_v1/admission_smoke_v1_summary",
+  "counts": {
+    "added_admitted_grpo_smoke_graphs": 2,
+    "base_graphs": 50,
+    "edges": 4591,
+    "graphs": 52,
+    "nodes": 778,
+    "smoke_admitted_raw_pex_graph": 2,
+    "smoke_candidates": 4,
+    "smoke_rejected_before_raw_pex_graph": 2
+  },
+  "design_counts": {
+    "alfio_raffc_pin_3": 5,
+    "fan_smc_pin_3": 5,
+    "hoilee_affc_pin_3": 1,
+    "leung_dfcfc1_pin_3": 1,
+    "leung_dfcfc2_pin_3": 5,
+    "leung_nmcf_pin_3": 5,
+    "leung_nmcnr_pin_3": 1,
+    "peng_acbc_pin_3": 1,
+    "qu2017_azc_pin_3": 1,
+    "ramos_pfc_pin_3": 1,
+    "sau_cfcc_pin_3": 5,
+    "smcnr_se_2st_amp": 19,
+    "tan_clia_pin_3": 1,
+    "yan_az_pin_3": 1
+  },
+  "evidence_boundary": [
+    "A graph-training sample is admitted only when L6 raw PEX exists and capacitor edges are parsed into graph JSONL.",
+    "The two retained smoke records are L6_post_layout_pvt with DRC 0, connectivity LVS match, and raw PEX hashes.",
+    "The two smoke records stopped at magical_place_route remain admission evidence and are kept outside graph-training labels.",
+    "PCS performance is observation-only for this smoke because the active config has performance={}."
+  ],
+  "generated_at": "2026-08-22T12:56:10+08:00",
+  "schema_version": "parasitic_graph_dataset_extension.v2",
+  "source_dataset": "generated/analog_harness/parasitic_modeling/graph_learning_samples_20260821_50graphs_grpo_extended_v1",
+  "source_family_counts": {
+    "alfio_raffc_reproduction_sweep_20260818_v1": 4,
+    "fan_smc_reproduction_sweep_20260817_v1": 4,
+    "grpo_admission_20260821_analoggym_contract_v1": 2,
+    "grpo_to_pcs_admission_smoke_v1": 2,
+    "leung_nmcf_reproduction_sweep_20260818_v1": 4,
+    "sau_cfcc_reproduction_sweep_20260818_v1": 4,
+    "smcnr_sizing_probe_20260817": 2,
+    "smcnr_sizing_sweep_20260817_v1": 8,
+    "smcnr_sizing_sweep_combo_20260817_v1": 8,
+    "stage2_fixed_gds": 3,
+    "stage3_fresh": 11
+  }
+}
