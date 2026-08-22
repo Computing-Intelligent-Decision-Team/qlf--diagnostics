@@ -1,0 +1,9 @@
+{
+  "status": "finished",
+  "total": 24,
+  "completed": 24,
+  "returncodes": {
+    "0": 21,
+    "124": 3
+  }
+}

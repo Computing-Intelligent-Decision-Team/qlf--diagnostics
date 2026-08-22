@@ -1,0 +1,4905 @@
+{
+  "admission_filter": null,
+  "evaluation": {
+    "protocol": "leave_one_out",
+    "ridge_alpha": 1.0,
+    "sample_count": 64,
+    "scope": "training-interface baseline; not a model-quality claim"
+  },
+  "excluded_features": [
+    "edge_total_cap_ff",
+    "node_incident_cap_max_ff",
+    "node_incident_cap_mean_ff",
+    "node_positive_incident_cap_max_ff",
+    "node_positive_incident_cap_mean_ff"
+  ],
+  "feature_names": [
+    "edge_max_cap_ff",
+    "edge_mean_cap_ff",
+    "edge_positive_count",
+    "edge_positive_mean_cap_ff",
+    "edge_power_count",
+    "edge_zero_count",
+    "node_degree_max",
+    "node_degree_mean",
+    "num_edges",
+    "num_nodes",
+    "output_like_node_count",
+    "power_node_count"
+  ],
+  "feature_profile": "no_total_cap_leakage",
+  "feature_profile_description": "Drop direct full-graph capacitance sum features that leak total_cap_ff.",
+  "matrix_schema": "parasitic_graph_training_matrix.v1",
+  "models": {
+    "mean_baseline": {
+      "metrics": {
+        "cap_count": {
+          "mae": 37.50248015873016,
+          "max_abs_error": 63.85714285714286
+        },
+        "output_node_cap_ff": {
+          "mae": 257.9733950892857,
+          "max_abs_error": 458.86072523809526
+        },
+        "total_cap_ff": {
+          "mae": 907.8458756746032,
+          "max_abs_error": 4770.044339682539
+        }
+      },
+      "predictions": [
+        {
+          "absolute_error": {
+            "cap_count": 35.698412698412696,
+            "output_node_cap_ff": 196.3652607936508,
+            "total_cap_ff": 1001.8730190476191
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 0.80601,
+            "total_cap_ff": 99.32308
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": -35.698412698412696,
+            "output_node_cap_ff": 196.3652607936508,
+            "total_cap_ff": 1001.8730190476191
+          },
+          "graph_id": "alfio_raffc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.3015873015873,
+            "output_node_cap_ff": 197.1712707936508,
+            "total_cap_ff": 1101.196099047619
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 35.698412698412696,
+            "output_node_cap_ff": 185.15718460317458,
+            "total_cap_ff": 1001.8730190476191
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.83896,
+            "total_cap_ff": 99.32308
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": -35.698412698412696,
+            "output_node_cap_ff": 185.15718460317458,
+            "total_cap_ff": 1001.8730190476191
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.3015873015873,
+            "output_node_cap_ff": 196.9961446031746,
+            "total_cap_ff": 1101.196099047619
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 35.698412698412696,
+            "output_node_cap_ff": 185.15149571428572,
+            "total_cap_ff": 1001.7355917460317
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.844560000000003,
+            "total_cap_ff": 99.45836
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": -35.698412698412696,
+            "output_node_cap_ff": 185.15149571428572,
+            "total_cap_ff": 1001.7355917460317
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0001_gm1_pmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.3015873015873,
+            "output_node_cap_ff": 196.99605571428572,
+            "total_cap_ff": 1101.1939517460316
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 31.634920634920633,
+            "output_node_cap_ff": 185.35262841269844,
+            "total_cap_ff": 1001.9582711111112
+          },
+          "actual": {
+            "cap_count": 126.0,
+            "output_node_cap_ff": 11.64657,
+            "total_cap_ff": 99.23916
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": -31.634920634920633,
+            "output_node_cap_ff": 185.35262841269844,
+            "total_cap_ff": 1001.9582711111112
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0002_gm2_pmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.36507936507937,
+            "output_node_cap_ff": 196.99919841269843,
+            "total_cap_ff": 1101.1974311111112
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 33.66666666666667,
+            "output_node_cap_ff": 185.1522373015873,
+            "total_cap_ff": 997.719998095238
+          },
+          "actual": {
+            "cap_count": 128.0,
+            "output_node_cap_ff": 11.84383,
+            "total_cap_ff": 103.41121
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": -33.66666666666667,
+            "output_node_cap_ff": 185.1522373015873,
+            "total_cap_ff": 997.719998095238
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0003_gmb_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.33333333333333,
+            "output_node_cap_ff": 196.9960673015873,
+            "total_cap_ff": 1101.131208095238
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 185.09060428571425,
+            "total_cap_ff": 573.6581822222222
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 11.9045,
+            "total_cap_ff": 520.84706
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 185.09060428571425,
+            "total_cap_ff": 573.6581822222222
+          },
+          "graph_id": "fan_smc_pin_3:cand_0008",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 196.99510428571426,
+            "total_cap_ff": 1094.5052422222223
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 156.39664111111108,
+            "total_cap_ff": 573.6581822222222
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.84706
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 156.39664111111108,
+            "total_cap_ff": 573.6581822222222
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 196.5467611111111,
+            "total_cap_ff": 1094.5052422222223
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 156.39664111111108,
+            "total_cap_ff": 573.7040387301589
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.80192
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 156.39664111111108,
+            "total_cap_ff": 573.7040387301589
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0001_input_pair_w_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 196.5467611111111,
+            "total_cap_ff": 1094.505958730159
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 26.555555555555557,
+            "output_node_cap_ff": 156.03333444444445,
+            "total_cap_ff": 561.7285720634922
+          },
+          "actual": {
+            "cap_count": 121.0,
+            "output_node_cap_ff": 40.50775,
+            "total_cap_ff": 532.59027
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -26.555555555555557,
+            "output_node_cap_ff": 156.03333444444445,
+            "total_cap_ff": 561.7285720634922
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0002_input_pair_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.44444444444444,
+            "output_node_cap_ff": 196.54108444444446,
+            "total_cap_ff": 1094.3188420634922
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 156.39664111111108,
+            "total_cap_ff": 573.6713682539684
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.83408
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 156.39664111111108,
+            "total_cap_ff": 573.6713682539684
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0003_load2_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 196.5467611111111,
+            "total_cap_ff": 1094.5054482539683
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 36.71428571428571,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 479.7543282539682
+          },
+          "actual": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1557.8
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -36.71428571428571,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -479.7543282539682
+          },
+          "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.28571428571429,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1078.0456717460318
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 57.03174603174604,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 4686.3422647619045
+          },
+          "actual": {
+            "cap_count": 151.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 5698.66
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -57.03174603174604,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -4686.3422647619045
+          },
+          "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0006",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 93.96825396825396,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1012.3177352380952
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 39.76190476190476,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 2960.0794076190477
+          },
+          "actual": {
+            "cap_count": 134.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3999.37
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -39.76190476190476,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -2960.0794076190477
+          },
+          "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.23809523809524,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1039.2905923809524
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 32.650793650793645,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 2117.4228996825395
+          },
+          "actual": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3169.88
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -32.650793650793645,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -2117.4228996825395
+          },
+          "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.34920634920636,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1052.4571003174603
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.111111111111114,
+            "output_node_cap_ff": 194.99039857142859,
+            "total_cap_ff": 825.962812063492
+          },
+          "actual": {
+            "cap_count": 156.0,
+            "output_node_cap_ff": 2.15939,
+            "total_cap_ff": 272.48469
+          },
+          "design_id": "hoilee_affc_pin_3",
+          "error": {
+            "cap_count": -62.111111111111114,
+            "output_node_cap_ff": 194.99039857142859,
+            "total_cap_ff": 825.962812063492
+          },
+          "graph_id": "hoilee_affc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 93.88888888888889,
+            "output_node_cap_ff": 197.1497885714286,
+            "total_cap_ff": 1098.447502063492
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 47.888888888888886,
+            "output_node_cap_ff": 21.29276301587302,
+            "total_cap_ff": 269.8460615873016
+          },
+          "actual": {
+            "cap_count": 142.0,
+            "output_node_cap_ff": 173.143,
+            "total_cap_ff": 1351.17155
+          },
+          "design_id": "leung_dfcfc1_pin_3",
+          "error": {
+            "cap_count": -47.888888888888886,
+            "output_node_cap_ff": 21.29276301587302,
+            "total_cap_ff": -269.8460615873016
+          },
+          "graph_id": "leung_dfcfc1_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.11111111111111,
+            "output_node_cap_ff": 194.43576301587302,
+            "total_cap_ff": 1081.3254884126984
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 11.317460317460316,
+            "output_node_cap_ff": 191.38728999999998,
+            "total_cap_ff": 581.5107485714285
+          },
+          "actual": {
+            "cap_count": 106.0,
+            "output_node_cap_ff": 5.7062,
+            "total_cap_ff": 513.11719
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -11.317460317460316,
+            "output_node_cap_ff": 191.38728999999998,
+            "total_cap_ff": 581.5107485714285
+          },
+          "graph_id": "leung_dfcfc2_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.68253968253968,
+            "output_node_cap_ff": 197.09348999999997,
+            "total_cap_ff": 1094.6279385714286
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 36.71428571428571,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 687.5431384126985
+          },
+          "actual": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1762.34211
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -36.71428571428571,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -687.5431384126985
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.28571428571429,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1074.7989715873016
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 17.41269841269842,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 4770.044339682539
+          },
+          "actual": {
+            "cap_count": 112.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 5781.05423
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -17.41269841269842,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -4770.044339682539
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0008",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.58730158730158,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1011.0098903174603
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 34.682539682539684,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 2612.1075574603174
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3656.83521
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -34.682539682539684,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -2612.1075574603174
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0011",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.31746031746032,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1044.7276525396826
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 23.507936507936506,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 930.6123142857143
+          },
+          "actual": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2001.61333
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -23.507936507936506,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -930.6123142857143
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.4920634920635,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1071.0010157142856
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 40.77777777777777,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 2302.4082253968254
+          },
+          "actual": {
+            "cap_count": 135.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3351.97493
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -40.77777777777777,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -2302.4082253968254
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0005",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.22222222222223,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1049.5667046031747
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 34.682539682539684,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1300.0237682539685
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2365.25273
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -34.682539682539684,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -1300.0237682539685
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0010",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.31746031746032,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1065.2289617460317
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 17.41269841269842,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 920.2838317460316
+          },
+          "actual": {
+            "cap_count": 112.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1991.44623
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -17.41269841269842,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -920.2838317460316
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0011",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.58730158730158,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1071.1623982539684
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 27.57142857142857,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 769.7282914285715
+          },
+          "actual": {
+            "cap_count": 122.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1843.24312
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -27.57142857142857,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -769.7282914285715
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.42857142857143,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1073.5148285714286
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 34.682539682539684,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 205.20905841269837
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1287.5445
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -34.682539682539684,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -205.20905841269837
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.31746031746032,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1082.3354415873016
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 40.77777777777777,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 2176.7152526984128
+          },
+          "actual": {
+            "cap_count": 135.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3228.24591
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -40.77777777777777,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -2176.7152526984128
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0007",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.22222222222223,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1051.5306573015873
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 16.396825396825392,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 364.96648825396824
+          },
+          "actual": {
+            "cap_count": 111.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1444.80572
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -16.396825396825392,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -364.96648825396824
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0010",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.60317460317461,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1079.8392317460318
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 22.492063492063494,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 814.762947936508
+          },
+          "actual": {
+            "cap_count": 117.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1887.57411
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -22.492063492063494,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": -814.762947936508
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0013",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.5079365079365,
+            "output_node_cap_ff": 197.1840646031746,
+            "total_cap_ff": 1072.811162063492
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 195.06235285714286,
+            "total_cap_ff": 866.9507688888889
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 2.08856,
+            "total_cap_ff": 232.13717
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 195.06235285714286,
+            "total_cap_ff": 866.9507688888889
+          },
+          "graph_id": "leung_nmcf_pin_3:cand_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 197.15091285714286,
+            "total_cap_ff": 1099.0879388888889
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 186.71901825396827,
+            "total_cap_ff": 866.9507688888889
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13717
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 186.71901825396827,
+            "total_cap_ff": 866.9507688888889
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 197.02054825396826,
+            "total_cap_ff": 1099.0879388888889
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 186.71897761904762,
+            "total_cap_ff": 866.9761657142857
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30157,
+            "total_cap_ff": 232.11217
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 186.71897761904762,
+            "total_cap_ff": 866.9761657142857
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0001_input_pair_w_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 197.02054761904762,
+            "total_cap_ff": 1099.0883357142857
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 21.47619047619048,
+            "output_node_cap_ff": 185.52947158730157,
+            "total_cap_ff": 882.4180247619049
+          },
+          "actual": {
+            "cap_count": 116.0,
+            "output_node_cap_ff": 11.47249,
+            "total_cap_ff": 216.91159
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -21.47619047619048,
+            "output_node_cap_ff": 185.52947158730157,
+            "total_cap_ff": 882.4180247619049
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0002_input_pair_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.52380952380952,
+            "output_node_cap_ff": 197.00196158730157,
+            "total_cap_ff": 1099.3296147619048
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 20.460317460317455,
+            "output_node_cap_ff": 186.71901825396827,
+            "total_cap_ff": 866.9513987301589
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13655
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -20.460317460317455,
+            "output_node_cap_ff": 186.71901825396827,
+            "total_cap_ff": 866.9513987301589
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0003_load2_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.53968253968254,
+            "output_node_cap_ff": 197.02054825396826,
+            "total_cap_ff": 1099.0879487301588
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 23.507936507936506,
+            "output_node_cap_ff": 187.07436047619046,
+            "total_cap_ff": 823.6326838095239
+          },
+          "actual": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 9.95174,
+            "total_cap_ff": 274.77841
+          },
+          "design_id": "leung_nmcnr_pin_3",
+          "error": {
+            "cap_count": -23.507936507936506,
+            "output_node_cap_ff": 187.07436047619046,
+            "total_cap_ff": 823.6326838095239
+          },
+          "graph_id": "leung_nmcnr_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.4920634920635,
+            "output_node_cap_ff": 197.02610047619046,
+            "total_cap_ff": 1098.411093809524
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 32.650793650793645,
+            "output_node_cap_ff": 194.45791857142856,
+            "total_cap_ff": 846.8036704761905
+          },
+          "actual": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 2.68355,
+            "total_cap_ff": 251.96947
+          },
+          "design_id": "peng_acbc_pin_3",
+          "error": {
+            "cap_count": -32.650793650793645,
+            "output_node_cap_ff": 194.45791857142856,
+            "total_cap_ff": 846.8036704761905
+          },
+          "graph_id": "peng_acbc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.34920634920636,
+            "output_node_cap_ff": 197.14146857142856,
+            "total_cap_ff": 1098.7731404761905
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 29.603174603174608,
+            "output_node_cap_ff": 195.4852811111111,
+            "total_cap_ff": 937.777019047619
+          },
+          "actual": {
+            "cap_count": 124.0,
+            "output_node_cap_ff": 1.67224,
+            "total_cap_ff": 162.41758
+          },
+          "design_id": "qu2017_azc_pin_3",
+          "error": {
+            "cap_count": -29.603174603174608,
+            "output_node_cap_ff": 195.4852811111111,
+            "total_cap_ff": 937.777019047619
+          },
+          "graph_id": "qu2017_azc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.39682539682539,
+            "output_node_cap_ff": 197.1575211111111,
+            "total_cap_ff": 1100.194599047619
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 19.444444444444443,
+            "output_node_cap_ff": 80.85238206349207,
+            "total_cap_ff": 683.2178457142857
+          },
+          "actual": {
+            "cap_count": 114.0,
+            "output_node_cap_ff": 114.514,
+            "total_cap_ff": 1758.0844
+          },
+          "design_id": "ramos_pfc_pin_3",
+          "error": {
+            "cap_count": -19.444444444444443,
+            "output_node_cap_ff": 80.85238206349207,
+            "total_cap_ff": -683.2178457142857
+          },
+          "graph_id": "ramos_pfc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.55555555555556,
+            "output_node_cap_ff": 195.36638206349207,
+            "total_cap_ff": 1074.8665542857143
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 4.206349206349202,
+            "output_node_cap_ff": 194.73104619047618,
+            "total_cap_ff": 871.2422634920636
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 2.41469,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": -4.206349206349202,
+            "output_node_cap_ff": 194.73104619047618,
+            "total_cap_ff": 871.2422634920636
+          },
+          "graph_id": "sau_cfcc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.7936507936508,
+            "output_node_cap_ff": 197.14573619047619,
+            "total_cap_ff": 1099.1549934920636
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.2422634920636
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": -4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.2422634920636
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.7936507936508,
+            "output_node_cap_ff": 196.99835317460318,
+            "total_cap_ff": 1099.1549934920636
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.2422634920636
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": -4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.2422634920636
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0001_cap0_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.7936507936508,
+            "output_node_cap_ff": 196.99835317460318,
+            "total_cap_ff": 1099.1549934920636
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.216622857143
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.93797
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": -4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.216622857143
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0002_gm1_pmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.7936507936508,
+            "output_node_cap_ff": 196.99835317460318,
+            "total_cap_ff": 1099.154592857143
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.2422634920636
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": -4.206349206349202,
+            "output_node_cap_ff": 185.2985331746032,
+            "total_cap_ff": 871.2422634920636
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0004_cap0_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.7936507936508,
+            "output_node_cap_ff": 196.99835317460318,
+            "total_cap_ff": 1099.1549934920636
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 61.82539682539682,
+            "output_node_cap_ff": 22.01809634920633,
+            "total_cap_ff": 663.1652399999998
+          },
+          "actual": {
+            "cap_count": 34.0,
+            "output_node_cap_ff": 172.429,
+            "total_cap_ff": 432.73855
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 61.82539682539682,
+            "output_node_cap_ff": 22.01809634920633,
+            "total_cap_ff": 663.1652399999998
+          },
+          "graph_id": "smcnr_se_2st_amp:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.82539682539682,
+            "output_node_cap_ff": 194.44709634920633,
+            "total_cap_ff": 1095.9037899999998
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.68551761904763,
+            "total_cap_ff": 326.18793968253976
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.68551761904763,
+            "total_cap_ff": 326.18793968253976
+          },
+          "graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93610238095238,
+            "total_cap_ff": 1090.6385196825397
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": 458.78467698412703,
+            "total_cap_ff": 326.1466952380954
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71923,
+            "total_cap_ff": 764.49118
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": -458.78467698412703,
+            "total_cap_ff": 326.1466952380954
+          },
+          "graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.85714285714286,
+            "output_node_cap_ff": 186.93455301587304,
+            "total_cap_ff": 1090.6378752380954
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.68551761904763,
+            "total_cap_ff": 326.18793968253976
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.68551761904763,
+            "total_cap_ff": 326.18793968253976
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93610238095238,
+            "total_cap_ff": 1090.6385196825397
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.6082096825397,
+            "total_cap_ff": 327.2281022222222
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.54552,
+            "total_cap_ff": 763.42667
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.6082096825397,
+            "total_cap_ff": 327.2281022222222
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0001_diff_pair_w_m5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93731031746032,
+            "total_cap_ff": 1090.6547722222222
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.76184015873014,
+            "total_cap_ff": 325.15684888888893
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69675,
+            "total_cap_ff": 765.46556
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.76184015873014,
+            "total_cap_ff": 325.15684888888893
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0002_diff_pair_w_p5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93490984126984,
+            "total_cap_ff": 1090.622408888889
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.5774388888889,
+            "total_cap_ff": 326.16073460317455
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.51523,
+            "total_cap_ff": 764.47736
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.5774388888889,
+            "total_cap_ff": 326.16073460317455
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0003_load_nmos_w_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93779111111112,
+            "total_cap_ff": 1090.6380946031745
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": 458.7834782539682,
+            "total_cap_ff": 326.14346476190474
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71805,
+            "total_cap_ff": 764.49436
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": -458.7834782539682,
+            "total_cap_ff": 326.14346476190474
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0004_load_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.85714285714286,
+            "output_node_cap_ff": 186.93457174603174,
+            "total_cap_ff": 1090.6378247619048
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.76160650793645,
+            "total_cap_ff": 326.05840571428575
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69652,
+            "total_cap_ff": 764.57809
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.76160650793645,
+            "total_cap_ff": 326.05840571428575
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0005_second_stage_pmos_w_p5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.9349134920635,
+            "total_cap_ff": 1090.6364957142857
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.8379798412699,
+            "total_cap_ff": 325.93117777777775
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.7717,
+            "total_cap_ff": 764.70333
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.8379798412699,
+            "total_cap_ff": 325.93117777777775
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0006_second_stage_pmos_w_p10pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93372015873015,
+            "total_cap_ff": 1090.6345077777778
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": 458.03467825396825,
+            "total_cap_ff": 327.01319428571423
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 644.98095,
+            "total_cap_ff": 763.63822
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": -458.03467825396825,
+            "total_cap_ff": 327.01319428571423
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0007_second_stage_nmos_w_p5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.85714285714286,
+            "output_node_cap_ff": 186.94627174603175,
+            "total_cap_ff": 1090.6514142857143
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.5001309523809,
+            "total_cap_ff": 327.19961714285705
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.43913,
+            "total_cap_ff": 763.45471
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.5001309523809,
+            "total_cap_ff": 327.19961714285705
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0008_diff_m_load_m",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93899904761906,
+            "total_cap_ff": 1090.654327142857
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": 458.7060687301587,
+            "total_cap_ff": 327.1835460317459
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.64185,
+            "total_cap_ff": 763.47053
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": -458.7060687301587,
+            "total_cap_ff": 327.1835460317459
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0009_diff_m_load_p",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.85714285714286,
+            "output_node_cap_ff": 186.93578126984127,
+            "total_cap_ff": 1090.654076031746
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.65364968253965,
+            "total_cap_ff": 325.13169587301593
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.59025,
+            "total_cap_ff": 765.49032
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.65364968253965,
+            "total_cap_ff": 325.13169587301593
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0010_diff_p_load_m",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93660031746032,
+            "total_cap_ff": 1090.622015873016
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": 458.86072523809526,
+            "total_cap_ff": 325.1114596825397
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.79409,
+            "total_cap_ff": 765.51024
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": -458.86072523809526,
+            "total_cap_ff": 325.1114596825397
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0011_diff_p_load_p",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.85714285714286,
+            "output_node_cap_ff": 186.93336476190476,
+            "total_cap_ff": 1090.6216996825397
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.83793920634923,
+            "total_cap_ff": 325.0273047619047
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.77166,
+            "total_cap_ff": 765.59308
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.83793920634923,
+            "total_cap_ff": 325.0273047619047
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0012_diff_p_pmos_p5",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.9337207936508,
+            "total_cap_ff": 1090.6203847619047
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": 458.7606617460318,
+            "total_cap_ff": 326.9711574603174
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69559,
+            "total_cap_ff": 763.6796
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 62.841269841269835,
+            "output_node_cap_ff": -458.7606617460318,
+            "total_cap_ff": 326.9711574603174
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0013_diff_m_pmos_p10",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.84126984126983,
+            "output_node_cap_ff": 186.93492825396825,
+            "total_cap_ff": 1090.6507574603174
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": 458.12153539682544,
+            "total_cap_ff": 326.9806152380952
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.06645,
+            "total_cap_ff": 763.67029
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": -458.12153539682544,
+            "total_cap_ff": 326.9806152380952
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0014_load_p_nmos_p5",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.85714285714286,
+            "output_node_cap_ff": 186.9449146031746,
+            "total_cap_ff": 1090.6509052380952
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": 458.1869880952381,
+            "total_cap_ff": 326.75808825396825
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.13088,
+            "total_cap_ff": 763.88934
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 63.85714285714286,
+            "output_node_cap_ff": -458.1869880952381,
+            "total_cap_ff": 326.75808825396825
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0015_pmos_p10_nmos_p5",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 95.85714285714286,
+            "output_node_cap_ff": 186.94389190476193,
+            "total_cap_ff": 1090.6474282539682
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 35.698412698412696,
+            "output_node_cap_ff": 193.86082904761903,
+            "total_cap_ff": 966.360627936508
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 3.27131,
+            "total_cap_ff": 134.28059
+          },
+          "design_id": "tan_clia_pin_3",
+          "error": {
+            "cap_count": -35.698412698412696,
+            "output_node_cap_ff": 193.86082904761903,
+            "total_cap_ff": 966.360627936508
+          },
+          "graph_id": "tan_clia_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.3015873015873,
+            "output_node_cap_ff": 197.13213904761903,
+            "total_cap_ff": 1100.641217936508
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 19.444444444444443,
+            "output_node_cap_ff": 194.61760365079363,
+            "total_cap_ff": 965.2641860317461
+          },
+          "actual": {
+            "cap_count": 114.0,
+            "output_node_cap_ff": 2.52636,
+            "total_cap_ff": 135.3599
+          },
+          "design_id": "yan_az_pin_3",
+          "error": {
+            "cap_count": -19.444444444444443,
+            "output_node_cap_ff": 194.61760365079363,
+            "total_cap_ff": 965.2641860317461
+          },
+          "graph_id": "yan_az_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 94.55555555555556,
+            "output_node_cap_ff": 197.14396365079364,
+            "total_cap_ff": 1100.6240860317462
+          }
+        }
+      ],
+      "sample_count": 64
+    },
+    "nearest_neighbor": {
+      "metrics": {
+        "cap_count": {
+          "mae": 3.234375,
+          "max_abs_error": 32.0
+        },
+        "output_node_cap_ff": {
+          "mae": 18.33732578125001,
+          "max_abs_error": 473.11652000000004
+        },
+        "total_cap_ff": {
+          "mae": 184.35285781250002,
+          "max_abs_error": 2041.8247899999997
+        }
+      },
+      "predictions": [
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 11.03295,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 0.80601,
+            "total_cap_ff": 99.32308
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 11.03295,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "alfio_raffc_pin_3:cand_0001",
+          "nearest_graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0000_baseline",
+          "predicted": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.83896,
+            "total_cap_ff": 99.32308
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 11.03295,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.83896,
+            "total_cap_ff": 99.32308
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -11.03295,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0000_baseline",
+          "nearest_graph_id": "alfio_raffc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 0.80601,
+            "total_cap_ff": 99.32308
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 11.038550000000003,
+            "total_cap_ff": 0.13527999999999452
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.844560000000003,
+            "total_cap_ff": 99.45836
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -11.038550000000003,
+            "total_cap_ff": -0.13527999999999452
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0001_gm1_pmos_w_pstep",
+          "nearest_graph_id": "alfio_raffc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 0.80601,
+            "total_cap_ff": 99.32308
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 8.0,
+            "output_node_cap_ff": 1.6948300000000014,
+            "total_cap_ff": 175.53925
+          },
+          "actual": {
+            "cap_count": 126.0,
+            "output_node_cap_ff": 11.64657,
+            "total_cap_ff": 99.23916
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": -8.0,
+            "output_node_cap_ff": -1.6948300000000014,
+            "total_cap_ff": 175.53925
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0002_gm2_pmos_w_pstep",
+          "nearest_graph_id": "leung_nmcnr_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 9.95174,
+            "total_cap_ff": 274.77841
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0007300000000025619,
+            "total_cap_ff": 3.952849999999998
+          },
+          "actual": {
+            "cap_count": 128.0,
+            "output_node_cap_ff": 11.84383,
+            "total_cap_ff": 103.41121
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0007300000000025619,
+            "total_cap_ff": -3.952849999999998
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0003_gmb_nmos_w_pstep",
+          "nearest_graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0001_gm1_pmos_w_pstep",
+          "predicted": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.844560000000003,
+            "total_cap_ff": 99.45836
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 28.245620000000002,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 11.9045,
+            "total_cap_ff": 520.84706
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 28.245620000000002,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "fan_smc_pin_3:cand_0008",
+          "nearest_graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0000_baseline",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.84706
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 28.245620000000002,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.84706
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -28.245620000000002,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0000_baseline",
+          "nearest_graph_id": "fan_smc_pin_3:cand_0008",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 11.9045,
+            "total_cap_ff": 520.84706
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 0.03215999999997621
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.80192
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 0.03215999999997621
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0001_input_pair_w_mstep",
+          "nearest_graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0003_load2_nmos_w_pstep",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.83408
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 3.0,
+            "output_node_cap_ff": 30.55601,
+            "total_cap_ff": 257.81186
+          },
+          "actual": {
+            "cap_count": 121.0,
+            "output_node_cap_ff": 40.50775,
+            "total_cap_ff": 532.59027
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -3.0,
+            "output_node_cap_ff": -30.55601,
+            "total_cap_ff": -257.81186
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0002_input_pair_w_pstep",
+          "nearest_graph_id": "leung_nmcnr_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 9.95174,
+            "total_cap_ff": 274.77841
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 28.245620000000002,
+            "total_cap_ff": 0.012980000000084146
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.83408
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -28.245620000000002,
+            "total_cap_ff": 0.012980000000084146
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0003_load2_nmos_w_pstep",
+          "nearest_graph_id": "fan_smc_pin_3:cand_0008",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 11.9045,
+            "total_cap_ff": 520.84706
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 9.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 285.44312000000014
+          },
+          "actual": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1557.8
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -9.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 285.44312000000014
+          },
+          "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0001",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0000",
+          "predicted": {
+            "cap_count": 122.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1843.24312
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 22.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2041.8247899999997
+          },
+          "actual": {
+            "cap_count": 151.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 5698.66
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -22.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -2041.8247899999997
+          },
+          "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0006",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0011",
+          "predicted": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3656.83521
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 647.39507
+          },
+          "actual": {
+            "cap_count": 134.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3999.37
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -647.39507
+          },
+          "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0005",
+          "predicted": {
+            "cap_count": 135.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3351.97493
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 486.9552100000001
+          },
+          "actual": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3169.88
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 486.9552100000001
+          },
+          "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0001",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0011",
+          "predicted": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3656.83521
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 14.0,
+            "output_node_cap_ff": 170.98361,
+            "total_cap_ff": 1078.68686
+          },
+          "actual": {
+            "cap_count": 156.0,
+            "output_node_cap_ff": 2.15939,
+            "total_cap_ff": 272.48469
+          },
+          "design_id": "hoilee_affc_pin_3",
+          "error": {
+            "cap_count": -14.0,
+            "output_node_cap_ff": 170.98361,
+            "total_cap_ff": 1078.68686
+          },
+          "graph_id": "hoilee_affc_pin_3:cand_0001",
+          "nearest_graph_id": "leung_dfcfc1_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 142.0,
+            "output_node_cap_ff": 173.143,
+            "total_cap_ff": 1351.17155
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 13.0,
+            "output_node_cap_ff": 173.143,
+            "total_cap_ff": 63.627050000000054
+          },
+          "actual": {
+            "cap_count": 142.0,
+            "output_node_cap_ff": 173.143,
+            "total_cap_ff": 1351.17155
+          },
+          "design_id": "leung_dfcfc1_pin_3",
+          "error": {
+            "cap_count": -13.0,
+            "output_node_cap_ff": -173.143,
+            "total_cap_ff": -63.627050000000054
+          },
+          "graph_id": "leung_dfcfc1_pin_3:cand_0001",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0002",
+          "predicted": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1287.5445
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 7.0,
+            "output_node_cap_ff": 5.993620000000001,
+            "total_cap_ff": 285.17922000000004
+          },
+          "actual": {
+            "cap_count": 106.0,
+            "output_node_cap_ff": 5.7062,
+            "total_cap_ff": 513.11719
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -7.0,
+            "output_node_cap_ff": 5.993620000000001,
+            "total_cap_ff": -285.17922000000004
+          },
+          "graph_id": "leung_dfcfc2_pin_3:cand_0001",
+          "nearest_graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0002_gm1_pmos_w_pstep",
+          "predicted": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.93797
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 474.7976100000001
+          },
+          "actual": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1762.34211
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -474.7976100000001
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0002",
+          "predicted": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1287.5445
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 22.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1781.6842299999998
+          },
+          "actual": {
+            "cap_count": 112.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 5781.05423
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 22.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -1781.6842299999998
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0008",
+          "nearest_graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0000",
+          "predicted": {
+            "cap_count": 134.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3999.37
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 486.9552100000001
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3656.83521
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -486.9552100000001
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0011",
+          "nearest_graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0001",
+          "predicted": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3169.88
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 114.03921999999989
+          },
+          "actual": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2001.61333
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -114.03921999999989
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0002",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0013",
+          "predicted": {
+            "cap_count": 117.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1887.57411
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 647.39507
+          },
+          "actual": {
+            "cap_count": 135.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3351.97493
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 647.39507
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0005",
+          "nearest_graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0000",
+          "predicted": {
+            "cap_count": 134.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3999.37
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 11.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 363.63940000000025
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2365.25273
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -11.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -363.63940000000025
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0010",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0002",
+          "predicted": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2001.61333
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 10.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 148.20310999999992
+          },
+          "actual": {
+            "cap_count": 112.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1991.44623
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 10.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -148.20310999999992
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0011",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0000",
+          "predicted": {
+            "cap_count": 122.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1843.24312
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 9.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 285.44312000000014
+          },
+          "actual": {
+            "cap_count": 122.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1843.24312
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 9.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -285.44312000000014
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0001",
+          "predicted": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1557.8
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 474.7976100000001
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1287.5445
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 474.7976100000001
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0002",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0000",
+          "predicted": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1762.34211
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 8.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 58.365909999999985
+          },
+          "actual": {
+            "cap_count": 135.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3228.24591
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -8.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": -58.365909999999985
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0007",
+          "nearest_graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0001",
+          "predicted": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3169.88
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 11.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 398.4374
+          },
+          "actual": {
+            "cap_count": 111.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1444.80572
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 11.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 398.4374
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0010",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0000",
+          "predicted": {
+            "cap_count": 122.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1843.24312
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 114.03921999999989
+          },
+          "actual": {
+            "cap_count": 117.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1887.57411
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 114.03921999999989
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0013",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0002",
+          "predicted": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2001.61333
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 8.212969999999999,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 2.08856,
+            "total_cap_ff": 232.13717
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 8.212969999999999,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "leung_nmcf_pin_3:cand_0002",
+          "nearest_graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0000_baseline",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13717
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 8.212969999999999,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13717
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -8.212969999999999,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0000_baseline",
+          "nearest_graph_id": "leung_nmcf_pin_3:cand_0002",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 2.08856,
+            "total_cap_ff": 232.13717
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 4.000000000026205e-05,
+            "total_cap_ff": 0.02438000000000784
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30157,
+            "total_cap_ff": 232.11217
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -4.000000000026205e-05,
+            "total_cap_ff": 0.02438000000000784
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0001_input_pair_w_mstep",
+          "nearest_graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0003_load2_nmos_w_pstep",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13655
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 1.5207500000000014,
+            "total_cap_ff": 57.86682000000002
+          },
+          "actual": {
+            "cap_count": 116.0,
+            "output_node_cap_ff": 11.47249,
+            "total_cap_ff": 216.91159
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": -1.5207500000000014,
+            "total_cap_ff": 57.86682000000002
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0002_input_pair_w_pstep",
+          "nearest_graph_id": "leung_nmcnr_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 9.95174,
+            "total_cap_ff": 274.77841
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 8.212969999999999,
+            "total_cap_ff": 0.0006199999999978445
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13655
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -8.212969999999999,
+            "total_cap_ff": 0.0006199999999978445
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0003_load2_nmos_w_pstep",
+          "nearest_graph_id": "leung_nmcf_pin_3:cand_0002",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 2.08856,
+            "total_cap_ff": 232.13717
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 1.5207500000000014,
+            "total_cap_ff": 57.86682000000002
+          },
+          "actual": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 9.95174,
+            "total_cap_ff": 274.77841
+          },
+          "design_id": "leung_nmcnr_pin_3",
+          "error": {
+            "cap_count": -2.0,
+            "output_node_cap_ff": 1.5207500000000014,
+            "total_cap_ff": -57.86682000000002
+          },
+          "graph_id": "leung_nmcnr_pin_3:cand_0001",
+          "nearest_graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0002_input_pair_w_pstep",
+          "predicted": {
+            "cap_count": 116.0,
+            "output_node_cap_ff": 11.47249,
+            "total_cap_ff": 216.91159
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 3.0,
+            "output_node_cap_ff": 0.5877600000000003,
+            "total_cap_ff": 117.68888000000001
+          },
+          "actual": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 2.68355,
+            "total_cap_ff": 251.96947
+          },
+          "design_id": "peng_acbc_pin_3",
+          "error": {
+            "cap_count": 3.0,
+            "output_node_cap_ff": 0.5877600000000003,
+            "total_cap_ff": -117.68888000000001
+          },
+          "graph_id": "peng_acbc_pin_3:cand_0001",
+          "nearest_graph_id": "tan_clia_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 3.27131,
+            "total_cap_ff": 134.28059
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 0.4871500000000002,
+            "total_cap_ff": 110.06711000000001
+          },
+          "actual": {
+            "cap_count": 124.0,
+            "output_node_cap_ff": 1.67224,
+            "total_cap_ff": 162.41758
+          },
+          "design_id": "qu2017_azc_pin_3",
+          "error": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 0.4871500000000002,
+            "total_cap_ff": 110.06711000000001
+          },
+          "graph_id": "qu2017_azc_pin_3:cand_0001",
+          "nearest_graph_id": "hoilee_affc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 156.0,
+            "output_node_cap_ff": 2.15939,
+            "total_cap_ff": 272.48469
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.0,
+            "output_node_cap_ff": 114.514,
+            "total_cap_ff": 233.36183000000005
+          },
+          "actual": {
+            "cap_count": 114.0,
+            "output_node_cap_ff": 114.514,
+            "total_cap_ff": 1758.0844
+          },
+          "design_id": "ramos_pfc_pin_3",
+          "error": {
+            "cap_count": -2.0,
+            "output_node_cap_ff": -114.514,
+            "total_cap_ff": 233.36183000000005
+          },
+          "graph_id": "ramos_pfc_pin_3:cand_0001",
+          "nearest_graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0011",
+          "predicted": {
+            "cap_count": 112.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1991.44623
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 9.28513,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 2.41469,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 9.28513,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "sau_cfcc_pin_3:cand_0001",
+          "nearest_graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0000_baseline",
+          "predicted": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 9.28513,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -9.28513,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0000_baseline",
+          "nearest_graph_id": "sau_cfcc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 2.41469,
+            "total_cap_ff": 227.91273
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 9.28513,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -9.28513,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0001_cap0_mstep",
+          "nearest_graph_id": "sau_cfcc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 2.41469,
+            "total_cap_ff": 227.91273
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 9.28513,
+            "total_cap_ff": 0.0252399999999966
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.93797
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -9.28513,
+            "total_cap_ff": -0.0252399999999966
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0002_gm1_pmos_w_pstep",
+          "nearest_graph_id": "sau_cfcc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 2.41469,
+            "total_cap_ff": 227.91273
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 9.28513,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -9.28513,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0004_cap0_pstep",
+          "nearest_graph_id": "sau_cfcc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 2.41469,
+            "total_cap_ff": 227.91273
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 473.11652000000004,
+            "total_cap_ff": 330.68811999999997
+          },
+          "actual": {
+            "cap_count": 34.0,
+            "output_node_cap_ff": 172.429,
+            "total_cap_ff": 432.73855
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -1.0,
+            "output_node_cap_ff": 473.11652000000004,
+            "total_cap_ff": 330.68811999999997
+          },
+          "graph_id": "smcnr_se_2st_amp:cand_0001",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0001_diff_pair_w_m5pct",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.54552,
+            "total_cap_ff": 763.42667
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0001",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0000_baseline",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.001180000000090331,
+            "total_cap_ff": 0.0031800000000430373
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71923,
+            "total_cap_ff": 764.49118
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.001180000000090331,
+            "total_cap_ff": 0.0031800000000430373
+          },
+          "graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0002",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0004_load_nmos_w_pstep",
+          "predicted": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71805,
+            "total_cap_ff": 764.49436
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 0.0
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 0.0
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0000_baseline",
+          "nearest_graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0001",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10639000000003307,
+            "total_cap_ff": 0.028040000000032705
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.54552,
+            "total_cap_ff": 763.42667
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.10639000000003307,
+            "total_cap_ff": 0.028040000000032705
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0001_diff_pair_w_m5pct",
+          "nearest_graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0008_diff_m_load_m",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.43913,
+            "total_cap_ff": 763.45471
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10649999999998272,
+            "total_cap_ff": 0.02476000000001477
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69675,
+            "total_cap_ff": 765.46556
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.10649999999998272,
+            "total_cap_ff": 0.02476000000001477
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0002_diff_pair_w_p5pct",
+          "nearest_graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0010_diff_p_load_m",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.59025,
+            "total_cap_ff": 765.49032
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10639000000003307,
+            "total_cap_ff": 0.026780000000030668
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.51523,
+            "total_cap_ff": 764.47736
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10639000000003307,
+            "total_cap_ff": -0.026780000000030668
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0003_load_nmos_w_mstep",
+          "nearest_graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0001",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.001180000000090331,
+            "total_cap_ff": 0.0031800000000430373
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71805,
+            "total_cap_ff": 764.49436
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.001180000000090331,
+            "total_cap_ff": -0.0031800000000430373
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0004_load_nmos_w_pstep",
+          "nearest_graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0002",
+          "predicted": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71923,
+            "total_cap_ff": 764.49118
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.18128999999998996,
+            "total_cap_ff": 0.10072999999999865
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69652,
+            "total_cap_ff": 764.57809
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.18128999999998996,
+            "total_cap_ff": -0.10072999999999865
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0005_second_stage_pmos_w_p5pct",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0003_load_nmos_w_mstep",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.51523,
+            "total_cap_ff": 764.47736
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.07518000000004577,
+            "total_cap_ff": 0.12524000000007618
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.7717,
+            "total_cap_ff": 764.70333
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.07518000000004577,
+            "total_cap_ff": -0.12524000000007618
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0006_second_stage_pmos_w_p10pct",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0005_second_stage_pmos_w_p5pct",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69652,
+            "total_cap_ff": 764.57809
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.08550000000002456,
+            "total_cap_ff": 0.03206999999997606
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 644.98095,
+            "total_cap_ff": 763.63822
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.08550000000002456,
+            "total_cap_ff": 0.03206999999997606
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0007_second_stage_nmos_w_p5pct",
+          "nearest_graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0014_load_p_nmos_p5",
+          "predicted": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.06645,
+            "total_cap_ff": 763.67029
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10639000000003307,
+            "total_cap_ff": 0.028040000000032705
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.43913,
+            "total_cap_ff": 763.45471
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10639000000003307,
+            "total_cap_ff": -0.028040000000032705
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0008_diff_m_load_m",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0001_diff_pair_w_m5pct",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.54552,
+            "total_cap_ff": 763.42667
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.6608999999999696,
+            "total_cap_ff": 0.16768999999999323
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.64185,
+            "total_cap_ff": 763.47053
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.6608999999999696,
+            "total_cap_ff": 0.16768999999999323
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0009_diff_m_load_p",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0007_second_stage_nmos_w_p5pct",
+          "predicted": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 644.98095,
+            "total_cap_ff": 763.63822
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10649999999998272,
+            "total_cap_ff": 0.02476000000001477
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.59025,
+            "total_cap_ff": 765.49032
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.10649999999998272,
+            "total_cap_ff": -0.02476000000001477
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0010_diff_p_load_m",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0002_diff_pair_w_p5pct",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69675,
+            "total_cap_ff": 765.46556
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.07604000000003452,
+            "total_cap_ff": 1.0158799999999246
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.79409,
+            "total_cap_ff": 765.51024
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.07604000000003452,
+            "total_cap_ff": -1.0158799999999246
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0011_diff_p_load_p",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0004_load_nmos_w_pstep",
+          "predicted": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71805,
+            "total_cap_ff": 764.49436
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.18141000000002805,
+            "total_cap_ff": 0.1027599999999893
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.77166,
+            "total_cap_ff": 765.59308
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.18141000000002805,
+            "total_cap_ff": -0.1027599999999893
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0012_diff_p_pmos_p5",
+          "nearest_graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0010_diff_p_load_m",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.59025,
+            "total_cap_ff": 765.49032
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.256460000000061,
+            "total_cap_ff": 0.2248900000000731
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69559,
+            "total_cap_ff": 763.6796
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.256460000000061,
+            "total_cap_ff": -0.2248900000000731
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0013_diff_m_pmos_p10",
+          "nearest_graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0008_diff_m_load_m",
+          "predicted": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.43913,
+            "total_cap_ff": 763.45471
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.08550000000002456,
+            "total_cap_ff": 0.03206999999997606
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.06645,
+            "total_cap_ff": 763.67029
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.08550000000002456,
+            "total_cap_ff": -0.03206999999997606
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0014_load_p_nmos_p5",
+          "nearest_graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0007_second_stage_nmos_w_p5pct",
+          "predicted": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 644.98095,
+            "total_cap_ff": 763.63822
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": 0.06443000000001575,
+            "total_cap_ff": 0.2190499999999247
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.13088,
+            "total_cap_ff": 763.88934
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.0,
+            "output_node_cap_ff": -0.06443000000001575,
+            "total_cap_ff": -0.2190499999999247
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0015_pmos_p10_nmos_p5",
+          "nearest_graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0014_load_p_nmos_p5",
+          "predicted": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.06645,
+            "total_cap_ff": 763.67029
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 3.0,
+            "output_node_cap_ff": 0.5877600000000003,
+            "total_cap_ff": 117.68888000000001
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 3.27131,
+            "total_cap_ff": 134.28059
+          },
+          "design_id": "tan_clia_pin_3",
+          "error": {
+            "cap_count": -3.0,
+            "output_node_cap_ff": -0.5877600000000003,
+            "total_cap_ff": 117.68888000000001
+          },
+          "graph_id": "tan_clia_pin_3:cand_0001",
+          "nearest_graph_id": "peng_acbc_pin_3:cand_0001",
+          "predicted": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 2.68355,
+            "total_cap_ff": 251.96947
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 7.7752099999999995,
+            "total_cap_ff": 96.75226999999998
+          },
+          "actual": {
+            "cap_count": 114.0,
+            "output_node_cap_ff": 2.52636,
+            "total_cap_ff": 135.3599
+          },
+          "design_id": "yan_az_pin_3",
+          "error": {
+            "cap_count": 1.0,
+            "output_node_cap_ff": 7.7752099999999995,
+            "total_cap_ff": 96.75226999999998
+          },
+          "graph_id": "yan_az_pin_3:cand_0001",
+          "nearest_graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0001_input_pair_w_mstep",
+          "predicted": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30157,
+            "total_cap_ff": 232.11217
+          }
+        }
+      ],
+      "sample_count": 64
+    },
+    "ridge_regression": {
+      "metrics": {
+        "cap_count": {
+          "mae": 0.6987392411502347,
+          "max_abs_error": 4.810708246299981
+        },
+        "output_node_cap_ff": {
+          "mae": 33.29379565490711,
+          "max_abs_error": 447.12790772038636
+        },
+        "total_cap_ff": {
+          "mae": 93.131319283572,
+          "max_abs_error": 830.7966435731306
+        }
+      },
+      "predictions": [
+        {
+          "absolute_error": {
+            "cap_count": 0.49308724553404204,
+            "output_node_cap_ff": 42.0810362904826,
+            "total_cap_ff": 41.72580137473733
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 0.80601,
+            "total_cap_ff": 99.32308
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 0.49308724553404204,
+            "output_node_cap_ff": 42.0810362904826,
+            "total_cap_ff": 41.72580137473733
+          },
+          "graph_id": "alfio_raffc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 130.49308724553404,
+            "output_node_cap_ff": 42.8870462904826,
+            "total_cap_ff": 141.04888137473733
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.49308724553404204,
+            "output_node_cap_ff": 29.82513243301384,
+            "total_cap_ff": 41.72580137473733
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.83896,
+            "total_cap_ff": 99.32308
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 0.49308724553404204,
+            "output_node_cap_ff": 29.82513243301384,
+            "total_cap_ff": 41.72580137473733
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 130.49308724553404,
+            "output_node_cap_ff": 41.66409243301384,
+            "total_cap_ff": 141.04888137473733
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.49307767304807726,
+            "output_node_cap_ff": 29.82694105294263,
+            "total_cap_ff": 41.66835492150702
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 11.844560000000003,
+            "total_cap_ff": 99.45836
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 0.49307767304807726,
+            "output_node_cap_ff": 29.82694105294263,
+            "total_cap_ff": 41.66835492150702
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0001_gm1_pmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 130.49307767304808,
+            "output_node_cap_ff": 41.67150105294263,
+            "total_cap_ff": 141.12671492150702
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0753741589383736,
+            "output_node_cap_ff": 21.45458564788999,
+            "total_cap_ff": 163.4932301405378
+          },
+          "actual": {
+            "cap_count": 126.0,
+            "output_node_cap_ff": 11.64657,
+            "total_cap_ff": 99.23916
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": -1.0753741589383736,
+            "output_node_cap_ff": -21.45458564788999,
+            "total_cap_ff": 163.4932301405378
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0002_gm2_pmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 124.92462584106163,
+            "output_node_cap_ff": -9.808015647889988,
+            "total_cap_ff": 262.7323901405378
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.4917710278665197,
+            "output_node_cap_ff": 25.87192313851408,
+            "total_cap_ff": 38.60766494847552
+          },
+          "actual": {
+            "cap_count": 128.0,
+            "output_node_cap_ff": 11.84383,
+            "total_cap_ff": 103.41121
+          },
+          "design_id": "alfio_raffc_pin_3",
+          "error": {
+            "cap_count": 0.4917710278665197,
+            "output_node_cap_ff": 25.87192313851408,
+            "total_cap_ff": 38.60766494847552
+          },
+          "graph_id": "alfio_raffc_reproduction_sweep_20260818_v1/alfio_repro_sweep_0003_gmb_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 128.49177102786652,
+            "output_node_cap_ff": 37.71575313851408,
+            "total_cap_ff": 142.0188749484755
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.09255060012741012,
+            "output_node_cap_ff": 3.057842768644125,
+            "total_cap_ff": 32.92388160762755
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 11.9045,
+            "total_cap_ff": 520.84706
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -0.09255060012741012,
+            "output_node_cap_ff": -3.057842768644125,
+            "total_cap_ff": 32.92388160762755
+          },
+          "graph_id": "fan_smc_pin_3:cand_0008",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.90744939987259,
+            "output_node_cap_ff": 8.846657231355875,
+            "total_cap_ff": 553.7709416076276
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.09255060012741012,
+            "output_node_cap_ff": 32.55365493210397,
+            "total_cap_ff": 32.92388160762755
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.84706
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -0.09255060012741012,
+            "output_node_cap_ff": -32.55365493210397,
+            "total_cap_ff": 32.92388160762755
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.90744939987259,
+            "output_node_cap_ff": 7.596465067896036,
+            "total_cap_ff": 553.7709416076276
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.09255451727614172,
+            "output_node_cap_ff": 32.5560078925691,
+            "total_cap_ff": 32.936000036553196
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.80192
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -0.09255451727614172,
+            "output_node_cap_ff": -32.5560078925691,
+            "total_cap_ff": 32.936000036553196
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0001_input_pair_w_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.90744548272386,
+            "output_node_cap_ff": 7.594112107430901,
+            "total_cap_ff": 553.7379200365532
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.10376118130970724,
+            "output_node_cap_ff": 17.21576644618206,
+            "total_cap_ff": 10.667317770532463
+          },
+          "actual": {
+            "cap_count": 121.0,
+            "output_node_cap_ff": 40.50775,
+            "total_cap_ff": 532.59027
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": 0.10376118130970724,
+            "output_node_cap_ff": -17.21576644618206,
+            "total_cap_ff": 10.667317770532463
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0002_input_pair_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 121.10376118130971,
+            "output_node_cap_ff": 23.291983553817943,
+            "total_cap_ff": 543.2575877705325
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.09255172649844212,
+            "output_node_cap_ff": 32.55433152376267,
+            "total_cap_ff": 32.927366257181006
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 40.15012,
+            "total_cap_ff": 520.83408
+          },
+          "design_id": "fan_smc_pin_3",
+          "error": {
+            "cap_count": -0.09255172649844212,
+            "output_node_cap_ff": -32.55433152376267,
+            "total_cap_ff": 32.927366257181006
+          },
+          "graph_id": "fan_smc_reproduction_sweep_20260817_v1/fan_repro_sweep_0003_load2_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.90744827350156,
+            "output_node_cap_ff": 7.595788476237328,
+            "total_cap_ff": 553.761446257181
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 3.0091866976192847,
+            "output_node_cap_ff": 7.190863235608709,
+            "total_cap_ff": 47.1832807403639
+          },
+          "actual": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1557.8
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -3.0091866976192847,
+            "output_node_cap_ff": -7.190863235608709,
+            "total_cap_ff": -47.1832807403639
+          },
+          "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 127.99081330238072,
+            "output_node_cap_ff": -7.190863235608709,
+            "total_cap_ff": 1510.616719259636
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.4117560584785167,
+            "output_node_cap_ff": 60.77633605096334,
+            "total_cap_ff": 285.7828002928072
+          },
+          "actual": {
+            "cap_count": 151.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 5698.66
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 0.4117560584785167,
+            "output_node_cap_ff": -60.77633605096334,
+            "total_cap_ff": -285.7828002928072
+          },
+          "graph_id": "grpo_admission_20260821_analoggym_contract_v1/grpo_leung_dfcfc2_0006",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 151.41175605847852,
+            "output_node_cap_ff": -60.77633605096334,
+            "total_cap_ff": 5412.877199707193
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.052147226897887,
+            "output_node_cap_ff": 17.532643507839875,
+            "total_cap_ff": 144.89748740234973
+          },
+          "actual": {
+            "cap_count": 134.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3999.37
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -2.052147226897887,
+            "output_node_cap_ff": -17.532643507839875,
+            "total_cap_ff": -144.89748740234973
+          },
+          "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 131.9478527731021,
+            "output_node_cap_ff": -17.532643507839875,
+            "total_cap_ff": 3854.47251259765
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.7960806914566092,
+            "output_node_cap_ff": 27.831836569767315,
+            "total_cap_ff": 236.2091050331819
+          },
+          "actual": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3169.88
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 1.7960806914566092,
+            "output_node_cap_ff": 27.831836569767315,
+            "total_cap_ff": 236.2091050331819
+          },
+          "graph_id": "grpo_to_pcs_admission_smoke_v1/grpo_leung_dfcfc2_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 128.7960806914566,
+            "output_node_cap_ff": 27.831836569767315,
+            "total_cap_ff": 3406.089105033182
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 4.810708246299981,
+            "output_node_cap_ff": 57.57641976500705,
+            "total_cap_ff": 309.50952794871137
+          },
+          "actual": {
+            "cap_count": 156.0,
+            "output_node_cap_ff": 2.15939,
+            "total_cap_ff": 272.48469
+          },
+          "design_id": "hoilee_affc_pin_3",
+          "error": {
+            "cap_count": -4.810708246299981,
+            "output_node_cap_ff": -57.57641976500705,
+            "total_cap_ff": 309.50952794871137
+          },
+          "graph_id": "hoilee_affc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 151.18929175370002,
+            "output_node_cap_ff": -55.41702976500705,
+            "total_cap_ff": 581.9942179487114
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.0709341947009818,
+            "output_node_cap_ff": 150.83033317738867,
+            "total_cap_ff": 195.4073819461853
+          },
+          "actual": {
+            "cap_count": 142.0,
+            "output_node_cap_ff": 173.143,
+            "total_cap_ff": 1351.17155
+          },
+          "design_id": "leung_dfcfc1_pin_3",
+          "error": {
+            "cap_count": -1.0709341947009818,
+            "output_node_cap_ff": -150.83033317738867,
+            "total_cap_ff": -195.4073819461853
+          },
+          "graph_id": "leung_dfcfc1_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 140.92906580529902,
+            "output_node_cap_ff": 22.31266682261134,
+            "total_cap_ff": 1155.7641680538147
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.20431504388380972,
+            "output_node_cap_ff": 25.593471041379996,
+            "total_cap_ff": 21.527711649938055
+          },
+          "actual": {
+            "cap_count": 106.0,
+            "output_node_cap_ff": 5.7062,
+            "total_cap_ff": 513.11719
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -0.20431504388380972,
+            "output_node_cap_ff": -25.593471041379996,
+            "total_cap_ff": 21.527711649938055
+          },
+          "graph_id": "leung_dfcfc2_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 105.79568495611619,
+            "output_node_cap_ff": -19.887271041379996,
+            "total_cap_ff": 534.6449016499381
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.888537331992211,
+            "output_node_cap_ff": 21.268081411903953,
+            "total_cap_ff": 41.67820065319643
+          },
+          "actual": {
+            "cap_count": 131.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1762.34211
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -0.888537331992211,
+            "output_node_cap_ff": 21.268081411903953,
+            "total_cap_ff": -41.67820065319643
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 130.1114626680078,
+            "output_node_cap_ff": 21.268081411903953,
+            "total_cap_ff": 1720.6639093468036
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.413248429038177,
+            "output_node_cap_ff": 154.30285327536694,
+            "total_cap_ff": 29.203473410475453
+          },
+          "actual": {
+            "cap_count": 112.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 5781.05423
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 2.413248429038177,
+            "output_node_cap_ff": 154.30285327536694,
+            "total_cap_ff": 29.203473410475453
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0008",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.41324842903818,
+            "output_node_cap_ff": 154.30285327536694,
+            "total_cap_ff": 5810.257703410475
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.5100969362642616,
+            "output_node_cap_ff": 22.812247575134258,
+            "total_cap_ff": 94.66049952009871
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3656.83521
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 0.5100969362642616,
+            "output_node_cap_ff": 22.812247575134258,
+            "total_cap_ff": 94.66049952009871
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v2_20260822/grpo_leung_dfcfc2_0011",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 129.51009693626426,
+            "output_node_cap_ff": 22.812247575134258,
+            "total_cap_ff": 3751.495709520099
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.8984304974117094,
+            "output_node_cap_ff": 8.839694872961182,
+            "total_cap_ff": 92.27437629502742
+          },
+          "actual": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2001.61333
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -0.8984304974117094,
+            "output_node_cap_ff": -8.839694872961182,
+            "total_cap_ff": 92.27437629502742
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 117.10156950258829,
+            "output_node_cap_ff": -8.839694872961182,
+            "total_cap_ff": 2093.8877062950273
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.3100432379480083,
+            "output_node_cap_ff": 1.0425031655892703,
+            "total_cap_ff": 150.30630863288525
+          },
+          "actual": {
+            "cap_count": 135.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3351.97493
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -1.3100432379480083,
+            "output_node_cap_ff": 1.0425031655892703,
+            "total_cap_ff": -150.30630863288525
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0005",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 133.689956762052,
+            "output_node_cap_ff": 1.0425031655892703,
+            "total_cap_ff": 3201.6686213671146
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.5338527912108333,
+            "output_node_cap_ff": 33.63664965450352,
+            "total_cap_ff": 125.14480361700407
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 2365.25273
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -1.5338527912108333,
+            "output_node_cap_ff": -33.63664965450352,
+            "total_cap_ff": 125.14480361700407
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0010",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 127.46614720878917,
+            "output_node_cap_ff": -33.63664965450352,
+            "total_cap_ff": 2490.3975336170042
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.6886111675512439,
+            "output_node_cap_ff": 60.82203637036428,
+            "total_cap_ff": 214.36635247002073
+          },
+          "actual": {
+            "cap_count": 112.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1991.44623
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 0.6886111675512439,
+            "output_node_cap_ff": 60.82203637036428,
+            "total_cap_ff": -214.36635247002073
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v3_20260822/grpo_leung_dfcfc2_0011",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 112.68861116755124,
+            "output_node_cap_ff": 60.82203637036428,
+            "total_cap_ff": 1777.0798775299793
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.1320737620381323,
+            "output_node_cap_ff": 7.523115380604689,
+            "total_cap_ff": 109.95998511191351
+          },
+          "actual": {
+            "cap_count": 122.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1843.24312
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -1.1320737620381323,
+            "output_node_cap_ff": 7.523115380604689,
+            "total_cap_ff": -109.95998511191351
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0000",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 120.86792623796187,
+            "output_node_cap_ff": 7.523115380604689,
+            "total_cap_ff": 1733.2831348880866
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.35523925000018153,
+            "output_node_cap_ff": 34.72246423420207,
+            "total_cap_ff": 26.683426820663726
+          },
+          "actual": {
+            "cap_count": 129.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1287.5445
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 0.35523925000018153,
+            "output_node_cap_ff": 34.72246423420207,
+            "total_cap_ff": -26.683426820663726
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 129.35523925000018,
+            "output_node_cap_ff": 34.72246423420207,
+            "total_cap_ff": 1260.8610731793362
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.37778366634864824,
+            "output_node_cap_ff": 90.23739671052539,
+            "total_cap_ff": 338.0184464815893
+          },
+          "actual": {
+            "cap_count": 135.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 3228.24591
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 0.37778366634864824,
+            "output_node_cap_ff": 90.23739671052539,
+            "total_cap_ff": -338.0184464815893
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0007",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 135.37778366634865,
+            "output_node_cap_ff": 90.23739671052539,
+            "total_cap_ff": 2890.227463518411
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.5841958543929024,
+            "output_node_cap_ff": 8.359128658478978,
+            "total_cap_ff": 69.6169226419679
+          },
+          "actual": {
+            "cap_count": 111.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1444.80572
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": -0.5841958543929024,
+            "output_node_cap_ff": -8.359128658478978,
+            "total_cap_ff": 69.6169226419679
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0010",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 110.4158041456071,
+            "output_node_cap_ff": -8.359128658478978,
+            "total_cap_ff": 1514.422642641968
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.5319448552677528,
+            "output_node_cap_ff": 3.7392754071198233,
+            "total_cap_ff": 144.09577109304564
+          },
+          "actual": {
+            "cap_count": 117.0,
+            "output_node_cap_ff": 0.0,
+            "total_cap_ff": 1887.57411
+          },
+          "design_id": "leung_dfcfc2_pin_3",
+          "error": {
+            "cap_count": 0.5319448552677528,
+            "output_node_cap_ff": 3.7392754071198233,
+            "total_cap_ff": 144.09577109304564
+          },
+          "graph_id": "leung_dfcfc2_pin_3__grpo_admission_batch_v4_20260822/grpo_leung_dfcfc2_0013",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 117.53194485526775,
+            "output_node_cap_ff": 3.7392754071198233,
+            "total_cap_ff": 2031.6698810930457
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.005292486447757483,
+            "output_node_cap_ff": 4.257488770383872,
+            "total_cap_ff": 37.51563724971075
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 2.08856,
+            "total_cap_ff": 232.13717
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -0.005292486447757483,
+            "output_node_cap_ff": 4.257488770383872,
+            "total_cap_ff": 37.51563724971075
+          },
+          "graph_id": "leung_nmcf_pin_3:cand_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.99470751355224,
+            "output_node_cap_ff": 6.346048770383872,
+            "total_cap_ff": 269.65280724971075
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.005292486447757483,
+            "output_node_cap_ff": 4.322752314748803,
+            "total_cap_ff": 37.51563724971075
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13717
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -0.005292486447757483,
+            "output_node_cap_ff": -4.322752314748803,
+            "total_cap_ff": 37.51563724971075
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.99470751355224,
+            "output_node_cap_ff": 5.978777685251196,
+            "total_cap_ff": 269.65280724971075
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.005294592897470807,
+            "output_node_cap_ff": 4.324096028075891,
+            "total_cap_ff": 37.52226479408159
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30157,
+            "total_cap_ff": 232.11217
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -0.005294592897470807,
+            "output_node_cap_ff": -4.324096028075891,
+            "total_cap_ff": 37.52226479408159
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0001_input_pair_w_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.99470540710253,
+            "output_node_cap_ff": 5.977473971924109,
+            "total_cap_ff": 269.6344347940816
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.5219138133782906,
+            "output_node_cap_ff": 10.360874980642972,
+            "total_cap_ff": 0.4212710024836497
+          },
+          "actual": {
+            "cap_count": 116.0,
+            "output_node_cap_ff": 11.47249,
+            "total_cap_ff": 216.91159
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": 0.5219138133782906,
+            "output_node_cap_ff": 10.360874980642972,
+            "total_cap_ff": -0.4212710024836497
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0002_input_pair_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 116.52191381337829,
+            "output_node_cap_ff": 21.833364980642973,
+            "total_cap_ff": 216.49031899751634
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.00529575322866549,
+            "output_node_cap_ff": 4.322598410446881,
+            "total_cap_ff": 37.51404449708838
+          },
+          "actual": {
+            "cap_count": 115.0,
+            "output_node_cap_ff": 10.30153,
+            "total_cap_ff": 232.13655
+          },
+          "design_id": "leung_nmcf_pin_3",
+          "error": {
+            "cap_count": -0.00529575322866549,
+            "output_node_cap_ff": -4.322598410446881,
+            "total_cap_ff": 37.51404449708838
+          },
+          "graph_id": "leung_nmcf_reproduction_sweep_20260818_v1/leung_repro_sweep_0003_load2_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.99470424677133,
+            "output_node_cap_ff": 5.9789315895531185,
+            "total_cap_ff": 269.6505944970884
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.3280911088457401,
+            "output_node_cap_ff": 10.834825002147594,
+            "total_cap_ff": 13.798163982673032
+          },
+          "actual": {
+            "cap_count": 118.0,
+            "output_node_cap_ff": 9.95174,
+            "total_cap_ff": 274.77841
+          },
+          "design_id": "leung_nmcnr_pin_3",
+          "error": {
+            "cap_count": 0.3280911088457401,
+            "output_node_cap_ff": 10.834825002147594,
+            "total_cap_ff": 13.798163982673032
+          },
+          "graph_id": "leung_nmcnr_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 118.32809110884574,
+            "output_node_cap_ff": 20.786565002147594,
+            "total_cap_ff": 288.57657398267304
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.58309330423549,
+            "output_node_cap_ff": 6.395714379723147,
+            "total_cap_ff": 78.6660832613677
+          },
+          "actual": {
+            "cap_count": 127.0,
+            "output_node_cap_ff": 2.68355,
+            "total_cap_ff": 251.96947
+          },
+          "design_id": "peng_acbc_pin_3",
+          "error": {
+            "cap_count": -0.58309330423549,
+            "output_node_cap_ff": -6.395714379723147,
+            "total_cap_ff": 78.6660832613677
+          },
+          "graph_id": "peng_acbc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 126.41690669576451,
+            "output_node_cap_ff": -3.7121643797231467,
+            "total_cap_ff": 330.6355532613677
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 2.2474663788166964,
+            "output_node_cap_ff": 28.365410034813973,
+            "total_cap_ff": 20.415562101665245
+          },
+          "actual": {
+            "cap_count": 124.0,
+            "output_node_cap_ff": 1.67224,
+            "total_cap_ff": 162.41758
+          },
+          "design_id": "qu2017_azc_pin_3",
+          "error": {
+            "cap_count": 2.2474663788166964,
+            "output_node_cap_ff": -28.365410034813973,
+            "total_cap_ff": 20.415562101665245
+          },
+          "graph_id": "qu2017_azc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 126.2474663788167,
+            "output_node_cap_ff": -26.693170034813974,
+            "total_cap_ff": 182.83314210166523
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.5106320142442797,
+            "output_node_cap_ff": 24.30492340515059,
+            "total_cap_ff": 282.7907403165782
+          },
+          "actual": {
+            "cap_count": 114.0,
+            "output_node_cap_ff": 114.514,
+            "total_cap_ff": 1758.0844
+          },
+          "design_id": "ramos_pfc_pin_3",
+          "error": {
+            "cap_count": 1.5106320142442797,
+            "output_node_cap_ff": -24.30492340515059,
+            "total_cap_ff": -282.7907403165782
+          },
+          "graph_id": "ramos_pfc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 115.51063201424428,
+            "output_node_cap_ff": 90.2090765948494,
+            "total_cap_ff": 1475.2936596834218
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 15.805275814009889,
+            "total_cap_ff": 77.41218551774378
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 2.41469,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 15.805275814009889,
+            "total_cap_ff": -77.41218551774378
+          },
+          "graph_id": "sau_cfcc_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 100.40310909662928,
+            "output_node_cap_ff": 18.21996581400989,
+            "total_cap_ff": 150.50054448225623
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 5.581224899656968,
+            "total_cap_ff": 77.41218551774378
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 5.581224899656968,
+            "total_cap_ff": -77.41218551774378
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 100.40310909662928,
+            "output_node_cap_ff": 17.28104489965697,
+            "total_cap_ff": 150.50054448225623
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 5.581224899656968,
+            "total_cap_ff": 77.41218551774378
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 5.581224899656968,
+            "total_cap_ff": -77.41218551774378
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0001_cap0_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 100.40310909662928,
+            "output_node_cap_ff": 17.28104489965697,
+            "total_cap_ff": 150.50054448225623
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.4031085159312653,
+            "output_node_cap_ff": 5.582809095240767,
+            "total_cap_ff": 77.41576335159533
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.93797
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 1.4031085159312653,
+            "output_node_cap_ff": 5.582809095240767,
+            "total_cap_ff": -77.41576335159533
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0002_gm1_pmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 100.40310851593127,
+            "output_node_cap_ff": 17.282629095240768,
+            "total_cap_ff": 150.52220664840468
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 5.581224899656968,
+            "total_cap_ff": 77.41218551774378
+          },
+          "actual": {
+            "cap_count": 99.0,
+            "output_node_cap_ff": 11.69982,
+            "total_cap_ff": 227.91273
+          },
+          "design_id": "sau_cfcc_pin_3",
+          "error": {
+            "cap_count": 1.4031090966292794,
+            "output_node_cap_ff": 5.581224899656968,
+            "total_cap_ff": -77.41218551774378
+          },
+          "graph_id": "sau_cfcc_reproduction_sweep_20260818_v1/sau_repro_sweep_0004_cap0_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 100.40310909662928,
+            "output_node_cap_ff": 17.28104489965697,
+            "total_cap_ff": 150.50054448225623
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.1365196723032085,
+            "output_node_cap_ff": 447.12790772038636,
+            "total_cap_ff": 830.7966435731306
+          },
+          "actual": {
+            "cap_count": 34.0,
+            "output_node_cap_ff": 172.429,
+            "total_cap_ff": 432.73855
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.1365196723032085,
+            "output_node_cap_ff": 447.12790772038636,
+            "total_cap_ff": -830.7966435731306
+          },
+          "graph_id": "smcnr_se_2st_amp:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.86348032769679,
+            "output_node_cap_ff": 619.5569077203863,
+            "total_cap_ff": -398.05809357313063
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.11199479758639086,
+            "output_node_cap_ff": 30.27044254858413,
+            "total_cap_ff": 26.76951272186011
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.11199479758639086,
+            "output_node_cap_ff": -30.27044254858413,
+            "total_cap_ff": 26.76951272186011
+          },
+          "graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.11199479758639,
+            "output_node_cap_ff": 615.3511774514159,
+            "total_cap_ff": 791.22009272186
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.21046176605729627,
+            "output_node_cap_ff": 23.77973876302201,
+            "total_cap_ff": 77.42419491730732
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71923,
+            "total_cap_ff": 764.49118
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.21046176605729627,
+            "output_node_cap_ff": -23.77973876302201,
+            "total_cap_ff": 77.42419491730732
+          },
+          "graph_id": "smcnr_se_2st_amp:smcnr_sizing_probe_0002",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 31.789538233942704,
+            "output_node_cap_ff": 621.939491236978,
+            "total_cap_ff": 841.9153749173073
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.11199479758637665,
+            "output_node_cap_ff": 30.27044254858413,
+            "total_cap_ff": 26.769512721860337
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.62162,
+            "total_cap_ff": 764.45058
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.11199479758637665,
+            "output_node_cap_ff": -30.27044254858413,
+            "total_cap_ff": 26.769512721860337
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0000_baseline",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.11199479758638,
+            "output_node_cap_ff": 615.3511774514159,
+            "total_cap_ff": 791.2200927218603
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.11165853264777326,
+            "output_node_cap_ff": 30.374556605244948,
+            "total_cap_ff": 25.06323989374698
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.54552,
+            "total_cap_ff": 763.42667
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.11165853264777326,
+            "output_node_cap_ff": -30.374556605244948,
+            "total_cap_ff": 25.06323989374698
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0001_diff_pair_w_m5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.11165853264777,
+            "output_node_cap_ff": 615.1709633947551,
+            "total_cap_ff": 788.4899098937469
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.31698123019853597,
+            "output_node_cap_ff": 21.586554959397972,
+            "total_cap_ff": 47.47103830630738
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69675,
+            "total_cap_ff": 765.46556
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.31698123019853597,
+            "output_node_cap_ff": -21.586554959397972,
+            "total_cap_ff": 47.47103830630738
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0002_diff_pair_w_p5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.316981230198536,
+            "output_node_cap_ff": 624.110195040602,
+            "total_cap_ff": 812.9365983063074
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.11203736192487668,
+            "output_node_cap_ff": 30.155347374374514,
+            "total_cap_ff": 26.83312731533283
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.51523,
+            "total_cap_ff": 764.47736
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.11203736192487668,
+            "output_node_cap_ff": -30.155347374374514,
+            "total_cap_ff": 26.83312731533283
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0003_load_nmos_w_mstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.11203736192488,
+            "output_node_cap_ff": 615.3598826256255,
+            "total_cap_ff": 791.3104873153328
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.21046070725453347,
+            "output_node_cap_ff": 23.777903050000646,
+            "total_cap_ff": 77.42979505461142
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.71805,
+            "total_cap_ff": 764.49436
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.21046070725453347,
+            "output_node_cap_ff": -23.777903050000646,
+            "total_cap_ff": 77.42979505461142
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0004_load_nmos_w_pstep",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 31.789539292745467,
+            "output_node_cap_ff": 621.9401469499993,
+            "total_cap_ff": 841.9241550546114
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.1120366933155168,
+            "output_node_cap_ff": 30.3265289174808,
+            "total_cap_ff": 26.98200596895424
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69652,
+            "total_cap_ff": 764.57809
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.1120366933155168,
+            "output_node_cap_ff": -30.3265289174808,
+            "total_cap_ff": 26.98200596895424
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0005_second_stage_pmos_w_p5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.11203669331552,
+            "output_node_cap_ff": 615.3699910825192,
+            "total_cap_ff": 791.5600959689542
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.11207784748824423,
+            "output_node_cap_ff": 30.383320713016246,
+            "total_cap_ff": 27.19071787854284
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.7717,
+            "total_cap_ff": 764.70333
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.11207784748824423,
+            "output_node_cap_ff": -30.383320713016246,
+            "total_cap_ff": 27.19071787854284
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0006_second_stage_pmos_w_p10pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.112077847488244,
+            "output_node_cap_ff": 615.3883792869838,
+            "total_cap_ff": 791.8940478785429
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.21144425274651724,
+            "output_node_cap_ff": 23.116205430525838,
+            "total_cap_ff": 75.53020805962262
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 644.98095,
+            "total_cap_ff": 763.63822
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.21144425274651724,
+            "output_node_cap_ff": -23.116205430525838,
+            "total_cap_ff": 75.53020805962262
+          },
+          "graph_id": "smcnr_sizing_sweep_20260817_v1/smcnr_sweep_0007_second_stage_nmos_w_p5pct",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 31.788555747253483,
+            "output_node_cap_ff": 621.8647445694742,
+            "total_cap_ff": 839.1684280596227
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.11170150740370843,
+            "output_node_cap_ff": 30.259233623642217,
+            "total_cap_ff": 25.128952647483743
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.43913,
+            "total_cap_ff": 763.45471
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.11170150740370843,
+            "output_node_cap_ff": -30.259233623642217,
+            "total_cap_ff": 25.128952647483743
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0008_diff_m_load_m",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.11170150740371,
+            "output_node_cap_ff": 615.1798963763578,
+            "total_cap_ff": 788.5836626474837
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.21080186093241693,
+            "output_node_cap_ff": 23.88697067824478,
+            "total_cap_ff": 75.62698333238359
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.64185,
+            "total_cap_ff": 763.47053
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.21080186093241693,
+            "output_node_cap_ff": -23.88697067824478,
+            "total_cap_ff": 75.62698333238359
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0009_diff_m_load_p",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 31.789198139067583,
+            "output_node_cap_ff": 621.7548793217552,
+            "total_cap_ff": 839.0975133323836
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.3170232022131998,
+            "output_node_cap_ff": 21.471293412744444,
+            "total_cap_ff": 47.53271887371227
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.59025,
+            "total_cap_ff": 765.49032
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.3170232022131998,
+            "output_node_cap_ff": -21.471293412744444,
+            "total_cap_ff": 47.53271887371227
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0010_diff_p_load_m",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.3170232022132,
+            "output_node_cap_ff": 624.1189565872555,
+            "total_cap_ff": 813.0230388737123
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.21012272221547335,
+            "output_node_cap_ff": 23.670188618139036,
+            "total_cap_ff": 79.21901645427306
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.79409,
+            "total_cap_ff": 765.51024
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.21012272221547335,
+            "output_node_cap_ff": -23.670188618139036,
+            "total_cap_ff": 79.21901645427306
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0011_diff_p_load_p",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 31.789877277784527,
+            "output_node_cap_ff": 622.123901381861,
+            "total_cap_ff": 844.729256454273
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.31702375858632337,
+            "output_node_cap_ff": 21.64251122760595,
+            "total_cap_ff": 47.69076759420102
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.77166,
+            "total_cap_ff": 765.59308
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.31702375858632337,
+            "output_node_cap_ff": -21.64251122760595,
+            "total_cap_ff": 47.69076759420102
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0012_diff_p_pmos_p5",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.31702375858632,
+            "output_node_cap_ff": 624.129148772394,
+            "total_cap_ff": 813.283847594201
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.11174157176336763,
+            "output_node_cap_ff": 30.487373565462462,
+            "total_cap_ff": 25.484720786141565
+          },
+          "actual": {
+            "cap_count": 33.0,
+            "output_node_cap_ff": 645.69559,
+            "total_cap_ff": 763.6796
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": 0.11174157176336763,
+            "output_node_cap_ff": -30.487373565462462,
+            "total_cap_ff": 25.484720786141565
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0013_diff_m_pmos_p10",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 33.11174157176337,
+            "output_node_cap_ff": 615.2082164345376,
+            "total_cap_ff": 789.1643207861416
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.21143356743104746,
+            "output_node_cap_ff": 23.20061284891915,
+            "total_cap_ff": 75.58667647190805
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.06645,
+            "total_cap_ff": 763.67029
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.21143356743104746,
+            "output_node_cap_ff": -23.20061284891915,
+            "total_cap_ff": 75.58667647190805
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0014_load_p_nmos_p5",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 31.788566432568953,
+            "output_node_cap_ff": 621.8658371510809,
+            "total_cap_ff": 839.2569664719081
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.21136059664215878,
+            "output_node_cap_ff": 23.22812850513617,
+            "total_cap_ff": 75.97238728737716
+          },
+          "actual": {
+            "cap_count": 32.0,
+            "output_node_cap_ff": 645.13088,
+            "total_cap_ff": 763.88934
+          },
+          "design_id": "smcnr_se_2st_amp",
+          "error": {
+            "cap_count": -0.21136059664215878,
+            "output_node_cap_ff": -23.22812850513617,
+            "total_cap_ff": 75.97238728737716
+          },
+          "graph_id": "smcnr_sizing_sweep_combo_20260817_v1/smcnr_combo_0015_pmos_p10_nmos_p5",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 31.78863940335784,
+            "output_node_cap_ff": 621.9027514948639,
+            "total_cap_ff": 839.8617272873771
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.6209305735585531,
+            "output_node_cap_ff": 8.41432919076892,
+            "total_cap_ff": 124.04955110421903
+          },
+          "actual": {
+            "cap_count": 130.0,
+            "output_node_cap_ff": 3.27131,
+            "total_cap_ff": 134.28059
+          },
+          "design_id": "tan_clia_pin_3",
+          "error": {
+            "cap_count": -0.6209305735585531,
+            "output_node_cap_ff": 8.41432919076892,
+            "total_cap_ff": 124.04955110421903
+          },
+          "graph_id": "tan_clia_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 129.37906942644145,
+            "output_node_cap_ff": 11.685639190768919,
+            "total_cap_ff": 258.330141104219
+          }
+        },
+        {
+          "absolute_error": {
+            "cap_count": 0.3120356577076677,
+            "output_node_cap_ff": 6.118316487604602,
+            "total_cap_ff": 36.50359150675976
+          },
+          "actual": {
+            "cap_count": 114.0,
+            "output_node_cap_ff": 2.52636,
+            "total_cap_ff": 135.3599
+          },
+          "design_id": "yan_az_pin_3",
+          "error": {
+            "cap_count": 0.3120356577076677,
+            "output_node_cap_ff": 6.118316487604602,
+            "total_cap_ff": 36.50359150675976
+          },
+          "graph_id": "yan_az_pin_3:cand_0001",
+          "nearest_graph_id": null,
+          "predicted": {
+            "cap_count": 114.31203565770767,
+            "output_node_cap_ff": 8.644676487604602,
+            "total_cap_ff": 171.86349150675977
+          }
+        }
+      ],
+      "ridge_alpha": 1.0,
+      "sample_count": 64
+    }
+  },
+  "schema_version": "parasitic_graph_training_baseline.v1",
+  "target_names": [
+    "cap_count",
+    "total_cap_ff",
+    "output_node_cap_ff"
+  ],
+  "warnings": [
+    "Only 64 graph samples are available; metrics are smoke-test diagnostics.",
+    "Direct full-graph capacitance sum features are excluded; this profile is the preferred non-leaky smoke check for total_cap_ff.",
+    "Ridge regression is implemented without external dependencies for reproducible plumbing checks.",
+    "Performance labels are excluded because Stage3 performance remains observation-only."
+  ]
+}

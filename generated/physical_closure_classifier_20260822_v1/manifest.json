@@ -1,0 +1,66 @@
+{
+  "schema_version": "physical_closure_classifier.v1",
+  "created_at": "2026-08-22T10:41:07.008122+00:00",
+  "input_summaries": [
+    "/home/qlf/IOT/references/qlf--diagnostics/generated/grpo_to_pcs_admission_batch_v2_20260822/admission_summary_v2.json",
+    "/home/qlf/IOT/references/qlf--diagnostics/generated/grpo_to_pcs_admission_batch_v3_20260822/admission_summary_v3.json"
+  ],
+  "pcs_root": "/home/qlf/IOT/references/pcs-harness-align-origin-main-20260815",
+  "output_dir": "/home/qlf/IOT/references/qlf--diagnostics/generated/physical_closure_classifier_20260822_v1",
+  "record_count": 24,
+  "feature_count": 111,
+  "label_counts": {
+    "admitted_raw_pex_graph": 7,
+    "physical_closure_failed": 13,
+    "raw_pex_available_not_l6": 4
+  },
+  "admitted_count": 7,
+  "raw_pex_available_count": 11,
+  "model_metrics": {
+    "dummy_most_frequent": {
+      "n": 24,
+      "accuracy": 0.7083333333333334,
+      "balanced_accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "f1": 0.0,
+      "confusion_matrix": {
+        "tp": 0,
+        "tn": 17,
+        "fp": 0,
+        "fn": 7
+      }
+    },
+    "logistic_l2_balanced": {
+      "n": 24,
+      "accuracy": 0.3333333333333333,
+      "balanced_accuracy": 0.2773109243697479,
+      "precision": 0.09090909090909091,
+      "recall": 0.14285714285714285,
+      "specificity": 0.4117647058823529,
+      "f1": 0.1111111111111111,
+      "confusion_matrix": {
+        "tp": 1,
+        "tn": 7,
+        "fp": 10,
+        "fn": 6
+      }
+    },
+    "decision_tree_depth3_balanced": {
+      "n": 24,
+      "accuracy": 0.7916666666666666,
+      "balanced_accuracy": 0.726890756302521,
+      "precision": 0.6666666666666666,
+      "recall": 0.5714285714285714,
+      "specificity": 0.8823529411764706,
+      "f1": 0.6153846153846153,
+      "confusion_matrix": {
+        "tp": 4,
+        "tn": 15,
+        "fp": 2,
+        "fn": 3
+      }
+    }
+  }
+}

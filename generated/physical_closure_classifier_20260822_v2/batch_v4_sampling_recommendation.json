@@ -1,0 +1,148 @@
+{
+  "schema_version": "physical_closure_classifier.batch_v4_sampling_recommendation.v1",
+  "input_records": 48,
+  "status_counts": {
+    "admitted_raw_pex_graph": 12,
+    "physical_closure_failed": 25,
+    "raw_pex_available_not_l6": 8,
+    "simulation_timeout_or_hang": 3
+  },
+  "model_metrics": {
+    "dummy_most_frequent": {
+      "n": 48,
+      "accuracy": 0.75,
+      "balanced_accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "f1": 0.0,
+      "confusion_matrix": {
+        "tp": 0,
+        "tn": 36,
+        "fp": 0,
+        "fn": 12
+      }
+    },
+    "logistic_l2_balanced": {
+      "n": 48,
+      "accuracy": 0.5208333333333334,
+      "balanced_accuracy": 0.4305555555555556,
+      "precision": 0.17647058823529413,
+      "recall": 0.25,
+      "specificity": 0.6111111111111112,
+      "f1": 0.20689655172413793,
+      "confusion_matrix": {
+        "tp": 3,
+        "tn": 22,
+        "fp": 14,
+        "fn": 9
+      }
+    },
+    "decision_tree_depth3_balanced": {
+      "n": 48,
+      "accuracy": 0.5833333333333334,
+      "balanced_accuracy": 0.5277777777777778,
+      "precision": 0.2777777777777778,
+      "recall": 0.4166666666666667,
+      "specificity": 0.6388888888888888,
+      "f1": 0.33333333333333337,
+      "confusion_matrix": {
+        "tp": 5,
+        "tn": 23,
+        "fp": 13,
+        "fn": 7
+      }
+    }
+  },
+  "top_feature_signals": [
+    {
+      "feature": "sizing__mosfet_18_7_m_biascm_nmos",
+      "mean_admitted": 5.25,
+      "mean_not_admitted": 20.916666666666668,
+      "delta_admitted_minus_not": -15.666666666666668,
+      "abs_standardized_effect": 1.0034697638452128
+    },
+    {
+      "feature": "action_norm_17",
+      "mean_admitted": -0.8250945657491684,
+      "mean_not_admitted": -0.18932056261433494,
+      "delta_admitted_minus_not": -0.6357740031348335,
+      "abs_standardized_effect": 1.0015992841739854
+    },
+    {
+      "feature": "sizing__mosfet_23_2_w_load2_nmos",
+      "mean_admitted": 4.158333333333333,
+      "mean_not_admitted": 6.577777777777778,
+      "delta_admitted_minus_not": -2.419444444444445,
+      "abs_standardized_effect": 0.7372276063093024
+    },
+    {
+      "feature": "action_norm_18",
+      "mean_admitted": -0.22825276603301367,
+      "mean_not_admitted": 0.28031967621710563,
+      "delta_admitted_minus_not": -0.5085724422501193,
+      "abs_standardized_effect": 0.7371514578696409
+    },
+    {
+      "feature": "mos_width_times_m_sum",
+      "mean_admitted": 1941.2916666666667,
+      "mean_not_admitted": 2864.941666666667,
+      "delta_admitted_minus_not": -923.6500000000003,
+      "abs_standardized_effect": 0.7343888144378401
+    },
+    {
+      "feature": "nmos_m_max",
+      "mean_admitted": 33.083333333333336,
+      "mean_not_admitted": 41.916666666666664,
+      "delta_admitted_minus_not": -8.833333333333329,
+      "abs_standardized_effect": 0.6988863296926208
+    },
+    {
+      "feature": "mos_w_all_max",
+      "mean_admitted": 8.941666666666666,
+      "mean_not_admitted": 9.675,
+      "delta_admitted_minus_not": -0.7333333333333343,
+      "abs_standardized_effect": 0.6763030831338386
+    },
+    {
+      "feature": "nmos_l_min",
+      "mean_admitted": 0.7166666666666667,
+      "mean_not_admitted": 1.2666666666666666,
+      "delta_admitted_minus_not": -0.5499999999999999,
+      "abs_standardized_effect": 0.6521640428824739
+    },
+    {
+      "feature": "pmos_w_max",
+      "mean_admitted": 8.075000000000001,
+      "mean_not_admitted": 9.180555555555555,
+      "delta_admitted_minus_not": -1.1055555555555543,
+      "abs_standardized_effect": 0.6327386029160152
+    },
+    {
+      "feature": "nmos_m_mean",
+      "mean_admitted": 18.305555555555554,
+      "mean_not_admitted": 24.203703703703706,
+      "delta_admitted_minus_not": -5.898148148148152,
+      "abs_standardized_effect": 0.6240243293661634
+    },
+    {
+      "feature": "nmos_m_sum",
+      "mean_admitted": 54.916666666666664,
+      "mean_not_admitted": 72.61111111111111,
+      "delta_admitted_minus_not": -17.69444444444445,
+      "abs_standardized_effect": 0.624024329366163
+    },
+    {
+      "feature": "sizing__mosfet_12_1_w_gmf2_pmos",
+      "mean_admitted": 3.616666666666667,
+      "mean_not_admitted": 5.133333333333334,
+      "delta_admitted_minus_not": -1.5166666666666666,
+      "abs_standardized_effect": 0.6092316855892848
+    }
+  ],
+  "policy": [
+    "same_action_space_contract_no_single_feature_hard_prune",
+    "classifier_guided_stratified_sampling",
+    "actual_l0_to_l6_raw_pex_admission_remains_source_of_truth"
+  ]
+}
