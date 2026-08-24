@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from types import SimpleNamespace
 import tempfile
 import unittest
@@ -143,9 +144,10 @@ class LayoutOptimizerStateTest(unittest.TestCase):
     def test_command_available_uses_local_lookup_without_wsl_distro(self) -> None:
         adapter = object.__new__(LayoutVerificationAdapter)
         adapter.layout_config = {}
+        interpreter = Path(sys.executable).name
 
-        self.assertTrue(adapter._command_available("python") or adapter._command_available("py"))
-        self.assertTrue(adapter._command_available(("python", "py")))
+        self.assertTrue(adapter._command_available(interpreter))
+        self.assertTrue(adapter._command_available(("__codex_missing_command_for_test__", interpreter)))
         self.assertFalse(adapter._command_available("__codex_missing_command_for_test__"))
         self.assertFalse(
             adapter._command_available(

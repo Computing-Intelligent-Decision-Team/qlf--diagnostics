@@ -5851,6 +5851,11 @@ def _wsl_or_posix_path(path: Path | str) -> str:
 
 
 def _wsl_path(path: Path) -> str:
+    raw = str(path).replace("\\", "/")
+    windows_drive = re.match(r"^([A-Za-z]):/(.*)$", raw)
+    if windows_drive:
+        drive, rest = windows_drive.groups()
+        return f"/mnt/{drive.lower()}/{rest}"
     resolved = path.resolve()
     drive = resolved.drive.rstrip(":").lower()
     if drive:

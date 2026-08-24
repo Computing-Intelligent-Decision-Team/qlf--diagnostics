@@ -114,6 +114,20 @@ simulation_timeout_or_hang
 
 它们保留为 admission/failure 证据，但不进入默认 graph training。
 
+### `raw_pex_available_not_l6` 的准入边界
+
+`raw_pex_available_not_l6` 只表示磁盘上存在可解析的 raw PEX 产物，不表示该候选已经通过 PCS 物理闭合。尤其在 layout/DRC/LVS/verification 失败时，raw `*_extracted.raw.spice` 可能只是失败流程中的残留或中间产物。
+
+因此默认 graph training 必须同时满足：
+
+```text
+admission_status == admitted_raw_pex_graph
+best_closure_level == L6_post_layout_pvt
+default_training_inclusion == true
+```
+
+不得仅因为存在 raw PEX 文件就把样本升级为 L5/L6。`raw_pex_available_not_l6` 样本只能作为 failure/debug evidence 使用，不进入默认寄生建模数据集。
+
 ## batch v4 dry-run 验证
 
 已用现有 batch v4 replay manifest 做 dry-run 验证：
@@ -143,4 +157,3 @@ PYTHONPATH=. python3 tools/analog_harness/grpo_to_pcs_admission_runner.py \
 - runner 不把 GRPO sizing 直接变成训练样本。
 - runner 不绕过 PCS/MAGICAL/Magic/Netgen/ngspice。
 - runner 只是长期生产数据的批处理入口；最终 admission 仍以真实 L0→L6/raw PEX 证据为准。
-

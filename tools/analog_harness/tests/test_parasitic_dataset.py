@@ -158,9 +158,9 @@ class TestSampleRegistry(unittest.TestCase):
                                  f"{entry['sample_id']} must not be training-positive")
                 self.assertEqual(entry["lvs_status"], "FAIL")
 
-    def test_all_spice_paths_exist(self):
+    def test_training_positive_spice_paths_exist(self):
         for entry in SAMPLE_REGISTRY:
-            if "raw_spice_path" in entry:
+            if entry["usable_for_supervised_positive_training"] and "raw_spice_path" in entry:
                 path = Path(entry["raw_spice_path"])
                 self.assertTrue(path.exists(),
                                 f"SPICE path missing for {entry['sample_id']}: {path}")

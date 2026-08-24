@@ -19,6 +19,10 @@ from pathlib import Path
 from typing import Any
 
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+CURATED_FIXTURE_ROOT = REPO_ROOT / "tools" / "analog_harness" / "fixtures"
+
+
 @dataclass
 class ParasiticEdge:
     src: str
@@ -67,7 +71,7 @@ SAMPLE_REGISTRY = [
         "usable_for_parasitic_modeling": True,
         "usable_only_as_failure_case": False,
         "provenance_note": "Reviewed SMCNR positive baseline; passive scope is accepted as backfilled evidence from curated artifacts.",
-        "raw_spice_path": "/home/qlf/IOT/references/AnalogHarness/reproducibility/smcnr_se_2st_amp/best_candidate/cand_0031/layout/lvs_mos_projection/SMCNR_SE_2st_AMP_extracted.raw.spice",
+        "raw_spice_path": str(CURATED_FIXTURE_ROOT / "smcnr_se_2st_amp_cand_0031.raw.spice"),
         "pex_summary_path": "/home/qlf/IOT/references/AnalogHarness/reproducibility/smcnr_se_2st_amp/best_candidate/cand_0031/layout/lvs_mos_projection/pex_summary.md",
         "state_path": "/home/qlf/IOT/references/AnalogHarness/reproducibility/smcnr_se_2st_amp/best_candidate/cand_0031/state.json",
         "regenerated_spice_path": "/home/qlf/IOT/references/AnalogHarness/generated/diagnostics/fan_smc_c0_proxy_94x10/ah_smc_023/SMCNR_SE_2st_AMP_flat.spice",
