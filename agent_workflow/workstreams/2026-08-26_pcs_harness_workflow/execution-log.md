@@ -54,3 +54,12 @@
 - artifact: PCS worktree commit `ca9d02c` (`workflow_events.py`, `workflow_timing.py`, and eight focused tests).
 - verify: `/home/qlf/anaconda3/envs/Harness/bin/python -m unittest tools.analog_harness.tests.test_workflow_events tools.analog_harness.tests.test_workflow_timing` → `Ran 8 tests ... OK`; combined baseline regression → `Ran 37 tests ... OK`; `compileall` and `git diff --check` passed.
 - decision: T004 is complete; T005 stage instrumentation is next.
+
+## 2026-08-26 03:51:12 CST | T005 L0–L6 and physical instrumentation complete
+
+- method: Superpowers test-driven-development (RED–GREEN–REFACTOR); executing-plans checkpoint
+- RED: The controller/layout integration test first failed because the physical observer and streamed marker parser did not exist. A resource-leak regression test then caught an unclosed subprocess stdout stream.
+- GREEN: Instrumented real L0/L1/L2/L4/L5/L6 controller operations, added SHA-256/size/path artifact references, and streamed machine-readable L3/DRC/LVS/PEX boundaries from the unchanged Sky130 EDA command sequence. L3 is explicitly `layout_checkpoint` with `formal_closure_level=false`.
+- artifact: PCS worktree commit `5c212a0`; controller, layout adapter, Sky130 pipeline markers, and three integration tests.
+- verify: instrumentation + layout/state + contracts + event/timing suites → `Ran 86 tests in 1.302s` — `OK`; `bash -n`, `compileall`, and `git diff --check` passed with no warnings.
+- decision: The implementation plan was refined to add structured shell-stage markers because the previous monolithic subprocess could not provide truthful DRC/LVS/PEX timings. EDA commands and pass/fail semantics were not changed. T005 is complete; T006 Agent bridge is next.
