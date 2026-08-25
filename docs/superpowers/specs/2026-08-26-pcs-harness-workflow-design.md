@@ -10,7 +10,7 @@
 2. Harness 校验并自动执行 Agent 的结构化决策；
 3. GRPO 在固定偏置下搜索物理 MOS sizing；
 4. PCS-Harness 生成并验证新版图，完成 DRC、LVS、PEX、后仿与 PVT；
-5. 页面实时展示运行过程，同时保存相同事件用于离线回放和 PPT 录屏。
+5. 页面实时展示运行过程，完整事件记录用于审计，真实运行画面录制为视频后放入 PPT。
 
 本设计不修改现有 `apps/analog-circuit-platform`。两个应用可共享品牌语言，但依赖、路由、构建和部署相互独立。
 
@@ -33,7 +33,7 @@
 
 - 实时展示 PCS-Harness 阶段、Agent 决策、GRPO group/candidate、版图检查点、DRC/LVS/PEX、后仿和 PVT；
 - 所有画面来自持久化事件或可追溯派生数据，不依赖手工填写结果；
-- 实时模式和离线回放模式使用同一个事件协议；
+- 页面只支持真实运行时的实时展示，不设计离线回放模式；
 - 第 N 轮和第 N+1 轮并列保存，页面不覆盖历史候选；
 - 页面能以布局差异、寄生差异和性能差异解释闭环改进；
 - 页面不展示私有 chain-of-thought，只展示可审计的观察、判断、动作和简洁理由。
@@ -161,12 +161,12 @@ ngspice、MAGICAL、Magic、Netgen 和 PEX 流程产生事实证据。网页只�
 ```text
 /home/qlf/IOT/apps/pcs-harness-workflow/
 ├── src/
-├── public/demo-runs/ota-core-l6-v1/
+├── public/
 ├── tests/
 └── dist/
 ```
 
-`public/demo-runs` 只保存经过整理的轻量展示快照，不保存全部 GDS、完整环境路径或不必要的原始网表。
+`public/` 只保存应用自身的静态资产，不复制实验候选、GDS、PEX网表或离线demo run。页面录制时直接连接当次 PCS-Harness 运行。
 
 ### 6.3 可信导出
 
@@ -197,8 +197,8 @@ ngspice、MAGICAL、Magic、Netgen 和 PEX 流程产生事实证据。网页只�
 - `sequence` 在单个 run 内严格递增；
 - 事件先追加写入 JSONL，再通过 SSE推送；
 - 页面断线后用最后 sequence 补读，不丢事件；
-- 实时模式与回放模式使用相同 reducer；
-- 网页时间轴使用真实 `occurred_at`，播放速度只是回放参数。
+- 页面时间轴只使用真实 `occurred_at`，不插入人工延时；
+- JSONL用于证据审计和实时页面断线重连，不对用户提供回放控件。
 
 ## 8. 可视化设计
 
@@ -279,20 +279,21 @@ DRC marker必须来自真实坐标。DRC-clean候选展示规则扫描和最终0
 
 ## 11. 验证策略
 
-- 事件schema、sequence和回放reducer单元测试；
+- 事件schema、sequence和实时状态reducer单元测试；
 - Agent decision closed schema与stale hash拒绝测试；
 - GRPO action space测试，确保bias、L和multi不可变；
 - 阶段计时嵌套与总时间一致性测试；
 - GDS checkpoint解析和同坐标系渲染测试；
 - `.ext`/raw SPICE寄生解析交叉核对；
 - 信任合同测试：DRC、LVS或raw PEX任一缺失必须拒绝导出；
-- 实时SSE与离线JSONL回放最终状态一致性测试；
+- SSE断线重连后根据sequence补读事件的一致性测试；
 - 前端组件测试、生产构建和录屏分辨率视觉检查；
 - 最终使用一次全新run root完成端到端彩排。
 
 ## 12. 非目标
 
 - 不修改现有模拟芯片设计服务网站；
+- 不开发离线回放、播放速度或预置demo run功能；
 - 不构建浏览器版图编辑器；
 - 不显示Agent私有chain-of-thought；
 - 不宣称完整foundry signoff；
