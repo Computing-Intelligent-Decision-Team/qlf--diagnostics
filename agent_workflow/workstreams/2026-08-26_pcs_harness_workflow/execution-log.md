@@ -63,3 +63,12 @@
 - artifact: PCS worktree commit `5c212a0`; controller, layout adapter, Sky130 pipeline markers, and three integration tests.
 - verify: instrumentation + layout/state + contracts + event/timing suites → `Ran 86 tests in 1.302s` — `OK`; `bash -n`, `compileall`, and `git diff --check` passed with no warnings.
 - decision: The implementation plan was refined to add structured shell-stage markers because the previous monolithic subprocess could not provide truthful DRC/LVS/PEX timings. EDA commands and pass/fail semantics were not changed. T005 is complete; T006 Agent bridge is next.
+
+## 2026-08-26 03:54:54 CST | T006 Agent bridge and dispatcher complete
+
+- method: Superpowers test-driven-development (RED–GREEN–REFACTOR); executing-plans checkpoint
+- RED: Agent tests first failed on the absent provider/dispatcher module. A follow-up audit test showed invalid provider stdout was lost instead of being preserved.
+- GREEN: Added JSON-over-stdin subprocess invocation with timeout/nonzero/malformed-output rejection, separate raw and validated artifacts, stale report-hash protection through the existing closed schema, validated-only action dispatch, concise UI-safe Agent events, and Agent monotonic timing. Failed provider output is retained for audit and is never dispatched.
+- artifact: PCS worktree commit `0ae672a`; `workflow_agent.py`, orchestration artifact separation, and six focused tests.
+- verify: Agent/orchestration/instrumentation/event/timing suites → `Ran 21 tests in 0.365s` — `OK`; `compileall` and `git diff --check` passed.
+- decision: T006 is complete; T007 OTA GRPO action-space/provenance is next.
