@@ -1,0 +1,4 @@
+interface:
+  display_name: "AnalogHarness Parasitic Export"
+  short_description: "Validate and package trustworthy L6 parasitic data"
+  default_prompt: "Use $analog-harness-parasitic-export to validate recent AnalogHarness L6 candidates and create a checksummed parasitic-data archive."
