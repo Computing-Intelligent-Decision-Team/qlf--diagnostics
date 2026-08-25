@@ -14,3 +14,10 @@
 - result: Removed offline replay, playback controls and bundled demo runs. The application is live-only; JSONL remains solely for audit and SSE reconnect recovery. The recorded live video is the PPT deliverable.
 - artifact: `docs/superpowers/specs/2026-08-26-pcs-harness-workflow-design.md`
 - verify: `rg -n "回放|replay|demo-runs|播放速度" docs/superpowers/specs/2026-08-26-pcs-harness-workflow-design.md`
+
+## 2026-08-26 | T001 input-flow revision
+
+- method: Superpowers brainstorming design revision
+- result: Fixed the entry flow to circuit-type selection, netlist upload, parsing, preflight and one-click automatic closure. The recorded run selects OTA and binds the verified `ota_core` profile.
+- artifact: `docs/superpowers/specs/2026-08-26-pcs-harness-workflow-design.md`
+- verify: `rg -n "入口与输入顺序|选择类型|上传 SPICE|ota_core" docs/superpowers/specs/2026-08-26-pcs-harness-workflow-design.md`

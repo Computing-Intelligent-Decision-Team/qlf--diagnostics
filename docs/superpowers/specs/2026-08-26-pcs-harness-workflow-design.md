@@ -202,7 +202,19 @@ ngspice、MAGICAL、Magic、Netgen 和 PEX 流程产生事实证据。网页只�
 
 ## 8. 可视化设计
 
-### 8.1 主界面
+### 8.1 入口与输入顺序
+
+网页只有一个入口，顺序固定为：
+
+1. 从 PCS-Harness 当前支持的电路类型中选择类型；
+2. 上传 SPICE 网表；
+3. 根据所选类型解析顶层电路、端口、器件和可用配置；
+4. preflight 通过后启用“开始设计闭环”；
+5. 点击一次后由 Harness 自动执行后续流程。
+
+正式录制选择 `OTA`。演示运行绑定已验证的 `ota_core` 网表和 `ota_core.yaml` profile，不在本演示中扩展任意网表的完整 L0–L6 适配。其他类型由 PCS-Harness 的实际支持注册表提供，页面不另行虚构支持状态。
+
+### 8.2 主界面
 
 - 顶部：run id、当前候选、总耗时和L0–L6状态；
 - 主舞台：当前阶段的版图、曲线或寄生覆盖层；
@@ -211,13 +223,13 @@ ngspice、MAGICAL、Magic、Netgen 和 PEX 流程产生事实证据。网页只�
 - GRPO面板：group、candidate、reward、约束和policy update；
 - 底部：第N轮与第N+1轮的指标趋势和目标线。
 
-### 8.2 版图动画
+### 8.3 版图动画
 
 使用真实 `floorplan.gds`、`place.gds`、`route.gds`、final/pinned GDS，并在同一坐标系中渲染。若当前 router 不产生内部迭代checkpoint，页面只能标为“路由结果逐层展示”，不能声称为router真实搜索轨迹。
 
 DRC marker必须来自真实坐标。DRC-clean候选展示规则扫描和最终0 violations，不虚构错误。
 
-### 8.3 寄生覆盖层
+### 8.4 寄生覆盖层
 
 - 从 Magic `.ext` 读取 node代表坐标和cap端点；
 - 从 raw PEX SPICE读取后仿实际使用的电容值；
@@ -228,7 +240,7 @@ DRC marker必须来自真实坐标。DRC-clean候选展示规则扫描和最终0
 
 `.ext` node坐标是网络代表坐标，不是分布式寄生的精确几何中心。页面必须使用“net-anchored parasitic overlay”口径。
 
-### 8.4 迭代对比
+### 8.5 迭代对比
 
 第N轮和第N+1轮分别保留：
 
