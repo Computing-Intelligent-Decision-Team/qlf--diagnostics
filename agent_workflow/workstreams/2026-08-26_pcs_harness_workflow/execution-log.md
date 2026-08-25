@@ -36,3 +36,12 @@
 - result: Confirmed 13 implementation tasks cover every approved spec section, every task has concrete files and verification, the task DAG has no unresolved dependency, and no placeholder markers remain.
 - verify: `test -s docs/superpowers/plans/2026-08-26-pcs-harness-workflow.md`; `! rg -n 'TBD|TODO|FIXME|\?\?\?' docs/superpowers/plans/2026-08-26-pcs-harness-workflow.md`; `git diff --check -- docs/superpowers/plans/2026-08-26-pcs-harness-workflow.md agent_workflow/workstreams/2026-08-26_pcs_harness_workflow/tasks.md agent_workflow/workstreams/2026-08-26_pcs_harness_workflow/execution-log.md`
 - decision: T002 is complete. T003 is the next executable task.
+
+## 2026-08-26 03:40:03 CST | T003 isolated worktree ready
+
+- method: Superpowers using-git-worktrees; executing-plans checkpoint
+- result: Preserved the dirty source checkout and created `references/.codex-worktrees/pcs-harness-workflow` on branch `feat/pcs-harness-workflow` at pinned commit `be2937eb180c377dd8b918453d1ae96835769ef6`.
+- environment: `/home/qlf/anaconda3/envs/Harness/bin/python` 3.10.19; required Python imports passed. The shell has no `python` alias, so all PCS verification commands will use the explicit Harness interpreter.
+- verify: `/home/qlf/anaconda3/envs/Harness/bin/python -m unittest tools.analog_harness.tests.test_orchestration tools.analog_harness.tests.test_native_grpo tools.analog_harness.tests.test_design_init_ota`
+- key output: `Ran 29 tests in 0.475s` — `OK`.
+- decision: T003 is complete; proceed to T004 event and timing contracts.

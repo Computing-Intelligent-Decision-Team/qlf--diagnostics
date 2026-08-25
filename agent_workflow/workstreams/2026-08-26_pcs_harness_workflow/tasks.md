@@ -4,7 +4,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | T001 | Define the experiment and visualization design | done | - | Approved scope, evidence contract, timing protocol and app boundary | `docs/superpowers/specs/2026-08-26-pcs-harness-workflow-design.md` | `rg -n "目标|成功标准|实验协议|计时口径|验证策略" docs/superpowers/specs/2026-08-26-pcs-harness-workflow-design.md` |
 | T002 | Write the implementation plan and task DAG | done | T001 | Executable TDD plan with exact paths, commands, gates and verification | `docs/superpowers/plans/2026-08-26-pcs-harness-workflow.md`; updated `tasks.md` | Plan self-review and placeholder scan pass |
-| T003 | Create isolated PCS-Harness implementation worktree | pending | T002 | Clean branch pinned to audited PCS commit | isolated worktree; baseline log | Narrow baseline `unittest` suites pass |
+| T003 | Create isolated PCS-Harness implementation worktree | done | T002 | Clean branch pinned to audited PCS commit | `references/.codex-worktrees/pcs-harness-workflow`; baseline log | Narrow baseline `unittest` suites pass |
 | T004 | Add event and timing contracts | pending | T003 | Durable ordered event stream and measured stage timing | `workflow_events.py`; `workflow_timing.py` | Event/timing tests pass |
 | T005 | Instrument L0–L6 and physical sub-stages | pending | T004 | Real stage and artifact events without closure-semantic changes | controller/layout instrumentation | Instrumentation and regression tests pass |
 | T006 | Add Agent decision bridge and dispatcher | pending | T005 | Fail-closed validated Agent actions | `workflow_agent.py`; decision artifacts | Agent/orchestration tests pass |
