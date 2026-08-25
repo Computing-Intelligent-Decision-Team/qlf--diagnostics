@@ -45,3 +45,12 @@
 - verify: `/home/qlf/anaconda3/envs/Harness/bin/python -m unittest tools.analog_harness.tests.test_orchestration tools.analog_harness.tests.test_native_grpo tools.analog_harness.tests.test_design_init_ota`
 - key output: `Ran 29 tests in 0.475s` — `OK`.
 - decision: T003 is complete; proceed to T004 event and timing contracts.
+
+## 2026-08-26 03:44:38 CST | T004 event and timing contracts complete
+
+- method: Superpowers test-driven-development (RED–GREEN–REFACTOR); writing-good-tests review; executing-plans checkpoint
+- RED: New tests first failed with missing `workflow_events` and `workflow_timing` modules. A separate two-emitter test then exposed duplicate sequence allocation (`[1, 1]` instead of `[1, 2]`), and an incomplete-tail test exposed JSONL recovery failure.
+- GREEN: Added immutable schema-validated events, durable append-before-publish, cross-process file locking, exclusive sequence recovery, safe incomplete-tail handling, monotonic nested stage records, failure recording, and JSON/CSV/Markdown timing exports.
+- artifact: PCS worktree commit `ca9d02c` (`workflow_events.py`, `workflow_timing.py`, and eight focused tests).
+- verify: `/home/qlf/anaconda3/envs/Harness/bin/python -m unittest tools.analog_harness.tests.test_workflow_events tools.analog_harness.tests.test_workflow_timing` → `Ran 8 tests ... OK`; combined baseline regression → `Ran 37 tests ... OK`; `compileall` and `git diff --check` passed.
+- decision: T004 is complete; T005 stage instrumentation is next.
