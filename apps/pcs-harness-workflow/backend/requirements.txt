@@ -1,0 +1,1 @@
+# No third-party runtime dependencies. The API uses Python's standard WSGI stack.
