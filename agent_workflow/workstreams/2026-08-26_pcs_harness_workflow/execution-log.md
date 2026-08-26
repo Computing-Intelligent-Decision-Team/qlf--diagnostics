@@ -110,3 +110,12 @@
 - artifact: root commit `6fa4e73`; `apps/pcs-harness-workflow/backend/`.
 - verify: `/home/qlf/anaconda3/envs/Harness/bin/python -m unittest discover -s apps/pcs-harness-workflow/backend/tests -p 'test_*.py'` → `Ran 5 tests in 0.070s` — `OK`; `py_compile` and staged diff checks passed.
 - decision: The Harness environment has no FastAPI/Starlette/httpx packages, so the API uses the Python standard WSGI/SSE protocol and has no runtime dependency installation step. T010 is complete; T011 frontend input gate is next.
+
+## 2026-08-26 21:05:36 CST | T011 standalone input gate complete
+
+- method: Superpowers test-driven-development; systematic-debugging; executing-plans checkpoint
+- RED: Component tests first failed on the missing `InputGate`. Dependency installation was initially blocked by pnpm's unapproved `esbuild` postinstall and was resolved by recording an explicit `allowBuilds.esbuild: true` policy. The first two-test run exposed missing DOM cleanup between cases.
+- GREEN: Added an independent React/Vite application and recording-safe engineering interface for type selection, `.sp/.spice/.cir` upload/drop, backend parse/preflight evidence, exact OTA admission, non-OTA parse-only status, and one-click closure start. Added local/system font fallbacks with no remote visual dependency and kept the existing analog service app untouched.
+- artifact: root commit `73d5a01`; `apps/pcs-harness-workflow/` frontend scaffold, API client, input gate, styles, lockfile and tests.
+- verify: focused component suite → `2 tests passed`; two immediate repeat runs also passed after one non-reproducing Vitest timeout; `pnpm build` emitted a 151.86 kB JS bundle and 8.27 kB CSS bundle successfully; forbidden-copy scan and `git diff --check` passed.
+- decision: T011 is complete. Full browser screenshot review remains part of the T013 1920×1080 physical cockpit gate; T012 live reducer/SSE cockpit is next.
