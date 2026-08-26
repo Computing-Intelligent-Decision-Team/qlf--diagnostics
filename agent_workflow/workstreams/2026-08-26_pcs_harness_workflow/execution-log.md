@@ -101,3 +101,12 @@
 - verify: visualization + direct raw-SPICE graph suites → `Ran 5 tests in 0.023s` — `OK`; `py_compile` and `git diff --check` passed.
 - regression limitation: `test_stage3_raw_pex_graph` cannot locate its external Markdown fixture from the nested worktree because the legacy test resolves `parents[3]/searching`, producing `.codex-worktrees/searching/...`; both failures were `FileNotFoundError` before exercising parser behavior. No evidence file was copied or substituted.
 - decision: T009 is complete; T010 live-only API is next.
+
+## 2026-08-26 20:56:42 CST | T010 live-only API complete
+
+- method: Superpowers test-driven-development; executing-plans checkpoint
+- RED: The backend discovery suite first failed because the API and run service did not exist. The first GREEN run exposed a test-only symlink-string assumption for the explicit Harness interpreter; the test now compares resolved executables.
+- GREEN: Added a zero-third-party WSGI API for the current circuit registry, SPICE parse summaries, exact verified-OTA hash/profile admission, fresh run roots, explicit subprocess environments, a single-active-run guard, ordered SSE with exclusive `Last-Event-ID`, run status, and event-reference-only artifact access with containment and hash checks. No replay or arbitrary-path endpoint exists.
+- artifact: root commit `6fa4e73`; `apps/pcs-harness-workflow/backend/`.
+- verify: `/home/qlf/anaconda3/envs/Harness/bin/python -m unittest discover -s apps/pcs-harness-workflow/backend/tests -p 'test_*.py'` → `Ran 5 tests in 0.070s` — `OK`; `py_compile` and staged diff checks passed.
+- decision: The Harness environment has no FastAPI/Starlette/httpx packages, so the API uses the Python standard WSGI/SSE protocol and has no runtime dependency installation step. T010 is complete; T011 frontend input gate is next.
