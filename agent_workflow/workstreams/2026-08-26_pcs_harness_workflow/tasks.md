@@ -14,8 +14,8 @@
 | T010 | Build live-only API | done | T006,T008,T009 | OTA input gate, run control, SSE and safe artifacts | `apps/pcs-harness-workflow/backend`; commit `6fa4e73` | Backend API tests pass |
 | T011 | Build input-gate frontend | done | T010 | Type/upload/parse/preflight/one-click flow | standalone React app; commit `73d5a01` | Component test and production build pass |
 | T012 | Build live Agent/GRPO cockpit | done | T010,T011 | Reducer, reconnect, L0–L6, Agent and GRPO panels | frontend state and panels; commit `e28703a` | Reducer/SSE/component tests pass |
-| T013 | Build physical and iteration visualization | in_progress | T009,T012 | Layout/DRC/LVS/PEX animation and N/N+1 comparison | physical UI components | Frontend tests/build and 1920×1080 visual check pass |
-| T014 | Wire automatic recording run | pending | T006,T007,T010,T013 | One-click bounded Agent→GRPO→EDA→L6 workflow | runner, CLI, launcher | Runner and cross-stack regression tests pass |
+| T013 | Build physical and iteration visualization | done | T009,T012 | Layout/DRC/LVS/PEX animation and N/N+1 comparison | physical UI components; commit `78c3c5b` | Frontend tests/build and 1920×1080 visual check pass |
+| T014 | Wire automatic recording run | in_progress | T006,T007,T010,T013 | One-click bounded Agent→GRPO→EDA→L6 workflow | runner, CLI, launcher | Runner and cross-stack regression tests pass |
 | T015 | Run campaign and rehearsal | pending | T008,T014 | Fixed true boundary candidate, real L6 run, measured timings | generated run root and reports | Machine evidence checks and recording review pass |
 
 Statuses: `pending`, `in_progress`, `review`, `blocked`, `done`.

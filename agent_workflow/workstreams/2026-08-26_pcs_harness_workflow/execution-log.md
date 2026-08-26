@@ -129,3 +129,12 @@
 - artifact: root commit `e28703a`; cockpit contracts, state, SSE client, panels and integrated application shell.
 - verify: `pnpm test --run` → `3 test files, 8 tests passed`; `pnpm build` → 164.18 kB JS / 16.29 kB CSS; forbidden-copy scan and `git diff --check` passed.
 - decision: T012 is complete; T013 truthful physical animation and fixed-domain N/N+1 comparison is next.
+
+## 2026-08-26 21:30:42 CST | T013 physical and iteration visualization complete
+
+- method: Superpowers test-driven-development; systematic-debugging; verification-before-completion visual gate
+- RED: Focused component tests first failed on the absent physical-stage components and contracts. Browser inspection then exposed a real 1920×1080 overflow caused by the Grid middle row's automatic minimum height.
+- GREEN: Added one shared GDS coordinate system with truthful checkpoint reveal, real DRC/LVS/PEX evidence, net-anchored parasitic halos and coupling curves, fixed-domain GBW/gain/phase-margin/power plots, and N/N+1 sizing/GDS/raw-PEX/performance comparison. The shell now uses a shrinkable middle row so the complete cockpit and footer remain inside the recording viewport.
+- artifact: root commit `78c3c5b`; physical contracts, components, tests, styles, and integrated cockpit.
+- verify: `pnpm test --run` → `7 test files, 13 tests passed`; `pnpm build` → 174.62 kB JS / 23.43 kB CSS; `git diff --check` and forbidden-copy scan passed. Playwright inspection at 1920×1080 measured the document at exactly 1920×1080 with the footer bottom at 1080; entry, layout, PEX, and corrected full-height captures are under `generated/pcs-harness-workflow/visual-check/` and are not committed product data.
+- decision: T013 is complete; T014 automatic bounded recording run is next.
