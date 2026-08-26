@@ -91,3 +91,13 @@
 - artifact: PCS worktree commit `e7c1957`; boundary scanner, CLI command, and four focused tests.
 - verify: boundary + OTA config + native GRPO + compiler suites → `Ran 26 tests in 0.321s` — `OK`; CLI help, `compileall`, and `git diff --check` passed.
 - decision: The costly scan has not been launched. T008 implementation is complete; T009 physical visualization evidence is next.
+
+## 2026-08-26 20:51:01 CST | T009 physical visualization evidence complete
+
+- method: Superpowers test-driven-development; systematic-debugging; executing-plans checkpoint
+- RED: The focused suite first failed because `workflow_visualization` did not exist. A fixture review clarified that an unmatched Top-10 edge remains selected evidence but cannot be rendered or silently replaced.
+- GREEN: Added one union GDS viewBox and coordinate transform across checkpoints, preserved polygon/path/label layer metadata and source hashes, projected real-coordinate DRC markers, joined case-normalized Magic `.ext` representative node anchors to raw-SPICE capacitances, retained original netlist lines, selected Top-10 union VOUT edges, used logarithmic widths, and reported unmatched anchors without coordinate guesses.
+- artifact: PCS worktree commit `70b95c0`; `workflow_visualization.py` and three focused fixture tests.
+- verify: visualization + direct raw-SPICE graph suites → `Ran 5 tests in 0.023s` — `OK`; `py_compile` and `git diff --check` passed.
+- regression limitation: `test_stage3_raw_pex_graph` cannot locate its external Markdown fixture from the nested worktree because the legacy test resolves `parents[3]/searching`, producing `.codex-worktrees/searching/...`; both failures were `FileNotFoundError` before exercising parser behavior. No evidence file was copied or substituted.
+- decision: T009 is complete; T010 live-only API is next.
