@@ -138,3 +138,12 @@
 - artifact: root commit `78c3c5b`; physical contracts, components, tests, styles, and integrated cockpit.
 - verify: `pnpm test --run` → `7 test files, 13 tests passed`; `pnpm build` → 174.62 kB JS / 23.43 kB CSS; `git diff --check` and forbidden-copy scan passed. Playwright inspection at 1920×1080 measured the document at exactly 1920×1080 with the footer bottom at 1080; entry, layout, PEX, and corrected full-height captures are under `generated/pcs-harness-workflow/visual-check/` and are not committed product data.
 - decision: T013 is complete; T014 automatic bounded recording run is next.
+
+## 2026-08-26 22:03:03 CST | T014 automatic recording workflow complete
+
+- method: Superpowers test-driven-development; systematic-debugging; verification-before-completion; local requirements review because the session policy prohibited the reviewer subagent required by requesting-code-review
+- RED: Runner tests first failed on the absent workflow module and CLI. API tests then proved the old `auto-close` command and missing `ANALOG_HARNESS_RUNS_DIR` propagation. A budget test exposed that the frozen boundary point was incorrectly counted inside the 3×4 GRPO allowance, and a provenance test exposed that the API-modified runtime profile could never equal the frozen source-profile hash.
+- GREEN: Added fail-closed `workflow-run`, immutable boundary/hash admission, a separate non-learning boundary evaluation, validated Agent dispatch, exactly bounded native-GRPO search, genuine L6-only success, runtime/budget terminal failures, GRPO group/candidate/update events, timing exports, explicit API run-root propagation, source-profile SHA provenance, and a one-command API/Vite launcher. No successful fallback exists.
+- artifact: PCS commit `02ad60f`; root application commit `a17c294`.
+- verify: PCS workflow/Agent/GRPO/boundary/visualization/auto-close regression → `57 tests ... OK`; runner/instrumentation focus → `10 tests ... OK`; backend → `5 tests ... OK`; frontend → `7 files, 13 tests passed`; TypeScript and Vite production build succeeded; `compileall`, `bash -n`, executable-bit, diff checks and forbidden-copy scan passed.
+- decision: T014 is complete. T015 starts with environment preflight and one full-candidate pilot; the 32+8 campaign remains gated on that pilot.
