@@ -82,3 +82,12 @@
 - artifact: PCS worktree commit `b612f7a`; `ota_core_workflow_demo.yaml`, optimizer/native-GRPO provenance, and four focused tests.
 - verify: OTA config + native GRPO + trusted backend + metadata + compiler suites → `Ran 28 tests in 0.630s` — `OK`; `compileall` and `git diff --check` passed.
 - decision: T007 is complete; T008 deterministic boundary scan is next.
+
+## 2026-08-26 20:46:11 CST | T008 reproducible boundary scan complete
+
+- method: Superpowers test-driven-development; systematic test-assumption correction; executing-plans checkpoint
+- RED: Boundary tests first failed on the absent scan module. A runner assertion then incorrectly assumed `scan_0001` must enter the GBW-stratified physical shortlist; the test was corrected to assert shortlist order rather than generation order.
+- GREEN: Added seeded six-dimensional Latin-hypercube generation for exactly 32 unique legalized W/NF candidates, pre-layout constraint/band filtering, evenly distributed physical shortlisting up to eight candidates, DRC/LVS/raw-PEX trust rejection, preferred 4.0–4.9 MHz post-PEX boundary ranking, complete rejection reasons, input hashes, and `workflow-boundary-scan` CLI wiring.
+- artifact: PCS worktree commit `e7c1957`; boundary scanner, CLI command, and four focused tests.
+- verify: boundary + OTA config + native GRPO + compiler suites → `Ran 26 tests in 0.321s` — `OK`; CLI help, `compileall`, and `git diff --check` passed.
+- decision: The costly scan has not been launched. T008 implementation is complete; T009 physical visualization evidence is next.

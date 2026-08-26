@@ -9,7 +9,7 @@
 | T005 | Instrument L0–L6 and physical sub-stages | done | T004 | Real stage and artifact events without closure-semantic changes | controller/layout instrumentation; commit `5c212a0` | Instrumentation and regression tests pass |
 | T006 | Add Agent decision bridge and dispatcher | done | T005 | Fail-closed validated Agent actions | `workflow_agent.py`; decision artifacts; commit `0ae672a` | Agent/orchestration tests pass |
 | T007 | Freeze OTA GRPO action space and provenance | done | T005 | W/NF-only real GRPO proposals with immutable bias/L/multi | demo config; provenance gate; commit `b612f7a` | Config/native-GRPO tests pass |
-| T008 | Implement reproducible boundary scan | pending | T007 | 32-candidate pre-scan and 6–8 physical shortlist command | `workflow_boundary_scan.py`; `selection.json` schema | Boundary-selection tests pass |
+| T008 | Implement reproducible boundary scan | done | T007 | 32-candidate pre-scan and 6–8 physical shortlist command | `workflow_boundary_scan.py`; `selection.json` schema; commit `e7c1957` | Boundary-selection tests pass |
 | T009 | Derive physical visualization evidence | pending | T005 | Shared-coordinate GDS, DRC and net-anchored PEX data | `workflow_visualization.py` | Visualization and raw-PEX tests pass |
 | T010 | Build live-only API | pending | T006,T008,T009 | OTA input gate, run control, SSE and safe artifacts | `apps/pcs-harness-workflow/backend` | Backend API tests pass |
 | T011 | Build input-gate frontend | pending | T010 | Type/upload/parse/preflight/one-click flow | standalone React app | Component test and production build pass |
