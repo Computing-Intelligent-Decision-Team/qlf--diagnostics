@@ -6,7 +6,9 @@ import { AgentDecisionPanel } from "./components/AgentDecisionPanel";
 import { EvidencePanel } from "./components/EvidencePanel";
 import { GrpoPanel } from "./components/GrpoPanel";
 import { InputGate } from "./components/InputGate";
+import { PhysicalWorkspace } from "./components/PhysicalWorkspace";
 import { StageRail } from "./components/StageRail";
+import type { PhysicalVisualization } from "./contracts/physical";
 import { initialWorkflowState, workflowReducer } from "./state/workflowReducer";
 
 export default function App() {
@@ -41,6 +43,7 @@ export default function App() {
 
 function WorkflowCockpit({ run }: { run: RunSummary }) {
   const [state, dispatch] = useReducer(workflowReducer, run.run_id, initialWorkflowState);
+  const [physical, setPhysical] = useState<PhysicalVisualization | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -61,6 +64,22 @@ function WorkflowCockpit({ run }: { run: RunSummary }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [run.run_id]);
 
+  const physicalArtifact = [...state.artifacts].reverse().find((artifact) => /physical.*visual|workflow.*visual/i.test(artifact.name));
+  useEffect(() => {
+    if (!physicalArtifact) return;
+    const controller = new AbortController();
+    fetch(`/api/runs/${encodeURIComponent(run.run_id)}/artifacts/${encodeURIComponent(physicalArtifact.artifact_id)}`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`physical evidence ${response.status}`);
+        return response.json();
+      })
+      .then((payload: PhysicalVisualization) => {
+        if (payload.schema_version === "pcs_harness_physical_visualization.v1") setPhysical(payload);
+      })
+      .catch(() => undefined);
+    return () => controller.abort();
+  }, [physicalArtifact, run.run_id]);
+
   const latestElapsed = Math.max(0, ...Object.values(state.stages).map((stage) => stage.elapsedMs ?? 0));
   return (
     <main className="cockpit-shell">
@@ -74,19 +93,7 @@ function WorkflowCockpit({ run }: { run: RunSummary }) {
       <div className="cockpit-grid">
         <section className="stage-focus cockpit-card">
           <header><span>ACTIVE WORKSPACE</span><b>{state.currentStage ?? "INITIALIZING"}</b></header>
-          <div className="focus-grid">
-            <div className="focus-crosshair"><i /><i /><span>{state.currentStage ?? "L0"}</span></div>
-            <div>
-              <small>CURRENT OPERATION</small>
-              <h2>{stageTitle(state.currentStage)}</h2>
-              <p>物理视图与性能曲线将随当前工具阶段切换，数据只从本次运行产物生成。</p>
-            </div>
-          </div>
-          <div className="physical-subrail">
-            {(["DRC", "LVS", "PEX"] as const).map((stage) => (
-              <span className={state.stages[stage].status} key={stage}><i />{stage}<small>{state.stages[stage].status}</small></span>
-            ))}
-          </div>
+          <PhysicalWorkspace state={state} physical={physical} />
         </section>
         <AgentDecisionPanel state={state} />
         <GrpoPanel state={state} />
@@ -101,23 +108,6 @@ function formatElapsed(milliseconds: number) {
   return `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
 }
 
-function stageTitle(stage: string | null) {
-  const titles: Record<string, string> = {
-    L0: "编译候选电路",
-    L1: "标称前仿真",
-    L2: "前仿真 PVT",
-    L3: "生成物理版图",
-    DRC: "设计规则检查",
-    LVS: "版图网表一致性",
-    PEX: "提取版图寄生",
-    L4: "冻结物理证据",
-    L5: "寄生后仿真",
-    L6: "后仿真 PVT",
-    Agent: "Agent 读取证据并决策",
-    GRPO: "GRPO 搜索 MOS sizing",
-  };
-  return stage ? titles[stage] ?? stage : "建立运行环境";
-}
 
 function BrandMark() {
   return (

@@ -1,3 +1,5 @@
+@import "./physical.css";
+
 :root {
   font-family: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   color: #dce9e4;
@@ -23,7 +25,7 @@ button { color: inherit; }
 .app-frame {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 82px 1fr 48px;
+  grid-template-rows: 82px minmax(0, 1fr) 48px;
   position: relative;
   overflow: hidden;
   background:
@@ -145,7 +147,7 @@ button:disabled { cursor: not-allowed; opacity: .32; }
 .run-transition p { color: var(--muted); }
 .run-transition code { display: inline-block; margin-top: 22px; color: var(--teal); }
 
-.cockpit-shell { position: relative; z-index: 1; width: min(1816px, calc(100vw - 72px)); margin: 24px auto; min-height: 840px; display: flex; flex-direction: column; gap: 14px; }
+.cockpit-shell { position: relative; z-index: 1; width: min(1816px, calc(100vw - 72px)); height: calc(100% - 28px); min-height: 0; margin: 14px auto; display: flex; flex-direction: column; gap: 14px; }
 .run-bar { min-height: 58px; border: 1px solid var(--line); background: rgba(8, 18, 15, .94); display: grid; grid-template-columns: 1.7fr 1fr .7fr 1fr; }
 .run-bar > div { display: flex; align-items: center; gap: 12px; padding: 0 18px; border-right: 1px solid var(--line); min-width: 0; }
 .run-bar > div:last-child { border-right: 0; }
@@ -167,7 +169,7 @@ button:disabled { cursor: not-allowed; opacity: .32; }
 .rail-stage.completed > i { background: rgba(184,243,90,.55); }
 .rail-stage.failed .rail-node { border-color: #dc6858; color: #dc6858; }
 
-.cockpit-grid { flex: 1; display: grid; grid-template-columns: 1.55fr .82fr .78fr; gap: 14px; min-height: 514px; }
+.cockpit-grid { flex: 1; display: grid; grid-template-columns: 1.55fr .82fr .78fr; gap: 14px; min-height: 0; }
 .cockpit-card { border: 1px solid var(--line); background: rgba(10, 22, 18, .94); min-width: 0; }
 .cockpit-card > header { height: 43px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-family: var(--mono); font-size: 8px; letter-spacing: .13em; color: #5e7770; }
 .cockpit-card > header b { color: var(--teal); font-weight: 500; }

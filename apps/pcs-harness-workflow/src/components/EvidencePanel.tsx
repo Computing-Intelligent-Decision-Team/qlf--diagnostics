@@ -27,6 +27,7 @@ function formatMetric(name: string, value: number) {
   const key = name.toLowerCase();
   if (key.includes("gbw") || key.includes("bandwidth")) return `${(value / 1e6).toFixed(2)} MHz`;
   if (key.includes("power")) return `${(value * 1e3).toFixed(2)} mW`;
-  if (key.includes("phase") || key.includes("gain")) return `${value.toFixed(1)}°`;
+  if (key.includes("gain")) return `${value.toFixed(1)} dB`;
+  if (key.includes("phase")) return `${value.toFixed(1)}°`;
   return value.toPrecision(4);
 }
