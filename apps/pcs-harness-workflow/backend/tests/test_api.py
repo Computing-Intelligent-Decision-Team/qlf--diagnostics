@@ -123,8 +123,16 @@ class WorkflowApiTest(unittest.TestCase):
         launch = self.launches[0]
         self.assertEqual(launch["kwargs"]["cwd"], str(self.pcs_root))
         self.assertEqual(launch["kwargs"]["env"]["PCS_WORKFLOW_RUN_ROOT"], first["run_root"])
+        self.assertEqual(launch["kwargs"]["env"]["ANALOG_HARNESS_RUNS_DIR"], first["run_root"])
         self.assertEqual(launch["kwargs"]["env"]["PYTHONUNBUFFERED"], "1")
         self.assertEqual(launch["command"][0], str(Path(sys.executable).resolve()))
+        self.assertIn("workflow-run", launch["command"])
+        self.assertNotIn("auto-close", launch["command"])
+        runtime_profile = Path(first["run_root"]) / "runtime_profile.yaml"
+        self.assertIn(
+            self.service.sha256(self.profile),
+            runtime_profile.read_text(encoding="utf-8"),
+        )
         with self.assertRaises(ActiveRunError):
             self.service.start_run(parsed["parse_id"])
 

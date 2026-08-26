@@ -56,6 +56,7 @@ class RunService:
         runs_root: Path,
         verified_netlist: Path,
         verified_profile: Path,
+        boundary_selection: Path | None = None,
         launcher: Callable[..., Any] = subprocess.Popen,
         python_executable: Path = Path(sys.executable),
         poll_interval: float = 0.25,
@@ -64,6 +65,9 @@ class RunService:
         self.runs_root = Path(runs_root).resolve()
         self.verified_netlist = Path(verified_netlist).resolve()
         self.verified_profile = Path(verified_profile).resolve()
+        self.boundary_selection = Path(
+            boundary_selection or (self.runs_root.parent / "boundary_scan" / "selection.json")
+        ).resolve()
         self.launcher = launcher
         self.python_executable = Path(python_executable).resolve()
         self.poll_interval = poll_interval
@@ -150,9 +154,13 @@ class RunService:
                 str(self.python_executable),
                 "-m",
                 "tools.analog_harness.cli",
-                "auto-close",
+                "workflow-run",
                 "--config",
                 str(runtime_profile),
+                "--selection",
+                str(self.boundary_selection),
+                "--run-root",
+                str(run_root),
             ]
             env = self._explicit_environment(run_root, run_id, events_path)
             stdout_path = evidence_dir / "harness.stdout.log"
@@ -276,6 +284,10 @@ class RunService:
         updated, count = re.subn(r"(?m)^(\s*runs_dir:\s*).+$", replacement, text, count=1)
         if count == 0:
             updated += f"\n# API run-root override\nworkflow_run_root: {run_root}\n"
+        updated += (
+            "\n# Frozen source-profile provenance\n"
+            f'workflow_source_profile_sha256: "{self.sha256(self.verified_profile)}"\n'
+        )
         path = run_root / "runtime_profile.yaml"
         path.write_text(updated, encoding="utf-8")
         return path
@@ -290,6 +302,7 @@ class RunService:
                 "PCS_WORKFLOW_RUN_ID": run_id,
                 "PCS_WORKFLOW_RUN_ROOT": str(run_root),
                 "PCS_WORKFLOW_EVENTS_PATH": str(events_path),
+                "ANALOG_HARNESS_RUNS_DIR": str(run_root),
             }
         )
         return env

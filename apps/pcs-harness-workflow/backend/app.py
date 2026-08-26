@@ -124,6 +124,13 @@ def default_service() -> RunService:
         ),
         verified_netlist=pcs_root / "examples/ota_core_sky130_try/ota_core_magical.sp",
         verified_profile=pcs_root / "tools/analog_harness/configs/ota_core_workflow_demo.yaml",
+        boundary_selection=Path(
+            os.environ.get(
+                "PCS_WORKFLOW_BOUNDARY_SELECTION",
+                workspace
+                / "generated/analog_harness/ota_core_grpo_demo_20260826/boundary_scan/selection.json",
+            )
+        ),
         python_executable=Path(os.environ.get("PCS_HARNESS_PYTHON", "/home/qlf/anaconda3/envs/Harness/bin/python")),
     )
 
