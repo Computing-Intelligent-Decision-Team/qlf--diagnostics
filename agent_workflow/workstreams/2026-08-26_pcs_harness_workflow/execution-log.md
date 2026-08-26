@@ -119,3 +119,13 @@
 - artifact: root commit `73d5a01`; `apps/pcs-harness-workflow/` frontend scaffold, API client, input gate, styles, lockfile and tests.
 - verify: focused component suite → `2 tests passed`; two immediate repeat runs also passed after one non-reproducing Vitest timeout; `pnpm build` emitted a 151.86 kB JS bundle and 8.27 kB CSS bundle successfully; forbidden-copy scan and `git diff --check` passed.
 - decision: T011 is complete. Full browser screenshot review remains part of the T013 1920×1080 physical cockpit gate; T012 live reducer/SSE cockpit is next.
+
+## 2026-08-26 21:11:57 CST | T012 live Agent and GRPO cockpit complete
+
+- method: Superpowers test-driven-development; executing-plans checkpoint
+- RED: Reducer and live-event tests first failed on missing state and SSE modules.
+- GREEN: Added discriminated event contracts, an idempotent pure reducer, sequence-gap rejection, N/N+1 candidate preservation, stage and terminal transitions, concise Agent decision projection, group-relative GRPO candidate/update state, fetch-stream SSE parsing, exclusive `Last-Event-ID` reconnect and gap backfill. Built the L0–L6 rail, physical substage status, live evidence strip, Agent decision panel and GRPO group table.
+- safety: Production state never retains raw chain-of-thought fields, and no replay/scrubber/playback/demo-data API or UI control exists.
+- artifact: root commit `e28703a`; cockpit contracts, state, SSE client, panels and integrated application shell.
+- verify: `pnpm test --run` → `3 test files, 8 tests passed`; `pnpm build` → 164.18 kB JS / 16.29 kB CSS; forbidden-copy scan and `git diff --check` passed.
+- decision: T012 is complete; T013 truthful physical animation and fixed-domain N/N+1 comparison is next.
