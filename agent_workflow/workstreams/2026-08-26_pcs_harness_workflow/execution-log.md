@@ -72,3 +72,13 @@
 - artifact: PCS worktree commit `0ae672a`; `workflow_agent.py`, orchestration artifact separation, and six focused tests.
 - verify: Agent/orchestration/instrumentation/event/timing suites → `Ran 21 tests in 0.365s` — `OK`; `compileall` and `git diff --check` passed.
 - decision: T006 is complete; T007 OTA GRPO action-space/provenance is next.
+
+## 2026-08-26 20:41:58 CST | T007 OTA GRPO action space and provenance complete
+
+- method: Superpowers test-driven-development; systematic-debugging; executing-plans checkpoint
+- RED: Initial config/provenance tests failed on missing demo profile and trust gate. A tampered-checkpoint test then proved self-reported GRPO metadata was insufficient. The first file-hash validation incorrectly rejected earlier samples because later samples legitimately advanced the shared group checkpoint.
+- root cause: Proposal-time checkpoint identity is temporal. Each sample has a valid snapshot hash, while the live checkpoint file advances as the rest of the group is legalized and later observed.
+- GREEN: Added the fixed-bias OTA demo profile with only six W/NF sizing variables, group budget 4×2 (max 3), pre-layout PVT, and hard GBW/gain/phase-margin/power contracts. Added trusted GRPO admission, proposal-time checkpoint-file validation, durable per-sample checkpoint snapshot hashes, group/sample/action/log-prob/reward/update provenance, and explicit fallback rejection.
+- artifact: PCS worktree commit `b612f7a`; `ota_core_workflow_demo.yaml`, optimizer/native-GRPO provenance, and four focused tests.
+- verify: OTA config + native GRPO + trusted backend + metadata + compiler suites → `Ran 28 tests in 0.630s` — `OK`; `compileall` and `git diff --check` passed.
+- decision: T007 is complete; T008 deterministic boundary scan is next.
