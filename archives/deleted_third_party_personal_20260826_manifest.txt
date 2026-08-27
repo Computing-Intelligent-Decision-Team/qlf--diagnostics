@@ -1,0 +1,174 @@
+TARGET /home/qlf/IOT/PreviousProjects
+3.7G	/home/qlf/IOT/PreviousProjects
+2026-03-13 19:37 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/paper
+2026-03-13 20:14 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/README.md
+2026-03-13 22:23 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/benchmarks
+2026-03-15 16:43 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/Run_Docker.md
+2026-03-16 14:17 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/notify.py
+2026-03-23 10:40 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/3.20大创申请书（晚）.doc
+2026-03-25 14:17 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/src
+2026-03-26 14:09 /home/qlf/IOT/PreviousProjects/智芯未来项目.pptx
+2026-03-28 23:23 /home/qlf/IOT/PreviousProjects/ZhiXinWeiLai/project1
+2026-03-29 23:55 /home/qlf/IOT/PreviousProjects/.codex
+2026-04-02 23:53 /home/qlf/IOT/PreviousProjects/.vscode
+2026-04-02 23:53 /home/qlf/IOT/PreviousProjects/.vscode/settings.json
+2026-04-20 17:30 /home/qlf/IOT/PreviousProjects/实验室历史项目成熟度地图.md
+2026-04-20 20:12 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench
+2026-04-20 20:12 /home/qlf/IOT/PreviousProjects/Open3DBench
+2026-04-26 17:31 /home/qlf/IOT/PreviousProjects/ZhiXinWeiLai
+2026-05-07 20:08 /home/qlf/IOT/PreviousProjects/README.md
+2026-08-04 12:41 /home/qlf/IOT/PreviousProjects/Open3DBench/.git
+2026-08-04 12:42 /home/qlf/IOT/PreviousProjects/ZhiXinWeiLai/.git
+2026-08-04 12:43 /home/qlf/IOT/PreviousProjects/BBOPlace-Bench/.git
+
+TARGET /home/qlf/IOT/MyLearning
+243M	/home/qlf/IOT/MyLearning
+2025-08-11 17:21 /home/qlf/IOT/MyLearning/analoggym_rgcn/AMP_NMCF.py
+2025-08-11 17:21 /home/qlf/IOT/MyLearning/analoggym_rgcn/models.py
+2025-08-11 17:21 /home/qlf/IOT/MyLearning/analoggym_rgcn/utils.py
+2025-08-11 17:22 /home/qlf/IOT/MyLearning/analoggym_rgcn/main_AMP.py
+2025-11-04 20:45 /home/qlf/IOT/MyLearning/analoggym_rgcn/ckt_graphs.py
+2025-11-13 21:58 /home/qlf/IOT/MyLearning/analoggym_rgcn/rl.yml
+2025-11-13 22:49 /home/qlf/IOT/MyLearning/analoggym_rgcn/rl-fixed.yml
+2025-11-13 22:55 /home/qlf/IOT/MyLearning/analoggym_rgcn/rl-final.yml
+2026-03-11 22:42 /home/qlf/IOT/MyLearning/MetaHeuristic
+2026-03-11 22:42 /home/qlf/IOT/MyLearning/MetaHeuristic/DE_project
+2026-03-11 22:42 /home/qlf/IOT/MyLearning/MetaHeuristic/woa_project
+2026-03-11 22:42 /home/qlf/IOT/MyLearning/Value-Based
+2026-03-11 22:42 /home/qlf/IOT/MyLearning/Value-Based/DQN
+2026-03-11 22:42 /home/qlf/IOT/MyLearning/Value-Based/Q-Learning
+2026-03-11 22:44 /home/qlf/IOT/MyLearning/analoggym_rgcn
+2026-03-11 22:44 /home/qlf/IOT/MyLearning/analoggym_rgcn/.idea
+2026-03-11 22:44 /home/qlf/IOT/MyLearning/analoggym_rgcn/__pycache__
+2026-03-11 22:44 /home/qlf/IOT/MyLearning/analoggym_rgcn/simulations
+2026-04-20 20:12 /home/qlf/IOT/MyLearning/analoggym_rgcn/rgcn_rl
+2026-05-07 20:08 /home/qlf/IOT/MyLearning/README.md
+
+TARGET /home/qlf/IOT/OpenFASOC
+471M	/home/qlf/IOT/OpenFASOC
+2026-04-09 16:31 /home/qlf/IOT/OpenFASOC/openfasoc/config.py
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/openfasoc
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/openfasoc/generators
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/openfasoc/klayout
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/openfasoc/mos_char
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/openfasoc/soc
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/pytest.ini
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/requirements.txt
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/requirements_dev.txt
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/setup.cfg
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/setup.py
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/tapeouts
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/tests
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/tests/common_api
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/tests/test_sample.py
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/tox.ini
+2026-04-09 21:14 /home/qlf/IOT/OpenFASOC/versions.txt
+2026-04-10 15:03 /home/qlf/IOT/OpenFASOC/.git/config
+2026-05-18 17:16 /home/qlf/IOT/OpenFASOC/.git/index
+2026-08-26 22:23 /home/qlf/IOT/OpenFASOC/.git
+
+TARGET /home/qlf/IOT/BBOPlace-Bench
+4.0K	/home/qlf/IOT/BBOPlace-Bench
+
+TARGET /home/qlf/IOT/AncstrGNN_benchmark
+1.2M	/home/qlf/IOT/AncstrGNN_benchmark
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/Gm1_v5_Practice.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/NRZ_TRI_DAC_v3_dnw.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/OTA_FF_2s_v3e.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/Retiming_Latch_common.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/Telescopic_OTA_stacked_single_ended.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/adc1.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/adc2.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sfa/myComparator_v3.sfa
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/ADC_CORE.sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/COMPARATOR_PRE_AMP.sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/CTDSM_CORE_NEW.sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/CTDTDSM_V3.sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/Gm1_v5_Practice.sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/OTA_FF_2s_v3e.sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/adc1.sym
+2026-05-18 16:50 /home/qlf/IOT/AncstrGNN_benchmark/sym/adc2.sym
+2026-05-18 17:16 /home/qlf/IOT/AncstrGNN_benchmark/.git/index
+2026-05-18 18:13 /home/qlf/IOT/AncstrGNN_benchmark/.git/config
+2026-08-26 22:23 /home/qlf/IOT/AncstrGNN_benchmark/.git
+
+TARGET /home/qlf/IOT/references/ALIGN-public
+415M	/home/qlf/IOT/references/ALIGN-public
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/__init__.py
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/cell_fabric
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/compiler
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/constraints
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/files
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/flow
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/gdsconv
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/integration
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/pdk
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/pdks
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/placer_pythonic
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/pnr
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/primitive_pdks
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/regression
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/schema
+2026-05-13 19:39 /home/qlf/IOT/references/ALIGN-public/tests/test_cmdline.py
+2026-07-13 10:40 /home/qlf/IOT/references/ALIGN-public/.git/index
+2026-08-04 13:26 /home/qlf/IOT/references/ALIGN-public/.git/config
+2026-08-26 22:23 /home/qlf/IOT/references/ALIGN-public/.git
+
+TARGET /home/qlf/IOT/external/align-public
+lrwxrwxrwx 1 qlf qlf 26 Aug 26 15:57 /home/qlf/IOT/external/align-public -> ../references/ALIGN-public
+
+TARGET /home/qlf/IOT/BBOPlace-Bench
+4.0K	/home/qlf/IOT/BBOPlace-Bench
+
+TARGET /home/qlf/IOT/Others'Projects
+783M	/home/qlf/IOT/Others'Projects
+2026-03-11 22:44 /home/qlf/IOT/Others'Projects/Analog/AnalogGym-main—LJT
+2026-03-24 16:08 /home/qlf/IOT/Others'Projects/Analog
+
+TARGET /home/qlf/IOT/LLM
+512M	/home/qlf/IOT/LLM
+2026-02-22 19:05 /home/qlf/IOT/LLM/SOFTWARE/.gitignore
+2026-02-23 12:14 /home/qlf/IOT/LLM/SOFTWARE/environment.yml
+2026-02-23 12:14 /home/qlf/IOT/LLM/SOFTWARE/requirements.txt
+2026-02-23 12:15 /home/qlf/IOT/LLM/SOFTWARE/README.md
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/.dockerignore
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/.env.local
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/.gitattributes
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/.gitignore
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/.pre-commit-config.yaml
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/CITATION.cff
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/LICENSE
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/MANIFEST.in
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/Makefile
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/README.md
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/README_zh.md
+2026-02-28 16:39 /home/qlf/IOT/LLM/LlamaFactory-main/pyproject.toml
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/.dockerignore:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/.env.local:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/.gitattributes:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/.gitignore:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/.pre-commit-config.yaml:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/CITATION.cff:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/LICENSE:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/MANIFEST.in:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/Makefile:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/README.md:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/README_zh.md:Zone.Identifier
+2026-02-28 18:46 /home/qlf/IOT/LLM/LlamaFactory-main/pyproject.toml:Zone.Identifier
+2026-03-11 22:41 /home/qlf/IOT/LLM/SOFTWARE/project1
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/.github
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/assets
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/data
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/docker
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/docs
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/examples
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/requirements
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/scripts
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/src
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/tests
+2026-03-11 22:44 /home/qlf/IOT/LLM/LlamaFactory-main/tests_v1
+2026-04-20 20:12 /home/qlf/IOT/LLM/SOFTWARE
+2026-08-04 12:42 /home/qlf/IOT/LLM/SOFTWARE/.git

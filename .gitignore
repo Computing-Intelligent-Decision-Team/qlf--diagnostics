@@ -1,0 +1,81 @@
+# ============================================================
+# Root .gitignore — IOT Workspace
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Node / frontend
+node_modules/
+coverage/
+
+# Virtual environments
+.venv/
+.conda/
+env/
+venv/
+!scripts/env/
+!scripts/env/**
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ——— Generated Artifacts ———
+# Layout / EDA outputs
+*.ext
+*.gds
+*.log
+*.stdout.log
+*.dat
+*.spice
+*.cir
+*.raw
+
+# Temp files
+.tmp_*/
+*.tmp
+*.bak
+*.swp
+*~
+
+# Repomix context packs
+.repomix/
+repomix-output.*
+docs/context/generated/
+
+# Images (generated)
+outputs/*.png
+*.png
+!apps/
+!apps/analog-optimizer-web/
+!apps/analog-optimizer-web/frontend/
+!apps/analog-optimizer-web/frontend/public/
+!apps/analog-optimizer-web/frontend/public/demo-assets/
+!apps/analog-optimizer-web/frontend/public/demo-assets/**/*.png
+
+# ——— External References ———
+# ALIGN/MAGICAL etc. cloned for code reference only
+references/
+
+# ——— Environment & Secrets ———
+.env
+*.env
+!*.env.example
+
+# ——— Archives ———
+.archive/
+
+# ——— Project-specific ignores cascade to subdirectories ———
+# See analog-layout-proto/.gitignore, Edit-Banana/.gitignore, etc.

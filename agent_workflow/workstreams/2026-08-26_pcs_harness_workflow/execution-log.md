@@ -195,3 +195,12 @@
 - action: Added `tools/analog_harness/tests/test_optimize.py` as an operator-facing launcher that creates an automation-enabled copy of `ota_core_workflow_demo.yaml`, sets the run root, sources the MAGICAL/Sky130 environment, and invokes `auto-close` with `native_grpo`.
 - default: `--layout-budget 0`, so the script demonstrates GRPO sizing optimization without immediately promoting candidates to layout. Operators can pass `--layout-budget 3` to include physical promotion.
 - verify: `./tools/analog_harness/tests/test_optimize.py --dry-run --run-root /tmp/pcs_optimize_dry_run_exec` printed the generated config path and auto-close command; the generated YAML contains `automation.enabled: true`. `python3 -m py_compile tools/analog_harness/tests/test_optimize.py` and `git diff --check` passed.
+
+## 2026-08-27 20:45:00 CST | T015F4 live GRPO/ngspice table
+
+- method: Superpowers systematic-debugging; test-driven-development; verification-before-completion.
+- root cause: The launcher previously only surfaced the final `auto-close` JSON. Real ngspice metrics were already being written incrementally to `evidence/events.jsonl`, while GRPO reward/parameter feedback appears later in each `cand_*/state.json`.
+- action: Upgraded `tools/analog_harness/tests/test_optimize.py` with a live watcher that prints a stable table header and one row when ngspice writes a simulator event, followed by a second row when GRPO observes the candidate state with reward and sizing values. Added `--no-live-table`, `--show-raw-log`, `--poll-seconds`, `--strict-exit`, and `--self-test`.
+- real run: `./tools/analog_harness/tests/test_optimize.py --run-root /tmp/pcs_harness_live_actual_2 --candidate-budget 2 --batch-size 2 --layout-budget 0 --poll-seconds 0.5` produced live rows for `cand_0001` and `cand_0002`. Observed examples: `cand_0001` pre-sim GBW `9.564 MHz`, PVT GBW `5.195 MHz`, reward `+0.1729`; `cand_0002` pre-sim GBW `17.380 MHz`, PVT GBW `13.000 MHz`, reward `+0.1745`.
+- terminal semantics: With `--layout-budget 0`, `auto-close` ends at `layout_budget_exhausted` after L2-PVT-feasible candidates. The launcher now normalizes that expected budget terminal to exit `0` by default and keeps the raw code under `--strict-exit`.
+- verify: `--self-test`, `--dry-run`, `python3 -m py_compile tools/analog_harness/tests/test_optimize.py`, exit-normalization check against `/tmp/pcs_harness_live_actual_2/progress.json`, and `git diff --check` all passed.
