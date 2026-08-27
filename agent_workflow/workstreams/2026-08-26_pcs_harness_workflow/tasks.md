@@ -19,5 +19,6 @@
 | T015 | Run campaign and rehearsal | in_progress | T008,T014 | Fixed true boundary candidate, real L6 run, measured timings | generated run root and reports | Machine evidence checks and recording review pass |
 | T015F1 | Keep boundary scan model-safe and failure-tolerant | done | T015 | Enforce legal per-finger MOS width and reject candidate-level simulation failures without aborting the batch | boundary scanner and regression tests | `python3 -m unittest tools.analog_harness.tests.test_workflow_boundary_scan tools.analog_harness.tests.test_ota_workflow_demo_config tools.analog_harness.tests.test_native_grpo tools.analog_harness.tests.test_sizing_candidate_manifest` |
 | T015F2 | Convert L3 routability failure into Agent feedback | done | T015F1 | Preserve the real L2-pass/L3-fail evidence and constrain the next GRPO pass toward physically routable MOS sizing | boundary selection, Agent feedback evidence, local L6-neighborhood candidate | Boundary/orchestration/runner tests pass; real recovery candidate reaches L6 |
+| T015F3 | Add one-command GRPO optimization launcher | done | T015F2 | Hide automation YAML/env setup behind a direct operator script | `tools/analog_harness/tests/test_optimize.py` | dry-run creates automation-enabled config and command |
 
 Statuses: `pending`, `in_progress`, `review`, `blocked`, `done`.

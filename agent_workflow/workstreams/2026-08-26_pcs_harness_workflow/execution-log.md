@@ -188,3 +188,10 @@
 - physical evidence: MAGICAL placement/routing passed; DRC count `0`; connectivity LVS `yes` with Netgen exit `0`; PEX extracted `25` capacitances totaling `8.18088 fF`.
 - performance evidence: pre-layout nominal GBW `9.563700956 MHz`; pre-layout PVT worst GBW `5.195004594 MHz`; post-layout nominal GBW `9.555496446 MHz`; post-layout PVT worst GBW `5.190212988 MHz`; worst gain `17.2906337 dB`; worst phase margin `96.104267 deg`; worst power `0.0361428628`.
 - demo interpretation: The recording now has a truthful N/N+1 sequence: broad GRPO candidate passes L2 but fails L3 router geometry; Agent diagnoses physical routability and returns to GRPO; the next physically constrained sizing reaches L6.
+
+## 2026-08-27 20:34:00 CST | T015F3 one-command GRPO optimization launcher
+
+- method: Superpowers test-driven-development; verification-before-completion.
+- action: Added `tools/analog_harness/tests/test_optimize.py` as an operator-facing launcher that creates an automation-enabled copy of `ota_core_workflow_demo.yaml`, sets the run root, sources the MAGICAL/Sky130 environment, and invokes `auto-close` with `native_grpo`.
+- default: `--layout-budget 0`, so the script demonstrates GRPO sizing optimization without immediately promoting candidates to layout. Operators can pass `--layout-budget 3` to include physical promotion.
+- verify: `./tools/analog_harness/tests/test_optimize.py --dry-run --run-root /tmp/pcs_optimize_dry_run_exec` printed the generated config path and auto-close command; the generated YAML contains `automation.enabled: true`. `python3 -m py_compile tools/analog_harness/tests/test_optimize.py` and `git diff --check` passed.
