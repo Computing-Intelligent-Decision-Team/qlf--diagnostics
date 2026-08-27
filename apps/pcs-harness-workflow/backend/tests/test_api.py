@@ -9,6 +9,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
@@ -163,6 +164,20 @@ class WorkflowApiTest(unittest.TestCase):
         self.assertEqual(headers["Content-Type"], "text/event-stream; charset=utf-8")
         self.assertNotIn(b"id: 2\n", raw)
         self.assertIn(b"id: 3\n", raw)
+
+    def test_recording_process_receives_the_frozen_magical_runtime_contract(self) -> None:
+        runtime = {
+            "MAGICAL_ANAROUTE_PYTHONPATH": "/MAGICAL/generated/anaroute_release_module",
+            "MAGICAL_DOCKER_IMAGE": "magical:test",
+            "MAGICAL_PEX_MAGIC_DOCKER_IMAGE": "magic:test",
+            "MAGICAL_PEX_MAGIC_VERSION": "8.3.637",
+        }
+        with patch.dict(os.environ, runtime, clear=False):
+            env = self.service._explicit_environment(
+                self.root / "run", "run_001", self.root / "events.jsonl"
+            )
+        for name, value in runtime.items():
+            self.assertEqual(env[name], value)
 
     def test_artifacts_are_only_resolved_from_event_references(self) -> None:
         run = self._start_verified_run()

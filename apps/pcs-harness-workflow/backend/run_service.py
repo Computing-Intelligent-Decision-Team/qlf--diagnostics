@@ -293,7 +293,25 @@ class RunService:
         return path
 
     def _explicit_environment(self, run_root: Path, run_id: str, events_path: Path) -> dict[str, str]:
-        allowed = ("PATH", "LD_LIBRARY_PATH", "PYTHONPATH", "SKYWATER130_HOME", "PDK_ROOT", "MAGIC_RCFILE")
+        allowed = (
+            "PATH",
+            "LD_LIBRARY_PATH",
+            "PYTHONPATH",
+            "SKYWATER130_HOME",
+            "SKY130A",
+            "PDK_ROOT",
+            "MAGIC_RCFILE",
+            "ANALOG_BENCH_ROOT",
+            "ANALOG_GYM_ROOT",
+            "MAGICAL_ANAROUTE_PYTHONPATH",
+            "MAGICAL_DOCKER_IMAGE",
+            "MAGICAL_MAGIC_DOCKER_IMAGE",
+            "MAGICAL_MAGIC_PROFILE",
+            "MAGICAL_PEX_MAGIC_DOCKER_IMAGE",
+            "MAGICAL_PEX_MAGIC_EXPECTED_IMAGE_ID",
+            "MAGICAL_PEX_MAGIC_VERSION",
+            "MAGICAL_PEX_MAGICRC_SHA256",
+        )
         env = {key: os.environ[key] for key in allowed if key in os.environ}
         env.update(
             {

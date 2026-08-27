@@ -39,6 +39,7 @@ if [[ ! -f "$SELECTION" ]]; then
 fi
 
 mkdir -p "$RUNS_ROOT"
+source "$WORKSPACE/scripts/env/magical_sky130_env.sh"
 export IOT_WORKSPACE="$WORKSPACE"
 export PCS_HARNESS_ROOT="$PCS_ROOT"
 export PCS_HARNESS_PYTHON="$HARNESS_PYTHON"
@@ -47,6 +48,7 @@ export PCS_WORKFLOW_BOUNDARY_SELECTION="$SELECTION"
 export PCS_WORKFLOW_HOST="127.0.0.1"
 export PCS_WORKFLOW_PORT="8103"
 export SKY130A="${SKY130A:-$DEFAULT_SKY130A}"
+export MAGICAL_ANAROUTE_PYTHONPATH="${MAGICAL_ANAROUTE_PYTHONPATH:-/MAGICAL/generated/analog_harness/stage2_pin_shape_repair_v1/preflight/anaroute_release_module}"
 
 cleanup() {
     local status=$?

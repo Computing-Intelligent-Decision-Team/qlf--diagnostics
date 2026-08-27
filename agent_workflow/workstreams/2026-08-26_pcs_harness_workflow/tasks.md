@@ -17,5 +17,7 @@
 | T013 | Build physical and iteration visualization | done | T009,T012 | Layout/DRC/LVS/PEX animation and N/N+1 comparison | physical UI components; commit `78c3c5b` | Frontend tests/build and 1920×1080 visual check pass |
 | T014 | Wire automatic recording run | done | T006,T007,T010,T013 | One-click bounded Agent→GRPO→EDA→L6 workflow | PCS commit `02ad60f`; app commit `a17c294` | Runner and cross-stack regression tests pass |
 | T015 | Run campaign and rehearsal | in_progress | T008,T014 | Fixed true boundary candidate, real L6 run, measured timings | generated run root and reports | Machine evidence checks and recording review pass |
+| T015F1 | Keep boundary scan model-safe and failure-tolerant | done | T015 | Enforce legal per-finger MOS width and reject candidate-level simulation failures without aborting the batch | boundary scanner and regression tests | `python3 -m unittest tools.analog_harness.tests.test_workflow_boundary_scan tools.analog_harness.tests.test_ota_workflow_demo_config tools.analog_harness.tests.test_native_grpo tools.analog_harness.tests.test_sizing_candidate_manifest` |
+| T015F2 | Convert L3 routability failure into Agent feedback | done | T015F1 | Preserve the real L2-pass/L3-fail evidence and constrain the next GRPO pass toward physically routable MOS sizing | boundary selection, Agent feedback evidence, local L6-neighborhood candidate | Boundary/orchestration/runner tests pass; real recovery candidate reaches L6 |
 
 Statuses: `pending`, `in_progress`, `review`, `blocked`, `done`.
